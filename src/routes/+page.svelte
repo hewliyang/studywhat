@@ -1,52 +1,49 @@
 <script lang="ts">
+	import { long2short } from "$lib/constants";
+
 	export let data;
 
-	const short2long = {
-		SUSS: "Singapore University of Social Sciences",
-		SUTD: "Singapore University of Technology and Design",
-		SIT: "Singapore Institute of Technology",
-		SMU: "Singapore Management University",
-		NUS: "National University of Singapore",
-		NTU: "Nanyang Technological University",
-	};
-	const long2short = Object.entries(short2long).reduce(
-		(acc: Record<string, string>, [k, v]) => {
-			acc[v] = k;
-			return acc;
-		},
-		{}
-	);
-
-	const yr = new Date().getFullYear();
+	const columns = [
+		"Rank",
+		"University",
+		"Degree",
+		"Employment",
+		"Gross Mean",
+		"Gross Median",
+		"25th",
+		"75th",
+	];
+	const today = new Date();
 </script>
 
-<h1>
-	Top Paying Degrees <small>GES {yr - 1}</small>
-</h1>
+<div class="flex justify-between items-center">
+	<h1>Top Paying Degrees</h1>
+	<small class="text-sm font-mono font-bold text-slate-500"
+		>Last Updated:
+		{today.toDateString()}
+	</small>
+</div>
 
-<div class="table-responsive">
-	<table>
+<div class="overflow-x-auto">
+	<table class="text-[0.9rem] w-full border-collapse">
 		<thead>
-			<tr>
-				<th>Rank</th>
-				<th>University</th>
-				<th>Degree</th>
-				<th>Gross Mean</th>
-				<th>Gross Median</th>
-				<th>25th %ile</th>
-				<th>75th %ile</th>
+			<tr class="bg-gray-200 font-bold">
+				{#each columns as col}
+					<th class="p-[0.25rem] text-left border-b">{col}</th>
+				{/each}
 			</tr>
 		</thead>
 		<tbody>
-			{#each data.top as record, index (record.id)}
+			{#each data.top as record, index (record.slug)}
 				<tr>
 					<td>{index + 1}</td>
 					<td>{long2short[record.university]}</td>
 					<td
-						><a href="/degree/{record.id}">
+						><a href="/degree/{record.slug}">
 							{record.degree}
 						</a>
 					</td>
+					<td>{record.employment_rate_overall}%</td>
 					<td>${record.gross_monthly_mean.toLocaleString()}</td>
 					<td>${record.gross_monthly_median.toLocaleString()}</td>
 					<td>${record.gross_mthly_25_percentile.toLocaleString()}</td>
@@ -58,26 +55,9 @@
 </div>
 
 <style>
-	.table-responsive {
-		overflow-x: auto;
-	}
-
-	table {
-		width: 100%;
-		border-collapse: collapse;
-		font-size: 0.9rem;
-	}
-
-	th,
 	td {
 		padding: 0.25rem;
 		text-align: left;
 		border-bottom: 1px solid #ddd;
-		/* white-space: nowrap; */
-	}
-
-	th {
-		background-color: #f2f2f2;
-		font-weight: bold;
 	}
 </style>

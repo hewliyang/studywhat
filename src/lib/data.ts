@@ -1,7 +1,13 @@
+import _ from "lodash";
 import data from "./data.json";
 import url from "./data.json?url";
 import { browser } from "$app/environment";
 import type { DataRecord } from "./types";
+
+interface IntermediateSearchResult {
+	record: DataRecord;
+	score: number;
+}
 
 export let local: DataRecord[];
 
@@ -11,40 +17,67 @@ if (browser) {
 	});
 }
 
-export const degrees = data as DataRecord[];
+export const degrees = data;
 
-export function top10(year: number) {
-	return degrees
-		.filter((d) => d.year === year)
-		.sort((a, b) => {
-			return b.gross_monthly_median - a.gross_monthly_mean;
-		})
-		.slice(0, 10);
+export function topK(year: number, K: number = 10) {
+	let filtered = _.flatMap(degrees, (item) => {
+		return item.data.map((d) => {
+			return {
+				university: item.university,
+				school: item.university,
+				degree: item.degree,
+				slug: item.slug,
+				...d,
+			};
+		});
+	});
+	filtered = _.filter(filtered, { year: year });
+	filtered = _.orderBy(
+		filtered,
+		["gross_monthly_median", "gross_mthly_75_percentile", "gross_monthly_mean"],
+		["desc", "desc", "desc"]
+	);
+	return _.take(filtered, K);
 }
 
-export function search(data: DataRecord[], query: string | null) {
-	const results: DataRecord[] = [];
-	if (!query) return results;
+/**
+ * Simple token based search on slugs which
+ * in turn is a concatenation of <slugify(degree)>-<nus|smu|ntu|suss|sutd|sit>
+ */
+export function search(
+	data: DataRecord[],
+	query: string | null,
+	exactMatch: boolean = false
+) {
+	const results: IntermediateSearchResult[] = [];
+	if (!query) return [];
 
-	const q = query.toLowerCase().trim();
+	const terms = query.toLowerCase().trim().split(/\s+/);
 
 	for (const record of data) {
-		if (
-			record.degree.toLowerCase().includes(q) ||
-			record.school.toLowerCase().includes(q) ||
-			record.university.toLowerCase().includes(q)
-		) {
-			results.push(record);
+		let score = 0;
+		let match = true;
+		const slug = record.slug.toLowerCase();
 
-			// limit to 200
-			if (results.length === 20) break;
+		for (const term of terms) {
+			if (exactMatch) {
+				if (slug != term) {
+					match = false;
+					break;
+				}
+			} else if (!slug.includes(term)) {
+				match = false;
+				break;
+			}
+			score += 1 + slug.indexOf(term) / slug.length;
 		}
-
-		// prefer recent
-		results.sort((a, b) => {
-			return b.year - a.year;
-		});
+		if (match) {
+			results.push({ record, score });
+		}
 	}
 
-	return results;
+	// sort by score
+	_.orderBy(results, ["score"], ["desc"]);
+
+	return results.map((result) => result.record);
 }

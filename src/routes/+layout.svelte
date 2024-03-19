@@ -1,4 +1,5 @@
 <script lang="ts">
+	import "../app.pcss";
 	import Search from "$lib/components/Search.svelte";
 </script>
 

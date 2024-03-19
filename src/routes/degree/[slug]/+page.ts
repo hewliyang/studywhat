@@ -1,16 +1,16 @@
 import { local } from "$lib/data";
-import type { DataRecord } from "$lib/types";
 import { error } from "@sveltejs/kit";
+import type { DataRecord } from "$lib/types";
 
 export async function load({ fetch, params }) {
-	const id = Number(params.id);
+	const slug = params.slug;
 	let degree: DataRecord | undefined;
 
 	if (local) {
-		degree = local.find((d) => d.id === id);
+		degree = local.find((d) => d.slug === slug);
 		if (!degree) error(404);
 	} else {
-		const response = await fetch(`/api/degree/${id}`);
+		const response = await fetch(`/api/degree/${slug}`);
 		if (!response.ok) error(response.status);
 		degree = (await response.json()) as DataRecord;
 	}

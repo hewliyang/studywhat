@@ -8,8 +8,8 @@
 	<ul>
 		{#each degrees as degree}
 			<li>
-				<h3><a href="/degree/{degree.id}">{degree.degree}</a></h3>
-				<small>{degree.university} - {degree.year}</small>
+				<h3><a href="/degree/{degree.slug}">{degree.degree}</a></h3>
+				<small>{degree.university} - {degree.school}</small>
 			</li>
 		{/each}
 	</ul>
