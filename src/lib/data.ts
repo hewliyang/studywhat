@@ -4,10 +4,10 @@ import url from "./data.json?url";
 import { browser } from "$app/environment";
 import type { DataRecord } from "./types";
 
-interface IntermediateSearchResult {
+type _IntermediateSearchResult = {
 	record: DataRecord;
 	score: number;
-}
+};
 
 export let local: DataRecord[];
 
@@ -17,7 +17,7 @@ if (browser) {
 	});
 }
 
-export const degrees = data;
+export const degrees: DataRecord[] = data;
 
 export function topK(year: number, K: number = 10) {
 	let filtered = _.flatMap(degrees, (item) => {
@@ -41,7 +41,7 @@ export function topK(year: number, K: number = 10) {
 }
 
 /**
- * Simple token based search on slugs which
+ * Simple token / term frequency based search on slugs which
  * in turn is a concatenation of <slugify(degree)>-<nus|smu|ntu|suss|sutd|sit>
  */
 export function search(
@@ -49,7 +49,7 @@ export function search(
 	query: string | null,
 	exactMatch: boolean = false
 ) {
-	const results: IntermediateSearchResult[] = [];
+	const results: _IntermediateSearchResult[] = [];
 	if (!query) return [];
 
 	const terms = query.toLowerCase().trim().split(/\s+/);

@@ -8,23 +8,13 @@
 		"University",
 		"Degree",
 		"Employment",
-		"Gross Mean",
 		"Gross Median",
 		"25th",
 		"75th",
 	];
-	const today = new Date();
 </script>
 
-<div class="flex justify-between items-center">
-	<h1>Top Paying Degrees</h1>
-	<small class="text-sm font-mono font-bold text-slate-500"
-		>Last Updated:
-		{today.toDateString()}
-	</small>
-</div>
-
-<div class="overflow-x-auto">
+<div class="overflow-x-auto mt-4">
 	<table class="text-[0.9rem] w-full border-collapse">
 		<thead>
 			<tr class="bg-gray-200 font-bold">
@@ -44,7 +34,6 @@
 						</a>
 					</td>
 					<td>{record.employment_rate_overall}%</td>
-					<td>${record.gross_monthly_mean.toLocaleString()}</td>
 					<td>${record.gross_monthly_median.toLocaleString()}</td>
 					<td>${record.gross_mthly_25_percentile.toLocaleString()}</td>
 					<td>${record.gross_mthly_75_percentile.toLocaleString()}</td>

@@ -15,5 +15,5 @@ export interface DataRecord {
 	degree: string;
 	school: string | null;
 	slug: string;
-	data: YearlyRecord;
+	data: YearlyRecord[];
 }
