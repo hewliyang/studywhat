@@ -1,34 +1,40 @@
 <script lang="ts">
 	import { short2img, long2short } from "$lib/constants";
-	import type { YearlyRecord } from "$lib/types.js";
+	import type { YearlyRecord } from "$lib/types";
 	import {
 		VisXYContainer,
 		VisAxis,
 		VisLine,
 		VisBulletLegend,
+		VisTooltip,
+		VisCrosshair,
 	} from "@unovis/svelte";
+	import { DataHandler, Datatable, Th } from "@vincjo/datatables";
 
 	export let data;
 	const short = long2short[data.degree.university];
 	const img = short2img[short];
 
-	const columns = [
-		"Year",
-		"EmploymentOverall",
-		"EmploymentFT",
-		"GrossMean",
-		"GrossMedian",
-		"25th",
-		"75th",
-	];
-
 	// chart stuff
+
 	const x = (d: YearlyRecord) => d.year;
 	const y = [
 		(d: YearlyRecord) => d.gross_monthly_median,
 		(d: YearlyRecord) => d.gross_mthly_25_percentile,
 		(d: YearlyRecord) => d.gross_mthly_75_percentile,
 	];
+
+	function tooltipTemplate(d: YearlyRecord): string {
+		const title = `<div style="color: #666; text-align: center;">${d.year} - Gross</div>`;
+		const q1 = `25th: <b>${d.gross_mthly_25_percentile}$</b><br />`;
+		const median = `50th: <b>${d.gross_monthly_median}$</b><br />`;
+		const q3 = `75th: <b>${d.gross_mthly_75_percentile}$</b>`;
+		return `<div style="font-size: 12px;">${title}${q1}${median}${q3}</div>`;
+	}
+
+	// datatable stuff
+	const handler = new DataHandler(data.degree.data, { rowsPerPage: 10 });
+	const rows = handler.getRows();
 </script>
 
 <div class="flex flex-col space-y-4">
@@ -40,46 +46,69 @@
 		</div>
 	</div>
 
-	<VisXYContainer height={250}>
-		<h3>Income over time</h3>
-		<VisBulletLegend
-			items={[{ name: "Median" }, { name: "25th" }, { name: "75th" }]}
+	<VisXYContainer height={250} data={data.degree.data}>
+		<div class="flex items-center justify-between">
+			<h4>Gross Income</h4>
+			<VisBulletLegend
+				items={[{ name: "Median" }, { name: "25th" }, { name: "75th" }]}
+			/>
+		</div>
+		<VisLine {x} {y} />
+		<VisAxis type="x" numTicks={(data.degree.data.length / 2) >> 0} />
+		<VisAxis type="y" />
+		<VisTooltip />
+		<VisCrosshair
+			{x}
+			{y}
+			template={tooltipTemplate}
+			hideWhenFarFromPointer={true}
 		/>
-		<VisLine data={data.degree.data} {x} {y} />
-		<VisAxis type="x" gridLine={false} numTicks={data.degree.data.length} />
-		<VisAxis type="y" label="Gross Income" />
 	</VisXYContainer>
 
 	<div class="overflow-x-auto">
-		<table class="text-[0.9rem] w-full border-collapse">
-			<thead>
-				<tr class="bg-gray-200 font-bold">
-					{#each columns as col}
-						<th class="p-[0.25rem] text-left border-b">{col}</th>
-					{/each}
-				</tr>
-			</thead>
-			<tbody>
-				{#each data.degree.data as d}
+		<Datatable {handler} search={false}>
+			<table>
+				<thead>
 					<tr>
-						<td>{d.year}</td>
-						<td>{d.employment_rate_overall}%</td>
-						<td>{d.employment_rate_ft_perm}%</td>
-						<td>${d.gross_monthly_mean.toLocaleString()}</td>
-						<td>${d.gross_monthly_median.toLocaleString()}</td>
-						<td>${d.gross_mthly_25_percentile.toLocaleString()}</td>
-						<td>${d.gross_mthly_75_percentile.toLocaleString()}</td>
+						<Th {handler} orderBy="year">Year</Th>
+						<Th {handler} orderBy="employment_rate_overall">EmploymentAll</Th>
+						<Th {handler} orderBy="employment_rate_ft_perm">EmploymentFT</Th>
+						<Th {handler} orderBy="gross_monthly_mean">Mean</Th>
+						<Th {handler} orderBy="gross_monthly_median">Median</Th>
+						<Th {handler} orderBy="gross_mthly_25_percentile">25th</Th>
+						<Th {handler} orderBy="gross_mthly_75_percentile">75th</Th>
 					</tr>
-				{/each}
-			</tbody>
-		</table>
+				</thead>
+				<tbody>
+					{#each $rows as row}
+						<tr>
+							<td>{row.year}</td>
+							<td>{row.employment_rate_overall}%</td>
+							<td>{row.employment_rate_ft_perm}%</td>
+							<td>{row.gross_monthly_mean.toLocaleString()}</td>
+							<td>{row.gross_monthly_median.toLocaleString()}</td>
+							<td>{row.gross_mthly_25_percentile.toLocaleString()}</td>
+							<td>{row.gross_mthly_75_percentile.toLocaleString()}</td>
+						</tr>
+					{/each}
+				</tbody>
+			</table>
+		</Datatable>
 	</div>
 </div>
 
 <style>
-	td {
-		padding: 0.25rem;
-		text-align: left;
-		border-bottom: 1px solid #ddd;
+	thead {
+		background: #fff;
+	}
+	tbody td {
+		border: 1px solid #f5f5f5;
+		padding: 4px 20px;
+	}
+	tbody tr {
+		transition: all, 0.2s;
+	}
+	tbody tr:hover {
+		background: #f5f5f5;
 	}
 </style>

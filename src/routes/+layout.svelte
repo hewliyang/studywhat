@@ -19,7 +19,10 @@
 		<a href="https://github.com/hewliyang/ges-report-to-csv"
 			>GES Report Parser</a
 		>
-		<p>Data sourced from Ministry of Education</p>
+		<p>
+			Data sourced from Ministry of Education under Singapore Open Data License
+			1.0
+		</p>
 	</div>
 </footer>
 
@@ -36,7 +39,7 @@
 	header,
 	main,
 	footer {
-		max-width: 40rem;
+		max-width: 100rem;
 		margin: 0 auto;
 		padding: 0.5rem;
 	}
@@ -51,7 +54,7 @@
 	}
 
 	main {
-		max-width: 40rem;
+		/* max-width: 40rem; */
 		margin: 0 auto;
 		min-height: calc(100vh - 15rem);
 	}

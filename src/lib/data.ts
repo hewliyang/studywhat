@@ -2,7 +2,7 @@ import _ from "lodash";
 import data from "./data.json";
 import url from "./data.json?url";
 import { browser } from "$app/environment";
-import type { DataRecord } from "./types";
+import type { DataRecord, FlatRecord } from "$lib/types";
 
 type _IntermediateSearchResult = {
 	record: DataRecord;
@@ -19,7 +19,7 @@ if (browser) {
 
 export const degrees: DataRecord[] = data;
 
-export function topK(year: number, K: number = 10) {
+export function topK(year: number, K: number = 10): FlatRecord[] {
 	let filtered = _.flatMap(degrees, (item) => {
 		return item.data.map((d) => {
 			return {
