@@ -12,6 +12,7 @@
 	import { DataHandler, Datatable, Th, ThFilter } from "@vincjo/datatables";
 	import type { NumericAccessor, StringAccessor } from "@unovis/ts";
 	import type { FlatRecord } from "$lib/types";
+	import { goto } from "$app/navigation";
 
 	export let data;
 
@@ -48,8 +49,8 @@
 	};
 	const events = {
 		[Scatter.selectors.point]: {
-			click: (y: FlatRecord) => {
-				window.location.href = `${$page.url}degree/${y.slug}`;
+			click: (d: FlatRecord) => {
+				goto(`degree/${d.slug}`);
 			},
 		},
 	};
@@ -77,10 +78,10 @@
 				<tr>
 					<Th {handler} orderBy="university">University</Th>
 					<Th {handler} orderBy="degree">Degree</Th>
-					<Th {handler} orderBy="employment_rate_overall">Employment Rate</Th>
 					<Th {handler} orderBy="gross_monthly_median">Gross Median</Th>
 					<Th {handler} orderBy="gross_mthly_25_percentile">25th</Th>
 					<Th {handler} orderBy="gross_mthly_75_percentile">75th</Th>
+					<Th {handler} orderBy="employment_rate_overall">Employment Rate</Th>
 				</tr>
 				<tr>
 					<ThFilter {handler} filterBy="university" />
@@ -96,10 +97,10 @@
 								{row.degree}
 							</a>
 						</td>
-						<td>{row.employment_rate_overall}%</td>
 						<td>${row.gross_monthly_median.toLocaleString()}</td>
 						<td>${row.gross_mthly_25_percentile.toLocaleString()}</td>
 						<td>${row.gross_mthly_75_percentile.toLocaleString()}</td>
+						<td>{row.employment_rate_overall}%</td>
 					</tr>
 				{/each}
 			</tbody>

@@ -79,24 +79,24 @@
 				<thead>
 					<tr>
 						<Th {handler} orderBy="year">Year</Th>
-						<Th {handler} orderBy="employment_rate_overall">EmploymentAll</Th>
-						<Th {handler} orderBy="employment_rate_ft_perm">EmploymentFT</Th>
-						<Th {handler} orderBy="gross_monthly_mean">Mean</Th>
 						<Th {handler} orderBy="gross_monthly_median">Median</Th>
 						<Th {handler} orderBy="gross_mthly_25_percentile">25th</Th>
 						<Th {handler} orderBy="gross_mthly_75_percentile">75th</Th>
+						<Th {handler} orderBy="gross_monthly_mean">Mean</Th>
+						<Th {handler} orderBy="employment_rate_overall">EmploymentAll</Th>
+						<Th {handler} orderBy="employment_rate_ft_perm">EmploymentFT</Th>
 					</tr>
 				</thead>
 				<tbody>
 					{#each $rows as row}
 						<tr>
 							<td>{row.year}</td>
-							<td>{row.employment_rate_overall}%</td>
-							<td>{row.employment_rate_ft_perm}%</td>
-							<td>{row.gross_monthly_mean.toLocaleString()}</td>
 							<td>{row.gross_monthly_median.toLocaleString()}</td>
 							<td>{row.gross_mthly_25_percentile.toLocaleString()}</td>
 							<td>{row.gross_mthly_75_percentile.toLocaleString()}</td>
+							<td>{row.gross_monthly_mean.toLocaleString()}</td>
+							<td>{row.employment_rate_overall}%</td>
+							<td>{row.employment_rate_ft_perm}%</td>
 						</tr>
 					{/each}
 				</tbody>
