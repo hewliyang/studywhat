@@ -44,18 +44,30 @@
 	}}
 />
 
-<form action="/search" method="GET">
-	<input
-		name="q"
-		type="search"
-		placeholder={browser
-			? `Search (${navigator.userAgent.includes("Macintosh") ? "Cmd" : "Ctrl"}-K)`
-			: "Search"}
-		on:click={show}
-		on:input={show}
-		value={query}
-		class="border border-gray-300 w-full p-1 rounded-lg"
-	/>
+<form action="/search" method="GET" class="relative">
+	<div class="flex items-center">
+		<input
+			name="q"
+			type="search"
+			on:click={show}
+			on:input={show}
+			value={query}
+			class="border border-gray-300 w-full p-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 placeholder-transparent"
+		/>
+		{#if browser && !query}
+			{#if navigator.userAgent.includes("Macintosh")}
+				<span
+					class="absolute inset-y-0 left-0 right-0 flex items-center justify-center text-gray-500 pointer-events-none"
+					><kbd>Cmd</kbd> + <kbd>K</kbd></span
+				>
+			{:else}
+				<span
+					class="absolute inset-y-0 left-0 right-0 flex items-center justify-center text-gray-500 pointer-events-none"
+					><kbd>Ctrl</kbd> + <kbd>K</kbd></span
+				>
+			{/if}
+		{/if}
+	</div>
 </form>
 
 {#if visible}

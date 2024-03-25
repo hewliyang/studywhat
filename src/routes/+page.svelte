@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { page } from "$app/stores";
 	import { Scale, Scatter } from "@unovis/ts";
 	import { long2short } from "$lib/constants";
 	import {
@@ -32,12 +33,10 @@
 	// chart
 	const institutions = [...new Set(data.top.map((d) => d.university))].sort();
 	const colorScale = Scale.scaleOrdinal(palette).domain(institutions);
-	const formatNumber = Intl.NumberFormat("en", { notation: "compact" }).format;
 
 	const y: NumericAccessor<FlatRecord> = (d) => d.employment_rate_overall;
 	const x: NumericAccessor<FlatRecord> = (d) => d.gross_monthly_median;
 	const color: StringAccessor<FlatRecord> = (d) => colorScale(d.university);
-	// const label: StringAccessor<FlatRecord> = (d) => d.degree;
 	const legendItems = institutions.map((v) => ({
 		name: v,
 		color: colorScale(v),
@@ -46,6 +45,13 @@
 		[Scatter.selectors.point]: (d: FlatRecord) => `
 			${long2short[d.university]} - ${d.degree} - ${d.gross_monthly_median}
 		`,
+	};
+	const events = {
+		[Scatter.selectors.point]: {
+			click: (y: FlatRecord) => {
+				window.location.href = `${$page.url}degree/${y.slug}`;
+			},
+		},
 	};
 
 	// data table
@@ -58,7 +64,7 @@
 		<h3 class="font-semibold text-lg">Singapore Fresh Graduate Incomes (↗)</h3>
 		<VisBulletLegend items={legendItems} />
 	</div>
-	<VisScatter cursor="pointer" size={10} {x} {y} {color} />
+	<VisScatter cursor="pointer" size={10} {x} {y} {color} {events} />
 	<VisAxis type="x" label="Median Gross Income ($)" gridLine={false} />
 	<VisAxis type="y" label="Full Time Employment Rate (%)" gridLine={false} />
 	<VisTooltip {triggers} />
