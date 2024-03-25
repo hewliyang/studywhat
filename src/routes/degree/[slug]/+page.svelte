@@ -33,15 +33,15 @@
 	}
 
 	// datatable stuff
-	const handler = new DataHandler(data.degree.data, {
-		rowsPerPage: data.degree.data.length,
+	$: handler = new DataHandler(data.degree.data, {
+		rowsPerPage: 100,
 	});
-	const rows = handler.getRows();
+	$: rows = handler.getRows();
 </script>
 
 <div class="flex flex-col space-y-4">
-	<div class="flex gap-4">
-		<img class="h-16" src={img} alt="University Logo" />
+	<div class="flex gap-4 mt-2 border rounded-lg py-3 shadow-sm">
+		<img class="h-16 ml-3" src={img} alt="University Logo" />
 		<div>
 			<div class="text-xl font-medium text-black">{data.degree.university}</div>
 			<p class="text-gray-500">{data.degree.degree}, {data.degree.school}</p>
@@ -49,8 +49,8 @@
 	</div>
 
 	<VisXYContainer height={250} data={data.degree.data}>
-		<div class="flex items-center justify-between">
-			<h4>Gross Income</h4>
+		<div class="flex items-center justify-between mb-3">
+			<h4 class="font-semibold">Gross Income</h4>
 			<VisBulletLegend
 				items={[{ name: "Median" }, { name: "25th" }, { name: "75th" }]}
 			/>

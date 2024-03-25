@@ -16,15 +16,18 @@
 	<slot />
 </main>
 
-<footer class="my-0 mx-auto p-[0.5rem]">
-	<div>
-		<a href="https://github.com/hewliyang/studywhat" class="underline">GitHub</a
-		>
-		•
-		<a href="https://github.com/hewliyang/ges-report-to-csv" class="underline"
-			>GES Report Parser</a
-		>
-		<p>
+<footer class="my-0 mx-auto p-[0.5rem] border-t text-sm">
+	<div class="flex flex-col md:flex-row justify-between items-center">
+		<div class="mb-4 md:mb-0">
+			<a href="https://github.com/hewliyang/studywhat" class="underline"
+				>GitHub (Web)</a
+			>
+			<span class="mx-2">&bull;</span>
+			<a href="https://github.com/hewliyang/ges-report-to-csv" class="underline"
+				>GitHub (Report Parser)</a
+			>
+		</div>
+		<p class="text-center">
 			Data sourced from Ministry of Education under Singapore Open Data License
 			1.0
 		</p>
