@@ -6,10 +6,6 @@ const config = {
 		extend: {},
 	},
 
-	corePlugins: {
-		preflight: false,
-	},
-
 	plugins: [],
 };
 

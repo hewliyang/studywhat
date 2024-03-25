@@ -54,6 +54,7 @@
 		on:click={show}
 		on:input={show}
 		value={query}
+		class="border border-gray-300 w-full p-1 rounded-lg"
 	/>
 </form>
 

@@ -33,7 +33,9 @@
 	}
 
 	// datatable stuff
-	const handler = new DataHandler(data.degree.data, { rowsPerPage: 10 });
+	const handler = new DataHandler(data.degree.data, {
+		rowsPerPage: data.degree.data.length,
+	});
 	const rows = handler.getRows();
 </script>
 
@@ -66,7 +68,13 @@
 	</VisXYContainer>
 
 	<div class="overflow-x-auto">
-		<Datatable {handler} search={false}>
+		<Datatable
+			{handler}
+			search={false}
+			rowsPerPage={false}
+			pagination={false}
+			rowCount={false}
+		>
 			<table>
 				<thead>
 					<tr>
@@ -98,6 +106,10 @@
 </div>
 
 <style>
+	table {
+		font-size: small;
+	}
+
 	thead {
 		background: #fff;
 	}

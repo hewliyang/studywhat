@@ -54,8 +54,8 @@
 </script>
 
 <VisXYContainer data={data.top} height={350}>
-	<div class="flex flex-col lg:flex-row lg:items-center justify-between mb-6">
-		<h3 class="tracking-tighter">Singapore Fresh Graduate Incomes (↗)</h3>
+	<div class="flex flex-col mb-6">
+		<h3 class="font-semibold text-lg">Singapore Fresh Graduate Incomes (↗)</h3>
 		<VisBulletLegend items={legendItems} />
 	</div>
 	<VisScatter cursor="pointer" size={10} {x} {y} {color} />
@@ -86,7 +86,7 @@
 					<tr>
 						<td>{long2short[row.university]}</td>
 						<td
-							><a href="/degree/{row.slug}">
+							><a href="/degree/{row.slug}" class="underline text-blue-600">
 								{row.degree}
 							</a>
 						</td>
@@ -102,6 +102,10 @@
 </div>
 
 <style>
+	table {
+		font-size: small;
+	}
+
 	thead {
 		background: #fff;
 	}

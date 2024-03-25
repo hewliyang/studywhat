@@ -3,20 +3,25 @@
 	import Search from "$lib/components/Search.svelte";
 </script>
 
-<header>
-	<h1><a href="/">StudyWhat</a></h1>
+<header
+	class="my-0 mx-auto p-[0.5rem] flex flex-row items-center gap-[0.5rem] justify-between border-b"
+>
+	<h1>
+		<a href="/" class="text-2xl font-semibold tracking-tighter">StudyWhat</a>
+	</h1>
 	<Search />
 </header>
 
-<main>
+<main class="my-0 mx-auto p-[0.5rem] min-h-screen">
 	<slot />
 </main>
 
-<footer>
+<footer class="my-0 mx-auto p-[0.5rem]">
 	<div>
-		<a href="https://github.com/hewliyang/studywhat">GitHub</a>
+		<a href="https://github.com/hewliyang/studywhat" class="underline">GitHub</a
+		>
 		•
-		<a href="https://github.com/hewliyang/ges-report-to-csv"
+		<a href="https://github.com/hewliyang/ges-report-to-csv" class="underline"
 			>GES Report Parser</a
 		>
 		<p>
@@ -34,28 +39,5 @@
 		font-weight: 300;
 		line-height: 1.5;
 		margin: 0;
-	}
-
-	header,
-	main,
-	footer {
-		max-width: 100rem;
-		margin: 0 auto;
-		padding: 0.5rem;
-	}
-
-	header {
-		@media (min-width: 24rem) {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			gap: 0.5rem;
-		}
-	}
-
-	main {
-		/* max-width: 40rem; */
-		margin: 0 auto;
-		min-height: calc(100vh - 15rem);
 	}
 </style>
