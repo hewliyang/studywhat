@@ -23,3 +23,5 @@ export const short2img: Record<string, string> = {
 	NUS: nus,
 	NTU: ntu,
 };
+
+export const PREV_YEAR = new Date().getFullYear() - 1;

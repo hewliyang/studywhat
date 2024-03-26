@@ -3,6 +3,7 @@ import data from "./data.json";
 import url from "./data.json?url";
 import { browser } from "$app/environment";
 import type { DataRecord, FlatRecord } from "$lib/types";
+import { PREV_YEAR } from "./constants";
 
 type _IntermediateSearchResult = {
 	record: DataRecord;
@@ -19,7 +20,10 @@ if (browser) {
 
 export const degrees: DataRecord[] = data;
 
-export function topK(year: number, K: number = 10): FlatRecord[] {
+export function topK(
+	year: number = PREV_YEAR,
+	K: number = 1_000_000
+): FlatRecord[] {
 	let filtered = _.flatMap(degrees, (item) => {
 		return item.data.map((d) => {
 			return {

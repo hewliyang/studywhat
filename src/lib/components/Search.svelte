@@ -69,7 +69,6 @@
 			on:click={show}
 			on:input={show}
 			value={query}
-			class=""
 		/>
 		{#if browser && !query && !visible}
 			{#if navigator.userAgent.includes("Macintosh")}

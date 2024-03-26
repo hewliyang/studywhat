@@ -1,7 +1,6 @@
 <script lang="ts">
-	import { page } from "$app/stores";
 	import { Scale, Scatter } from "@unovis/ts";
-	import { long2short } from "$lib/constants";
+	import { long2short, PREV_YEAR } from "$lib/constants";
 	import {
 		VisXYContainer,
 		VisScatter,
@@ -15,6 +14,8 @@
 	import { goto } from "$app/navigation";
 
 	export let data;
+
+	$: selectedYear = PREV_YEAR;
 
 	const palette = [
 		"#04c0c7",
@@ -62,7 +63,10 @@
 
 <VisXYContainer data={data.top} height={350}>
 	<div class="flex flex-col mb-6">
-		<h3 class="font-semibold text-lg">Singapore Fresh Graduate Incomes (↗)</h3>
+		<h3 class="font-semibold text-lg">
+			Singapore Fresh Graduate Incomes ({selectedYear})
+			<span class="text-sm opacity-75">↗ is better</span>
+		</h3>
 		<VisBulletLegend items={legendItems} />
 	</div>
 	<VisScatter cursor="pointer" size={10} {x} {y} {color} {events} />

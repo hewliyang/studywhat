@@ -12,8 +12,9 @@
 	import { DataHandler, Datatable, Th } from "@vincjo/datatables";
 
 	export let data;
-	const short = long2short[data.degree.university];
-	const img = short2img[short];
+
+	$: short = long2short[data.degree.university];
+	$: img = short2img[short];
 
 	// chart stuff
 
