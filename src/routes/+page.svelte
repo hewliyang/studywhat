@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Scale, Scatter } from "@unovis/ts";
-	import { long2short, PREV_YEAR } from "$lib/constants";
+	import { long2short, YEARS } from "$lib/constants";
 	import {
 		VisXYContainer,
 		VisScatter,
@@ -9,13 +9,14 @@
 		VisBulletLegend,
 	} from "@unovis/svelte";
 	import { DataHandler, Datatable, Th, ThFilter } from "@vincjo/datatables";
-	import type { NumericAccessor, StringAccessor } from "@unovis/ts";
 	import type { FlatRecord } from "$lib/types";
 	import { goto } from "$app/navigation";
+	import { topK } from "$lib/data";
 
 	export let data;
 
-	$: selectedYear = PREV_YEAR;
+	const latestYear = YEARS[YEARS.length - 1];
+	$: selectedYear = latestYear;
 
 	const palette = [
 		"#04c0c7",
@@ -33,22 +34,22 @@
 	];
 
 	// chart
-	const institutions = [...new Set(data.top.map((d) => d.university))].sort();
-	const colorScale = Scale.scaleOrdinal(palette).domain(institutions);
+	$: institutions = [...new Set(data.top.map((d) => d.university))].sort();
+	$: colorScale = Scale.scaleOrdinal(palette).domain(institutions);
 
-	const y: NumericAccessor<FlatRecord> = (d) => d.employment_rate_overall;
-	const x: NumericAccessor<FlatRecord> = (d) => d.gross_monthly_median;
-	const color: StringAccessor<FlatRecord> = (d) => colorScale(d.university);
-	const legendItems = institutions.map((v) => ({
+	$: y = (d: FlatRecord) => d.employment_rate_overall;
+	$: x = (d: FlatRecord) => d.gross_monthly_median;
+	$: color = (d: FlatRecord) => colorScale(d.university);
+	$: legendItems = institutions.map((v) => ({
 		name: v,
 		color: colorScale(v),
 	}));
-	const triggers = {
+	$: triggers = {
 		[Scatter.selectors.point]: (d: FlatRecord) => `
 			${long2short[d.university]} - ${d.degree} - ${d.gross_monthly_median}
 		`,
 	};
-	const events = {
+	$: events = {
 		[Scatter.selectors.point]: {
 			click: (d: FlatRecord) => {
 				goto(`degree/${d.slug}`);
@@ -57,16 +58,34 @@
 	};
 
 	// data table
-	const handler = new DataHandler(data.top, { rowsPerPage: 10 });
-	const rows = handler.getRows();
+	$: handler = new DataHandler(data.top, { rowsPerPage: 10 });
+	$: rows = handler.getRows();
+
+	function handleYearChange() {
+		data.top = topK(selectedYear);
+	}
 </script>
 
 <VisXYContainer data={data.top} height={350}>
 	<div class="flex flex-col mb-6">
-		<h3 class="font-semibold text-lg">
-			Singapore Fresh Graduate Incomes ({selectedYear})
-			<span class="text-sm opacity-75">↗ is better</span>
-		</h3>
+		<div class="flex justify-between items-center">
+			<h3 class="font-semibold text-lg">
+				Singapore Fresh Graduate Incomes ({selectedYear})
+				<span class="text-sm opacity-75">↗ is better</span>
+			</h3>
+			<form>
+				<select
+					bind:value={selectedYear}
+					on:change={handleYearChange}
+					class="text-sm inline-block px-2 py-1 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+				>
+					{#each YEARS as year}
+						{@const selected = year === latestYear}
+						<option value={year} {selected}>{year}</option>
+					{/each}
+				</select>
+			</form>
+		</div>
 		<VisBulletLegend items={legendItems} />
 	</div>
 	<VisScatter cursor="pointer" size={10} {x} {y} {color} {events} />

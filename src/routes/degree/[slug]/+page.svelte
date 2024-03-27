@@ -18,11 +18,18 @@
 
 	// chart stuff
 
+	// median income
 	const x = (d: YearlyRecord) => d.year;
 	const y = [
 		(d: YearlyRecord) => d.gross_monthly_median,
 		(d: YearlyRecord) => d.gross_mthly_25_percentile,
 		(d: YearlyRecord) => d.gross_mthly_75_percentile,
+	];
+
+	// employment stats
+	const yEmp = [
+		(d: YearlyRecord) => d.employment_rate_ft_perm,
+		(d: YearlyRecord) => d.employment_rate_overall,
 	];
 
 	function tooltipTemplate(d: YearlyRecord): string {
@@ -31,6 +38,13 @@
 		const median = `50th: <b>${d.gross_monthly_median}$</b><br />`;
 		const q3 = `75th: <b>${d.gross_mthly_75_percentile}$</b>`;
 		return `<div style="font-size: 12px;">${title}${q1}${median}${q3}</div>`;
+	}
+
+	function employmentTooltipTemplate(d: YearlyRecord): string {
+		const title = `<div style="color: #666; text-align: center;">${d.year} - Employment</div>`;
+		const ft = `Full Time: <b>${d.employment_rate_ft_perm}%</b><br />`;
+		const all = `Overall: <b>${d.employment_rate_overall}%</b><br />`;
+		return `<div style="font-size: 12px;">${title}${ft}${all}</div>`;
 	}
 
 	// datatable stuff
@@ -49,24 +63,43 @@
 		</div>
 	</div>
 
-	<VisXYContainer height={250} data={data.degree.data}>
-		<div class="flex items-center justify-between mb-3">
-			<h4 class="font-semibold">Gross Income</h4>
-			<VisBulletLegend
-				items={[{ name: "Median" }, { name: "25th" }, { name: "75th" }]}
+	<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+		<VisXYContainer height={250} data={data.degree.data}>
+			<div class="flex items-center justify-between mb-3">
+				<h4 class="font-semibold">Gross Income</h4>
+				<VisBulletLegend
+					items={[{ name: "Median" }, { name: "25th" }, { name: "75th" }]}
+				/>
+			</div>
+			<VisLine {x} {y} />
+			<VisAxis type="x" numTicks={(data.degree.data.length / 2) >> 0} />
+			<VisAxis type="y" />
+			<VisTooltip />
+			<VisCrosshair
+				{x}
+				{y}
+				template={tooltipTemplate}
+				hideWhenFarFromPointer={true}
 			/>
-		</div>
-		<VisLine {x} {y} />
-		<VisAxis type="x" numTicks={(data.degree.data.length / 2) >> 0} />
-		<VisAxis type="y" />
-		<VisTooltip />
-		<VisCrosshair
-			{x}
-			{y}
-			template={tooltipTemplate}
-			hideWhenFarFromPointer={true}
-		/>
-	</VisXYContainer>
+		</VisXYContainer>
+
+		<VisXYContainer height={250} data={data.degree.data}>
+			<div class="flex items-center justify-between mb-3">
+				<h4 class="font-semibold">Employment Rate</h4>
+				<VisBulletLegend items={[{ name: "Full Time" }, { name: "Overall" }]} />
+			</div>
+			<VisLine {x} y={yEmp} />
+			<VisAxis type="x" numTicks={(data.degree.data.length / 2) >> 0} />
+			<VisAxis type="y" />
+			<VisTooltip />
+			<VisCrosshair
+				{x}
+				y={yEmp}
+				template={employmentTooltipTemplate}
+				hideWhenFarFromPointer={true}
+			/>
+		</VisXYContainer>
+	</div>
 
 	<div class="overflow-x-auto">
 		<Datatable
