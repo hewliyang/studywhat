@@ -11,12 +11,11 @@
 	import { DataHandler, Datatable, Th, ThFilter } from "@vincjo/datatables";
 	import type { FlatRecord } from "$lib/types";
 	import { goto } from "$app/navigation";
-	import { topK } from "$lib/data";
 
 	export let data;
 
-	const latestYear = YEARS[YEARS.length - 1];
-	$: selectedYear = latestYear;
+	const initialYr = data.year;
+	$: selectedYr = initialYr;
 
 	const palette = [
 		"#04c0c7",
@@ -62,7 +61,7 @@
 	$: rows = handler.getRows();
 
 	function handleYearChange() {
-		data.top = topK(selectedYear);
+		goto(`/?year=${selectedYr}`);
 	}
 </script>
 
@@ -70,17 +69,18 @@
 	<div class="flex flex-col mb-6">
 		<div class="flex justify-between items-center">
 			<h3 class="font-semibold text-lg">
-				Singapore Fresh Graduate Incomes ({selectedYear})
+				Singapore Fresh Graduate Incomes ({selectedYr})
 				<span class="text-sm opacity-75">↗ is better</span>
 			</h3>
 			<form>
 				<select
-					bind:value={selectedYear}
+					name="year"
+					bind:value={selectedYr}
 					on:change={handleYearChange}
 					class="text-sm inline-block px-2 py-1 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
 				>
 					{#each YEARS as year}
-						{@const selected = year === latestYear}
+						{@const selected = year === selectedYr}
 						<option value={year} {selected}>{year}</option>
 					{/each}
 				</select>
