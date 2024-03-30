@@ -1,5 +1,6 @@
 <script lang="ts">
 	import "../app.pcss";
+	import "@fontsource-variable/inter";
 	import Search from "$lib/components/Search.svelte";
 </script>
 
@@ -12,7 +13,7 @@
 	<Search />
 </header>
 
-<main class="my-0 mx-auto p-[0.5rem] min-h-screen">
+<main class="my-0 mx-auto p-[0.5rem] min-h-screen flex flex-col space-y-4">
 	<slot />
 </main>
 
@@ -36,7 +37,7 @@
 
 <style>
 	:root {
-		font-family: system-ui, sans-serif;
+		font-family: Inter, system-ui, sans-serif;
 		font-size: 16px;
 		letter-spacing: 0.01em;
 		font-weight: 300;

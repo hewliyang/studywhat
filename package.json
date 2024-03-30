@@ -28,6 +28,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@fontsource-variable/inter": "^5.0.17",
     "@unovis/svelte": "^1.3.5",
     "lodash": "^4.17.21"
   }

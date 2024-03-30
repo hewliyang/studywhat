@@ -16,6 +16,13 @@
 	$: short = long2short[data.degree.university];
 	$: img = short2img[short];
 
+	// YoY change stats
+	// $: ts = data.degree.data;
+	// $: latestYrVal = ts[ts.length - 1].gross_monthly_median;
+	// $: prevYrVal = ts[ts.length - 2].gross_monthly_median;
+	// $: pctChange = ((latestYrVal - prevYrVal) / prevYrVal) * 100;
+	// $: isPositive = pctChange > 0;
+
 	// chart stuff
 
 	// median income
@@ -58,8 +65,17 @@
 	<div class="flex gap-4 mt-2 border rounded-lg py-3 shadow-sm">
 		<img class="h-16 ml-3" src={img} alt="University Logo" />
 		<div>
-			<div class="text-xl font-medium text-black">{data.degree.university}</div>
-			<p class="text-gray-500">{data.degree.degree}, {data.degree.school}</p>
+			<div class="text-lg font-medium text-black">{data.degree.university}</div>
+			<p class="text-gray-500 text-sm">
+				{data.degree.degree}, {data.degree.school}
+			</p>
+			<!-- <p
+				class="text-sm {isPositive || pctChange === 0
+					? 'text-green-500'
+					: 'text-red-500'}"
+			>
+				{isPositive ? "+" : ""}{pctChange.toFixed(2)}%
+			</p> -->
 		</div>
 	</div>
 

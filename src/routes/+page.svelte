@@ -11,6 +11,7 @@
 	import { DataHandler, Datatable, Th, ThFilter } from "@vincjo/datatables";
 	import type { FlatRecord } from "$lib/types";
 	import { goto } from "$app/navigation";
+	import Sparkline from "$lib/components/Sparkline.svelte";
 
 	export let data;
 
@@ -45,7 +46,28 @@
 	}));
 	$: triggers = {
 		[Scatter.selectors.point]: (d: FlatRecord) => `
-			${long2short[d.university]} - ${d.degree} - ${d.gross_monthly_median}
+			<div class="flex flex-col items-center">
+				<div class="flex items-center mb-2">
+					<span class="font-bold mr-2">${long2short[d.university]}</span>
+					<span class="px-2 py-1 bg-gray-200 rounded-full text-xs">${d.degree}</span>
+				</div>
+				<div class="flex items-center justify-between w-full mb-2">
+					<div class="flex flex-col items-start">
+						<span class="text-gray-400 text-xs font-mono">${d.gross_mthly_25_percentile}</span>
+					</div>
+					<div class="relative h-1 w-full rounded-full overflow-hidden">
+						<div class="absolute inset-y-0 left-0 h-full w-1/2 bg-red-500 rounded-l-full"></div>
+						<div class="absolute inset-y-0 right-0 h-full w-1/2 bg-green-500 rounded-r-full"></div>
+					</div>
+					<div class="flex flex-col items-end">
+						<span class="text-gray-400 text-xs font-mono">${d.gross_mthly_75_percentile}</span>
+					</div>
+				</div>
+				<div class="flex justify-center w-full">
+					<span class="text-xs font-mono">${d.gross_monthly_median}</span>
+				</div>
+				<div class="text-gray-400 text-xs italic">Gross Monthly Income</div>
+			</div>
 		`,
 	};
 	$: events = {
@@ -64,6 +86,21 @@
 		goto(`/?year=${selectedYr}`);
 	}
 </script>
+
+<section>
+	<h1 class="font-semibold text-lg mb-3">Largest Year on Year Gains (%)</h1>
+	<div class="flex overflow-x-auto whitespace-nowrap gap-3">
+		{#each data.gainAndLoss.best as record}
+			<Sparkline {record} />
+		{/each}
+	</div>
+	<h1 class="font-semibold text-lg mb-3">Largest Year on Year Losses (%)</h1>
+	<div class="flex overflow-x-auto whitespace-nowrap gap-3">
+		{#each data.gainAndLoss.worst as record}
+			<Sparkline {record} />
+		{/each}
+	</div>
+</section>
 
 <VisXYContainer data={data.top} height={350}>
 	<div class="flex flex-col mb-6">
@@ -94,8 +131,8 @@
 	<VisTooltip {triggers} />
 </VisXYContainer>
 
-<div class="overflow-x-auto mt-4">
-	<Datatable {handler} search={false}>
+<section class="overflow-x-auto mt-4">
+	<Datatable {handler} search={false} rowsPerPage={false}>
 		<table>
 			<thead>
 				<tr>
@@ -129,7 +166,7 @@
 			</tbody>
 		</table>
 	</Datatable>
-</div>
+</section>
 
 <style>
 	table {

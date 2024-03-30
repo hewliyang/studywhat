@@ -36,6 +36,10 @@ export interface FlatRecord {
 	gross_mthly_75_percentile: number;
 }
 
+export interface WinnersRecord extends DataRecord {
+	pctChange: number;
+}
+
 // data table
 
 export interface DataTableProps<T> {
