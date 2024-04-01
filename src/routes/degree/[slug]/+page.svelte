@@ -9,19 +9,26 @@
 		VisTooltip,
 		VisCrosshair,
 	} from "@unovis/svelte";
+	import { CurveType } from "@unovis/ts";
 	import { DataHandler, Datatable, Th } from "@vincjo/datatables";
 
 	export let data;
 
+	let pctChange: number;
+	let isPositive: boolean;
+
+	$: isEnoughData = data.degree.data.length > 2;
 	$: short = long2short[data.degree.university];
 	$: img = short2img[short];
 
 	// YoY change stats
-	// $: ts = data.degree.data;
-	// $: latestYrVal = ts[ts.length - 1].gross_monthly_median;
-	// $: prevYrVal = ts[ts.length - 2].gross_monthly_median;
-	// $: pctChange = ((latestYrVal - prevYrVal) / prevYrVal) * 100;
-	// $: isPositive = pctChange > 0;
+	$: if (isEnoughData) {
+		const ts = data.degree.data;
+		const latestYrVal = ts[ts.length - 1].gross_monthly_median;
+		const prevYrVal = ts[ts.length - 2].gross_monthly_median;
+		pctChange = ((latestYrVal - prevYrVal) / prevYrVal) * 100;
+		isPositive = pctChange > 0;
+	}
 
 	// chart stuff
 
@@ -69,54 +76,59 @@
 			<p class="text-gray-500 text-sm">
 				{data.degree.degree}, {data.degree.school}
 			</p>
-			<!-- <p
-				class="text-sm {isPositive || pctChange === 0
-					? 'text-green-500'
-					: 'text-red-500'}"
-			>
-				{isPositive ? "+" : ""}{pctChange.toFixed(2)}%
-			</p> -->
+			{#if isEnoughData}
+				<p
+					class="text-sm {isPositive || pctChange === 0
+						? 'text-green-500'
+						: 'text-red-500'}"
+				>
+					{isPositive ? "+" : ""}{pctChange.toFixed(2)}%
+				</p>
+			{/if}
 		</div>
 	</div>
 
-	<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-		<VisXYContainer height={250} data={data.degree.data}>
-			<div class="flex items-center justify-between mb-3">
-				<h4 class="font-semibold">Gross Income</h4>
-				<VisBulletLegend
-					items={[{ name: "Median" }, { name: "25th" }, { name: "75th" }]}
+	{#if isEnoughData}
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+			<VisXYContainer height={250} data={data.degree.data}>
+				<div class="flex items-center justify-between mb-3">
+					<h4 class="font-semibold">Gross Income</h4>
+					<VisBulletLegend
+						items={[{ name: "Median" }, { name: "25th" }, { name: "75th" }]}
+					/>
+				</div>
+				<VisLine {x} {y} curveType={CurveType.Linear} />
+				<VisAxis type="x" numTicks={(data.degree.data.length / 2) >> 0} />
+				<VisAxis type="y" />
+				<VisTooltip />
+				<VisCrosshair
+					{x}
+					{y}
+					template={tooltipTemplate}
+					hideWhenFarFromPointer={true}
 				/>
-			</div>
-			<VisLine {x} {y} />
-			<VisAxis type="x" numTicks={(data.degree.data.length / 2) >> 0} />
-			<VisAxis type="y" />
-			<VisTooltip />
-			<VisCrosshair
-				{x}
-				{y}
-				template={tooltipTemplate}
-				hideWhenFarFromPointer={true}
-			/>
-		</VisXYContainer>
+			</VisXYContainer>
 
-		<VisXYContainer height={250} data={data.degree.data}>
-			<div class="flex items-center justify-between mb-3">
-				<h4 class="font-semibold">Employment Rate</h4>
-				<VisBulletLegend items={[{ name: "Full Time" }, { name: "Overall" }]} />
-			</div>
-			<VisLine {x} y={yEmp} />
-			<VisAxis type="x" numTicks={(data.degree.data.length / 2) >> 0} />
-			<VisAxis type="y" />
-			<VisTooltip />
-			<VisCrosshair
-				{x}
-				y={yEmp}
-				template={employmentTooltipTemplate}
-				hideWhenFarFromPointer={true}
-			/>
-		</VisXYContainer>
-	</div>
-
+			<VisXYContainer height={250} data={data.degree.data}>
+				<div class="flex items-center justify-between mb-3">
+					<h4 class="font-semibold">Employment Rate</h4>
+					<VisBulletLegend
+						items={[{ name: "Full Time" }, { name: "Overall" }]}
+					/>
+				</div>
+				<VisLine {x} y={yEmp} curveType={CurveType.Linear} />
+				<VisAxis type="x" numTicks={(data.degree.data.length / 2) >> 0} />
+				<VisAxis type="y" />
+				<VisTooltip />
+				<VisCrosshair
+					{x}
+					y={yEmp}
+					template={employmentTooltipTemplate}
+					hideWhenFarFromPointer={true}
+				/>
+			</VisXYContainer>
+		</div>
+	{/if}
 	<div class="overflow-x-auto">
 		<Datatable
 			{handler}

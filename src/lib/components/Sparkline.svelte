@@ -6,29 +6,24 @@
 
 	export let record: WinnersRecord;
 
-	$: svgDefsGreen = `
-		<linearGradient id="gradient" gradientTransform="rotate(90)">
-			<stop offset="0%" stop-color="#00bf72" stop-opacity="1" />
-			<stop offset="25%" stop-color="#00bf72" stop-opacity="0.8" />
-			<stop offset="50%" stop-color="#00bf72" stop-opacity="0.6" />
-			<stop offset="75%" stop-color="#00bf72" stop-opacity="0.4" />
-			<stop offset="100%" stop-color="#00bf72" stop-opacity="0" />
+	function getSVGDefs(pctChange: number) {
+		const color = pctChange > 0 ? "#00bf72" : "#ff0000";
+		const id = pctChange > 0 ? "red-gradient" : "green-gradient";
+		const gradient = `
+		<linearGradient id="${id}" gradientTransform="rotate(90)">
+			<stop offset="0%" stop-color="${color}" stop-opacity="1" />
+			<stop offset="25%" stop-color="${color}" stop-opacity="0.8" />
+			<stop offset="50%" stop-color="${color}" stop-opacity="0.6" />
+			<stop offset="75%" stop-color="${color}" stop-opacity="0.4" />
+			<stop offset="100%" stop-color="${color}" stop-opacity="0" />
 		</linearGradient>
-	`;
+		`;
+		return { id, gradient };
+	}
 
-	$: svgDefsRed = `
-		<linearGradient id="gradient" gradientTransform="rotate(90)">
-			<stop offset="0%" stop-color="#ff0000" stop-opacity="1" />
-			<stop offset="25%" stop-color="#ff0000" stop-opacity="0.8" />
-			<stop offset="50%" stop-color="#ff0000" stop-opacity="0.6" />
-			<stop offset="75%" stop-color="#ff0000" stop-opacity="0.4" />
-			<stop offset="100%" stop-color="#ff0000" stop-opacity="0" />
-		</linearGradient>
-	`;
+	const { id, gradient } = getSVGDefs(record.pctChange);
 
-	$: svgDefs = record.pctChange > 0 ? svgDefsGreen : svgDefsRed;
-
-	// prev year
+	// reference year
 	$: prevYearValue = record.data[record.data.length - 2].gross_monthly_median;
 	$: minYear = record.data[0].year;
 	$: maxYear = record.data[record.data.length - 1].year;
@@ -50,26 +45,29 @@
 			{record.pctChange > 0 ? "+" : ""}{record.pctChange.toFixed(2)}%
 		</div>
 	</div>
-	<div class="w-[144px]">
-		<VisXYContainer {svgDefs} class="h-[44px] area-container">
-			<VisArea
-				data={record.data}
-				{x}
-				{y}
-				color={record.pctChange > 0 ? "url(#gradient)" : "red"}
-				opacity="0.5"
-				curveType={CurveType.Natural}
-			/>
-			<VisLine
-				data={[
-					{ year: minYear, value: prevYearValue },
-					{ year: maxYear, value: prevYearValue },
-				]}
-				lineDashArray={[5]}
-				color="gray"
-				x={(d) => d.year}
-				y={(d) => d.value}
-			/>
-		</VisXYContainer>
-	</div>
+	<VisXYContainer
+		svgDefs={gradient}
+		class="area-container"
+		width={144}
+		height={44}
+	>
+		<VisArea
+			data={record.data}
+			{x}
+			{y}
+			color="url(#{id})"
+			opacity="0.5"
+			curveType={CurveType.Natural}
+		/>
+		<VisLine
+			data={[
+				{ year: minYear, value: prevYearValue },
+				{ year: maxYear, value: prevYearValue },
+			]}
+			lineDashArray={[5]}
+			color="gray"
+			x={(d) => d.year}
+			y={(d) => d.value}
+		/>
+	</VisXYContainer>
 </a>

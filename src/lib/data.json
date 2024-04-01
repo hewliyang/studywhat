@@ -17,6 +17,17 @@
                 "gross_mthly_75_percentile": 3100.0
             },
             {
+                "year": 2017,
+                "employment_rate_overall": 97.1,
+                "employment_rate_ft_perm": 94.5,
+                "basic_monthly_mean": 3121.0,
+                "basic_monthly_median": 3000.0,
+                "gross_monthly_mean": 3166.0,
+                "gross_monthly_median": 3000.0,
+                "gross_mthly_25_percentile": 2900.0,
+                "gross_mthly_75_percentile": 3100.0
+            },
+            {
                 "year": 2018,
                 "employment_rate_overall": 94.6,
                 "employment_rate_ft_perm": 92.2,
@@ -294,6 +305,17 @@
                 "gross_mthly_75_percentile": 4435.0
             },
             {
+                "year": 2017,
+                "employment_rate_overall": 80.0,
+                "employment_rate_ft_perm": 75.0,
+                "basic_monthly_mean": 3645.0,
+                "basic_monthly_median": 3492.0,
+                "gross_monthly_mean": 3702.0,
+                "gross_monthly_median": 3500.0,
+                "gross_mthly_25_percentile": 3250.0,
+                "gross_mthly_75_percentile": 4210.0
+            },
+            {
                 "year": 2018,
                 "employment_rate_overall": 95.3,
                 "employment_rate_ft_perm": 88.4,
@@ -363,9 +385,9 @@
     },
     {
         "university": "Nanyang Technological University",
-        "degree": "Art, Design & Media",
+        "degree": "Art, Design and Media",
         "school": "College of Humanities, Arts & Social Sciences",
-        "slug": "art-design--media-ntu",
+        "slug": "art-design-and-media-ntu",
         "data": [
             {
                 "year": 2013,
@@ -432,15 +454,7 @@
                 "gross_monthly_median": 3000.0,
                 "gross_mthly_25_percentile": 2800.0,
                 "gross_mthly_75_percentile": 3500.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
-        "degree": "Art, Design and Media",
-        "school": "College of Humanities, Arts & Social Sciences",
-        "slug": "art-design-and-media-ntu",
-        "data": [
+            },
             {
                 "year": 2020,
                 "employment_rate_overall": 90.4,
@@ -489,47 +503,9 @@
     },
     {
         "university": "Nanyang Technological University",
-        "degree": "Arts (With Education)",
-        "school": "National Institute of Education (NIE)",
-        "slug": "arts-with-education-ntu",
-        "data": [
-            {
-                "year": 2018,
-                "employment_rate_overall": 100.0,
-                "employment_rate_ft_perm": 99.2,
-                "basic_monthly_mean": 3618.0,
-                "basic_monthly_median": 3750.0,
-                "gross_monthly_mean": 3751.0,
-                "gross_monthly_median": 3800.0,
-                "gross_mthly_25_percentile": 3600.0,
-                "gross_mthly_75_percentile": 3806.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
         "degree": "Arts (and Education)",
         "school": "National Institute of Education (NIE)",
         "slug": "arts-and-education-ntu",
-        "data": [
-            {
-                "year": 2023,
-                "employment_rate_overall": 100.0,
-                "employment_rate_ft_perm": 100.0,
-                "basic_monthly_mean": 4023.0,
-                "basic_monthly_median": 4000.0,
-                "gross_monthly_mean": 4185.0,
-                "gross_monthly_median": 4200.0,
-                "gross_mthly_25_percentile": 3948.0,
-                "gross_mthly_75_percentile": 4600.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
-        "degree": "Arts (with Education)",
-        "school": "National Institute of Education (NIE)",
-        "slug": "arts-with-education-ntu",
         "data": [
             {
                 "year": 2013,
@@ -576,6 +552,28 @@
                 "gross_mthly_75_percentile": 3615.0
             },
             {
+                "year": 2017,
+                "employment_rate_overall": 100.0,
+                "employment_rate_ft_perm": 100.0,
+                "basic_monthly_mean": 3489.0,
+                "basic_monthly_median": 3600.0,
+                "gross_monthly_mean": 3589.0,
+                "gross_monthly_median": 3600.0,
+                "gross_mthly_25_percentile": 3500.0,
+                "gross_mthly_75_percentile": 3800.0
+            },
+            {
+                "year": 2018,
+                "employment_rate_overall": 100.0,
+                "employment_rate_ft_perm": 99.2,
+                "basic_monthly_mean": 3618.0,
+                "basic_monthly_median": 3750.0,
+                "gross_monthly_mean": 3751.0,
+                "gross_monthly_median": 3800.0,
+                "gross_mthly_25_percentile": 3600.0,
+                "gross_mthly_75_percentile": 3806.0
+            },
+            {
                 "year": 2019,
                 "employment_rate_overall": 100.0,
                 "employment_rate_ft_perm": 100.0,
@@ -618,614 +616,17 @@
                 "gross_monthly_median": 4129.0,
                 "gross_mthly_25_percentile": 3750.0,
                 "gross_mthly_75_percentile": 4300.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
-        "degree": "Bachelor of Accountancy (Hons)",
-        "school": "College of Business (Nanyang Business School)",
-        "slug": "bachelor-of-accountancy-hons-ntu",
-        "data": [
+            },
             {
-                "year": 2017,
-                "employment_rate_overall": 97.1,
-                "employment_rate_ft_perm": 94.5,
-                "basic_monthly_mean": 3121.0,
-                "basic_monthly_median": 3000.0,
-                "gross_monthly_mean": 3166.0,
-                "gross_monthly_median": 3000.0,
-                "gross_mthly_25_percentile": 2900.0,
-                "gross_mthly_75_percentile": 3100.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
-        "degree": "Bachelor of Arts (Hons) (Education)",
-        "school": "National Institute of Education (NIE)",
-        "slug": "bachelor-of-arts-hons-education-ntu",
-        "data": [
-            {
-                "year": 2017,
+                "year": 2023,
                 "employment_rate_overall": 100.0,
                 "employment_rate_ft_perm": 100.0,
-                "basic_monthly_mean": 3489.0,
-                "basic_monthly_median": 3600.0,
-                "gross_monthly_mean": 3589.0,
-                "gross_monthly_median": 3600.0,
-                "gross_mthly_25_percentile": 3500.0,
-                "gross_mthly_75_percentile": 3800.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
-        "degree": "Bachelor of Arts (Hons) in Chinese",
-        "school": "College of Engineering",
-        "slug": "bachelor-of-arts-hons-in-chinese-ntu",
-        "data": [
-            {
-                "year": 2017,
-                "employment_rate_overall": 84.6,
-                "employment_rate_ft_perm": 67.7,
-                "basic_monthly_mean": 3119.0,
-                "basic_monthly_median": 3300.0,
-                "gross_monthly_mean": 3147.0,
-                "gross_monthly_median": 3300.0,
-                "gross_mthly_25_percentile": 2750.0,
-                "gross_mthly_75_percentile": 3500.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
-        "degree": "Bachelor of Arts (Hons) in Economics",
-        "school": "College of Engineering",
-        "slug": "bachelor-of-arts-hons-in-economics-ntu",
-        "data": [
-            {
-                "year": 2017,
-                "employment_rate_overall": 84.7,
-                "employment_rate_ft_perm": 75.5,
-                "basic_monthly_mean": 3286.0,
-                "basic_monthly_median": 3200.0,
-                "gross_monthly_mean": 3379.0,
-                "gross_monthly_median": 3240.0,
-                "gross_mthly_25_percentile": 3000.0,
-                "gross_mthly_75_percentile": 3720.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
-        "degree": "Bachelor of Arts (Hons) in English",
-        "school": "College of Engineering",
-        "slug": "bachelor-of-arts-hons-in-english-ntu",
-        "data": [
-            {
-                "year": 2017,
-                "employment_rate_overall": 77.8,
-                "employment_rate_ft_perm": 50.8,
-                "basic_monthly_mean": 3042.0,
-                "basic_monthly_median": 3000.0,
-                "gross_monthly_mean": 3149.0,
-                "gross_monthly_median": 3000.0,
-                "gross_mthly_25_percentile": 2800.0,
-                "gross_mthly_75_percentile": 3300.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
-        "degree": "Bachelor of Arts (Hons) in History",
-        "school": "College of Engineering",
-        "slug": "bachelor-of-arts-hons-in-history-ntu",
-        "data": [
-            {
-                "year": 2017,
-                "employment_rate_overall": 86.0,
-                "employment_rate_ft_perm": 68.4,
-                "basic_monthly_mean": 3206.0,
-                "basic_monthly_median": 3100.0,
-                "gross_monthly_mean": 3265.0,
-                "gross_monthly_median": 3200.0,
-                "gross_mthly_25_percentile": 3000.0,
-                "gross_mthly_75_percentile": 3600.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
-        "degree": "Bachelor of Arts (Hons) in Linguistics And Multilingual Studies",
-        "school": "College of Engineering",
-        "slug": "bachelor-of-arts-hons-in-linguistics-and-multilingual-studies-ntu",
-        "data": [
-            {
-                "year": 2017,
-                "employment_rate_overall": 80.0,
-                "employment_rate_ft_perm": 60.0,
-                "basic_monthly_mean": 3042.0,
-                "basic_monthly_median": 3000.0,
-                "gross_monthly_mean": 3117.0,
-                "gross_monthly_median": 3100.0,
-                "gross_mthly_25_percentile": 2600.0,
-                "gross_mthly_75_percentile": 3500.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
-        "degree": "Bachelor of Arts (Hons) in Psychology",
-        "school": "College of Engineering",
-        "slug": "bachelor-of-arts-hons-in-psychology-ntu",
-        "data": [
-            {
-                "year": 2017,
-                "employment_rate_overall": 78.9,
-                "employment_rate_ft_perm": 59.2,
-                "basic_monthly_mean": 3107.0,
-                "basic_monthly_median": 3107.0,
-                "gross_monthly_mean": 3151.0,
-                "gross_monthly_median": 3200.0,
-                "gross_mthly_25_percentile": 2890.0,
-                "gross_mthly_75_percentile": 3500.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
-        "degree": "Bachelor of Arts (Hons) in Public Policy And Global Affairs",
-        "school": "College of Engineering",
-        "slug": "bachelor-of-arts-hons-in-public-policy-and-global-affairs-ntu",
-        "data": [
-            {
-                "year": 2017,
-                "employment_rate_overall": 74.1,
-                "employment_rate_ft_perm": 66.7,
-                "basic_monthly_mean": 3353.0,
-                "basic_monthly_median": 3300.0,
-                "gross_monthly_mean": 3479.0,
-                "gross_monthly_median": 3395.0,
-                "gross_mthly_25_percentile": 3160.0,
-                "gross_mthly_75_percentile": 3750.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
-        "degree": "Bachelor of Arts (Hons) in Sociology",
-        "school": "College of Engineering",
-        "slug": "bachelor-of-arts-hons-in-sociology-ntu",
-        "data": [
-            {
-                "year": 2017,
-                "employment_rate_overall": 77.6,
-                "employment_rate_ft_perm": 62.1,
-                "basic_monthly_mean": 3263.0,
-                "basic_monthly_median": 3200.0,
-                "gross_monthly_mean": 3309.0,
-                "gross_monthly_median": 3228.0,
-                "gross_mthly_25_percentile": 2970.0,
-                "gross_mthly_75_percentile": 3500.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
-        "degree": "Bachelor of Business (Hons)",
-        "school": "College of Business (Nanyang Business School)",
-        "slug": "bachelor-of-business-hons-ntu",
-        "data": [
-            {
-                "year": 2017,
-                "employment_rate_overall": 93.0,
-                "employment_rate_ft_perm": 80.8,
-                "basic_monthly_mean": 3530.0,
-                "basic_monthly_median": 3300.0,
-                "gross_monthly_mean": 3643.0,
-                "gross_monthly_median": 3300.0,
-                "gross_mthly_25_percentile": 3000.0,
-                "gross_mthly_75_percentile": 3800.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
-        "degree": "Bachelor of Communication Studies (Hons)",
-        "school": "College of Engineering",
-        "slug": "bachelor-of-communication-studies-hons-ntu",
-        "data": [
-            {
-                "year": 2017,
-                "employment_rate_overall": 92.6,
-                "employment_rate_ft_perm": 62.2,
-                "basic_monthly_mean": 3134.0,
-                "basic_monthly_median": 3000.0,
-                "gross_monthly_mean": 3184.0,
-                "gross_monthly_median": 3000.0,
-                "gross_mthly_25_percentile": 2775.0,
-                "gross_mthly_75_percentile": 3500.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
-        "degree": "Bachelor of Engineering  (Hons) (Chemical And Biomolecular Engineering)",
-        "school": "College of Engineering",
-        "slug": "bachelor-of-engineering-hons-chemical-and-biomolecular-engineering-ntu",
-        "data": [
-            {
-                "year": 2017,
-                "employment_rate_overall": 82.3,
-                "employment_rate_ft_perm": 75.3,
-                "basic_monthly_mean": 3326.0,
-                "basic_monthly_median": 3200.0,
-                "gross_monthly_mean": 3577.0,
-                "gross_monthly_median": 3500.0,
-                "gross_mthly_25_percentile": 3200.0,
-                "gross_mthly_75_percentile": 4000.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
-        "degree": "Bachelor of Engineering (Hons) (Aerospace Engineering)",
-        "school": "College of Engineering",
-        "slug": "bachelor-of-engineering-hons-aerospace-engineering-ntu",
-        "data": [
-            {
-                "year": 2017,
-                "employment_rate_overall": 80.0,
-                "employment_rate_ft_perm": 75.0,
-                "basic_monthly_mean": 3645.0,
-                "basic_monthly_median": 3492.0,
-                "gross_monthly_mean": 3702.0,
-                "gross_monthly_median": 3500.0,
-                "gross_mthly_25_percentile": 3250.0,
-                "gross_mthly_75_percentile": 4210.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
-        "degree": "Bachelor of Engineering (Hons) (Bioengineering)",
-        "school": "College of Engineering",
-        "slug": "bachelor-of-engineering-hons-bioengineering-ntu",
-        "data": [
-            {
-                "year": 2017,
-                "employment_rate_overall": 78.3,
-                "employment_rate_ft_perm": 65.2,
-                "basic_monthly_mean": 3326.0,
-                "basic_monthly_median": 3200.0,
-                "gross_monthly_mean": 3486.0,
-                "gross_monthly_median": 3419.0,
-                "gross_mthly_25_percentile": 3000.0,
-                "gross_mthly_75_percentile": 3825.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
-        "degree": "Bachelor of Engineering (Hons) (Civil Engineering)",
-        "school": "College of Engineering",
-        "slug": "bachelor-of-engineering-hons-civil-engineering-ntu",
-        "data": [
-            {
-                "year": 2017,
-                "employment_rate_overall": 98.5,
-                "employment_rate_ft_perm": 96.9,
-                "basic_monthly_mean": 3373.0,
-                "basic_monthly_median": 3300.0,
-                "gross_monthly_mean": 3442.0,
-                "gross_monthly_median": 3400.0,
-                "gross_mthly_25_percentile": 3190.0,
-                "gross_mthly_75_percentile": 3675.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
-        "degree": "Bachelor of Engineering (Hons) (Computer Engineering)",
-        "school": "College of Engineering",
-        "slug": "bachelor-of-engineering-hons-computer-engineering-ntu",
-        "data": [
-            {
-                "year": 2017,
-                "employment_rate_overall": 95.1,
-                "employment_rate_ft_perm": 87.8,
-                "basic_monthly_mean": 3667.0,
-                "basic_monthly_median": 3600.0,
-                "gross_monthly_mean": 3743.0,
-                "gross_monthly_median": 3600.0,
-                "gross_mthly_25_percentile": 3450.0,
-                "gross_mthly_75_percentile": 3925.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
-        "degree": "Bachelor of Engineering (Hons) (Computer Science)",
-        "school": "College of Engineering",
-        "slug": "bachelor-of-engineering-hons-computer-science-ntu",
-        "data": [
-            {
-                "year": 2017,
-                "employment_rate_overall": 92.4,
-                "employment_rate_ft_perm": 86.7,
-                "basic_monthly_mean": 4078.0,
-                "basic_monthly_median": 3750.0,
-                "gross_monthly_mean": 4160.0,
-                "gross_monthly_median": 3850.0,
-                "gross_mthly_25_percentile": 3500.0,
-                "gross_mthly_75_percentile": 4500.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
-        "degree": "Bachelor of Engineering (Hons) (Electrical & Electronic Engineering)",
-        "school": "College of Engineering",
-        "slug": "bachelor-of-engineering-hons-electrical--electronic-engineering-ntu",
-        "data": [
-            {
-                "year": 2017,
-                "employment_rate_overall": 89.3,
-                "employment_rate_ft_perm": 85.0,
-                "basic_monthly_mean": 3532.0,
-                "basic_monthly_median": 3500.0,
-                "gross_monthly_mean": 3657.0,
-                "gross_monthly_median": 3600.0,
-                "gross_mthly_25_percentile": 3200.0,
-                "gross_mthly_75_percentile": 4000.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
-        "degree": "Bachelor of Engineering (Hons) (Environmental Engineering)",
-        "school": "College of Engineering",
-        "slug": "bachelor-of-engineering-hons-environmental-engineering-ntu",
-        "data": [
-            {
-                "year": 2017,
-                "employment_rate_overall": 71.8,
-                "employment_rate_ft_perm": 64.1,
-                "basic_monthly_mean": 3538.0,
-                "basic_monthly_median": 3475.0,
-                "gross_monthly_mean": 3588.0,
-                "gross_monthly_median": 3635.0,
-                "gross_mthly_25_percentile": 3200.0,
-                "gross_mthly_75_percentile": 3950.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
-        "degree": "Bachelor of Engineering (Hons) (Information Engineering & Media)",
-        "school": "College of Engineering",
-        "slug": "bachelor-of-engineering-hons-information-engineering--media-ntu",
-        "data": [
-            {
-                "year": 2017,
-                "employment_rate_overall": 86.9,
-                "employment_rate_ft_perm": 78.7,
-                "basic_monthly_mean": 3685.0,
-                "basic_monthly_median": 3677.0,
-                "gross_monthly_mean": 3790.0,
-                "gross_monthly_median": 3700.0,
-                "gross_mthly_25_percentile": 3350.0,
-                "gross_mthly_75_percentile": 4200.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
-        "degree": "Bachelor of Engineering (Hons) (Materials Engineering)",
-        "school": "College of Engineering",
-        "slug": "bachelor-of-engineering-hons-materials-engineering-ntu",
-        "data": [
-            {
-                "year": 2017,
-                "employment_rate_overall": 84.9,
-                "employment_rate_ft_perm": 75.6,
-                "basic_monthly_mean": 3288.0,
-                "basic_monthly_median": 3200.0,
-                "gross_monthly_mean": 3434.0,
-                "gross_monthly_median": 3375.0,
-                "gross_mthly_25_percentile": 3200.0,
-                "gross_mthly_75_percentile": 3700.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
-        "degree": "Bachelor of Engineering (Hons) (Mechanical Engineering)",
-        "school": "College of Engineering",
-        "slug": "bachelor-of-engineering-hons-mechanical-engineering-ntu",
-        "data": [
-            {
-                "year": 2017,
-                "employment_rate_overall": 82.7,
-                "employment_rate_ft_perm": 74.9,
-                "basic_monthly_mean": 3422.0,
-                "basic_monthly_median": 3300.0,
-                "gross_monthly_mean": 3579.0,
-                "gross_monthly_median": 3450.0,
-                "gross_mthly_25_percentile": 3100.0,
-                "gross_mthly_75_percentile": 4000.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
-        "degree": "Bachelor of Fine Arts (Hons)",
-        "school": "College of Engineering",
-        "slug": "bachelor-of-fine-arts-hons-ntu",
-        "data": [
-            {
-                "year": 2017,
-                "employment_rate_overall": 88.5,
-                "employment_rate_ft_perm": 54.0,
-                "basic_monthly_mean": 2862.0,
-                "basic_monthly_median": 2800.0,
-                "gross_monthly_mean": 2909.0,
-                "gross_monthly_median": 2800.0,
-                "gross_mthly_25_percentile": 2500.0,
-                "gross_mthly_75_percentile": 3200.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
-        "degree": "Bachelor of Science (Hons) (Education)",
-        "school": "National Institute of Education (NIE)",
-        "slug": "bachelor-of-science-hons-education-ntu",
-        "data": [
-            {
-                "year": 2017,
-                "employment_rate_overall": 100.0,
-                "employment_rate_ft_perm": 100.0,
-                "basic_monthly_mean": 3610.0,
-                "basic_monthly_median": 3603.0,
-                "gross_monthly_mean": 3701.0,
-                "gross_monthly_median": 3701.0,
-                "gross_mthly_25_percentile": 3500.0,
-                "gross_mthly_75_percentile": 3958.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
-        "degree": "Bachelor of Science (Hons) (Maritime Studies)",
-        "school": "College of Engineering",
-        "slug": "bachelor-of-science-hons-maritime-studies-ntu",
-        "data": [
-            {
-                "year": 2017,
-                "employment_rate_overall": 92.2,
-                "employment_rate_ft_perm": 92.2,
-                "basic_monthly_mean": 3279.0,
-                "basic_monthly_median": 3200.0,
-                "gross_monthly_mean": 3333.0,
-                "gross_monthly_median": 3320.0,
-                "gross_mthly_25_percentile": 3000.0,
-                "gross_mthly_75_percentile": 3500.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
-        "degree": "Bachelor of Science (Hons) (Sport Science & Management)",
-        "school": "Sports Science and Management",
-        "slug": "bachelor-of-science-hons-sport-science--management-ntu",
-        "data": [
-            {
-                "year": 2017,
-                "employment_rate_overall": 81.1,
-                "employment_rate_ft_perm": 48.6,
-                "basic_monthly_mean": 3372.0,
-                "basic_monthly_median": 3285.0,
-                "gross_monthly_mean": 3486.0,
-                "gross_monthly_median": 3450.0,
-                "gross_mthly_25_percentile": 2800.0,
-                "gross_mthly_75_percentile": 4000.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
-        "degree": "Bachelor of Science (Hons) in Biological Sciences",
-        "school": "College of Sciences",
-        "slug": "bachelor-of-science-hons-in-biological-sciences-ntu",
-        "data": [
-            {
-                "year": 2017,
-                "employment_rate_overall": 80.4,
-                "employment_rate_ft_perm": 62.6,
-                "basic_monthly_mean": 3177.0,
-                "basic_monthly_median": 3100.0,
-                "gross_monthly_mean": 3255.0,
-                "gross_monthly_median": 3200.0,
-                "gross_mthly_25_percentile": 3000.0,
-                "gross_mthly_75_percentile": 3500.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
-        "degree": "Bachelor of Science (Hons) in Chemistry & Biological Chemistry",
-        "school": "College of Sciences",
-        "slug": "bachelor-of-science-hons-in-chemistry--biological-chemistry-ntu",
-        "data": [
-            {
-                "year": 2017,
-                "employment_rate_overall": 70.1,
-                "employment_rate_ft_perm": 51.1,
-                "basic_monthly_mean": 3035.0,
-                "basic_monthly_median": 3000.0,
-                "gross_monthly_mean": 3173.0,
-                "gross_monthly_median": 3100.0,
-                "gross_mthly_25_percentile": 2800.0,
-                "gross_mthly_75_percentile": 3488.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
-        "degree": "Bachelor of Science (Hons) in Mathematical Sciences",
-        "school": "College of Sciences",
-        "slug": "bachelor-of-science-hons-in-mathematical-sciences-ntu",
-        "data": [
-            {
-                "year": 2017,
-                "employment_rate_overall": 89.7,
-                "employment_rate_ft_perm": 79.5,
-                "basic_monthly_mean": 3517.0,
-                "basic_monthly_median": 3400.0,
-                "gross_monthly_mean": 3580.0,
-                "gross_monthly_median": 3500.0,
-                "gross_mthly_25_percentile": 3100.0,
-                "gross_mthly_75_percentile": 3800.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
-        "degree": "Bachelor of Science (Hons) in Mathematics & Economics",
-        "school": "College of Sciences",
-        "slug": "bachelor-of-science-hons-in-mathematics--economics-ntu",
-        "data": [
-            {
-                "year": 2017,
-                "employment_rate_overall": 89.8,
-                "employment_rate_ft_perm": 83.1,
-                "basic_monthly_mean": 3504.0,
-                "basic_monthly_median": 3290.0,
-                "gross_monthly_mean": 3625.0,
-                "gross_monthly_median": 3400.0,
-                "gross_mthly_25_percentile": 3013.0,
-                "gross_mthly_75_percentile": 3775.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
-        "degree": "Bachelor of Science (Hons) in Physics/Applied Physics",
-        "school": "College of Sciences",
-        "slug": "bachelor-of-science-hons-in-physicsapplied-physics-ntu",
-        "data": [
-            {
-                "year": 2017,
-                "employment_rate_overall": 81.6,
-                "employment_rate_ft_perm": 61.8,
-                "basic_monthly_mean": 3367.0,
-                "basic_monthly_median": 3300.0,
-                "gross_monthly_mean": 3490.0,
-                "gross_monthly_median": 3300.0,
-                "gross_mthly_25_percentile": 3000.0,
-                "gross_mthly_75_percentile": 3819.0
+                "basic_monthly_mean": 4023.0,
+                "basic_monthly_median": 4000.0,
+                "gross_monthly_mean": 4185.0,
+                "gross_monthly_median": 4200.0,
+                "gross_mthly_25_percentile": 3948.0,
+                "gross_mthly_75_percentile": 4600.0
             }
         ]
     },
@@ -1278,6 +679,17 @@
                 "gross_monthly_median": 3237.0,
                 "gross_mthly_25_percentile": 3000.0,
                 "gross_mthly_75_percentile": 3510.0
+            },
+            {
+                "year": 2017,
+                "employment_rate_overall": 78.3,
+                "employment_rate_ft_perm": 65.2,
+                "basic_monthly_mean": 3326.0,
+                "basic_monthly_median": 3200.0,
+                "gross_monthly_mean": 3486.0,
+                "gross_monthly_median": 3419.0,
+                "gross_mthly_25_percentile": 3000.0,
+                "gross_mthly_75_percentile": 3825.0
             },
             {
                 "year": 2018,
@@ -1396,6 +808,17 @@
                 "gross_monthly_median": 3175.0,
                 "gross_mthly_25_percentile": 3000.0,
                 "gross_mthly_75_percentile": 3550.0
+            },
+            {
+                "year": 2017,
+                "employment_rate_overall": 80.4,
+                "employment_rate_ft_perm": 62.6,
+                "basic_monthly_mean": 3177.0,
+                "basic_monthly_median": 3100.0,
+                "gross_monthly_mean": 3255.0,
+                "gross_monthly_median": 3200.0,
+                "gross_mthly_25_percentile": 3000.0,
+                "gross_mthly_75_percentile": 3500.0
             },
             {
                 "year": 2018,
@@ -1660,6 +1083,17 @@
                 "gross_mthly_75_percentile": 3800.0
             },
             {
+                "year": 2017,
+                "employment_rate_overall": 93.0,
+                "employment_rate_ft_perm": 80.8,
+                "basic_monthly_mean": 3530.0,
+                "basic_monthly_median": 3300.0,
+                "gross_monthly_mean": 3643.0,
+                "gross_monthly_median": 3300.0,
+                "gross_mthly_25_percentile": 3000.0,
+                "gross_mthly_75_percentile": 3800.0
+            },
+            {
                 "year": 2018,
                 "employment_rate_overall": 92.6,
                 "employment_rate_ft_perm": 84.3,
@@ -1844,55 +1278,6 @@
     },
     {
         "university": "Nanyang Technological University",
-        "degree": "Chemical & Biomolecular Engineering",
-        "school": "College of Engineering",
-        "slug": "chemical--biomolecular-engineering-ntu",
-        "data": [
-            {
-                "year": 2018,
-                "employment_rate_overall": 91.6,
-                "employment_rate_ft_perm": 86.0,
-                "basic_monthly_mean": 3461.0,
-                "basic_monthly_median": 3500.0,
-                "gross_monthly_mean": 3782.0,
-                "gross_monthly_median": 3600.0,
-                "gross_mthly_25_percentile": 3300.0,
-                "gross_mthly_75_percentile": 4200.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
-        "degree": "Chemical And Biomolecular Engineering",
-        "school": "College of Engineering",
-        "slug": "chemical-and-biomolecular-engineering-ntu",
-        "data": [
-            {
-                "year": 2015,
-                "employment_rate_overall": 86.8,
-                "employment_rate_ft_perm": 80.9,
-                "basic_monthly_mean": 3156.0,
-                "basic_monthly_median": 3100.0,
-                "gross_monthly_mean": 3373.0,
-                "gross_monthly_median": 3300.0,
-                "gross_mthly_25_percentile": 3000.0,
-                "gross_mthly_75_percentile": 3600.0
-            },
-            {
-                "year": 2016,
-                "employment_rate_overall": 80.6,
-                "employment_rate_ft_perm": 72.6,
-                "basic_monthly_mean": 3336.0,
-                "basic_monthly_median": 3225.0,
-                "gross_monthly_mean": 3476.0,
-                "gross_monthly_median": 3400.0,
-                "gross_mthly_25_percentile": 3200.0,
-                "gross_mthly_75_percentile": 3800.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
         "degree": "Chemical and Biomolecular Engineering",
         "school": "College of Engineering",
         "slug": "chemical-and-biomolecular-engineering-ntu",
@@ -1918,6 +1303,50 @@
                 "gross_monthly_median": 3400.0,
                 "gross_mthly_25_percentile": 3200.0,
                 "gross_mthly_75_percentile": 3575.0
+            },
+            {
+                "year": 2015,
+                "employment_rate_overall": 86.8,
+                "employment_rate_ft_perm": 80.9,
+                "basic_monthly_mean": 3156.0,
+                "basic_monthly_median": 3100.0,
+                "gross_monthly_mean": 3373.0,
+                "gross_monthly_median": 3300.0,
+                "gross_mthly_25_percentile": 3000.0,
+                "gross_mthly_75_percentile": 3600.0
+            },
+            {
+                "year": 2016,
+                "employment_rate_overall": 80.6,
+                "employment_rate_ft_perm": 72.6,
+                "basic_monthly_mean": 3336.0,
+                "basic_monthly_median": 3225.0,
+                "gross_monthly_mean": 3476.0,
+                "gross_monthly_median": 3400.0,
+                "gross_mthly_25_percentile": 3200.0,
+                "gross_mthly_75_percentile": 3800.0
+            },
+            {
+                "year": 2017,
+                "employment_rate_overall": 82.3,
+                "employment_rate_ft_perm": 75.3,
+                "basic_monthly_mean": 3326.0,
+                "basic_monthly_median": 3200.0,
+                "gross_monthly_mean": 3577.0,
+                "gross_monthly_median": 3500.0,
+                "gross_mthly_25_percentile": 3200.0,
+                "gross_mthly_75_percentile": 4000.0
+            },
+            {
+                "year": 2018,
+                "employment_rate_overall": 91.6,
+                "employment_rate_ft_perm": 86.0,
+                "basic_monthly_mean": 3461.0,
+                "basic_monthly_median": 3500.0,
+                "gross_monthly_mean": 3782.0,
+                "gross_monthly_median": 3600.0,
+                "gross_mthly_25_percentile": 3300.0,
+                "gross_mthly_75_percentile": 4200.0
             },
             {
                 "year": 2019,
@@ -2025,6 +1454,17 @@
                 "gross_monthly_median": 3149.0,
                 "gross_mthly_25_percentile": 2925.0,
                 "gross_mthly_75_percentile": 3500.0
+            },
+            {
+                "year": 2017,
+                "employment_rate_overall": 70.1,
+                "employment_rate_ft_perm": 51.1,
+                "basic_monthly_mean": 3035.0,
+                "basic_monthly_median": 3000.0,
+                "gross_monthly_mean": 3173.0,
+                "gross_monthly_median": 3100.0,
+                "gross_mthly_25_percentile": 2800.0,
+                "gross_mthly_75_percentile": 3488.0
             },
             {
                 "year": 2018,
@@ -2153,6 +1593,17 @@
                 "gross_mthly_75_percentile": 3500.0
             },
             {
+                "year": 2017,
+                "employment_rate_overall": 84.6,
+                "employment_rate_ft_perm": 67.7,
+                "basic_monthly_mean": 3119.0,
+                "basic_monthly_median": 3300.0,
+                "gross_monthly_mean": 3147.0,
+                "gross_monthly_median": 3300.0,
+                "gross_mthly_25_percentile": 2750.0,
+                "gross_mthly_75_percentile": 3500.0
+            },
+            {
                 "year": 2018,
                 "employment_rate_overall": 86.4,
                 "employment_rate_ft_perm": 76.3,
@@ -2269,6 +1720,17 @@
                 "gross_monthly_median": 3300.0,
                 "gross_mthly_25_percentile": 3200.0,
                 "gross_mthly_75_percentile": 3800.0
+            },
+            {
+                "year": 2017,
+                "employment_rate_overall": 98.5,
+                "employment_rate_ft_perm": 96.9,
+                "basic_monthly_mean": 3373.0,
+                "basic_monthly_median": 3300.0,
+                "gross_monthly_mean": 3442.0,
+                "gross_monthly_median": 3400.0,
+                "gross_mthly_25_percentile": 3190.0,
+                "gross_mthly_75_percentile": 3675.0
             },
             {
                 "year": 2018,
@@ -2389,6 +1851,17 @@
                 "gross_mthly_75_percentile": 3365.0
             },
             {
+                "year": 2017,
+                "employment_rate_overall": 92.6,
+                "employment_rate_ft_perm": 62.2,
+                "basic_monthly_mean": 3134.0,
+                "basic_monthly_median": 3000.0,
+                "gross_monthly_mean": 3184.0,
+                "gross_monthly_median": 3000.0,
+                "gross_mthly_25_percentile": 2775.0,
+                "gross_mthly_75_percentile": 3500.0
+            },
+            {
                 "year": 2018,
                 "employment_rate_overall": 95.0,
                 "employment_rate_ft_perm": 84.2,
@@ -2507,6 +1980,17 @@
                 "gross_mthly_75_percentile": 4420.0
             },
             {
+                "year": 2017,
+                "employment_rate_overall": 95.1,
+                "employment_rate_ft_perm": 87.8,
+                "basic_monthly_mean": 3667.0,
+                "basic_monthly_median": 3600.0,
+                "gross_monthly_mean": 3743.0,
+                "gross_monthly_median": 3600.0,
+                "gross_mthly_25_percentile": 3450.0,
+                "gross_mthly_75_percentile": 3925.0
+            },
+            {
                 "year": 2018,
                 "employment_rate_overall": 95.8,
                 "employment_rate_ft_perm": 95.8,
@@ -2623,6 +2107,17 @@
                 "gross_monthly_median": 3500.0,
                 "gross_mthly_25_percentile": 3300.0,
                 "gross_mthly_75_percentile": 4333.0
+            },
+            {
+                "year": 2017,
+                "employment_rate_overall": 92.4,
+                "employment_rate_ft_perm": 86.7,
+                "basic_monthly_mean": 4078.0,
+                "basic_monthly_median": 3750.0,
+                "gross_monthly_mean": 4160.0,
+                "gross_monthly_median": 3850.0,
+                "gross_mthly_25_percentile": 3500.0,
+                "gross_mthly_75_percentile": 4500.0
             },
             {
                 "year": 2018,
@@ -2934,6 +2429,17 @@
                 "gross_mthly_75_percentile": 3850.0
             },
             {
+                "year": 2017,
+                "employment_rate_overall": 84.7,
+                "employment_rate_ft_perm": 75.5,
+                "basic_monthly_mean": 3286.0,
+                "basic_monthly_median": 3200.0,
+                "gross_monthly_mean": 3379.0,
+                "gross_monthly_median": 3240.0,
+                "gross_mthly_25_percentile": 3000.0,
+                "gross_mthly_75_percentile": 3720.0
+            },
+            {
                 "year": 2018,
                 "employment_rate_overall": 90.1,
                 "employment_rate_ft_perm": 84.0,
@@ -3003,55 +2509,6 @@
     },
     {
         "university": "Nanyang Technological University",
-        "degree": "Electrical & Electronic Engineering",
-        "school": "College of Engineering",
-        "slug": "electrical--electronic-engineering-ntu",
-        "data": [
-            {
-                "year": 2018,
-                "employment_rate_overall": 92.7,
-                "employment_rate_ft_perm": 91.0,
-                "basic_monthly_mean": 3625.0,
-                "basic_monthly_median": 3500.0,
-                "gross_monthly_mean": 3772.0,
-                "gross_monthly_median": 3600.0,
-                "gross_mthly_25_percentile": 3323.0,
-                "gross_mthly_75_percentile": 4000.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
-        "degree": "Electrical And Electronic Engineering",
-        "school": "College of Engineering",
-        "slug": "electrical-and-electronic-engineering-ntu",
-        "data": [
-            {
-                "year": 2015,
-                "employment_rate_overall": 88.6,
-                "employment_rate_ft_perm": 86.2,
-                "basic_monthly_mean": 3345.0,
-                "basic_monthly_median": 3200.0,
-                "gross_monthly_mean": 3446.0,
-                "gross_monthly_median": 3300.0,
-                "gross_mthly_25_percentile": 3000.0,
-                "gross_mthly_75_percentile": 3690.0
-            },
-            {
-                "year": 2016,
-                "employment_rate_overall": 89.1,
-                "employment_rate_ft_perm": 83.6,
-                "basic_monthly_mean": 3443.0,
-                "basic_monthly_median": 3300.0,
-                "gross_monthly_mean": 3517.0,
-                "gross_monthly_median": 3400.0,
-                "gross_mthly_25_percentile": 3190.0,
-                "gross_mthly_75_percentile": 3800.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
         "degree": "Electrical and Electronic Engineering",
         "school": "College of Engineering",
         "slug": "electrical-and-electronic-engineering-ntu",
@@ -3077,6 +2534,50 @@
                 "gross_monthly_median": 3200.0,
                 "gross_mthly_25_percentile": 3000.0,
                 "gross_mthly_75_percentile": 3500.0
+            },
+            {
+                "year": 2015,
+                "employment_rate_overall": 88.6,
+                "employment_rate_ft_perm": 86.2,
+                "basic_monthly_mean": 3345.0,
+                "basic_monthly_median": 3200.0,
+                "gross_monthly_mean": 3446.0,
+                "gross_monthly_median": 3300.0,
+                "gross_mthly_25_percentile": 3000.0,
+                "gross_mthly_75_percentile": 3690.0
+            },
+            {
+                "year": 2016,
+                "employment_rate_overall": 89.1,
+                "employment_rate_ft_perm": 83.6,
+                "basic_monthly_mean": 3443.0,
+                "basic_monthly_median": 3300.0,
+                "gross_monthly_mean": 3517.0,
+                "gross_monthly_median": 3400.0,
+                "gross_mthly_25_percentile": 3190.0,
+                "gross_mthly_75_percentile": 3800.0
+            },
+            {
+                "year": 2017,
+                "employment_rate_overall": 89.3,
+                "employment_rate_ft_perm": 85.0,
+                "basic_monthly_mean": 3532.0,
+                "basic_monthly_median": 3500.0,
+                "gross_monthly_mean": 3657.0,
+                "gross_monthly_median": 3600.0,
+                "gross_mthly_25_percentile": 3200.0,
+                "gross_mthly_75_percentile": 4000.0
+            },
+            {
+                "year": 2018,
+                "employment_rate_overall": 92.7,
+                "employment_rate_ft_perm": 91.0,
+                "basic_monthly_mean": 3625.0,
+                "basic_monthly_median": 3500.0,
+                "gross_monthly_mean": 3772.0,
+                "gross_monthly_median": 3600.0,
+                "gross_mthly_25_percentile": 3323.0,
+                "gross_mthly_75_percentile": 4000.0
             },
             {
                 "year": 2019,
@@ -3184,6 +2685,17 @@
                 "gross_monthly_median": 3000.0,
                 "gross_mthly_25_percentile": 2700.0,
                 "gross_mthly_75_percentile": 3400.0
+            },
+            {
+                "year": 2017,
+                "employment_rate_overall": 77.8,
+                "employment_rate_ft_perm": 50.8,
+                "basic_monthly_mean": 3042.0,
+                "basic_monthly_median": 3000.0,
+                "gross_monthly_mean": 3149.0,
+                "gross_monthly_median": 3000.0,
+                "gross_mthly_25_percentile": 2800.0,
+                "gross_mthly_75_percentile": 3300.0
             },
             {
                 "year": 2018,
@@ -3386,6 +2898,17 @@
                 "gross_mthly_75_percentile": 3400.0
             },
             {
+                "year": 2017,
+                "employment_rate_overall": 71.8,
+                "employment_rate_ft_perm": 64.1,
+                "basic_monthly_mean": 3538.0,
+                "basic_monthly_median": 3475.0,
+                "gross_monthly_mean": 3588.0,
+                "gross_monthly_median": 3635.0,
+                "gross_mthly_25_percentile": 3200.0,
+                "gross_mthly_75_percentile": 3950.0
+            },
+            {
                 "year": 2018,
                 "employment_rate_overall": 92.1,
                 "employment_rate_ft_perm": 81.6,
@@ -3471,6 +2994,17 @@
                 "gross_mthly_75_percentile": 3500.0
             },
             {
+                "year": 2017,
+                "employment_rate_overall": 86.0,
+                "employment_rate_ft_perm": 68.4,
+                "basic_monthly_mean": 3206.0,
+                "basic_monthly_median": 3100.0,
+                "gross_monthly_mean": 3265.0,
+                "gross_monthly_median": 3200.0,
+                "gross_mthly_25_percentile": 3000.0,
+                "gross_mthly_75_percentile": 3600.0
+            },
+            {
                 "year": 2018,
                 "employment_rate_overall": 74.4,
                 "employment_rate_ft_perm": 56.4,
@@ -3540,55 +3074,6 @@
     },
     {
         "university": "Nanyang Technological University",
-        "degree": "Information Engineering & Media",
-        "school": "College of Engineering",
-        "slug": "information-engineering--media-ntu",
-        "data": [
-            {
-                "year": 2018,
-                "employment_rate_overall": 93.2,
-                "employment_rate_ft_perm": 89.0,
-                "basic_monthly_mean": 3724.0,
-                "basic_monthly_median": 3725.0,
-                "gross_monthly_mean": 3800.0,
-                "gross_monthly_median": 3750.0,
-                "gross_mthly_25_percentile": 3500.0,
-                "gross_mthly_75_percentile": 4140.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
-        "degree": "Information Engineering And Media",
-        "school": "College of Engineering",
-        "slug": "information-engineering-and-media-ntu",
-        "data": [
-            {
-                "year": 2015,
-                "employment_rate_overall": 87.3,
-                "employment_rate_ft_perm": 80.0,
-                "basic_monthly_mean": 3271.0,
-                "basic_monthly_median": 3200.0,
-                "gross_monthly_mean": 3375.0,
-                "gross_monthly_median": 3275.0,
-                "gross_mthly_25_percentile": 3000.0,
-                "gross_mthly_75_percentile": 3500.0
-            },
-            {
-                "year": 2016,
-                "employment_rate_overall": 94.6,
-                "employment_rate_ft_perm": 87.5,
-                "basic_monthly_mean": 3496.0,
-                "basic_monthly_median": 3350.0,
-                "gross_monthly_mean": 3570.0,
-                "gross_monthly_median": 3350.0,
-                "gross_mthly_25_percentile": 3000.0,
-                "gross_mthly_75_percentile": 4000.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
         "degree": "Information Engineering and Media",
         "school": "College of Engineering",
         "slug": "information-engineering-and-media-ntu",
@@ -3614,6 +3099,50 @@
                 "gross_monthly_median": 3200.0,
                 "gross_mthly_25_percentile": 3000.0,
                 "gross_mthly_75_percentile": 3600.0
+            },
+            {
+                "year": 2015,
+                "employment_rate_overall": 87.3,
+                "employment_rate_ft_perm": 80.0,
+                "basic_monthly_mean": 3271.0,
+                "basic_monthly_median": 3200.0,
+                "gross_monthly_mean": 3375.0,
+                "gross_monthly_median": 3275.0,
+                "gross_mthly_25_percentile": 3000.0,
+                "gross_mthly_75_percentile": 3500.0
+            },
+            {
+                "year": 2016,
+                "employment_rate_overall": 94.6,
+                "employment_rate_ft_perm": 87.5,
+                "basic_monthly_mean": 3496.0,
+                "basic_monthly_median": 3350.0,
+                "gross_monthly_mean": 3570.0,
+                "gross_monthly_median": 3350.0,
+                "gross_mthly_25_percentile": 3000.0,
+                "gross_mthly_75_percentile": 4000.0
+            },
+            {
+                "year": 2017,
+                "employment_rate_overall": 86.9,
+                "employment_rate_ft_perm": 78.7,
+                "basic_monthly_mean": 3685.0,
+                "basic_monthly_median": 3677.0,
+                "gross_monthly_mean": 3790.0,
+                "gross_monthly_median": 3700.0,
+                "gross_mthly_25_percentile": 3350.0,
+                "gross_mthly_75_percentile": 4200.0
+            },
+            {
+                "year": 2018,
+                "employment_rate_overall": 93.2,
+                "employment_rate_ft_perm": 89.0,
+                "basic_monthly_mean": 3724.0,
+                "basic_monthly_median": 3725.0,
+                "gross_monthly_mean": 3800.0,
+                "gross_monthly_median": 3750.0,
+                "gross_mthly_25_percentile": 3500.0,
+                "gross_mthly_75_percentile": 4140.0
             },
             {
                 "year": 2019,
@@ -3734,66 +3263,6 @@
     },
     {
         "university": "Nanyang Technological University",
-        "degree": "Linguistics & Multilingual Studies",
-        "school": "College of Humanities, Arts & Social Sciences",
-        "slug": "linguistics--multilingual-studies-ntu",
-        "data": [
-            {
-                "year": 2018,
-                "employment_rate_overall": 79.2,
-                "employment_rate_ft_perm": 45.8,
-                "basic_monthly_mean": 3074.0,
-                "basic_monthly_median": 3200.0,
-                "gross_monthly_mean": 3091.0,
-                "gross_monthly_median": 3200.0,
-                "gross_mthly_25_percentile": 2900.0,
-                "gross_mthly_75_percentile": 3500.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
-        "degree": "Linguistics And Multilingual Studies",
-        "school": "College of Humanities, Arts & Social Sciences",
-        "slug": "linguistics-and-multilingual-studies-ntu",
-        "data": [
-            {
-                "year": 2015,
-                "employment_rate_overall": 88.4,
-                "employment_rate_ft_perm": 55.8,
-                "basic_monthly_mean": 3475.0,
-                "basic_monthly_median": 3000.0,
-                "gross_monthly_mean": 3753.0,
-                "gross_monthly_median": 3000.0,
-                "gross_mthly_25_percentile": 2800.0,
-                "gross_mthly_75_percentile": 3600.0
-            },
-            {
-                "year": 2016,
-                "employment_rate_overall": 81.8,
-                "employment_rate_ft_perm": 61.8,
-                "basic_monthly_mean": 3283.0,
-                "basic_monthly_median": 3315.0,
-                "gross_monthly_mean": 3368.0,
-                "gross_monthly_median": 3365.0,
-                "gross_mthly_25_percentile": 2960.0,
-                "gross_mthly_75_percentile": 3500.0
-            },
-            {
-                "year": 2019,
-                "employment_rate_overall": 81.7,
-                "employment_rate_ft_perm": 65.0,
-                "basic_monthly_mean": 3265.0,
-                "basic_monthly_median": 3160.0,
-                "gross_monthly_mean": 3365.0,
-                "gross_monthly_median": 3200.0,
-                "gross_mthly_25_percentile": 3000.0,
-                "gross_mthly_75_percentile": 3740.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
         "degree": "Linguistics and Multilingual Studies",
         "school": "College of Humanities, Arts & Social Sciences",
         "slug": "linguistics-and-multilingual-studies-ntu",
@@ -3819,6 +3288,61 @@
                 "gross_monthly_median": 3230.0,
                 "gross_mthly_25_percentile": 2800.0,
                 "gross_mthly_75_percentile": 3500.0
+            },
+            {
+                "year": 2015,
+                "employment_rate_overall": 88.4,
+                "employment_rate_ft_perm": 55.8,
+                "basic_monthly_mean": 3475.0,
+                "basic_monthly_median": 3000.0,
+                "gross_monthly_mean": 3753.0,
+                "gross_monthly_median": 3000.0,
+                "gross_mthly_25_percentile": 2800.0,
+                "gross_mthly_75_percentile": 3600.0
+            },
+            {
+                "year": 2016,
+                "employment_rate_overall": 81.8,
+                "employment_rate_ft_perm": 61.8,
+                "basic_monthly_mean": 3283.0,
+                "basic_monthly_median": 3315.0,
+                "gross_monthly_mean": 3368.0,
+                "gross_monthly_median": 3365.0,
+                "gross_mthly_25_percentile": 2960.0,
+                "gross_mthly_75_percentile": 3500.0
+            },
+            {
+                "year": 2017,
+                "employment_rate_overall": 80.0,
+                "employment_rate_ft_perm": 60.0,
+                "basic_monthly_mean": 3042.0,
+                "basic_monthly_median": 3000.0,
+                "gross_monthly_mean": 3117.0,
+                "gross_monthly_median": 3100.0,
+                "gross_mthly_25_percentile": 2600.0,
+                "gross_mthly_75_percentile": 3500.0
+            },
+            {
+                "year": 2018,
+                "employment_rate_overall": 79.2,
+                "employment_rate_ft_perm": 45.8,
+                "basic_monthly_mean": 3074.0,
+                "basic_monthly_median": 3200.0,
+                "gross_monthly_mean": 3091.0,
+                "gross_monthly_median": 3200.0,
+                "gross_mthly_25_percentile": 2900.0,
+                "gross_mthly_75_percentile": 3500.0
+            },
+            {
+                "year": 2019,
+                "employment_rate_overall": 81.7,
+                "employment_rate_ft_perm": 65.0,
+                "basic_monthly_mean": 3265.0,
+                "basic_monthly_median": 3160.0,
+                "gross_monthly_mean": 3365.0,
+                "gross_monthly_median": 3200.0,
+                "gross_mthly_25_percentile": 3000.0,
+                "gross_mthly_75_percentile": 3740.0
             },
             {
                 "year": 2020,
@@ -3914,6 +3438,17 @@
                 "gross_monthly_mean": 3328.0,
                 "gross_monthly_median": 3398.0,
                 "gross_mthly_25_percentile": 3083.0,
+                "gross_mthly_75_percentile": 3500.0
+            },
+            {
+                "year": 2017,
+                "employment_rate_overall": 92.2,
+                "employment_rate_ft_perm": 92.2,
+                "basic_monthly_mean": 3279.0,
+                "basic_monthly_median": 3200.0,
+                "gross_monthly_mean": 3333.0,
+                "gross_monthly_median": 3320.0,
+                "gross_mthly_25_percentile": 3000.0,
                 "gross_mthly_75_percentile": 3500.0
             },
             {
@@ -4035,6 +3570,17 @@
                 "gross_mthly_75_percentile": 3500.0
             },
             {
+                "year": 2017,
+                "employment_rate_overall": 84.9,
+                "employment_rate_ft_perm": 75.6,
+                "basic_monthly_mean": 3288.0,
+                "basic_monthly_median": 3200.0,
+                "gross_monthly_mean": 3434.0,
+                "gross_monthly_median": 3375.0,
+                "gross_mthly_25_percentile": 3200.0,
+                "gross_mthly_75_percentile": 3700.0
+            },
+            {
                 "year": 2018,
                 "employment_rate_overall": 86.5,
                 "employment_rate_ft_perm": 81.9,
@@ -4104,9 +3650,9 @@
     },
     {
         "university": "Nanyang Technological University",
-        "degree": "Mathematical Science",
-        "school": "College of Sciences",
-        "slug": "mathematical-science-ntu",
+        "degree": "Mathematical Sciences",
+        "school": "College of Science",
+        "slug": "mathematical-sciences-ntu",
         "data": [
             {
                 "year": 2013,
@@ -4140,15 +3686,7 @@
                 "gross_monthly_median": 3240.0,
                 "gross_mthly_25_percentile": 2950.0,
                 "gross_mthly_75_percentile": 3500.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
-        "degree": "Mathematical Sciences",
-        "school": "College of Science",
-        "slug": "mathematical-sciences-ntu",
-        "data": [
+            },
             {
                 "year": 2016,
                 "employment_rate_overall": 88.5,
@@ -4159,6 +3697,17 @@
                 "gross_monthly_median": 3500.0,
                 "gross_mthly_25_percentile": 3200.0,
                 "gross_mthly_75_percentile": 3750.0
+            },
+            {
+                "year": 2017,
+                "employment_rate_overall": 89.7,
+                "employment_rate_ft_perm": 79.5,
+                "basic_monthly_mean": 3517.0,
+                "basic_monthly_median": 3400.0,
+                "gross_monthly_mean": 3580.0,
+                "gross_monthly_median": 3500.0,
+                "gross_mthly_25_percentile": 3100.0,
+                "gross_mthly_75_percentile": 3800.0
             },
             {
                 "year": 2018,
@@ -4263,6 +3812,17 @@
                 "gross_monthly_median": 3300.0,
                 "gross_mthly_25_percentile": 3000.0,
                 "gross_mthly_75_percentile": 3750.0
+            },
+            {
+                "year": 2017,
+                "employment_rate_overall": 89.8,
+                "employment_rate_ft_perm": 83.1,
+                "basic_monthly_mean": 3504.0,
+                "basic_monthly_median": 3290.0,
+                "gross_monthly_mean": 3625.0,
+                "gross_monthly_median": 3400.0,
+                "gross_mthly_25_percentile": 3013.0,
+                "gross_mthly_75_percentile": 3775.0
             },
             {
                 "year": 2018,
@@ -4375,6 +3935,17 @@
                 "gross_monthly_median": 3350.0,
                 "gross_mthly_25_percentile": 3050.0,
                 "gross_mthly_75_percentile": 3959.0
+            },
+            {
+                "year": 2017,
+                "employment_rate_overall": 82.7,
+                "employment_rate_ft_perm": 74.9,
+                "basic_monthly_mean": 3422.0,
+                "basic_monthly_median": 3300.0,
+                "gross_monthly_mean": 3579.0,
+                "gross_monthly_median": 3450.0,
+                "gross_mthly_25_percentile": 3100.0,
+                "gross_mthly_75_percentile": 4000.0
             },
             {
                 "year": 2018,
@@ -4572,39 +4143,9 @@
     },
     {
         "university": "Nanyang Technological University",
-        "degree": "Physics & Applied Physics",
-        "school": "College of Sciences",
-        "slug": "physics--applied-physics-ntu",
-        "data": [
-            {
-                "year": 2018,
-                "employment_rate_overall": 80.2,
-                "employment_rate_ft_perm": 74.1,
-                "basic_monthly_mean": 3468.0,
-                "basic_monthly_median": 3300.0,
-                "gross_monthly_mean": 3576.0,
-                "gross_monthly_median": 3400.0,
-                "gross_mthly_25_percentile": 3025.0,
-                "gross_mthly_75_percentile": 3800.0
-            },
-            {
-                "year": 2019,
-                "employment_rate_overall": 90.0,
-                "employment_rate_ft_perm": 78.6,
-                "basic_monthly_mean": 3782.0,
-                "basic_monthly_median": 3500.0,
-                "gross_monthly_mean": 3849.0,
-                "gross_monthly_median": 3500.0,
-                "gross_mthly_25_percentile": 3300.0,
-                "gross_mthly_75_percentile": 4200.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
-        "degree": "Physics / Applied Physics",
-        "school": "College of Sciences",
-        "slug": "physics--applied-physics-ntu",
+        "degree": "Physics and Applied Physics",
+        "school": "College of Science",
+        "slug": "physics-and-applied-physics-ntu",
         "data": [
             {
                 "year": 2013,
@@ -4649,15 +4190,40 @@
                 "gross_monthly_median": 3450.0,
                 "gross_mthly_25_percentile": 3100.0,
                 "gross_mthly_75_percentile": 4000.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
-        "degree": "Physics and Applied Physics",
-        "school": "College of Science",
-        "slug": "physics-and-applied-physics-ntu",
-        "data": [
+            },
+            {
+                "year": 2017,
+                "employment_rate_overall": 81.6,
+                "employment_rate_ft_perm": 61.8,
+                "basic_monthly_mean": 3367.0,
+                "basic_monthly_median": 3300.0,
+                "gross_monthly_mean": 3490.0,
+                "gross_monthly_median": 3300.0,
+                "gross_mthly_25_percentile": 3000.0,
+                "gross_mthly_75_percentile": 3819.0
+            },
+            {
+                "year": 2018,
+                "employment_rate_overall": 80.2,
+                "employment_rate_ft_perm": 74.1,
+                "basic_monthly_mean": 3468.0,
+                "basic_monthly_median": 3300.0,
+                "gross_monthly_mean": 3576.0,
+                "gross_monthly_median": 3400.0,
+                "gross_mthly_25_percentile": 3025.0,
+                "gross_mthly_75_percentile": 3800.0
+            },
+            {
+                "year": 2019,
+                "employment_rate_overall": 90.0,
+                "employment_rate_ft_perm": 78.6,
+                "basic_monthly_mean": 3782.0,
+                "basic_monthly_median": 3500.0,
+                "gross_monthly_mean": 3849.0,
+                "gross_monthly_median": 3500.0,
+                "gross_mthly_25_percentile": 3300.0,
+                "gross_mthly_75_percentile": 4200.0
+            },
             {
                 "year": 2020,
                 "employment_rate_overall": 92.6,
@@ -4755,6 +4321,17 @@
                 "gross_mthly_75_percentile": 3500.0
             },
             {
+                "year": 2017,
+                "employment_rate_overall": 78.9,
+                "employment_rate_ft_perm": 59.2,
+                "basic_monthly_mean": 3107.0,
+                "basic_monthly_median": 3107.0,
+                "gross_monthly_mean": 3151.0,
+                "gross_monthly_median": 3200.0,
+                "gross_mthly_25_percentile": 2890.0,
+                "gross_mthly_75_percentile": 3500.0
+            },
+            {
                 "year": 2018,
                 "employment_rate_overall": 90.1,
                 "employment_rate_ft_perm": 78.0,
@@ -4824,29 +4401,21 @@
     },
     {
         "university": "Nanyang Technological University",
-        "degree": "Public Policy And Global Affairs",
-        "school": "College of Humanities, Arts & Social Sciences",
-        "slug": "public-policy-and-global-affairs-ntu",
-        "data": [
-            {
-                "year": 2019,
-                "employment_rate_overall": 90.2,
-                "employment_rate_ft_perm": 87.8,
-                "basic_monthly_mean": 3756.0,
-                "basic_monthly_median": 3691.0,
-                "gross_monthly_mean": 3868.0,
-                "gross_monthly_median": 3850.0,
-                "gross_mthly_25_percentile": 3500.0,
-                "gross_mthly_75_percentile": 4345.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
         "degree": "Public Policy and Global Affairs",
         "school": "College of Humanities, Arts & Social Sciences",
         "slug": "public-policy-and-global-affairs-ntu",
         "data": [
+            {
+                "year": 2017,
+                "employment_rate_overall": 74.1,
+                "employment_rate_ft_perm": 66.7,
+                "basic_monthly_mean": 3353.0,
+                "basic_monthly_median": 3300.0,
+                "gross_monthly_mean": 3479.0,
+                "gross_monthly_median": 3395.0,
+                "gross_mthly_25_percentile": 3160.0,
+                "gross_mthly_75_percentile": 3750.0
+            },
             {
                 "year": 2018,
                 "employment_rate_overall": 80.6,
@@ -4857,6 +4426,17 @@
                 "gross_monthly_median": 3350.0,
                 "gross_mthly_25_percentile": 3050.0,
                 "gross_mthly_75_percentile": 4018.0
+            },
+            {
+                "year": 2019,
+                "employment_rate_overall": 90.2,
+                "employment_rate_ft_perm": 87.8,
+                "basic_monthly_mean": 3756.0,
+                "basic_monthly_median": 3691.0,
+                "gross_monthly_mean": 3868.0,
+                "gross_monthly_median": 3850.0,
+                "gross_mthly_25_percentile": 3500.0,
+                "gross_mthly_75_percentile": 4345.0
             },
             {
                 "year": 2020,
@@ -4901,44 +4481,6 @@
                 "gross_monthly_median": 4202.0,
                 "gross_mthly_25_percentile": 3800.0,
                 "gross_mthly_75_percentile": 5124.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
-        "degree": "Science (With Education)",
-        "school": "National Institute of Education (NIE)",
-        "slug": "science-with-education-ntu",
-        "data": [
-            {
-                "year": 2018,
-                "employment_rate_overall": 100.0,
-                "employment_rate_ft_perm": 100.0,
-                "basic_monthly_mean": 3600.0,
-                "basic_monthly_median": 3800.0,
-                "gross_monthly_mean": 3738.0,
-                "gross_monthly_median": 3800.0,
-                "gross_mthly_25_percentile": 3600.0,
-                "gross_mthly_75_percentile": 4000.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
-        "degree": "Science (and Education)",
-        "school": "National Institute of Education (NIE)",
-        "slug": "science-and-education-ntu",
-        "data": [
-            {
-                "year": 2023,
-                "employment_rate_overall": 100.0,
-                "employment_rate_ft_perm": 100.0,
-                "basic_monthly_mean": 3907.0,
-                "basic_monthly_median": 4000.0,
-                "gross_monthly_mean": 4370.0,
-                "gross_monthly_median": 4300.0,
-                "gross_mthly_25_percentile": 4000.0,
-                "gross_mthly_75_percentile": 4651.0
             }
         ]
     },
@@ -4993,6 +4535,28 @@
                 "gross_mthly_75_percentile": 3850.0
             },
             {
+                "year": 2017,
+                "employment_rate_overall": 100.0,
+                "employment_rate_ft_perm": 100.0,
+                "basic_monthly_mean": 3610.0,
+                "basic_monthly_median": 3603.0,
+                "gross_monthly_mean": 3701.0,
+                "gross_monthly_median": 3701.0,
+                "gross_mthly_25_percentile": 3500.0,
+                "gross_mthly_75_percentile": 3958.0
+            },
+            {
+                "year": 2018,
+                "employment_rate_overall": 100.0,
+                "employment_rate_ft_perm": 100.0,
+                "basic_monthly_mean": 3600.0,
+                "basic_monthly_median": 3800.0,
+                "gross_monthly_mean": 3738.0,
+                "gross_monthly_median": 3800.0,
+                "gross_mthly_25_percentile": 3600.0,
+                "gross_mthly_75_percentile": 4000.0
+            },
+            {
                 "year": 2019,
                 "employment_rate_overall": 100.0,
                 "employment_rate_ft_perm": 100.0,
@@ -5035,6 +4599,17 @@
                 "gross_monthly_median": 4300.0,
                 "gross_mthly_25_percentile": 4000.0,
                 "gross_mthly_75_percentile": 4470.0
+            },
+            {
+                "year": 2023,
+                "employment_rate_overall": 100.0,
+                "employment_rate_ft_perm": 100.0,
+                "basic_monthly_mean": 3907.0,
+                "basic_monthly_median": 4000.0,
+                "gross_monthly_mean": 4370.0,
+                "gross_monthly_median": 4300.0,
+                "gross_mthly_25_percentile": 4000.0,
+                "gross_mthly_75_percentile": 4651.0
             }
         ]
     },
@@ -5087,6 +4662,17 @@
                 "gross_monthly_median": 3500.0,
                 "gross_mthly_25_percentile": 3000.0,
                 "gross_mthly_75_percentile": 3850.0
+            },
+            {
+                "year": 2017,
+                "employment_rate_overall": 77.6,
+                "employment_rate_ft_perm": 62.1,
+                "basic_monthly_mean": 3263.0,
+                "basic_monthly_median": 3200.0,
+                "gross_monthly_mean": 3309.0,
+                "gross_monthly_median": 3228.0,
+                "gross_mthly_25_percentile": 2970.0,
+                "gross_mthly_75_percentile": 3500.0
             },
             {
                 "year": 2018,
@@ -5158,25 +4744,6 @@
     },
     {
         "university": "Nanyang Technological University",
-        "degree": "Sport Science and Management",
-        "school": "Sports Science and Management",
-        "slug": "sport-science-and-management-ntu",
-        "data": [
-            {
-                "year": 2018,
-                "employment_rate_overall": 87.0,
-                "employment_rate_ft_perm": 61.1,
-                "basic_monthly_mean": 3172.0,
-                "basic_monthly_median": 3200.0,
-                "gross_monthly_mean": 3382.0,
-                "gross_monthly_median": 3300.0,
-                "gross_mthly_25_percentile": 3000.0,
-                "gross_mthly_75_percentile": 3600.0
-            }
-        ]
-    },
-    {
-        "university": "Nanyang Technological University",
         "degree": "Sports Science and Management",
         "school": "National Institute of Education (NIE)",
         "slug": "sports-science-and-management-ntu",
@@ -5224,6 +4791,28 @@
                 "gross_monthly_median": 3200.0,
                 "gross_mthly_25_percentile": 2825.0,
                 "gross_mthly_75_percentile": 3500.0
+            },
+            {
+                "year": 2017,
+                "employment_rate_overall": 81.1,
+                "employment_rate_ft_perm": 48.6,
+                "basic_monthly_mean": 3372.0,
+                "basic_monthly_median": 3285.0,
+                "gross_monthly_mean": 3486.0,
+                "gross_monthly_median": 3450.0,
+                "gross_mthly_25_percentile": 2800.0,
+                "gross_mthly_75_percentile": 4000.0
+            },
+            {
+                "year": 2018,
+                "employment_rate_overall": 87.0,
+                "employment_rate_ft_perm": 61.1,
+                "basic_monthly_mean": 3172.0,
+                "basic_monthly_median": 3200.0,
+                "gross_monthly_mean": 3382.0,
+                "gross_monthly_median": 3300.0,
+                "gross_mthly_25_percentile": 3000.0,
+                "gross_mthly_75_percentile": 3600.0
             },
             {
                 "year": 2019,
@@ -13593,7 +13182,7 @@
     {
         "university": "Singapore Management University",
         "degree": "Accountancy  Cum Laude and above",
-        "school": "School of Accountancy (4-years programme) *",
+        "school": "School of Accountancy (4-years programme)",
         "slug": "accountancy-cum-laude-and-above-smu",
         "data": [
             {
@@ -13612,7 +13201,7 @@
     {
         "university": "Singapore Management University",
         "degree": "Accountancy (4-year programme)",
-        "school": "School of Accountancy (4-year programme) *",
+        "school": "School of Accountancy (4-year programme)",
         "slug": "accountancy-4-year-programme-smu",
         "data": [
             {
@@ -13631,7 +13220,7 @@
     {
         "university": "Singapore Management University",
         "degree": "Accountancy (4-year programme) Cum Laude and above",
-        "school": "School of Accountancy (4-year programme) *",
+        "school": "School of Accountancy (4-year programme)",
         "slug": "accountancy-4-year-programme-cum-laude-and-above-smu",
         "data": [
             {
@@ -13650,7 +13239,7 @@
     {
         "university": "Singapore Management University",
         "degree": "Accountancy (Cum Laude and above)",
-        "school": "School of Accountancy (4-year programme) *",
+        "school": "School of Accountancy (4-year programme)",
         "slug": "accountancy-cum-laude-and-above-smu",
         "data": [
             {
@@ -13883,7 +13472,7 @@
     {
         "university": "Singapore Management University",
         "degree": "Business Management  Cum Laude and above",
-        "school": "School of Business (4-years programme) *",
+        "school": "School of Business (4-years programme)",
         "slug": "business-management-cum-laude-and-above-smu",
         "data": [
             {
@@ -13902,7 +13491,7 @@
     {
         "university": "Singapore Management University",
         "degree": "Business Management (4-year programme)",
-        "school": "School of Business (4-year programme) *",
+        "school": "School of Business (4-year programme)",
         "slug": "business-management-4-year-programme-smu",
         "data": [
             {
@@ -13921,7 +13510,7 @@
     {
         "university": "Singapore Management University",
         "degree": "Business Management (4-year programme) Cum Laude and above",
-        "school": "School of Business (4-year programme) *",
+        "school": "School of Business (4-year programme)",
         "slug": "business-management-4-year-programme-cum-laude-and-above-smu",
         "data": [
             {
@@ -13940,7 +13529,7 @@
     {
         "university": "Singapore Management University",
         "degree": "Business Management (Cum Laude and above)",
-        "school": "School of Business (4-year programme) *",
+        "school": "School of Business (4-year programme)",
         "slug": "business-management-cum-laude-and-above-smu",
         "data": [
             {
@@ -14211,7 +13800,7 @@
     {
         "university": "Singapore Management University",
         "degree": "Economics  Cum Laude and above",
-        "school": "School of Economics (4-years programme) *",
+        "school": "School of Economics (4-years programme)",
         "slug": "economics-cum-laude-and-above-smu",
         "data": [
             {
@@ -14230,7 +13819,7 @@
     {
         "university": "Singapore Management University",
         "degree": "Economics (4-year programme)",
-        "school": "School of Economics (4-year programme) *",
+        "school": "School of Economics (4-year programme)",
         "slug": "economics-4-year-programme-smu",
         "data": [
             {
@@ -14249,7 +13838,7 @@
     {
         "university": "Singapore Management University",
         "degree": "Economics (4-year programme) Cum Laude and above",
-        "school": "School of Economics (4-year programme) *",
+        "school": "School of Economics (4-year programme)",
         "slug": "economics-4-year-programme-cum-laude-and-above-smu",
         "data": [
             {
@@ -14268,7 +13857,7 @@
     {
         "university": "Singapore Management University",
         "degree": "Economics (Cum Laude and above)",
-        "school": "School of Economics (4-year programme) *",
+        "school": "School of Economics (4-year programme)",
         "slug": "economics-cum-laude-and-above-smu",
         "data": [
             {
@@ -14457,7 +14046,7 @@
     {
         "university": "Singapore Management University",
         "degree": "Information Systems (Cum Laude and above)",
-        "school": "School of Information Systems (4-year programme) *",
+        "school": "School of Information Systems (4-year programme)",
         "slug": "information-systems-cum-laude-and-above-smu",
         "data": [
             {
@@ -14539,7 +14128,7 @@
     {
         "university": "Singapore Management University",
         "degree": "Information Systems Management",
-        "school": "School of Information Systems (4-years programme) *",
+        "school": "School of Information Systems (4-years programme)",
         "slug": "information-systems-management-smu",
         "data": [
             {
@@ -14591,7 +14180,7 @@
     {
         "university": "Singapore Management University",
         "degree": "Information Systems Management  Cum Laude and above",
-        "school": "School of Information Systems (4-years programme) *",
+        "school": "School of Information Systems (4-years programme)",
         "slug": "information-systems-management-cum-laude-and-above-smu",
         "data": [
             {
@@ -14610,7 +14199,7 @@
     {
         "university": "Singapore Management University",
         "degree": "Information Systems Management (4-year programme)",
-        "school": "School of Information Systems (4-year programme) *",
+        "school": "School of Information Systems (4-year programme)",
         "slug": "information-systems-management-4-year-programme-smu",
         "data": [
             {
@@ -14629,7 +14218,7 @@
     {
         "university": "Singapore Management University",
         "degree": "Information Systems Management (4-year programme) Cum Laude and above",
-        "school": "School of Information Systems (4-year programme) *",
+        "school": "School of Information Systems (4-year programme)",
         "slug": "information-systems-management-4-year-programme-cum-laude-and-above-smu",
         "data": [
             {
@@ -14648,7 +14237,7 @@
     {
         "university": "Singapore Management University",
         "degree": "Information Systems Management Cum Laude and above",
-        "school": "School of Information Systems (4-years programme) *",
+        "school": "School of Information Systems (4-years programme)",
         "slug": "information-systems-management-cum-laude-and-above-smu",
         "data": [
             {
@@ -14807,7 +14396,7 @@
     {
         "university": "Singapore Management University",
         "degree": "Law  Cum Laude and above",
-        "school": "School of Law (4-years programme) *",
+        "school": "School of Law (4-years programme)",
         "slug": "law-cum-laude-and-above-smu",
         "data": [
             {
@@ -14826,7 +14415,7 @@
     {
         "university": "Singapore Management University",
         "degree": "Law (4-year programme)",
-        "school": "School of Law (4-year programme) *",
+        "school": "School of Law (4-year programme)",
         "slug": "law-4-year-programme-smu",
         "data": [
             {
@@ -14845,7 +14434,7 @@
     {
         "university": "Singapore Management University",
         "degree": "Law (4-year programme) Cum Laude and above",
-        "school": "School of Law (4-year programme) *",
+        "school": "School of Law (4-year programme)",
         "slug": "law-4-year-programme-cum-laude-and-above-smu",
         "data": [
             {
@@ -14864,7 +14453,7 @@
     {
         "university": "Singapore Management University",
         "degree": "Law (Cum Laude and above)",
-        "school": "School of Law (4-year programme) *",
+        "school": "School of Law (4-year programme)",
         "slug": "law-cum-laude-and-above-smu",
         "data": [
             {
@@ -15097,7 +14686,7 @@
     {
         "university": "Singapore Management University",
         "degree": "Social Sciences  Cum Laude and above",
-        "school": "School of Social Sciences (4-years programme) *",
+        "school": "School of Social Sciences (4-years programme)",
         "slug": "social-sciences-cum-laude-and-above-smu",
         "data": [
             {
@@ -15116,7 +14705,7 @@
     {
         "university": "Singapore Management University",
         "degree": "Social Sciences (4-year programme)",
-        "school": "School of Social Sciences (4-year programme) *",
+        "school": "School of Social Sciences (4-year programme)",
         "slug": "social-sciences-4-year-programme-smu",
         "data": [
             {
@@ -15135,7 +14724,7 @@
     {
         "university": "Singapore Management University",
         "degree": "Social Sciences (4-year programme) Cum Laude and above",
-        "school": "School of Social Sciences (4-year programme) *",
+        "school": "School of Social Sciences (4-year programme)",
         "slug": "social-sciences-4-year-programme-cum-laude-and-above-smu",
         "data": [
             {
@@ -15154,7 +14743,7 @@
     {
         "university": "Singapore Management University",
         "degree": "Social Sciences (Cum Laude and above)",
-        "school": "School of Social Sciences (4-year programme) *",
+        "school": "School of Social Sciences (4-year programme)",
         "slug": "social-sciences-cum-laude-and-above-smu",
         "data": [
             {
