@@ -67,7 +67,17 @@
 			]}
 			lineDashArray={[5]}
 			color="gray"
-			x={(d) => d.year}
+			x={(d) => d.year + 0.05}
+			y={(d) => d.value}
+		/>
+		<VisLine
+			data={[
+				{ year: refYear, value: 0 },
+				{ year: refYear, value: maxIncome },
+			]}
+			lineDashArray={[5]}
+			color="gray"
+			x={(d) => d.year - 0.05}
 			y={(d) => d.value}
 		/>
 	</VisXYContainer>

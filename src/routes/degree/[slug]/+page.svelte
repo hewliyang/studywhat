@@ -64,23 +64,37 @@
 				<div class="font-medium text-black">
 					{data.degree.university}
 				</div>
-				<p class="text-gray-500 text-xs md:text-sm">{data.degree.school}</p>
+				<p class="text-gray-500 text-xs md:text-sm">
+					{data.degree.school ?? "N/A"}
+				</p>
 				<p class="text-xs md:text-sm">
 					{data.degree.degree}
 				</p>
 			</div>
 		</div>
 		<hr class="m-2 md:hidden" />
-		<div class="grid grid-cols-2 sm:mt-3 md:mt-0 md:ml-auto space-x-4 p-2">
+		<div
+			class="grid grid-cols-2 md:grid-cols-4 sm:mt-3 md:mt-0 md:ml-auto gap-4 p-2 justify-items-center items-center"
+		>
 			<Metric
 				title="Gross Median Income"
 				degree={data.degree}
 				property="gross_monthly_median"
 			/>
 			<Metric
+				title="Gross (75th Percentile)"
+				degree={data.degree}
+				property="gross_mthly_25_percentile"
+			/>
+			<Metric
 				title="Employment (Overall)"
 				degree={data.degree}
 				property="employment_rate_overall"
+			/>
+			<Metric
+				title="Employment (Full Time)"
+				degree={data.degree}
+				property="employment_rate_ft_perm"
 			/>
 		</div>
 	</div>

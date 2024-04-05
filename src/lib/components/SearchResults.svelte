@@ -20,7 +20,7 @@
 							{degree.university}
 						</div>
 						<p class="text-gray-500">
-							{degree.degree}, {degree.school}
+							{degree.degree}, {degree.school ?? "N/A"}
 						</p>
 					</div>
 				</a>
