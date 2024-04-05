@@ -74,7 +74,7 @@
 		</div>
 		<hr class="m-2 md:hidden" />
 		<div
-			class="grid grid-cols-2 md:grid-cols-4 sm:mt-3 md:mt-0 md:ml-auto gap-4 p-2 justify-items-center items-center"
+			class="grid grid-cols-2 md:grid-cols-4 sm:mt-3 md:mt-0 md:ml-auto gap-4 py-2 justify-items-center items-center"
 		>
 			<Metric
 				title="Gross Median Income"
@@ -84,7 +84,7 @@
 			<Metric
 				title="Gross (75th Percentile)"
 				degree={data.degree}
-				property="gross_mthly_25_percentile"
+				property="gross_mthly_75_percentile"
 			/>
 			<Metric
 				title="Employment (Overall)"
