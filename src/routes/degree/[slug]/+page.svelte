@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Metric from "$lib/components/Metric.svelte";
 	import { short2img, long2short } from "$lib/constants";
 	import type { YearlyRecord } from "$lib/types";
 	import {
@@ -14,23 +15,8 @@
 
 	export let data;
 
-	let pctChange: number;
-	let isPositive: boolean;
-
-	$: isEnoughData = data.degree.data.length > 2;
 	$: short = long2short[data.degree.university];
 	$: img = short2img[short];
-
-	// YoY change stats
-	$: if (isEnoughData) {
-		const ts = data.degree.data;
-		const latestYrVal = ts[ts.length - 1].gross_monthly_median;
-		const prevYrVal = ts[ts.length - 2].gross_monthly_median;
-		pctChange = ((latestYrVal - prevYrVal) / prevYrVal) * 100;
-		isPositive = pctChange > 0;
-	}
-
-	// chart stuff
 
 	// median income
 	const x = (d: YearlyRecord) => d.year;
@@ -69,26 +55,37 @@
 </script>
 
 <div class="flex flex-col space-y-4">
-	<div class="flex gap-4 mt-2 border rounded-lg py-3 shadow-sm">
-		<img class="h-16 ml-3" src={img} alt="University Logo" />
-		<div>
-			<div class="text-lg font-medium text-black">{data.degree.university}</div>
-			<p class="text-gray-500 text-sm">
-				{data.degree.degree}, {data.degree.school}
-			</p>
-			{#if isEnoughData}
-				<p
-					class="text-sm {isPositive || pctChange === 0
-						? 'text-green-500'
-						: 'text-red-500'}"
-				>
-					{isPositive ? "+" : ""}{pctChange.toFixed(2)}%
+	<div
+		class="flex flex-col md:flex-row md:items-center gap-2 mt-2 border rounded-lg px-3 py-2 shadow-sm"
+	>
+		<div class="flex gap-4 items-center justify-center">
+			<img class="h-16" src={img} alt="University Logo" />
+			<div>
+				<div class="font-medium text-black">
+					{data.degree.university}
+				</div>
+				<p class="text-gray-500 text-xs md:text-sm">{data.degree.school}</p>
+				<p class="text-xs md:text-sm">
+					{data.degree.degree}
 				</p>
-			{/if}
+			</div>
+		</div>
+		<hr class="m-2 md:hidden" />
+		<div class="grid grid-cols-2 sm:mt-3 md:mt-0 md:ml-auto space-x-4 p-2">
+			<Metric
+				title="Gross Median Income"
+				degree={data.degree}
+				property="gross_monthly_median"
+			/>
+			<Metric
+				title="Employment (Overall)"
+				degree={data.degree}
+				property="employment_rate_overall"
+			/>
 		</div>
 	</div>
 
-	{#if isEnoughData}
+	{#if data.degree.data.length >= 2}
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 			<VisXYContainer height={250} data={data.degree.data}>
 				<div class="flex items-center justify-between mb-3">
@@ -129,6 +126,7 @@
 			</VisXYContainer>
 		</div>
 	{/if}
+
 	<div class="overflow-x-auto">
 		<Datatable
 			{handler}

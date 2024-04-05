@@ -1,6 +1,8 @@
 <script lang="ts">
+	import { goto } from "$app/navigation";
 	import { Scale, Scatter } from "@unovis/ts";
-	import { long2short, YEARS } from "$lib/constants";
+	import { long2short, palette, YEARS } from "$lib/constants";
+	import { DataHandler, Datatable, Th, ThFilter } from "@vincjo/datatables";
 	import {
 		VisXYContainer,
 		VisScatter,
@@ -8,32 +10,14 @@
 		VisTooltip,
 		VisBulletLegend,
 	} from "@unovis/svelte";
-	import { DataHandler, Datatable, Th, ThFilter } from "@vincjo/datatables";
-	import type { FlatRecord } from "$lib/types";
-	import { goto } from "$app/navigation";
 	import Sparkline from "$lib/components/Sparkline.svelte";
+
+	import type { FlatRecord } from "$lib/types";
 
 	export let data;
 
-	const initialYr = data.year;
+	$: initialYr = data.year;
 	$: selectedYr = initialYr;
-
-	const palette = [
-		"#04c0c7",
-		"#e7871a",
-		"#da348f",
-		"#9089fa",
-		"#47e26f",
-		"#2780eb",
-		"#6f38b1",
-		"#268d6c",
-		"#d11d55",
-		"#ffcc00",
-		"#a0d6e5",
-		"#f45a6d",
-	];
-
-	// chart
 	$: institutions = [...new Set(data.top.map((d) => d.university))].sort();
 	$: colorScale = Scale.scaleOrdinal(palette).domain(institutions);
 
@@ -79,7 +63,8 @@
 	};
 
 	// data table
-	$: handler = new DataHandler(data.top, { rowsPerPage: 10 });
+	const handler = new DataHandler(data.top, { rowsPerPage: 10 });
+	$: handler.setRows(data.top);
 	$: rows = handler.getRows();
 
 	function handleYearChange() {
@@ -88,18 +73,22 @@
 </script>
 
 <section>
-	<h1 class="font-semibold text-lg mb-3">Largest Year on Year Gains (%)</h1>
-	<div class="flex overflow-x-auto whitespace-nowrap gap-3">
-		{#each data.gainAndLoss.best as record}
-			<Sparkline {record} />
-		{/each}
-	</div>
-	<h1 class="font-semibold text-lg mb-3">Largest Year on Year Losses (%)</h1>
-	<div class="flex overflow-x-auto whitespace-nowrap gap-3">
-		{#each data.gainAndLoss.worst as record}
-			<Sparkline {record} />
-		{/each}
-	</div>
+	{#if data.gainAndLoss.best.length > 2}
+		<h1 class="font-semibold text-lg">Largest Year on Year Gains (%)</h1>
+		<div class="flex overflow-x-auto whitespace-nowrap gap-3 mt-3">
+			{#each data.gainAndLoss.best as record}
+				<Sparkline {record} refYear={selectedYr} />
+			{/each}
+		</div>
+	{/if}
+	{#if data.gainAndLoss.worst.length > 2}
+		<h1 class="font-semibold text-lg">Largest Year on Year Losses (%)</h1>
+		<div class="flex overflow-x-auto whitespace-nowrap gap-3 mt-3">
+			{#each data.gainAndLoss.worst as record}
+				<Sparkline {record} refYear={selectedYr} />
+			{/each}
+		</div>
+	{/if}
 </section>
 
 <VisXYContainer data={data.top} height={350}>
@@ -171,6 +160,7 @@
 <style>
 	table {
 		font-size: small;
+		border-collapse: separate;
 	}
 
 	thead {

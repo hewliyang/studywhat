@@ -30,3 +30,20 @@ export const YEARS = Array.from(
 	{ length: PREV_YEAR + 1 - 2013 },
 	(_, i) => 2013 + i
 );
+
+// color palletes
+
+export const palette = [
+	"#04c0c7",
+	"#e7871a",
+	"#da348f",
+	"#9089fa",
+	"#47e26f",
+	"#2780eb",
+	"#6f38b1",
+	"#268d6c",
+	"#d11d55",
+	"#ffcc00",
+	"#a0d6e5",
+	"#f45a6d",
+];

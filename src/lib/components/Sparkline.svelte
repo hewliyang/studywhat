@@ -1,10 +1,12 @@
 <script lang="ts">
-	import { long2short } from "$lib/constants";
-	import type { WinnersRecord } from "$lib/types";
-	import { VisXYContainer, VisArea, VisLine } from "@unovis/svelte";
 	import { CurveType } from "@unovis/ts";
+	import { long2short } from "$lib/constants";
+	import { VisXYContainer, VisArea, VisLine } from "@unovis/svelte";
+
+	import type { WinnersRecord, YearlyRecord } from "$lib/types";
 
 	export let record: WinnersRecord;
+	export let refYear: number = 2023;
 
 	function getSVGDefs(pctChange: number) {
 		const color = pctChange > 0 ? "#00bf72" : "#ff0000";
@@ -23,15 +25,14 @@
 
 	const { id, gradient } = getSVGDefs(record.pctChange);
 
-	// reference year
-	$: prevYearValue = record.data[record.data.length - 2].gross_monthly_median;
-	$: minYear = record.data[0].year;
-	$: maxYear = record.data[record.data.length - 1].year;
+	// reference line
+	// (refYear - 1, 0) -> (refYear - 1, max(gross_monthly_median))
+	$: maxIncome = Math.max(
+		...record.data.map((obj) => obj.gross_monthly_median)
+	);
 
-	type T = (typeof record.data)[0];
-
-	$: x = (d: T) => d.year;
-	$: y = (d: T) => d.gross_monthly_median;
+	$: x = (d: YearlyRecord) => d.year;
+	$: y = (d: YearlyRecord) => d.gross_monthly_median;
 </script>
 
 <a
@@ -57,12 +58,12 @@
 			{y}
 			color="url(#{id})"
 			opacity="0.5"
-			curveType={CurveType.Natural}
+			curveType={CurveType.Linear}
 		/>
 		<VisLine
 			data={[
-				{ year: minYear, value: prevYearValue },
-				{ year: maxYear, value: prevYearValue },
+				{ year: refYear - 1, value: 0 },
+				{ year: refYear - 1, value: maxIncome },
 			]}
 			lineDashArray={[5]}
 			color="gray"
