@@ -28,10 +28,7 @@
 				>GitHub (Report Parser)</a
 			>
 		</div>
-		<p class="text-center">
-			Data sourced from Ministry of Education under Singapore Open Data License
-			1.0
-		</p>
+		<p class="text-center">Singapore Open Data License 1.0</p>
 	</div>
 </footer>
 

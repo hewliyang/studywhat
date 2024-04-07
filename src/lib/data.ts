@@ -94,19 +94,20 @@ export function search(
 export function getGainAndLoss(
 	year: number,
 	k: number = 5,
-	q: number = 5
+	q: number = 5,
+	lag: number = 1
 ): Record<string, WinnersRecord[]> {
 	// filter data for year & year - 1
 	const eligibleRecords = data.filter((record) => {
 		const currentYearData = record.data.find((d) => d.year === year);
-		const previousYearData = record.data.find((d) => d.year === year - 1);
+		const previousYearData = record.data.find((d) => d.year === year - lag);
 		return currentYearData && previousYearData;
 	});
 
 	// Calculate percentage change and add it to the record
 	const recordsWithPctChange = eligibleRecords.map((record) => {
 		const currentYearData = record.data.find((d) => d.year === year)!;
-		const previousYearData = record.data.find((d) => d.year === year - 1)!;
+		const previousYearData = record.data.find((d) => d.year === year - lag)!;
 		const pctChange =
 			((currentYearData.gross_monthly_median -
 				previousYearData.gross_monthly_median) /
@@ -122,9 +123,9 @@ export function getGainAndLoss(
 		["desc"]
 	);
 
-	const topKWinners = sortedRecords.slice(0, k);
+	const topKWinners = sortedRecords.filter((r) => r.pctChange >= 0).slice(0, k);
 	const bottomQLosers = _.orderBy(
-		sortedRecords.slice(-q),
+		sortedRecords.filter((r) => r.pctChange < 0).slice(-q),
 		["pctChange"],
 		["asc"]
 	);
