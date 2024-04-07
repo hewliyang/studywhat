@@ -24,11 +24,8 @@
 				>GitHub (Web)</a
 			>
 			<span class="mx-2">&bull;</span>
-			<a href="https://github.com/hewliyang/ges-report-to-csv" class="underline"
-				>GitHub (Report Parser)</a
-			>
+			<a href="/disclaimers" class="underline">Disclaimers</a>
 		</div>
-		<p class="text-center">Singapore Open Data License 1.0</p>
 	</div>
 </footer>
 

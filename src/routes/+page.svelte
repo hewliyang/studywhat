@@ -78,7 +78,7 @@
 			<h1 class="font-semibold text-lg">Largest Year on Year Gains (%)</h1>
 			<a
 				class="flex items-center ml-auto hover:scale-[105%]"
-				href={`/movers/?year=${selectedYr}`}
+				href={`/movement/?year=${selectedYr}`}
 				><svg
 					width="8"
 					height="8"

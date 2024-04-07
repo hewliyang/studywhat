@@ -3,7 +3,12 @@ import data from "./data.json";
 import url from "./data.json?url";
 import { browser } from "$app/environment";
 import { PREV_YEAR } from "./constants";
-import type { DataRecord, FlatRecord, WinnersRecord } from "$lib/types";
+import type {
+	DataRecord,
+	FlatRecord,
+	WinnersRecord,
+	YearlyRecord,
+} from "$lib/types";
 
 type _IntermediateSearchResult = {
 	record: DataRecord;
@@ -95,7 +100,8 @@ export function getGainAndLoss(
 	year: number,
 	k: number = 5,
 	q: number = 5,
-	lag: number = 1
+	lag: number = 1,
+	metric: keyof YearlyRecord = "gross_monthly_median"
 ): Record<string, WinnersRecord[]> {
 	// filter data for year & year - 1
 	const eligibleRecords = data.filter((record) => {
@@ -109,9 +115,8 @@ export function getGainAndLoss(
 		const currentYearData = record.data.find((d) => d.year === year)!;
 		const previousYearData = record.data.find((d) => d.year === year - lag)!;
 		const pctChange =
-			((currentYearData.gross_monthly_median -
-				previousYearData.gross_monthly_median) /
-				previousYearData.gross_monthly_median) *
+			((currentYearData[metric] - previousYearData[metric]) /
+				previousYearData[metric]) *
 			100;
 		return { ...record, pctChange };
 	});
@@ -123,7 +128,7 @@ export function getGainAndLoss(
 		["desc"]
 	);
 
-	const topKWinners = sortedRecords.filter((r) => r.pctChange >= 0).slice(0, k);
+	const topKWinners = sortedRecords.filter((r) => r.pctChange > 0).slice(0, k);
 	const bottomQLosers = _.orderBy(
 		sortedRecords.filter((r) => r.pctChange < 0).slice(-q),
 		["pctChange"],
