@@ -177,8 +177,11 @@
 				</tbody>
 			</table>
 		</Datatable>
-		<div class="absolute right-2">
-			<Download rows={$rows} fileName={data.degree.slug} />
+		<div class="flex">
+			<div />
+			<div class="ml-auto">
+				<Download rows={$rows} fileName={data.degree.slug} />
+			</div>
 		</div>
 	</div>
 </div>
