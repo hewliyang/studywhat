@@ -1,19 +1,30 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
 	import { YEARS, long2short } from "$lib/constants";
+	import {
+		Activity,
+		ArrowDownWideNarrow,
+		ArrowUpWideNarrow,
+	} from "lucide-svelte";
 	import Katex from "$lib/components/Katex.svelte";
 
 	export let data;
 
 	const metricOpts = [
-		"employment_rate_overall",
-		"employment_rate_ft_perm",
-		"basic_monthly_mean",
-		"basic_monthly_median",
-		"gross_monthly_mean",
-		"gross_monthly_median",
-		"gross_mthly_25_percentile",
-		"gross_mthly_75_percentile",
+		{ name: "Employment Rate (Overall)", value: "employment_rate_overall" },
+		{ name: "Employment Rate (Full Time)", value: "employment_rate_ft_perm" },
+		{ name: "Basic Monthly Mean", value: "basic_monthly_mean" },
+		{ name: "Basic Monthly Median", value: "basic_monthly_median" },
+		{ name: "Gross Monthly Mean", value: "gross_monthly_mean" },
+		{ name: "Gross Monthly Median", value: "gross_monthly_median" },
+		{
+			name: "Gross Monthly, 25th Percentile",
+			value: "gross_mthly_25_percentile",
+		},
+		{
+			name: "Gross Monthly, 75th Percentile",
+			value: "gross_mthly_75_percentile",
+		},
 	];
 
 	function handleChange() {
@@ -21,63 +32,44 @@
 	}
 </script>
 
-<svelte:head>
-	<link
-		rel="stylesheet"
-		href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css"
-		integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww"
-		crossorigin="anonymous"
-	/>
-	<script
-		defer
-		src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"
-		integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd"
-		crossorigin="anonymous"
-	></script>
-</svelte:head>
+<div class="space-y-2">
+	<div class="flex items-center mt-1">
+		<Activity class="h-6 w-6 mr-2" />
+		<h1 class="font-semibold text-xl">Movement</h1>
+	</div>
 
-<h1 class="font-semibold text-xl">Movement</h1>
-
-<p>
-	<span class="text-sm">
+	<p class="text-sm">
 		Percentages are computed according to the following scheme:
-	</span>
-	<Katex
-		math={"\\Delta=\\frac{\\text{metric}_{\\text{year}} - \\text{metric}_{\\text{year}-\\text{lag}}}{\\text{metric}_{year-\\text{lag}}} \\times 100"}
-	/>
-	<span class="text-sm">
+		<Katex
+			class="text-lg"
+			math={"\\Delta=\\frac{\\text{metric}_{\\text{year}} - \\text{metric}_{\\text{year}-\\text{lag}}}{\\text{metric}_{year-\\text{lag}}} \\times 100"}
+		/>
 		. Also note that if <Katex math={"\\Delta = 0"} /> for a given degree, it will
 		not be shown.
-	</span>
-</p>
+	</p>
+</div>
 
-<div class="flex flex-col gap-4 md:flex-row">
+<div class="flex flex-col gap-2">
+	<h3 class="text-lg font-medium">Filters</h3>
 	<!-- metric input -->
-	<div class="flex flex-col md:flex-row md:items-center">
-		<label
-			for="metric"
-			class="block font-medium text-gray-900 mb-1 md:mb-0 md:mr-2">Metric</label
-		>
+	<div class="flex flex-col">
+		<label for="metric" class="text-sm font-semibold">Metric</label>
 		<select
 			name="metric"
 			bind:value={data.metric}
 			on:change={handleChange}
 			class="text-sm inline-block p-1 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full md:w-auto"
 		>
-			{#each metricOpts as _metric}
-				{@const selected = _metric === data.metric}
-				<option value={_metric} {selected}>{_metric}</option>
+			{#each metricOpts as { name, value }}
+				{@const selected = value === data.metric}
+				<option {value} {selected}>{name}</option>
 			{/each}
 		</select>
 	</div>
 
 	<!-- year select -->
-	<div class="flex flex-col md:flex-row md:items-center">
-		<label
-			for="year"
-			class="block font-medium text-gray-900 mb-1 md:mb-0 md:mr-2"
-			>Reference Year</label
-		>
+	<div class="flex flex-col">
+		<label for="year" class="text-sm font-semibold">Reference Year</label>
 		<select
 			name="year"
 			bind:value={data.year}
@@ -92,48 +84,53 @@
 	</div>
 
 	<!-- lag input -->
-	<div class="flex flex-col md:flex-row md:items-center">
-		<label
-			for="lag"
-			class="block font-medium text-gray-900 mb-1 md:mb-0 md:mr-2"
-			>Time Lag (years)</label
-		>
+	<div class="flex flex-col">
+		<label for="lag" class="text-sm font-semibold">Time Lag (years)</label>
 		<input
 			name="lag"
 			type="number"
 			bind:value={data.lag}
 			on:change={handleChange}
 			min="1"
-			max="10"
 			class="text-sm inline-block p-1 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full md:w-auto"
 		/>
 	</div>
 </div>
 
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
-	<div>
-		<h2 class="font-semibold text-lg mb-3">Winners</h2>
+	<div class="space-y-2">
+		<div class="flex items-center">
+			<ArrowUpWideNarrow class="h-6 w-6 mr-2" />
+			<h2 class="font-semibold text-lg">Winners</h2>
+		</div>
 		{#if data.best.length > 0}
-			<table>
+			<table class="text-xs rounded-md overflow-x-auto border border-collapse">
 				<thead>
-					<tr>
-						<th>University</th>
-						<th>School</th>
-						<th>Degree</th>
-						<th>Gain (%)</th>
+					<tr class="text-left">
+						<th class="px-3 py-2">University</th>
+						<th class="px-3 py-2">School</th>
+						<th class="px-3 py-2">Degree</th>
+						<th class="px-3 py-2">Gain (%)</th>
 					</tr>
 				</thead>
 				<tbody>
 					{#each data.best as row}
-						<tr>
-							<td>{long2short[row.university]}</td>
-							<td>{row.school ?? "-"}</td>
-							<td
-								><a href="/degree/{row.slug}" class="text-blue-500 underline"
-									>{row.degree}</a
-								></td
+						<tr class="hover:bg-gray-100 transition-all duration-200">
+							<td class="px-3 py-1 border-b border-gray-300"
+								>{long2short[row.university]}</td
 							>
-							<td class="text-green-500">{row.pctChange.toFixed(2)}</td>
+							<td class="px-3 py-1 border-b border-gray-300"
+								>{row.school ?? "-"}</td
+							>
+							<td class="px-3 py-1 border-b border-gray-300">
+								<a href="/degree/{row.slug}" class="text-blue-500 underline"
+									>{row.degree}</a
+								>
+							</td>
+							<td
+								class="px-3 py-1 border-b border-gray-300 text-green-500 font-bold"
+								>{row.pctChange.toFixed(2)}</td
+							>
 						</tr>
 					{/each}
 				</tbody>
@@ -142,29 +139,39 @@
 			<div>😢 no winners 😢</div>
 		{/if}
 	</div>
-	<div>
-		<h2 class="font-semibold text-lg mb-3">Losers</h2>
+	<div class="space-y-2">
+		<div class="flex items-center">
+			<ArrowDownWideNarrow class="h-6 w-6 mr-2" />
+			<h2 class="font-semibold text-lg">Losers</h2>
+		</div>
 		{#if data.worst.length > 0}
-			<table>
+			<table class="text-xs rounded-md overflow-x-auto border border-collapse">
 				<thead>
-					<tr>
-						<th>University</th>
-						<th>School</th>
-						<th>Degree</th>
-						<th>Loss (%)</th>
+					<tr class="text-left">
+						<th class="px-3 py-2">University</th>
+						<th class="px-3 py-2">School</th>
+						<th class="px-3 py-2">Degree</th>
+						<th class="px-3 py-2">Loss (%)</th>
 					</tr>
 				</thead>
 				<tbody>
 					{#each data.worst as row}
-						<tr>
-							<td>{long2short[row.university]}</td>
-							<td>{row.school ?? "-"}</td>
-							<td
-								><a href="/degree/{row.slug}" class="text-blue-500 underline"
-									>{row.degree}</a
-								></td
+						<tr class="hover:bg-gray-100 transition-all duration-200">
+							<td class="px-3 py-1 border-b border-gray-300"
+								>{long2short[row.university]}</td
 							>
-							<td class="text-red-500">{row.pctChange.toFixed(2)}</td>
+							<td class="px-3 py-1 border-b border-gray-300"
+								>{row.school ?? "-"}</td
+							>
+							<td class="px-3 py-1 border-b border-gray-300">
+								<a href="/degree/{row.slug}" class="text-blue-500 underline"
+									>{row.degree}</a
+								>
+							</td>
+							<td
+								class="px-3 py-1 border-b border-gray-300 text-red-500 font-bold"
+								>{row.pctChange.toFixed(2)}</td
+							>
 						</tr>
 					{/each}
 				</tbody>
@@ -174,29 +181,3 @@
 		{/if}
 	</div>
 </div>
-
-<style>
-	table {
-		font-size: small;
-		border-collapse: separate;
-		border: 1px solid #ccc;
-		border-radius: 5px;
-		padding: 0rem 1rem;
-	}
-
-	thead {
-		background: #fff;
-	}
-
-	tbody tr:last-child td {
-		border-bottom: none;
-	}
-
-	tbody tr {
-		transition: all, 0.2s;
-	}
-
-	tbody tr:hover {
-		background: #f5f5f5;
-	}
-</style>

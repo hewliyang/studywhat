@@ -1,18 +1,25 @@
-// data
+interface BaseSalary {
+	basic_monthly_mean: number | null;
+	basic_monthly_median: number | null;
+}
 
-export interface YearlyRecord {
-	year: number;
-	employment_rate_overall: number;
-	employment_rate_ft_perm: number;
-	basic_monthly_mean: number;
-	basic_monthly_median: number;
+interface GrossSalary {
 	gross_monthly_mean: number;
 	gross_monthly_median: number;
 	gross_mthly_25_percentile: number;
 	gross_mthly_75_percentile: number;
 }
 
-export interface DataRecord {
+interface EmploymentRates {
+	employment_rate_overall: number;
+	employment_rate_ft_perm: number;
+}
+
+export type YearlyRecord = { year: number } & EmploymentRates &
+	BaseSalary &
+	GrossSalary;
+
+export interface GESData {
 	university: string;
 	degree: string;
 	school: string | null;
@@ -20,29 +27,8 @@ export interface DataRecord {
 	data: YearlyRecord[];
 }
 
-export interface FlatRecord {
-	year: number;
-	university: string;
-	degree: string;
-	school: string | null;
-	slug: string;
-	employment_rate_overall: number;
-	employment_rate_ft_perm: number;
-	basic_monthly_mean: number;
-	basic_monthly_median: number;
-	gross_monthly_mean: number;
-	gross_monthly_median: number;
-	gross_mthly_25_percentile: number;
-	gross_mthly_75_percentile: number;
-}
+export type FlatRecord = Omit<GESData & YearlyRecord, "data">;
 
-export interface WinnersRecord extends DataRecord {
+export interface WinnersRecord extends GESData {
 	pctChange: number;
-}
-
-// data table
-
-export interface DataTableProps<T> {
-	data: T[];
-	columns: { label: string; accessor?: (data: T) => string | number }[];
 }

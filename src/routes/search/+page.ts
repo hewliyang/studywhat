@@ -1,9 +1,9 @@
 import { local, search } from "$lib/data";
-import type { DataRecord } from "$lib/types";
+import type { GESData } from "$lib/types";
 
 export async function load({ fetch, url }) {
 	const query = url.searchParams.get("q");
-	let degrees: DataRecord[];
+	let degrees: GESData[];
 
 	if (!query) {
 		degrees = [];

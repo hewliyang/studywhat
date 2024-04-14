@@ -27,8 +27,8 @@ export const short2img: Record<string, string> = {
 export const PREV_YEAR = new Date().getFullYear() - 1;
 
 export const YEARS = Array.from(
-	{ length: PREV_YEAR + 1 - 2013 },
-	(_, i) => 2013 + i
+	{ length: PREV_YEAR + 1 - 2009 },
+	(_, i) => 2009 + i
 );
 
 // color palletes

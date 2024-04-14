@@ -12,7 +12,17 @@
 	} from "@unovis/svelte";
 	import Sparkline from "$lib/components/Sparkline.svelte";
 	import Histogram from "$lib/components/Histogram.svelte";
+	import {
+		Activity,
+		ArrowUpRight,
+		AlignVerticalDistributeCenter,
+		CircleDollarSign,
+		ArrowDownWideNarrow,
+		ArrowUpWideNarrow,
+		Table,
+	} from "lucide-svelte";
 	import type { FlatRecord } from "$lib/types";
+	import Export from "$lib/components/Export.svelte";
 
 	export let data;
 
@@ -74,24 +84,16 @@
 
 <section>
 	{#if data.gainAndLoss.best.length > 2}
-		<div class="flex">
-			<h1 class="font-semibold text-lg">Largest Year on Year Gains (%)</h1>
+		<div class="flex items-center">
+			<ArrowUpWideNarrow class="h-6 w-6 mr-2" />
+			<h1 class="font-semibold text-lg">Winners 1Y (%)</h1>
 			<a
-				class="flex items-center ml-auto hover:scale-[105%]"
+				class="flex items-center ml-auto px-2 py-1 border-2 rounded-lg hover:scale-[101%] hover:ring-1 hover:ring-purple-700"
 				href={`/movement/?year=${selectedYr}`}
-				><svg
-					width="8"
-					height="8"
-					viewBox="0 0 12 12"
-					fill="none"
-					xmlns="http://www.w3.org/2000/svg"
-					><path
-						d="M2.07102 11.3494L0.963068 10.2415L9.2017 1.98864H2.83807L2.85227 0.454545H11.8438V9.46023H10.2955L10.3097 3.09659L2.07102 11.3494Z"
-						fill="currentColor"
-					></path></svg
-				>
-				<p class="ml-2 text-sm">See More</p></a
 			>
+				<p class="text-sm">Movement</p>
+				<Activity class="ml-2 h-4 w-4" />
+			</a>
 		</div>
 		<div class="flex overflow-x-auto whitespace-nowrap gap-3 mt-3">
 			{#each data.gainAndLoss.best as record}
@@ -100,7 +102,10 @@
 		</div>
 	{/if}
 	{#if data.gainAndLoss.worst.length > 2}
-		<h1 class="font-semibold text-lg">Largest Year on Year Losses (%)</h1>
+		<div class="flex items-center mt-3">
+			<ArrowDownWideNarrow class="h-6 w-6 mr-2" />
+			<h1 class="font-semibold text-lg">Losers 1Y (%)</h1>
+		</div>
 		<div class="flex overflow-x-auto whitespace-nowrap gap-3 mt-3">
 			{#each data.gainAndLoss.worst as record}
 				<Sparkline {record} refYear={selectedYr} />
@@ -113,17 +118,17 @@
 	<div class="lg:col-span-5 lg:flex-grow">
 		<VisXYContainer data={data.top} height={350}>
 			<div class="flex flex-col mb-6">
-				<div class="flex justify-between items-center">
+				<div class="flex items-center">
+					<CircleDollarSign class="h-6 w-6 mr-2" />
 					<h3 class="font-semibold text-lg">
-						Singapore Fresh Graduate Incomes ({selectedYr})
-						<span class="text-sm opacity-75">↗ is better</span>
+						Graduate Median Incomes by Degree
 					</h3>
-					<form>
+					<form class="md: ml-auto">
 						<select
 							name="year"
 							bind:value={selectedYr}
 							on:change={handleYearChange}
-							class="text-sm inline-block px-2 py-1 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+							class="text-sm px-2 py-1 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
 						>
 							{#each YEARS as year}
 								{@const selected = year === selectedYr}
@@ -135,22 +140,39 @@
 				<VisBulletLegend items={legendItems} />
 			</div>
 			<VisScatter cursor="pointer" size={10} {x} {y} {color} {events} />
-			<VisAxis type="x" label="Median Gross Income ($)" gridLine={false} />
-			<VisAxis
-				type="y"
-				label="Full Time Employment Rate (%)"
-				gridLine={false}
-			/>
+			<VisAxis type="x" label="Median Gross Income ($)" gridLine={true} />
+			<VisAxis type="y" label="Full Time Employment Rate (%)" gridLine={true} />
 			<VisTooltip {triggers} />
+			<div class="absolute bottom-12 right-5">
+				<div class="flex space-x-1 items-center text-gray-400 text-sm">
+					<ArrowUpRight class="h-4 w-4" />
+					<span>is better</span>
+				</div>
+			</div>
 		</VisXYContainer>
 	</div>
 	<div class="lg:col-span-2 lg:row-span-1 lg:flex-shrink-0 lg:w-3/10">
-		<h3 class="font-semibold text-lg">Distribution of Median Incomes</h3>
+		<div class="mb-2">
+			<div class="flex items-center">
+				<AlignVerticalDistributeCenter class="h-6 w-6 mr-2" />
+				<h3 class="font-semibold text-lg">Distribution of Median Incomes</h3>
+			</div>
+			<p class="text-xs text-gray-500">
+				Note: Frequency in terms of degrees, <b class="font-bold">not</b> graduates
+			</p>
+		</div>
 		<Histogram data={data.top} />
 	</div>
 </div>
 
 <section class="overflow-x-auto mt-4">
+	<div class="flex items-center">
+		<Table class="h-6 w-6 mr-2" />
+		<h3 class="font-semibold text-lg">Data Table</h3>
+		<div class="ml-auto">
+			<Export rows={data.top} fileName={String(selectedYr)} />
+		</div>
+	</div>
 	<Datatable {handler} search={false} rowsPerPage={false}>
 		<table>
 			<thead>

@@ -4,10 +4,10 @@ Takes a time series, gets the latest 2 records and computes the delta.
 -->
 
 <script lang="ts">
-	import type { DataRecord, YearlyRecord } from "$lib/types";
+	import type { GESData, YearlyRecord } from "$lib/types";
 
 	export let title: string;
-	export let degree: DataRecord;
+	export let degree: GESData;
 	export let property: keyof YearlyRecord;
 
 	let isEnoughData: boolean;

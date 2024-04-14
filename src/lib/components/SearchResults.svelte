@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { short2img, long2short } from "$lib/constants";
-	import type { DataRecord } from "$lib/types";
+	import type { GESData } from "$lib/types";
 
-	export let degrees: DataRecord[];
+	export let degrees: GESData[];
 </script>
 
 {#if degrees.length > 0}

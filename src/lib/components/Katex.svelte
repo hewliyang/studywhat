@@ -20,4 +20,6 @@
 	/>
 </svelte:head>
 
-{@html katexString}
+<span {...$$restProps}>
+	{@html katexString}
+</span>

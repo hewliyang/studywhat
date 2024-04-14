@@ -4,14 +4,14 @@ import url from "./data.json?url";
 import { browser } from "$app/environment";
 import { PREV_YEAR } from "./constants";
 import type {
-	DataRecord,
+	GESData,
 	FlatRecord,
 	WinnersRecord,
 	YearlyRecord,
 } from "$lib/types";
 
 type _IntermediateSearchResult = {
-	record: DataRecord;
+	record: GESData;
 	score: number;
 };
 
@@ -30,7 +30,7 @@ function getFlattened(): FlatRecord[] {
 	});
 }
 
-export let local: DataRecord[];
+export let local: GESData[];
 
 if (browser) {
 	fetch(url).then(async (request) => {
@@ -38,7 +38,7 @@ if (browser) {
 	});
 }
 
-export const degrees: DataRecord[] = data;
+export const degrees: GESData[] = data;
 
 export function topK(
 	year: number = PREV_YEAR,
@@ -59,7 +59,7 @@ export function topK(
  * in turn is a concatenation of <slugify(degree)>-<nus|smu|ntu|suss|sutd|sit>
  */
 export function search(
-	data: DataRecord[],
+	data: GESData[],
 	query: string | null,
 	exactMatch: boolean = false
 ) {
@@ -96,7 +96,7 @@ export function search(
 	return results.map((result) => result.record);
 }
 
-export function getGainAndLoss(
+export function getMovement(
 	year: number,
 	k: number = 5,
 	q: number = 5,
@@ -114,10 +114,9 @@ export function getGainAndLoss(
 	const recordsWithPctChange = eligibleRecords.map((record) => {
 		const currentYearData = record.data.find((d) => d.year === year)!;
 		const previousYearData = record.data.find((d) => d.year === year - lag)!;
-		const pctChange =
-			((currentYearData[metric] - previousYearData[metric]) /
-				previousYearData[metric]) *
-			100;
+		const x1 = previousYearData[metric];
+		const x2 = currentYearData[metric];
+		const pctChange = x1 && x2 ? ((x2 - x1) / x1) * 100 : -Infinity;
 		return { ...record, pctChange };
 	});
 

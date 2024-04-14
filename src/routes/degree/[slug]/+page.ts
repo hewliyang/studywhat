@@ -1,10 +1,10 @@
 import { local } from "$lib/data";
 import { error } from "@sveltejs/kit";
-import type { DataRecord } from "$lib/types";
+import type { GESData } from "$lib/types";
 
 export async function load({ fetch, params }) {
 	const slug = params.slug;
-	let degree: DataRecord | undefined;
+	let degree: GESData | undefined;
 
 	if (local) {
 		degree = local.find((d) => d.slug === slug);
@@ -12,7 +12,7 @@ export async function load({ fetch, params }) {
 	} else {
 		const response = await fetch(`/api/degree/${slug}`);
 		if (!response.ok) error(response.status);
-		degree = (await response.json()) as DataRecord;
+		degree = (await response.json()) as GESData;
 	}
 
 	return { degree };

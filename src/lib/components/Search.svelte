@@ -3,12 +3,13 @@
 	import { onNavigate } from "$app/navigation";
 	import { page } from "$app/stores";
 	import { local, search } from "$lib/data";
-	import type { DataRecord } from "$lib/types";
+	import { Search } from "lucide-svelte";
+	import type { GESData } from "$lib/types";
 	import SearchResults from "./SearchResults.svelte";
 
 	$: query = $page.url.searchParams.get("q") ?? "";
 	$: visible = false;
-	$: results = [] as DataRecord[];
+	$: results = [] as GESData[];
 
 	function show(e: Event & { currentTarget: HTMLInputElement }) {
 		visible = true;
@@ -46,22 +47,10 @@
 
 <form action="/search" method="GET" class="relative">
 	<div
-		class="flex items-center border border-gray-300 w-full p-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 placeholder-transparent"
+		class="flex items-center border border-gray-300 p-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 placeholder-transparent"
 	>
 		<div class="px-2">
-			<svg
-				aria-hidden="true"
-				height="16"
-				viewBox="0 0 16 16"
-				version="1.1"
-				width="16"
-				data-view-component="true"
-				class="octicon octicon-search"
-			>
-				<path
-					d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"
-				></path>
-			</svg>
+			<Search class="h-4 w-4" />
 		</div>
 		<input
 			name="q"

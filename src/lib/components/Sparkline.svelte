@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { CurveType } from "@unovis/ts";
+	import { CurveType, Scale } from "@unovis/ts";
 	import { long2short } from "$lib/constants";
-	import { VisXYContainer, VisArea, VisLine } from "@unovis/svelte";
+	import { VisXYContainer, VisArea, VisLine, VisAxis } from "@unovis/svelte";
 
 	import type { WinnersRecord, YearlyRecord } from "$lib/types";
 
@@ -42,7 +42,11 @@
 	<div class="flex flex-col text-xs p-1">
 		<div class="font-bold">{long2short[record.university]}</div>
 		<div class="overflow-x-auto">{record.degree}</div>
-		<div class={record.pctChange > 0 ? "text-green-500" : "text-red-500"}>
+		<div
+			class="font-semibold {record.pctChange > 0
+				? 'text-green-500'
+				: 'text-red-500'}"
+		>
 			{record.pctChange > 0 ? "+" : ""}{record.pctChange.toFixed(2)}%
 		</div>
 	</div>

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Metric from "$lib/components/Metric.svelte";
+	import Download from "$lib/components/Export.svelte";
 	import { short2img, long2short } from "$lib/constants";
 	import type { YearlyRecord } from "$lib/types";
 	import {
@@ -176,6 +177,9 @@
 				</tbody>
 			</table>
 		</Datatable>
+		<div class="absolute right-2">
+			<Download rows={$rows} fileName={data.degree.slug} />
+		</div>
 	</div>
 </div>
 
