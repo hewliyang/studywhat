@@ -16,7 +16,7 @@ type _IntermediateSearchResult = {
 };
 
 /** Helper to flatten the data for simpler processing */
-function getFlattened(): FlatRecord[] {
+export function getFlattened(): FlatRecord[] {
 	return _.flatMap(degrees, (item) => {
 		return item.data.map((d) => {
 			return {

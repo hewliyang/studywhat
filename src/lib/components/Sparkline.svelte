@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { CurveType, Scale } from "@unovis/ts";
+	import { CurveType } from "@unovis/ts";
 	import { long2short } from "$lib/constants";
-	import { VisXYContainer, VisArea, VisLine, VisAxis } from "@unovis/svelte";
+	import { VisXYContainer, VisArea, VisLine } from "@unovis/svelte";
 
 	import type { WinnersRecord, YearlyRecord } from "$lib/types";
 
@@ -27,12 +27,18 @@
 
 	// reference line
 	// (refYear - 1, 0) -> (refYear - 1, max(gross_monthly_median))
-	$: maxIncome = Math.max(
-		...record.data.map((obj) => obj.gross_monthly_median)
+	$: firstIncome = record.data[0].gross_monthly_median;
+	$: minIncome = Math.min(
+		...record.data.map((obj) => obj.gross_monthly_median - firstIncome)
 	);
+	$: adjustedMaxIncomeRef = Math.max(
+		...record.data.map((obj) => obj.gross_monthly_median - firstIncome)
+	);
+	$: minYear = Math.min(...record.data.map((obj) => obj.year));
+	$: maxYear = Math.max(...record.data.map((obj) => obj.year));
 
 	$: x = (d: YearlyRecord) => d.year;
-	$: y = (d: YearlyRecord) => d.gross_monthly_median;
+	$: y = (d: YearlyRecord) => d.gross_monthly_median - firstIncome;
 </script>
 
 <a
@@ -41,7 +47,7 @@
 >
 	<div class="flex flex-col text-xs p-1">
 		<div class="font-bold">{long2short[record.university]}</div>
-		<div class="overflow-x-auto">{record.degree}</div>
+		<div>{record.degree}</div>
 		<div
 			class="font-semibold {record.pctChange > 0
 				? 'text-green-500'
@@ -65,21 +71,31 @@
 			curveType={CurveType.Linear}
 		/>
 		<VisLine
+			data={record.data}
+			{x}
+			{y}
+			color={record.pctChange > 0 ? "green" : "red"}
+			lineWidth={1.1}
+			curveType={CurveType.Linear}
+		/>
+		<VisLine
 			data={[
-				{ year: refYear - 1, value: 0 },
-				{ year: refYear - 1, value: maxIncome },
+				{ year: refYear, value: minIncome },
+				{ year: refYear, value: adjustedMaxIncomeRef },
 			]}
 			lineDashArray={[5]}
+			lineWidth={1.1}
 			color="gray"
-			x={(d) => d.year + 0.05}
+			x={(d) => d.year - 0.05}
 			y={(d) => d.value}
 		/>
 		<VisLine
 			data={[
-				{ year: refYear, value: 0 },
-				{ year: refYear, value: maxIncome },
+				{ year: minYear, value: 0 },
+				{ year: maxYear, value: 0 },
 			]}
 			lineDashArray={[5]}
+			lineWidth={1.1}
 			color="gray"
 			x={(d) => d.year - 0.05}
 			y={(d) => d.value}

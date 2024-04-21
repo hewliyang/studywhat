@@ -7,7 +7,6 @@
 </script>
 
 <div class="flex gap-2 items-center">
-	<span class="text-sm">Export As</span>
 	<button
 		class="flex px-2 py-1 rounded-lg border items-center text-sm"
 		on:click={() => downloadAsJSON(rows, fileName)}

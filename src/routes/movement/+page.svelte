@@ -6,7 +6,7 @@
 		ArrowDownWideNarrow,
 		ArrowUpWideNarrow,
 	} from "lucide-svelte";
-	import Katex from "$lib/components/Katex.svelte";
+	import { VisXYContainer, VisStackedBar, VisAxis } from "@unovis/svelte";
 
 	export let data;
 
@@ -27,73 +27,86 @@
 		},
 	];
 
+	type BarDatum = {
+		x: string;
+		y: number;
+	};
+
+	$: barData = [
+		{ x: "Loss", y: data.worst.length },
+		{ x: "Gain", y: data.best.length },
+	];
+	$: x = (_: BarDatum, i: number) => i;
+	$: y = (d: BarDatum) => d.y;
+	const tickFormat = (tick: number) => barData[tick].x;
+	const color = (d: BarDatum, i: number) => (d.x === "Gain" ? "green" : "red");
+
 	function handleChange() {
 		goto(`/movement/?year=${data.year}&lag=${data.lag}&metric=${data.metric}`);
 	}
 </script>
 
-<div class="space-y-2">
+<div class="space-y-3">
 	<div class="flex items-center mt-1">
 		<Activity class="h-6 w-6 mr-2" />
 		<h1 class="font-semibold text-xl">Movement</h1>
 	</div>
+	<div class="grid grid-cols-1 md:grid-cols-4 gap-2 md:gap-6 items-center">
+		<!-- metric input -->
+		<div class="flex flex-col">
+			<label for="metric" class="text-sm font-semibold">Metric</label>
+			<select
+				name="metric"
+				bind:value={data.metric}
+				on:change={handleChange}
+				class="text-sm inline-block p-1 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full md:w-auto"
+			>
+				{#each metricOpts as { name, value }}
+					{@const selected = value === data.metric}
+					<option {value} {selected}>{name}</option>
+				{/each}
+			</select>
+		</div>
 
-	<p class="text-sm">
-		Percentages are computed according to the following scheme:
-		<Katex
-			class="text-lg"
-			math={"\\Delta=\\frac{\\text{metric}_{\\text{year}} - \\text{metric}_{\\text{year}-\\text{lag}}}{\\text{metric}_{year-\\text{lag}}} \\times 100"}
-		/>
-		. Also note that if <Katex math={"\\Delta = 0"} /> for a given degree, it will
-		not be shown.
-	</p>
-</div>
+		<!-- year select -->
+		<div class="flex flex-col">
+			<label for="year" class="text-sm font-semibold">Reference Year</label>
+			<select
+				name="year"
+				bind:value={data.year}
+				on:change={handleChange}
+				class="text-sm inline-block p-1 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full md:w-auto"
+			>
+				{#each YEARS as _year}
+					{@const selected = _year === data.year}
+					<option value={_year} {selected}>{_year}</option>
+				{/each}
+			</select>
+		</div>
 
-<div class="flex flex-col gap-2">
-	<h3 class="text-lg font-medium">Filters</h3>
-	<!-- metric input -->
-	<div class="flex flex-col">
-		<label for="metric" class="text-sm font-semibold">Metric</label>
-		<select
-			name="metric"
-			bind:value={data.metric}
-			on:change={handleChange}
-			class="text-sm inline-block p-1 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full md:w-auto"
-		>
-			{#each metricOpts as { name, value }}
-				{@const selected = value === data.metric}
-				<option {value} {selected}>{name}</option>
-			{/each}
-		</select>
-	</div>
-
-	<!-- year select -->
-	<div class="flex flex-col">
-		<label for="year" class="text-sm font-semibold">Reference Year</label>
-		<select
-			name="year"
-			bind:value={data.year}
-			on:change={handleChange}
-			class="text-sm inline-block p-1 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full md:w-auto"
-		>
-			{#each YEARS as _year}
-				{@const selected = _year === data.year}
-				<option value={_year} {selected}>{_year}</option>
-			{/each}
-		</select>
-	</div>
-
-	<!-- lag input -->
-	<div class="flex flex-col">
-		<label for="lag" class="text-sm font-semibold">Time Lag (years)</label>
-		<input
-			name="lag"
-			type="number"
-			bind:value={data.lag}
-			on:change={handleChange}
-			min="1"
-			class="text-sm inline-block p-1 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full md:w-auto"
-		/>
+		<!-- lag input -->
+		<div class="flex flex-col">
+			<label for="lag" class="text-sm font-semibold">Time Lag (years)</label>
+			<input
+				name="lag"
+				type="number"
+				bind:value={data.lag}
+				on:change={handleChange}
+				min="1"
+				class="text-sm inline-block p-1 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full md:w-auto"
+			/>
+		</div>
+		<VisXYContainer data={barData} height={80}>
+			<VisAxis type="y" gridLine={false} {tickFormat} />
+			<VisAxis
+				type="x"
+				gridLine={false}
+				numTicks={5}
+				tickLine={false}
+				position="top"
+			/>
+			<VisStackedBar orientation="horizontal" {x} {y} {color} />
+		</VisXYContainer>
 	</div>
 </div>
 

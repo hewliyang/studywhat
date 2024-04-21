@@ -30,3 +30,7 @@ export function downloadAsCSV(rows: any[], fileName: string = "data") {
 	const url = URL.createObjectURL(blob);
 	saveAs(url, `${fileName}.csv`);
 }
+
+export function downloadFromURL(url: string, fileName: string = "studywhat") {
+	saveAs(url, `${fileName}.json`);
+}

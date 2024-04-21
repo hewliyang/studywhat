@@ -11,6 +11,7 @@
 		VisTooltip,
 		VisCrosshair,
 	} from "@unovis/svelte";
+	import { Briefcase, CircleDollarSign, Table } from "lucide-svelte";
 	import { CurveType } from "@unovis/ts";
 	import { DataHandler, Datatable, Th } from "@vincjo/datatables";
 
@@ -103,11 +104,14 @@
 	{#if data.degree.data.length >= 2}
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 			<VisXYContainer height={250} data={data.degree.data}>
-				<div class="flex items-center justify-between mb-3">
+				<div class="flex items-center mb-3">
+					<CircleDollarSign class="h-5 w-5 mr-2" />
 					<h4 class="font-semibold">Gross Income</h4>
-					<VisBulletLegend
-						items={[{ name: "Median" }, { name: "25th" }, { name: "75th" }]}
-					/>
+					<div class="ml-auto">
+						<VisBulletLegend
+							items={[{ name: "Median" }, { name: "25th" }, { name: "75th" }]}
+						/>
+					</div>
 				</div>
 				<VisLine {x} {y} curveType={CurveType.Linear} />
 				<VisAxis type="x" numTicks={(data.degree.data.length / 2) >> 0} />
@@ -122,11 +126,14 @@
 			</VisXYContainer>
 
 			<VisXYContainer height={250} data={data.degree.data}>
-				<div class="flex items-center justify-between mb-3">
+				<div class="flex items-center mb-3">
+					<Briefcase class="h-5 w-5 mr-2" />
 					<h4 class="font-semibold">Employment Rate</h4>
-					<VisBulletLegend
-						items={[{ name: "Full Time" }, { name: "Overall" }]}
-					/>
+					<div class="ml-auto">
+						<VisBulletLegend
+							items={[{ name: "Full Time" }, { name: "Overall" }]}
+						/>
+					</div>
 				</div>
 				<VisLine {x} y={yEmp} curveType={CurveType.Linear} />
 				<VisAxis type="x" numTicks={(data.degree.data.length / 2) >> 0} />
@@ -143,6 +150,13 @@
 	{/if}
 
 	<div class="overflow-x-auto">
+		<div class="flex items-center">
+			<Table class="h-5 w-5 mr-2" />
+			<h4 class="font-semibold">Data Table</h4>
+			<div class="ml-auto">
+				<Download rows={$rows} fileName={data.degree.slug} />
+			</div>
+		</div>
 		<Datatable
 			{handler}
 			search={false}
@@ -177,12 +191,6 @@
 				</tbody>
 			</table>
 		</Datatable>
-		<div class="flex">
-			<div />
-			<div class="ml-auto">
-				<Download rows={$rows} fileName={data.degree.slug} />
-			</div>
-		</div>
 	</div>
 </div>
 

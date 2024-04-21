@@ -2,6 +2,7 @@
 	import "../app.pcss";
 	import "@fontsource-variable/inter";
 	import Search from "$lib/components/Search.svelte";
+	import { Github } from "lucide-svelte";
 </script>
 
 <header
@@ -18,20 +19,20 @@
 </main>
 
 <footer class="my-0 mx-auto p-[0.5rem] border-t text-sm">
-	<div class="flex flex-col md:flex-row justify-between items-center">
-		<div class="mb-4 md:mb-0">
-			<a href="https://github.com/hewliyang/studywhat" class="underline"
-				>GitHub (Web)</a
-			>
-			<span class="mx-2">&bull;</span>
-			<a href="/disclaimers" class="underline">Disclaimers</a>
-		</div>
+	<div class="flex justify-between items-center">
+		<a href="https://github.com/hewliyang/studywhat" class="underline"
+			><Github class="h-4 w-4" /></a
+		>
+		<a href="/disclaimers" class="underline">Disclaimers & Dataset</a>
 	</div>
 </footer>
 
 <style>
 	:root {
-		font-family: Inter, system-ui, sans-serif;
+		font-family:
+			Inter Variable,
+			system-ui,
+			sans-serif;
 		font-size: 16px;
 		letter-spacing: 0.01em;
 		font-weight: 300;
