@@ -4,6 +4,14 @@
 	import { getFlattened } from "$lib/data";
 </script>
 
+<svelte:head>
+	<title>Disclaimers & Dataset Download</title>
+	<meta
+		name="description"
+		content="Complete Graduate Employment Survey 2009 to 2023 download as CSV or JSON"
+	/>
+</svelte:head>
+
 <section class="flex flex-col space-y-6 p-1 md:p-8 text-sm">
 	<div>
 		<h1 class="text-xl font-semibold">Attribution</h1>

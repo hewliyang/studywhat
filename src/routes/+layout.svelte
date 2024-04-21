@@ -5,6 +5,13 @@
 	import { Github } from "lucide-svelte";
 </script>
 
+<svelte:head>
+	<title>StudyWhat</title>
+	<meta
+		name="description"
+		content="Singapore Graduate Employment Survey (GES) data. Analyse employment trends and decide what to study."
+	/>
+</svelte:head>
 <header
 	class="my-0 mx-auto p-[0.5rem] flex flex-row items-center gap-[0.5rem] justify-between border-b"
 >

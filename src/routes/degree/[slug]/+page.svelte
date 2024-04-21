@@ -56,6 +56,16 @@
 	$: rows = handler.getRows();
 </script>
 
+<svelte:head>
+	<title
+		>{data.degree.degree} | {data.degree.university} | {data.degree
+			.school}</title
+	>
+	<meta
+		name="description"
+		content={`Yearly salary and employment data for ${data.degree.degree}, ${data.degree.university}`}
+	/>
+</svelte:head>
 <div class="flex flex-col space-y-4">
 	<div
 		class="flex flex-col md:flex-row md:items-center gap-2 mt-2 border rounded-lg px-3 py-2 shadow-sm"

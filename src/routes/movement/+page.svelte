@@ -6,7 +6,13 @@
 		ArrowDownWideNarrow,
 		ArrowUpWideNarrow,
 	} from "lucide-svelte";
-	import { VisXYContainer, VisStackedBar, VisAxis } from "@unovis/svelte";
+	import {
+		VisXYContainer,
+		VisStackedBar,
+		VisAxis,
+		VisTooltip,
+	} from "@unovis/svelte";
+	import { Direction, Orientation, StackedBar } from "@unovis/ts";
 
 	export let data;
 
@@ -38,13 +44,25 @@
 	];
 	$: x = (_: BarDatum, i: number) => i;
 	$: y = (d: BarDatum) => d.y;
+
 	const tickFormat = (tick: number) => barData[tick].x;
 	const color = (d: BarDatum, i: number) => (d.x === "Gain" ? "green" : "red");
+	const triggers = {
+		[StackedBar.selectors.bar]: (d: BarDatum) => `<div>${d.y}</div>`,
+	};
 
 	function handleChange() {
 		goto(`/movement/?year=${data.year}&lag=${data.lag}&metric=${data.metric}`);
 	}
 </script>
+
+<svelte:head>
+	<title>Movement</title>
+	<meta
+		name="description"
+		content="Analyse changes in employment trends over time in a stock screener style"
+	/>
+</svelte:head>
 
 <div class="space-y-3">
 	<div class="flex items-center mt-1">
@@ -96,16 +114,18 @@
 				class="text-sm inline-block p-1 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full md:w-auto"
 			/>
 		</div>
-		<VisXYContainer data={barData} height={80}>
-			<VisAxis type="y" gridLine={false} {tickFormat} />
-			<VisAxis
-				type="x"
-				gridLine={false}
-				numTicks={5}
-				tickLine={false}
-				position="top"
+		<VisXYContainer height={60} yDirection={Direction.South}>
+			<h1 class="font-semibold mb-1 text-sm">Winners and Losers</h1>
+			<VisStackedBar
+				data={barData}
+				orientation={Orientation.Horizontal}
+				barPadding={-0.4}
+				{x}
+				{y}
+				{color}
 			/>
-			<VisStackedBar orientation="horizontal" {x} {y} {color} />
+			<VisTooltip {triggers} />
+			<VisAxis type="y" gridLine={false} {tickFormat} />
 		</VisXYContainer>
 	</div>
 </div>

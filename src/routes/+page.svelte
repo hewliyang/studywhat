@@ -177,7 +177,9 @@
 		<table>
 			<thead>
 				<tr>
-					<Th {handler} orderBy="university">University</Th>
+					<Th {handler} orderBy={(row) => long2short[row.university]}
+						>University</Th
+					>
 					<Th {handler} orderBy="degree">Degree</Th>
 					<Th {handler} orderBy="gross_monthly_median">Gross Median</Th>
 					<Th {handler} orderBy="gross_mthly_25_percentile">25th</Th>
@@ -185,7 +187,7 @@
 					<Th {handler} orderBy="employment_rate_overall">Employment Rate</Th>
 				</tr>
 				<tr>
-					<ThFilter {handler} filterBy="university" />
+					<ThFilter {handler} filterBy={(row) => long2short[row.university]} />
 					<ThFilter {handler} filterBy="degree" />
 				</tr>
 			</thead>
