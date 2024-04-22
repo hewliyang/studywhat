@@ -1,6 +1,17 @@
-# studywhat
+| **Dataset** | ![data.json](https://img.shields.io/badge/data.json-cyan)                                       |
+|-------------|---------------------------------------------------------------------------------------------------|
+| **License** | Code [**MIT**](https://github.com/hewliyang/studywhat/blob/main/LICENSE) \| Data [**SG ODL 1.0**](https://beta.data.gov.sg/open-data-license)|
 
-Visualizing **Graduate Employment Survey (GES)** data
+
+*A Granular GES Dataviz / Screener*
+
+---
+
+# studywhat (☞ﾟヮﾟ)☞
+
+- originally a fork of [this](https://github.com/Rich-Harris/sveltekit-movies-demo)
+- uses Lodash for processing & [Unovis](https://github.com/f5/unovis) for charting
+- data openly available. for CSV, flatten as an exercise or download from [here](https://studywhat.hewliyang.com/disclaimers)
 
 ### Developing
 
@@ -8,14 +19,3 @@ Visualizing **Graduate Employment Survey (GES)** data
 pnpm i
 pnpm run dev
 ```
-
-### Dataset
-
-The dataset is commited directly to this repo as `JSON` & contains all data as of 21/04/2024 starting with GES 2009.
-
-[![data.json](https://img.shields.io/badge/dataset-data.json-green)](src/lib/data.json)
-
-### License
-
-- Code: MIT
-- Data: [Singapore Open Data License 1.0](https://beta.data.gov.sg/open-data-license)
