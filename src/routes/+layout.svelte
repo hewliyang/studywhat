@@ -1,10 +1,12 @@
 <script lang="ts">
 	import "../app.pcss";
 	import "@fontsource-variable/inter";
+	import Analytics from "$lib/components/Umami.svelte";
 	import Search from "$lib/components/Search.svelte";
 	import { Github } from "lucide-svelte";
 </script>
 
+<Analytics />
 <svelte:head>
 	<title>StudyWhat</title>
 	<meta
@@ -12,6 +14,7 @@
 		content="Singapore Graduate Employment Survey (GES) data. Analyse employment trends and decide what to study."
 	/>
 </svelte:head>
+
 <header
 	class="my-0 mx-auto p-[0.5rem] flex flex-row items-center gap-[0.5rem] justify-between border-b"
 >
@@ -33,17 +36,3 @@
 		<a href="/disclaimers" class="underline">Disclaimers & Dataset</a>
 	</div>
 </footer>
-
-<style>
-	:root {
-		font-family:
-			Inter Variable,
-			system-ui,
-			sans-serif;
-		font-size: 16px;
-		letter-spacing: 0.01em;
-		font-weight: 300;
-		line-height: 1.5;
-		margin: 0;
-	}
-</style>
