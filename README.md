@@ -1,9 +1,8 @@
-| **Dataset** | [![data.json](https://img.shields.io/badge/data.json-cyan)](https://github.com/hewliyang/studywhat/blob/main/src/lib/data.json)|
-|-------------|---------------------------------------------------------------------------------------------------|
-| **License** | Code [**MIT**](https://github.com/hewliyang/studywhat/blob/main/LICENSE) \| Data [**SG ODL 1.0**](https://beta.data.gov.sg/open-data-license)|
+| **Dataset** | [![data.json](https://img.shields.io/badge/data.json-cyan)](https://github.com/hewliyang/studywhat/blob/main/src/lib/data.json)               |
+| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| **License** | Code [**MIT**](https://github.com/hewliyang/studywhat/blob/main/LICENSE) \| Data [**SG ODL 1.0**](https://beta.data.gov.sg/open-data-license) |
 
-
-*Granular GES Dataviz & Screener*
+_Granular GES Dataviz & Screener_
 
 ---
 

@@ -1,262 +1,262 @@
 <script>
-	import { downloadAsCSV, downloadFromURL } from "$lib/download";
-	import { ArrowRight } from "lucide-svelte";
-	import { getFlattened } from "$lib/data";
+  import { downloadAsCSV, downloadFromURL } from "$lib/download";
+  import { ArrowRight } from "lucide-svelte";
+  import { getFlattened } from "$lib/data";
 </script>
 
 <svelte:head>
-	<title>Disclaimers & Dataset Download</title>
-	<meta
-		name="description"
-		content="Complete Graduate Employment Survey 2009 to 2023 download as CSV or JSON"
-	/>
+  <title>Disclaimers & Dataset Download</title>
+  <meta
+    name="description"
+    content="Complete Graduate Employment Survey 2009 to 2023 download as CSV or JSON"
+  />
 </svelte:head>
 
 <section class="flex flex-col space-y-6 p-1 md:p-8 text-sm">
-	<div>
-		<h1 class="text-xl font-semibold">Attribution</h1>
-		This site contains information from
-		<a
-			href="https://beta.data.gov.sg/collections/415/datasets/d_3c55210de27fcccda2ed0c63fdd2b352/view"
-			class="underline text-blue-500 font-bold"
-		>
-			Graduate Employment Survey - NTU, NUS, SIT, SMU, SUSS & SUTD</a
-		>
-		which is made available under the terms of
-		<a
-			href="https://beta.data.gov.sg/open-data-license"
-			class="underline text-blue-500 font-bold"
-		>
-			Singapore Open Data License version 1.0
-		</a>
-		accessed at {new Date().toLocaleDateString("en-SG")}. The dataset was
-		further extended by the author and is made available under the same license.
-	</div>
+  <div>
+    <h1 class="text-xl font-semibold">Attribution</h1>
+    This site contains information from
+    <a
+      href="https://beta.data.gov.sg/collections/415/datasets/d_3c55210de27fcccda2ed0c63fdd2b352/view"
+      class="underline text-blue-500 font-bold"
+    >
+      Graduate Employment Survey - NTU, NUS, SIT, SMU, SUSS & SUTD</a
+    >
+    which is made available under the terms of
+    <a
+      href="https://beta.data.gov.sg/open-data-license"
+      class="underline text-blue-500 font-bold"
+    >
+      Singapore Open Data License version 1.0
+    </a>
+    accessed at {new Date().toLocaleDateString("en-SG")}. The dataset was
+    further extended by the author and is made available under the same license.
+  </div>
 
-	<div>
-		<h1 class="text-xl font-semibold">Disclaimer</h1>
-		<p>
-			The data published in this document is provided on an “as is” basis
-			without any warranties of any kind. To the fullest extent permitted by
-			law, the author does not warrant and hereby disclaims any warranty as to
-			the accuracy, correctness, completeness, reliability or fitness for any
-			particular purpose of such data. The reader of this document assumes all
-			responsibility and risk for the use of such data. the author shall not be
-			liable for any damage or loss of any kind caused as a result (directly or
-			indirectly) of the use of such data, including but not limited to any
-			damage or loss suffered as a result of reliance on the data published in
-			this document
-		</p>
-	</div>
+  <div>
+    <h1 class="text-xl font-semibold">Disclaimer</h1>
+    <p>
+      The data published in this document is provided on an “as is” basis
+      without any warranties of any kind. To the fullest extent permitted by
+      law, the author does not warrant and hereby disclaims any warranty as to
+      the accuracy, correctness, completeness, reliability or fitness for any
+      particular purpose of such data. The reader of this document assumes all
+      responsibility and risk for the use of such data. the author shall not be
+      liable for any damage or loss of any kind caused as a result (directly or
+      indirectly) of the use of such data, including but not limited to any
+      damage or loss suffered as a result of reliance on the data published in
+      this document
+    </p>
+  </div>
 
-	<div>
-		<h1 class="text-xl font-semibold mb-2">Data Schema</h1>
-		<table
-			class="w-full border-collapse overflow-x-scroll border rounded-[10px]"
-		>
-			<thead class="bg-gray-100">
-				<tr class="text-left">
-					<th class="px-4 py-2">Title</th>
-					<th class="px-4 py-2">Column name</th>
-					<th class="px-4 py-2">Data type</th>
-					<th class="px-4 py-2">Unit of measure</th>
-					<th class="px-4 py-2">Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr class="border-b">
-					<td class="px-4 py-2">Year</td>
-					<td class="px-4 py-2">year</td>
-					<td class="px-4 py-2">Datetime (Year) "YYYY"</td>
-					<td class="px-4 py-2">-</td>
-					<td class="px-4 py-2">-</td>
-				</tr>
-				<tr class="border-b">
-					<td class="px-4 py-2">University</td>
-					<td class="px-4 py-2">university</td>
-					<td class="px-4 py-2">Text (General)</td>
-					<td class="px-4 py-2">-</td>
-					<td class="px-4 py-2">-</td>
-				</tr>
-				<tr class="border-b">
-					<td class="px-4 py-2">School</td>
-					<td class="px-4 py-2">school</td>
-					<td class="px-4 py-2">Text (General)</td>
-					<td class="px-4 py-2">-</td>
-					<td class="px-4 py-2">-</td>
-				</tr>
-				<tr class="border-b">
-					<td class="px-4 py-2">Degree</td>
-					<td class="px-4 py-2">degree</td>
-					<td class="px-4 py-2">Text (General)</td>
-					<td class="px-4 py-2">-</td>
-					<td class="px-4 py-2">-</td>
-				</tr>
-				<tr class="border-b">
-					<td class="px-4 py-2">Overall Employment Rate (%)</td>
-					<td class="px-4 py-2">employment_rate_overall</td>
-					<td class="px-4 py-2">Text (General)</td>
-					<td class="px-4 py-2">-</td>
-					<td class="px-4 py-2"
-						>Overall employment rate refers to the number of graduates working
-						in full-time permanent, part-time, temporary or freelance basis, as
-						a proportion of graduates in the labour force (i.e. those who were
-						working, or not working but actively looking and available for work)
-						approximately 6 months after completing their final examinations.</td
-					>
-				</tr>
-				<tr class="border-b">
-					<td class="px-4 py-2">Full-Time Permanent Employment Rate (%)</td>
-					<td class="px-4 py-2">employment_rate_ft_perm</td>
-					<td class="px-4 py-2">Text (General)</td>
-					<td class="px-4 py-2">-</td>
-					<td class="px-4 py-2"
-						>Full-time permanent employment rate refers to the number of
-						graduates in employment of at least 35 hours a week and where the
-						employment is not temporary (including contracts of one year or
-						more), as a proportion of graduates in the labour force (i.e. those
-						who were working, or not working but actively looking and available
-						for work) approximately 6 months after completing their final
-						examinations.</td
-					>
-				</tr>
-				<tr class="border-b">
-					<td class="px-4 py-2">Basic Monthly Salary - Mean (S$)</td>
-					<td class="px-4 py-2">basic_monthly_mean</td>
-					<td class="px-4 py-2">Text (General)</td>
-					<td class="px-4 py-2">-</td>
-					<td class="px-4 py-2"
-						>Basic monthly salary pertains only to full-time permanently
-						employed graduates. It comprises basic pay before deduction of the
-						employee’s CPF contributions and personal income tax. Employer’s CPF
-						contributions, bonuses, stock options, overtime payments,
-						commissions, fixed allowances, other regular cash payments, lump sum
-						payments, and payments-in-kind are excluded.</td
-					>
-				</tr>
-				<tr class="border-b">
-					<td class="px-4 py-2">Basic Monthly Salary - Median (S$)</td>
-					<td class="px-4 py-2">basic_monthly_median</td>
-					<td class="px-4 py-2">Text (General)</td>
-					<td class="px-4 py-2">-</td>
-					<td class="px-4 py-2"
-						>Basic monthly salary pertains only to full-time permanently
-						employed graduates. It comprises basic pay before deduction of the
-						employee’s CPF contributions and personal income tax. Employer’s CPF
-						contributions, bonuses, stock options, overtime payments,
-						commissions, fixed allowances, other regular cash payments, lump sum
-						payments, and payments-in-kind are excluded.</td
-					>
-				</tr>
-				<tr class="border-b">
-					<td class="px-4 py-2">Gross Monthly Salary - Mean (S$)</td>
-					<td class="px-4 py-2">gross_monthly_mean</td>
-					<td class="px-4 py-2">Text (General)</td>
-					<td class="px-4 py-2">-</td>
-					<td class="px-4 py-2"
-						>Gross monthly salary pertains only to full-time permanently
-						employed graduates. It comprises basic salary, overtime payments,
-						commissions, fixed allowances, and other regular cash payments,
-						before deductions of the employee’s CPF contributions and personal
-						income tax. Employer’s CPF contributions, bonuses, stock options,
-						lump sum payments, and payments-in-kind are excluded.</td
-					>
-				</tr>
-				<tr class="border-b">
-					<td class="px-4 py-2">Gross Monthly Salary - Median (S$)</td>
-					<td class="px-4 py-2">gross_monthly_median</td>
-					<td class="px-4 py-2">Text (General)</td>
-					<td class="px-4 py-2">-</td>
-					<td class="px-4 py-2"
-						>Gross monthly salary pertains only to full-time permanently
-						employed graduates. It comprises basic salary, overtime payments,
-						commissions, fixed allowances, and other regular cash payments,
-						before deductions of the employee’s CPF contributions and personal
-						income tax. Employer’s CPF contributions, bonuses, stock options,
-						lump sum payments, and payments-in-kind are excluded.</td
-					>
-				</tr>
-				<tr class="border-b">
-					<td class="px-4 py-2">Gross Monthly Salary - 25th Percentile (S$)</td>
-					<td class="px-4 py-2">gross_mthly_25_percentile</td>
-					<td class="px-4 py-2">Text (General)</td>
-					<td class="px-4 py-2">-</td>
-					<td class="px-4 py-2"
-						>Gross monthly salary pertains only to full-time permanently
-						employed graduates. It comprises basic salary, overtime payments,
-						commissions, fixed allowances, and other regular cash payments,
-						before deductions of the employee’s CPF contributions and personal
-						income tax. Employer’s CPF contributions, bonuses, stock options,
-						lump sum payments, and payments-in-kind are excluded.</td
-					>
-				</tr>
-				<tr class="border-b">
-					<td class="px-4 py-2">Gross Monthly Salary - 75th Percentile (S$)</td>
-					<td class="px-4 py-2">gross_mthly_75_percentile</td>
-					<td class="px-4 py-2">Text (General)</td>
-					<td class="px-4 py-2">-</td>
-					<td class="px-4 py-2"
-						>Gross monthly salary pertains only to full-time permanently
-						employed graduates. It comprises basic salary, overtime payments,
-						commissions, fixed allowances, and other regular cash payments,
-						before deductions of the employee’s CPF contributions and personal
-						income tax. Employer’s CPF contributions, bonuses, stock options,
-						lump sum payments, and payments-in-kind are excluded.</td
-					>
-				</tr>
-			</tbody>
-		</table>
-		<p class="text-pretty text-gray-500 italic mt-3">
-			**For caveats related to individual datasets, refer to the source material
-			from MOE as they vary over time. In general, data on law, medicine,
-			pharmacy and architecture graduates are obtained from a follow-up survey
-			after graduates have completed their one-year practical law
-			course/pupillage/housemanship/first-year residency/practical training.
-		</p>
-	</div>
+  <div>
+    <h1 class="text-xl font-semibold mb-2">Data Schema</h1>
+    <table
+      class="w-full border-collapse overflow-x-scroll border rounded-[10px]"
+    >
+      <thead class="bg-gray-100">
+        <tr class="text-left">
+          <th class="px-4 py-2">Title</th>
+          <th class="px-4 py-2">Column name</th>
+          <th class="px-4 py-2">Data type</th>
+          <th class="px-4 py-2">Unit of measure</th>
+          <th class="px-4 py-2">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-b">
+          <td class="px-4 py-2">Year</td>
+          <td class="px-4 py-2">year</td>
+          <td class="px-4 py-2">Datetime (Year) "YYYY"</td>
+          <td class="px-4 py-2">-</td>
+          <td class="px-4 py-2">-</td>
+        </tr>
+        <tr class="border-b">
+          <td class="px-4 py-2">University</td>
+          <td class="px-4 py-2">university</td>
+          <td class="px-4 py-2">Text (General)</td>
+          <td class="px-4 py-2">-</td>
+          <td class="px-4 py-2">-</td>
+        </tr>
+        <tr class="border-b">
+          <td class="px-4 py-2">School</td>
+          <td class="px-4 py-2">school</td>
+          <td class="px-4 py-2">Text (General)</td>
+          <td class="px-4 py-2">-</td>
+          <td class="px-4 py-2">-</td>
+        </tr>
+        <tr class="border-b">
+          <td class="px-4 py-2">Degree</td>
+          <td class="px-4 py-2">degree</td>
+          <td class="px-4 py-2">Text (General)</td>
+          <td class="px-4 py-2">-</td>
+          <td class="px-4 py-2">-</td>
+        </tr>
+        <tr class="border-b">
+          <td class="px-4 py-2">Overall Employment Rate (%)</td>
+          <td class="px-4 py-2">employment_rate_overall</td>
+          <td class="px-4 py-2">Text (General)</td>
+          <td class="px-4 py-2">-</td>
+          <td class="px-4 py-2"
+            >Overall employment rate refers to the number of graduates working
+            in full-time permanent, part-time, temporary or freelance basis, as
+            a proportion of graduates in the labour force (i.e. those who were
+            working, or not working but actively looking and available for work)
+            approximately 6 months after completing their final examinations.</td
+          >
+        </tr>
+        <tr class="border-b">
+          <td class="px-4 py-2">Full-Time Permanent Employment Rate (%)</td>
+          <td class="px-4 py-2">employment_rate_ft_perm</td>
+          <td class="px-4 py-2">Text (General)</td>
+          <td class="px-4 py-2">-</td>
+          <td class="px-4 py-2"
+            >Full-time permanent employment rate refers to the number of
+            graduates in employment of at least 35 hours a week and where the
+            employment is not temporary (including contracts of one year or
+            more), as a proportion of graduates in the labour force (i.e. those
+            who were working, or not working but actively looking and available
+            for work) approximately 6 months after completing their final
+            examinations.</td
+          >
+        </tr>
+        <tr class="border-b">
+          <td class="px-4 py-2">Basic Monthly Salary - Mean (S$)</td>
+          <td class="px-4 py-2">basic_monthly_mean</td>
+          <td class="px-4 py-2">Text (General)</td>
+          <td class="px-4 py-2">-</td>
+          <td class="px-4 py-2"
+            >Basic monthly salary pertains only to full-time permanently
+            employed graduates. It comprises basic pay before deduction of the
+            employee’s CPF contributions and personal income tax. Employer’s CPF
+            contributions, bonuses, stock options, overtime payments,
+            commissions, fixed allowances, other regular cash payments, lump sum
+            payments, and payments-in-kind are excluded.</td
+          >
+        </tr>
+        <tr class="border-b">
+          <td class="px-4 py-2">Basic Monthly Salary - Median (S$)</td>
+          <td class="px-4 py-2">basic_monthly_median</td>
+          <td class="px-4 py-2">Text (General)</td>
+          <td class="px-4 py-2">-</td>
+          <td class="px-4 py-2"
+            >Basic monthly salary pertains only to full-time permanently
+            employed graduates. It comprises basic pay before deduction of the
+            employee’s CPF contributions and personal income tax. Employer’s CPF
+            contributions, bonuses, stock options, overtime payments,
+            commissions, fixed allowances, other regular cash payments, lump sum
+            payments, and payments-in-kind are excluded.</td
+          >
+        </tr>
+        <tr class="border-b">
+          <td class="px-4 py-2">Gross Monthly Salary - Mean (S$)</td>
+          <td class="px-4 py-2">gross_monthly_mean</td>
+          <td class="px-4 py-2">Text (General)</td>
+          <td class="px-4 py-2">-</td>
+          <td class="px-4 py-2"
+            >Gross monthly salary pertains only to full-time permanently
+            employed graduates. It comprises basic salary, overtime payments,
+            commissions, fixed allowances, and other regular cash payments,
+            before deductions of the employee’s CPF contributions and personal
+            income tax. Employer’s CPF contributions, bonuses, stock options,
+            lump sum payments, and payments-in-kind are excluded.</td
+          >
+        </tr>
+        <tr class="border-b">
+          <td class="px-4 py-2">Gross Monthly Salary - Median (S$)</td>
+          <td class="px-4 py-2">gross_monthly_median</td>
+          <td class="px-4 py-2">Text (General)</td>
+          <td class="px-4 py-2">-</td>
+          <td class="px-4 py-2"
+            >Gross monthly salary pertains only to full-time permanently
+            employed graduates. It comprises basic salary, overtime payments,
+            commissions, fixed allowances, and other regular cash payments,
+            before deductions of the employee’s CPF contributions and personal
+            income tax. Employer’s CPF contributions, bonuses, stock options,
+            lump sum payments, and payments-in-kind are excluded.</td
+          >
+        </tr>
+        <tr class="border-b">
+          <td class="px-4 py-2">Gross Monthly Salary - 25th Percentile (S$)</td>
+          <td class="px-4 py-2">gross_mthly_25_percentile</td>
+          <td class="px-4 py-2">Text (General)</td>
+          <td class="px-4 py-2">-</td>
+          <td class="px-4 py-2"
+            >Gross monthly salary pertains only to full-time permanently
+            employed graduates. It comprises basic salary, overtime payments,
+            commissions, fixed allowances, and other regular cash payments,
+            before deductions of the employee’s CPF contributions and personal
+            income tax. Employer’s CPF contributions, bonuses, stock options,
+            lump sum payments, and payments-in-kind are excluded.</td
+          >
+        </tr>
+        <tr class="border-b">
+          <td class="px-4 py-2">Gross Monthly Salary - 75th Percentile (S$)</td>
+          <td class="px-4 py-2">gross_mthly_75_percentile</td>
+          <td class="px-4 py-2">Text (General)</td>
+          <td class="px-4 py-2">-</td>
+          <td class="px-4 py-2"
+            >Gross monthly salary pertains only to full-time permanently
+            employed graduates. It comprises basic salary, overtime payments,
+            commissions, fixed allowances, and other regular cash payments,
+            before deductions of the employee’s CPF contributions and personal
+            income tax. Employer’s CPF contributions, bonuses, stock options,
+            lump sum payments, and payments-in-kind are excluded.</td
+          >
+        </tr>
+      </tbody>
+    </table>
+    <p class="text-pretty text-gray-500 italic mt-3">
+      **For caveats related to individual datasets, refer to the source material
+      from MOE as they vary over time. In general, data on law, medicine,
+      pharmacy and architecture graduates are obtained from a follow-up survey
+      after graduates have completed their one-year practical law
+      course/pupillage/housemanship/first-year residency/practical training.
+    </p>
+  </div>
 
-	<div class="space-y-2">
-		<h1 class="text-xl font-semibold">Downloads</h1>
-		<p>Last updated at: {new Date().toLocaleDateString()}</p>
-		<button
-			class="flex px-2 py-3 border rounded-md border-blue-500 items-center w-full"
-			on:click={() =>
-				downloadFromURL(
-					"https://raw.githubusercontent.com/hewliyang/studywhat/main/src/lib/data.json"
-				)}
-		>
-			<span>JSON</span>
-			<a
-				href="https://raw.githubusercontent.com/hewliyang/studywhat/main/src/lib/data.json"
-				class="text-blue-600 underline ml-3 text-xs font-semibold"
-				>source: GitHub</a
-			>
-			<ArrowRight class="h-4 w-4 ml-auto" />
-		</button>
-		<button
-			class="flex px-2 py-3 border rounded-md border-blue-500 items-center w-full"
-			on:click={() => downloadAsCSV(getFlattened(), "studywhat")}
-		>
-			<span>CSV</span>
-			<ArrowRight class="h-4 w-4 ml-auto" />
-		</button>
-	</div>
+  <div class="space-y-2">
+    <h1 class="text-xl font-semibold">Downloads</h1>
+    <p>Last updated at: {new Date().toLocaleDateString()}</p>
+    <button
+      class="flex px-2 py-3 border rounded-md border-blue-500 items-center w-full"
+      on:click={() =>
+        downloadFromURL(
+          "https://raw.githubusercontent.com/hewliyang/studywhat/main/src/lib/data.json",
+        )}
+    >
+      <span>JSON</span>
+      <a
+        href="https://raw.githubusercontent.com/hewliyang/studywhat/main/src/lib/data.json"
+        class="text-blue-600 underline ml-3 text-xs font-semibold"
+        >source: GitHub</a
+      >
+      <ArrowRight class="h-4 w-4 ml-auto" />
+    </button>
+    <button
+      class="flex px-2 py-3 border rounded-md border-blue-500 items-center w-full"
+      on:click={() => downloadAsCSV(getFlattened(), "studywhat")}
+    >
+      <span>CSV</span>
+      <ArrowRight class="h-4 w-4 ml-auto" />
+    </button>
+  </div>
 
-	<div class="space-y-2">
-		<h1 class="text-xl font-semibold">Open Source</h1>
-		<p>This project is open source & is accepting contributions.</p>
-		<p>
-			<a
-				href="https://github.com/hewliyang/studywhat"
-				class="text-blue-600 font-semibold">Repository (Web)</a
-			>: Contains the source code of the web app (SvelteKit)
-		</p>
-		<p>
-			<a
-				href="https://github.com/hewliyang/ges-report-to-csv"
-				class="text-blue-600 font-semibold">Repository (PDF Scraper)</a
-			>: Contains miscallaneous scripts used for scraping tables for PDFs
-			sourced from the Ministry of Education
-		</p>
-	</div>
+  <div class="space-y-2">
+    <h1 class="text-xl font-semibold">Open Source</h1>
+    <p>This project is open source & is accepting contributions.</p>
+    <p>
+      <a
+        href="https://github.com/hewliyang/studywhat"
+        class="text-blue-600 font-semibold">Repository (Web)</a
+      >: Contains the source code of the web app (SvelteKit)
+    </p>
+    <p>
+      <a
+        href="https://github.com/hewliyang/ges-report-to-csv"
+        class="text-blue-600 font-semibold">Repository (PDF Scraper)</a
+      >: Contains miscallaneous scripts used for scraping tables for PDFs
+      sourced from the Ministry of Education
+    </p>
+  </div>
 </section>

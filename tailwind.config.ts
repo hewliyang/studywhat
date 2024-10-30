@@ -1,13 +1,13 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-	content: ["./src/**/*.{html,js,svelte,ts}"],
+  content: ["./src/**/*.{html,js,svelte,ts}"],
 
-	theme: {
-		extend: {},
-	},
+  theme: {
+    extend: {},
+  },
 
-	plugins: [],
+  plugins: [],
 };
 
 export default config;

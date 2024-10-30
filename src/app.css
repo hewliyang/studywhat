@@ -4,36 +4,36 @@
 @tailwind utilities;
 
 kbd {
-	@apply inline-block p-1 bg-gray-100 border border-gray-300 rounded-md shadow-inner font-mono text-xs text-gray-600 opacity-50;
+  @apply inline-block p-1 bg-gray-100 border border-gray-300 rounded-md shadow-inner font-mono text-xs text-gray-600 opacity-50;
 }
 
 /* Modern Scrollbar Design */
 ::-webkit-scrollbar {
-	width: 3px; /* Scrollbar width */
-	height: 3px; /* Scrollbar height */
+  width: 3px; /* Scrollbar width */
+  height: 3px; /* Scrollbar height */
 }
 
 /* Scrollbar Track */
 ::-webkit-scrollbar-track {
-	background-color: transparent; /* Transparent track */
+  background-color: transparent; /* Transparent track */
 }
 
 /* Scrollbar Thumb */
 ::-webkit-scrollbar-thumb {
-	background-color: rgba(160, 160, 160, 0.5); /* Semi-transparent gray color */
-	border-radius: 4px; /* Rounded corners */
+  background-color: rgba(160, 160, 160, 0.5); /* Semi-transparent gray color */
+  border-radius: 4px; /* Rounded corners */
 }
 
 /* Scrollbar Thumb on Hover */
 ::-webkit-scrollbar-thumb:hover {
-	background-color: rgba(
-		120,
-		120,
-		120,
-		0.7
-	); /* Slightly darker gray on hover */
+  background-color: rgba(
+    120,
+    120,
+    120,
+    0.7
+  ); /* Slightly darker gray on hover */
 }
 
 :root {
-	--vis-font-family: monospace;
+  --vis-font-family: monospace;
 }
