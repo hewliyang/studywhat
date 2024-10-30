@@ -174,8 +174,8 @@
 			pagination={false}
 			rowCount={false}
 		>
-			<table>
-				<thead>
+			<table class="text-sm">
+				<thead class="bg-white">
 					<tr>
 						<Th {handler} orderBy="year">Year</Th>
 						<Th {handler} orderBy="gross_monthly_median">Median</Th>
@@ -188,14 +188,26 @@
 				</thead>
 				<tbody>
 					{#each $rows as row}
-						<tr>
-							<td>{row.year}</td>
-							<td>{row.gross_monthly_median.toLocaleString()}</td>
-							<td>{row.gross_mthly_25_percentile.toLocaleString()}</td>
-							<td>{row.gross_mthly_75_percentile.toLocaleString()}</td>
-							<td>{row.gross_monthly_mean.toLocaleString()}</td>
-							<td>{row.employment_rate_overall}%</td>
-							<td>{row.employment_rate_ft_perm}%</td>
+						<tr class="transition-all duration-200 hover:bg-gray-100">
+							<td class="border border-gray-100 px-5 py-1">{row.year}</td>
+							<td class="border border-gray-100 px-5 py-1"
+								>{row.gross_monthly_median.toLocaleString()}</td
+							>
+							<td class="border border-gray-100 px-5 py-1"
+								>{row.gross_mthly_25_percentile.toLocaleString()}</td
+							>
+							<td class="border border-gray-100 px-5 py-1"
+								>{row.gross_mthly_75_percentile.toLocaleString()}</td
+							>
+							<td class="border border-gray-100 px-5 py-1"
+								>{row.gross_monthly_mean.toLocaleString()}</td
+							>
+							<td class="border border-gray-100 px-5 py-1"
+								>{row.employment_rate_overall}%</td
+							>
+							<td class="border border-gray-100 px-5 py-1"
+								>{row.employment_rate_ft_perm}%</td
+							>
 						</tr>
 					{/each}
 				</tbody>
@@ -203,23 +215,3 @@
 		</Datatable>
 	</div>
 </div>
-
-<style>
-	table {
-		font-size: small;
-	}
-
-	thead {
-		background: #fff;
-	}
-	tbody td {
-		border: 1px solid #f5f5f5;
-		padding: 4px 20px;
-	}
-	tbody tr {
-		transition: all, 0.2s;
-	}
-	tbody tr:hover {
-		background: #f5f5f5;
-	}
-</style>

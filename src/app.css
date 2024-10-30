@@ -33,3 +33,7 @@ kbd {
 		0.7
 	); /* Slightly darker gray on hover */
 }
+
+:root {
+	--vis-font-family: monospace;
+}

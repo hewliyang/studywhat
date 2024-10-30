@@ -51,42 +51,66 @@
 
 	<div>
 		<h1 class="text-xl font-semibold mb-2">Data Schema</h1>
-		<table>
-			<thead
-				><tr
-					><th>Title</th><th>Column name</th><th>Data type</th><th
-						>Unit of measure</th
-					><th>Description</th></tr
-				></thead
-			><tbody
-				><tr
-					><td>Year</td><td>year</td><td>Datetime (Year) "YYYY"</td><td>-</td
-					><td>-</td></tr
-				><tr
-					><td>University</td><td>university</td><td>Text (General)</td><td
-						>-</td
-					><td>-</td></tr
-				><tr
-					><td>School</td><td>school</td><td>Text (General)</td><td>-</td><td
-						>-</td
-					></tr
-				><tr
-					><td>Degree</td><td>degree</td><td>Text (General)</td><td>-</td><td
-						>-</td
-					></tr
-				><tr
-					><td>Overall Employment Rate (%)</td><td>employment_rate_overall</td
-					><td>Text (General)</td><td>-</td><td
+		<table
+			class="w-full border-collapse overflow-x-scroll border rounded-[10px]"
+		>
+			<thead class="bg-gray-100">
+				<tr class="text-left">
+					<th class="px-4 py-2">Title</th>
+					<th class="px-4 py-2">Column name</th>
+					<th class="px-4 py-2">Data type</th>
+					<th class="px-4 py-2">Unit of measure</th>
+					<th class="px-4 py-2">Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="border-b">
+					<td class="px-4 py-2">Year</td>
+					<td class="px-4 py-2">year</td>
+					<td class="px-4 py-2">Datetime (Year) "YYYY"</td>
+					<td class="px-4 py-2">-</td>
+					<td class="px-4 py-2">-</td>
+				</tr>
+				<tr class="border-b">
+					<td class="px-4 py-2">University</td>
+					<td class="px-4 py-2">university</td>
+					<td class="px-4 py-2">Text (General)</td>
+					<td class="px-4 py-2">-</td>
+					<td class="px-4 py-2">-</td>
+				</tr>
+				<tr class="border-b">
+					<td class="px-4 py-2">School</td>
+					<td class="px-4 py-2">school</td>
+					<td class="px-4 py-2">Text (General)</td>
+					<td class="px-4 py-2">-</td>
+					<td class="px-4 py-2">-</td>
+				</tr>
+				<tr class="border-b">
+					<td class="px-4 py-2">Degree</td>
+					<td class="px-4 py-2">degree</td>
+					<td class="px-4 py-2">Text (General)</td>
+					<td class="px-4 py-2">-</td>
+					<td class="px-4 py-2">-</td>
+				</tr>
+				<tr class="border-b">
+					<td class="px-4 py-2">Overall Employment Rate (%)</td>
+					<td class="px-4 py-2">employment_rate_overall</td>
+					<td class="px-4 py-2">Text (General)</td>
+					<td class="px-4 py-2">-</td>
+					<td class="px-4 py-2"
 						>Overall employment rate refers to the number of graduates working
 						in full-time permanent, part-time, temporary or freelance basis, as
 						a proportion of graduates in the labour force (i.e. those who were
 						working, or not working but actively looking and available for work)
 						approximately 6 months after completing their final examinations.</td
-					></tr
-				><tr
-					><td>Full-Time Permanent Employment Rate (%)</td><td
-						>employment_rate_ft_perm</td
-					><td>Text (General)</td><td>-</td><td
+					>
+				</tr>
+				<tr class="border-b">
+					<td class="px-4 py-2">Full-Time Permanent Employment Rate (%)</td>
+					<td class="px-4 py-2">employment_rate_ft_perm</td>
+					<td class="px-4 py-2">Text (General)</td>
+					<td class="px-4 py-2">-</td>
+					<td class="px-4 py-2"
 						>Full-time permanent employment rate refers to the number of
 						graduates in employment of at least 35 hours a week and where the
 						employment is not temporary (including contracts of one year or
@@ -94,75 +118,95 @@
 						who were working, or not working but actively looking and available
 						for work) approximately 6 months after completing their final
 						examinations.</td
-					></tr
-				><tr
-					><td>Basic Monthly Salary - Mean (S$)</td><td>basic_monthly_mean</td
-					><td>Text (General)</td><td>-</td><td
+					>
+				</tr>
+				<tr class="border-b">
+					<td class="px-4 py-2">Basic Monthly Salary - Mean (S$)</td>
+					<td class="px-4 py-2">basic_monthly_mean</td>
+					<td class="px-4 py-2">Text (General)</td>
+					<td class="px-4 py-2">-</td>
+					<td class="px-4 py-2"
 						>Basic monthly salary pertains only to full-time permanently
 						employed graduates. It comprises basic pay before deduction of the
 						employee’s CPF contributions and personal income tax. Employer’s CPF
 						contributions, bonuses, stock options, overtime payments,
 						commissions, fixed allowances, other regular cash payments, lump sum
 						payments, and payments-in-kind are excluded.</td
-					></tr
-				><tr
-					><td>Basic Monthly Salary - Median (S$)</td><td
-						>basic_monthly_median</td
-					><td>Text (General)</td><td>-</td><td
+					>
+				</tr>
+				<tr class="border-b">
+					<td class="px-4 py-2">Basic Monthly Salary - Median (S$)</td>
+					<td class="px-4 py-2">basic_monthly_median</td>
+					<td class="px-4 py-2">Text (General)</td>
+					<td class="px-4 py-2">-</td>
+					<td class="px-4 py-2"
 						>Basic monthly salary pertains only to full-time permanently
 						employed graduates. It comprises basic pay before deduction of the
 						employee’s CPF contributions and personal income tax. Employer’s CPF
 						contributions, bonuses, stock options, overtime payments,
 						commissions, fixed allowances, other regular cash payments, lump sum
 						payments, and payments-in-kind are excluded.</td
-					></tr
-				><tr
-					><td>Gross Monthly Salary - Mean (S$)</td><td>gross_monthly_mean</td
-					><td>Text (General)</td><td>-</td><td
+					>
+				</tr>
+				<tr class="border-b">
+					<td class="px-4 py-2">Gross Monthly Salary - Mean (S$)</td>
+					<td class="px-4 py-2">gross_monthly_mean</td>
+					<td class="px-4 py-2">Text (General)</td>
+					<td class="px-4 py-2">-</td>
+					<td class="px-4 py-2"
 						>Gross monthly salary pertains only to full-time permanently
 						employed graduates. It comprises basic salary, overtime payments,
 						commissions, fixed allowances, and other regular cash payments,
 						before deductions of the employee’s CPF contributions and personal
 						income tax. Employer’s CPF contributions, bonuses, stock options,
 						lump sum payments, and payments-in-kind are excluded.</td
-					></tr
-				><tr
-					><td>Gross Monthly Salary - Median (S$)</td><td
-						>gross_monthly_median</td
-					><td>Text (General)</td><td>-</td><td
+					>
+				</tr>
+				<tr class="border-b">
+					<td class="px-4 py-2">Gross Monthly Salary - Median (S$)</td>
+					<td class="px-4 py-2">gross_monthly_median</td>
+					<td class="px-4 py-2">Text (General)</td>
+					<td class="px-4 py-2">-</td>
+					<td class="px-4 py-2"
 						>Gross monthly salary pertains only to full-time permanently
 						employed graduates. It comprises basic salary, overtime payments,
 						commissions, fixed allowances, and other regular cash payments,
 						before deductions of the employee’s CPF contributions and personal
 						income tax. Employer’s CPF contributions, bonuses, stock options,
 						lump sum payments, and payments-in-kind are excluded.</td
-					></tr
-				><tr
-					><td>Gross Monthly Salary - 25th Percentile (S$)</td><td
-						>gross_mthly_25_percentile</td
-					><td>Text (General)</td><td>-</td><td
+					>
+				</tr>
+				<tr class="border-b">
+					<td class="px-4 py-2">Gross Monthly Salary - 25th Percentile (S$)</td>
+					<td class="px-4 py-2">gross_mthly_25_percentile</td>
+					<td class="px-4 py-2">Text (General)</td>
+					<td class="px-4 py-2">-</td>
+					<td class="px-4 py-2"
 						>Gross monthly salary pertains only to full-time permanently
 						employed graduates. It comprises basic salary, overtime payments,
 						commissions, fixed allowances, and other regular cash payments,
 						before deductions of the employee’s CPF contributions and personal
 						income tax. Employer’s CPF contributions, bonuses, stock options,
 						lump sum payments, and payments-in-kind are excluded.</td
-					></tr
-				><tr
-					><td>Gross Monthly Salary - 75th Percentile (S$)</td><td
-						>gross_mthly_75_percentile</td
-					><td>Text (General)</td><td>-</td><td
+					>
+				</tr>
+				<tr class="border-b">
+					<td class="px-4 py-2">Gross Monthly Salary - 75th Percentile (S$)</td>
+					<td class="px-4 py-2">gross_mthly_75_percentile</td>
+					<td class="px-4 py-2">Text (General)</td>
+					<td class="px-4 py-2">-</td>
+					<td class="px-4 py-2"
 						>Gross monthly salary pertains only to full-time permanently
 						employed graduates. It comprises basic salary, overtime payments,
 						commissions, fixed allowances, and other regular cash payments,
 						before deductions of the employee’s CPF contributions and personal
 						income tax. Employer’s CPF contributions, bonuses, stock options,
 						lump sum payments, and payments-in-kind are excluded.</td
-					></tr
-				></tbody
-			>
+					>
+				</tr>
+			</tbody>
 		</table>
-		<p>
+		<p class="text-pretty text-gray-500 italic mt-3">
 			**For caveats related to individual datasets, refer to the source material
 			from MOE as they vary over time. In general, data on law, medicine,
 			pharmacy and architecture graduates are obtained from a follow-up survey
@@ -216,58 +260,3 @@
 		</p>
 	</div>
 </section>
-
-<style>
-	table {
-		width: 100%;
-		border-collapse: collapse;
-		border-radius: 10px;
-		overflow-x: scroll;
-	}
-
-	@media (max-width: 767px) {
-		table {
-			max-width: 100%;
-			margin: 0;
-			display: block;
-			overflow-x: auto;
-			white-space: nowrap;
-		}
-	}
-
-	th,
-	td {
-		padding: 8px;
-		text-align: left;
-		border-bottom: 1px solid #ddd;
-	}
-
-	th {
-		background-color: #f2f2f2;
-		font-weight: bold;
-	}
-
-	tr:nth-child(even) {
-		background-color: #f2f2f2;
-	}
-
-	tr:hover {
-		background-color: #e6e6e6;
-	}
-
-	th:first-child {
-		border-top-left-radius: 10px;
-	}
-
-	th:last-child {
-		border-top-right-radius: 10px;
-	}
-
-	tr:last-child td:first-child {
-		border-bottom-left-radius: 10px;
-	}
-
-	tr:last-child td:last-child {
-		border-bottom-right-radius: 10px;
-	}
-</style>

@@ -2,7 +2,6 @@
 	import { CurveType } from "@unovis/ts";
 	import { long2short } from "$lib/constants";
 	import { VisXYContainer, VisArea, VisLine } from "@unovis/svelte";
-
 	import type { WinnersRecord, YearlyRecord } from "$lib/types";
 
 	export let record: WinnersRecord;

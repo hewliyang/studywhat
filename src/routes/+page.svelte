@@ -174,8 +174,8 @@
 		</div>
 	</div>
 	<Datatable {handler} search={false} rowsPerPage={false}>
-		<table>
-			<thead>
+		<table class="text-sm border-separate">
+			<thead class="bg-white">
 				<tr>
 					<Th {handler} orderBy={(row) => long2short[row.university]}
 						>University</Th
@@ -193,41 +193,30 @@
 			</thead>
 			<tbody>
 				{#each $rows as row}
-					<tr>
-						<td>{long2short[row.university]}</td>
-						<td
+					<tr class="transition-all duration-200 hover:bg-gray-100">
+						<td class="border border-gray-100 px-5 py-1"
+							>{long2short[row.university]}</td
+						>
+						<td class="border border-gray-100 px-5 py-1"
 							><a href="/degree/{row.slug}" class="underline text-blue-600">
 								{row.degree}
 							</a>
 						</td>
-						<td>${row.gross_monthly_median.toLocaleString()}</td>
-						<td>${row.gross_mthly_25_percentile.toLocaleString()}</td>
-						<td>${row.gross_mthly_75_percentile.toLocaleString()}</td>
-						<td>{row.employment_rate_overall}%</td>
+						<td class="border border-gray-100 px-5 py-1"
+							>${row.gross_monthly_median.toLocaleString()}</td
+						>
+						<td class="border border-gray-100 px-5 py-1"
+							>${row.gross_mthly_25_percentile.toLocaleString()}</td
+						>
+						<td class="border border-gray-100 px-5 py-1"
+							>${row.gross_mthly_75_percentile.toLocaleString()}</td
+						>
+						<td class="border border-gray-100 px-5 py-1"
+							>{row.employment_rate_overall}%</td
+						>
 					</tr>
 				{/each}
 			</tbody>
 		</table>
 	</Datatable>
 </section>
-
-<style>
-	table {
-		font-size: small;
-		border-collapse: separate;
-	}
-
-	thead {
-		background: #fff;
-	}
-	tbody td {
-		border: 1px solid #f5f5f5;
-		padding: 4px 20px;
-	}
-	tbody tr {
-		transition: all, 0.2s;
-	}
-	tbody tr:hover {
-		background: #f5f5f5;
-	}
-</style>
