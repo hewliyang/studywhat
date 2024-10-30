@@ -1,6 +1,5 @@
 <script lang="ts">
 	import "../app.css";
-	import "@fontsource-variable/inter";
 	import Analytics from "$lib/components/Umami.svelte";
 	import Search from "$lib/components/Search.svelte";
 	import { Database, Github, Home } from "lucide-svelte";

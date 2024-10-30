@@ -1,7 +1,22 @@
-import saveAs from "file-saver";
 import { browser } from "$app/environment";
 
-export function downloadAsJSON(rows: any[], fileName: string = "data") {
+function saveAs(url: string, fileName: string) {
+	if (!browser) return;
+	const a = document.createElement("a");
+	a.href = url;
+	a.download = fileName;
+	document.body.appendChild(a);
+	a.click();
+	document.body.removeChild(a);
+	URL.revokeObjectURL(url);
+}
+
+const DEFAULT_FILE_NAME = "data";
+
+export function downloadAsJSON(
+	rows: any[],
+	fileName: string = DEFAULT_FILE_NAME
+) {
 	if (!browser) return;
 
 	const blob = new Blob([JSON.stringify(rows, null, 4)], {
@@ -11,7 +26,10 @@ export function downloadAsJSON(rows: any[], fileName: string = "data") {
 	saveAs(url, `${fileName}.json`);
 }
 
-export function downloadAsCSV(rows: any[], fileName: string = "data") {
+export function downloadAsCSV(
+	rows: any[],
+	fileName: string = DEFAULT_FILE_NAME
+) {
 	if (!browser) return;
 	if (rows.length === 0) return;
 	const headers = Object.keys(rows[0]).join(",");
@@ -31,6 +49,21 @@ export function downloadAsCSV(rows: any[], fileName: string = "data") {
 	saveAs(url, `${fileName}.csv`);
 }
 
-export function downloadFromURL(url: string, fileName: string = "studywhat") {
-	saveAs(url, `${fileName}.json`);
+export async function downloadFromURL(
+	url: string,
+	fileName: string = "studywhat"
+) {
+	if (!browser) return;
+
+	const response = await fetch(url);
+	if (!response.ok) {
+		throw new Error(`Failed to fetch data from ${url}`);
+	}
+
+	const data = await response.json();
+	const blob = new Blob([JSON.stringify(data, null, 4)], {
+		type: "application/json",
+	});
+	const blobUrl = URL.createObjectURL(blob);
+	saveAs(blobUrl, `${fileName}.json`);
 }

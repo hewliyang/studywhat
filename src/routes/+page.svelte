@@ -170,7 +170,7 @@
 		<Table class="h-6 w-6 mr-2" />
 		<h3 class="font-semibold text-lg">Data Table</h3>
 		<div class="ml-auto">
-			<Export rows={data.top} fileName={String(selectedYr)} />
+			<Export rows={data.top} file_name={String(selectedYr)} />
 		</div>
 	</div>
 	<Datatable {handler} search={false} rowsPerPage={false}>

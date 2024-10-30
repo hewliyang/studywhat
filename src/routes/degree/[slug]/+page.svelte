@@ -164,7 +164,7 @@
 			<Table class="h-5 w-5 mr-2" />
 			<h4 class="font-semibold">Data Table</h4>
 			<div class="ml-auto">
-				<Download rows={$rows} fileName={data.degree.slug} />
+				<Download rows={$rows} file_name={data.degree.slug} />
 			</div>
 		</div>
 		<Datatable
