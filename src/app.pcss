@@ -1,35 +1,59 @@
-/* Write your global styles here, in PostCSS syntax */
+@import "@fontsource-variable/outfit";
+@import "@fontsource-variable/dm-sans";
+@import "@fontsource-variable/jetbrains-mono";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+	html {
+		background-color: #FAFAF7;
+		color: #1a1a1a;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+
+	body {
+		font-feature-settings: "ss01", "ss02", "cv01";
+	}
+
+	/* Tabular figures for data */
+	.font-mono, td, th {
+		font-variant-numeric: tabular-nums;
+	}
+}
+
 kbd {
-	@apply inline-block p-1 bg-gray-100 border border-gray-300 rounded-md shadow-inner font-mono text-xs text-gray-600 opacity-50;
+	@apply inline-block px-1.5 py-0.5 bg-surface border border-border rounded font-mono text-[10px] text-muted;
 }
 
-/* Modern Scrollbar Design */
+/* Modern Scrollbar */
 ::-webkit-scrollbar {
-	width: 3px; /* Scrollbar width */
-	height: 3px; /* Scrollbar height */
+	width: 4px;
+	height: 4px;
 }
-
-/* Scrollbar Track */
 ::-webkit-scrollbar-track {
-	background-color: transparent; /* Transparent track */
+	background-color: transparent;
 }
-
-/* Scrollbar Thumb */
 ::-webkit-scrollbar-thumb {
-	background-color: rgba(160, 160, 160, 0.5); /* Semi-transparent gray color */
-	border-radius: 4px; /* Rounded corners */
+	background-color: rgba(160, 160, 160, 0.4);
+	border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+	background-color: rgba(120, 120, 120, 0.6);
 }
 
-/* Scrollbar Thumb on Hover */
-::-webkit-scrollbar-thumb:hover {
-	background-color: rgba(
-		120,
-		120,
-		120,
-		0.7
-	); /* Slightly darker gray on hover */
+/* vincjo/datatables overrides */
+:global(.dt-pagination) {
+	@apply flex items-center justify-center gap-1 py-3 text-sm;
+}
+:global(.dt-pagination button) {
+	@apply px-2.5 py-1 rounded text-muted hover:text-ink hover:bg-surface-hover transition-colors font-mono text-xs;
+}
+:global(.dt-pagination button.active) {
+	@apply text-ink font-semibold bg-surface-hover;
+}
+:global(.dt-pagination button:disabled) {
+	@apply opacity-30 cursor-not-allowed;
 }

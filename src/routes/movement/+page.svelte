@@ -2,20 +2,12 @@
 	import { goto } from "$app/navigation";
 	import { YEARS, long2short } from "$lib/constants";
 	import {
-		Activity,
-		ArrowDownWideNarrow,
-		ArrowUpWideNarrow,
+		Minus,
+		Plus,
+		TrendingUp,
+		TrendingDown,
 	} from "lucide-svelte";
-	import {
-		Axis,
-		Direction,
-		Orientation,
-		StackedBar,
-		Tooltip,
-		type XYContainerConfigInterface,
-	} from "@unovis/ts";
 	import type { PageData } from "./$types";
-	import UnovisXYChart from "$lib/components/charts/UnovisXYChart.svelte";
 
 	let { data }: { data: PageData } = $props();
 	let selectedMetric = $state<PageData["metric"]>("gross_monthly_median");
@@ -29,59 +21,11 @@
 		{ name: "Basic Monthly Median", value: "basic_monthly_median" },
 		{ name: "Gross Monthly Mean", value: "gross_monthly_mean" },
 		{ name: "Gross Monthly Median", value: "gross_monthly_median" },
-		{
-			name: "Gross Monthly, 25th Percentile",
-			value: "gross_mthly_25_percentile",
-		},
-		{
-			name: "Gross Monthly, 75th Percentile",
-			value: "gross_mthly_75_percentile",
-		},
+		{ name: "Gross Monthly P25", value: "gross_mthly_25_percentile" },
+		{ name: "Gross Monthly P75", value: "gross_mthly_75_percentile" },
 	];
 
-	type BarDatum = {
-		x: string;
-		y: number;
-	};
-
-	const barData = $derived([
-		{ x: "Loss", y: data.worst.length },
-		{ x: "Gain", y: data.best.length },
-	]);
-	const x = (_: BarDatum, i: number) => i;
-	const y = (d: BarDatum) => d.y;
-
-	const tickFormat = (tick: number | Date) =>
-		typeof tick === "number" ? barData[tick]?.x ?? "" : "";
-	const color = (d: BarDatum, i: number) => (d.x === "Gain" ? "green" : "red");
-	const triggers = {
-		[StackedBar.selectors.bar]: (d: { datum?: BarDatum }) => {
-			const bar = d?.datum;
-			if (!bar) return undefined;
-			return `<div>${bar.x}: ${bar.y}</div>`;
-		},
-	};
-
-	const getSummaryChartConfig = $derived.by<
-		() => XYContainerConfigInterface<BarDatum>
-	>(() => () => ({
-		height: 60,
-		yDirection: Direction.South,
-		components: [
-			new StackedBar<BarDatum>({
-				orientation: Orientation.Horizontal,
-				barPadding: -0.4,
-				x,
-				y,
-				color,
-			}),
-		],
-		tooltip: new Tooltip({ triggers }),
-		yAxis: new Axis<BarDatum>({
-			gridLine: false,
-			tickFormat,
-		}),
-	}));
+	const maxLag = $derived(Math.max(1, selectedYear - Math.min(...YEARS)));
 
 	$effect(() => {
 		selectedMetric = data.metric;
@@ -89,157 +33,406 @@
 		selectedLag = data.lag;
 	});
 
+	function buildUrl(year: number = selectedYear, lag: number = selectedLag) {
+		const params = new URLSearchParams();
+		params.set("year", String(year));
+		if (lag > 1) params.set("lag", String(lag));
+		if (selectedMetric !== "gross_monthly_median") params.set("metric", selectedMetric);
+		return `/movement/?${params.toString()}`;
+	}
+
 	function handleChange() {
-		goto(`/movement/?year=${selectedYear}&lag=${selectedLag}&metric=${selectedMetric}`);
+		goto(buildUrl());
+	}
+
+	function handleYearStep(delta: number) {
+		const next = Math.min(Math.max(selectedYear + delta, YEARS[0]), YEARS[YEARS.length - 1]);
+		if (next !== selectedYear) {
+			selectedYear = next;
+			// clamp lag to new max
+			const newMaxLag = Math.max(1, next - Math.min(...YEARS));
+			if (selectedLag > newMaxLag) selectedLag = newMaxLag;
+			goto(buildUrl(next, selectedLag));
+		}
+	}
+
+	function handleLagStep(delta: number) {
+		const next = Math.min(Math.max(selectedLag + delta, 1), maxLag);
+		if (next !== selectedLag) {
+			selectedLag = next;
+			goto(buildUrl(selectedYear, next));
+		}
 	}
 </script>
 
 <svelte:head>
-	<title>Movement</title>
-	<meta
-		name="description"
-		content="Analyse changes in employment trends over time in a stock screener style"
-	/>
+	<title>Movement | StudyWhat</title>
+	<meta name="description" content="Analyse changes in employment trends over time" />
 </svelte:head>
 
-<div class="space-y-3">
-	<div class="flex items-center mt-1">
-		<Activity class="h-6 w-6 mr-2" />
-		<h1 class="font-semibold text-xl">Movement</h1>
+<div class="space-y-6">
+	<!-- Controls -->
+	<div>
+		<h1 class="text-sm font-semibold text-ink tracking-tight mb-4">Movement</h1>
+		<div class="flex flex-wrap items-end gap-4">
+			<div class="control-group">
+				<label for="metric" class="control-label">Metric</label>
+				<select
+					name="metric"
+					bind:value={selectedMetric}
+					onchange={handleChange}
+					class="control-input"
+				>
+					{#each metricOpts as { name, value }}
+						<option {value} selected={value === selectedMetric}>{name}</option>
+					{/each}
+				</select>
+			</div>
+
+			<div class="control-group">
+				<label for="year" class="control-label">Year</label>
+				<div class="stepper-row">
+					<button
+						class="stepper-btn stepper-btn-left"
+						disabled={selectedYear <= YEARS[0]}
+						onclick={() => handleYearStep(-1)}
+						aria-label="Previous year"
+					>
+						<Minus class="h-3 w-3" />
+					</button>
+					<select
+						name="year"
+						bind:value={selectedYear}
+						onchange={handleChange}
+						class="stepper-select"
+					>
+						{#each YEARS as _year}
+							<option value={_year} selected={_year === selectedYear}>{_year}</option>
+						{/each}
+					</select>
+					<button
+						class="stepper-btn stepper-btn-right"
+						disabled={selectedYear >= YEARS[YEARS.length - 1]}
+						onclick={() => handleYearStep(1)}
+						aria-label="Next year"
+					>
+						<Plus class="h-3 w-3" />
+					</button>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label for="lag" class="control-label">Lag</label>
+				<div class="stepper-row">
+					<button
+						class="stepper-btn stepper-btn-left"
+						disabled={selectedLag <= 1}
+						onclick={() => handleLagStep(-1)}
+						aria-label="Decrease lag"
+					>
+						<Minus class="h-3 w-3" />
+					</button>
+					<span class="stepper-value">{selectedLag}</span>
+					<button
+						class="stepper-btn stepper-btn-right"
+						disabled={selectedLag >= maxLag}
+						onclick={() => handleLagStep(1)}
+						aria-label="Increase lag"
+					>
+						<Plus class="h-3 w-3" />
+					</button>
+				</div>
+			</div>
+		</div>
 	</div>
-	<div class="grid grid-cols-1 md:grid-cols-4 gap-2 md:gap-6 items-center">
-		<!-- metric input -->
-		<div class="flex flex-col">
-			<label for="metric" class="text-sm font-semibold">Metric</label>
-			<select
-				name="metric"
-				bind:value={selectedMetric}
-				onchange={handleChange}
-				class="text-sm inline-block p-1 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full md:w-auto"
-			>
-				{#each metricOpts as { name, value }}
-					{@const selected = value === selectedMetric}
-					<option {value} {selected}>{name}</option>
-				{/each}
-			</select>
+
+	<!-- Summary -->
+	<div class="flex gap-4 text-xs font-mono">
+		<span class="flex items-center gap-1.5 text-gain">
+			<TrendingUp class="h-3.5 w-3.5" />
+			{data.best.length} winners
+		</span>
+		<span class="flex items-center gap-1.5 text-loss">
+			<TrendingDown class="h-3.5 w-3.5" />
+			{data.worst.length} losers
+		</span>
+	</div>
+
+	<!-- Tables -->
+	<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+		<!-- Winners -->
+		<div class="space-y-2">
+			<div class="flex items-center gap-2">
+				<TrendingUp class="h-4 w-4 text-gain" />
+				<h2 class="text-xs font-heading font-semibold text-ink uppercase tracking-wide">Winners</h2>
+			</div>
+			{#if data.best.length > 0}
+				<div class="movement-table-wrap">
+					<table>
+						<thead>
+							<tr>
+								<th>Uni</th>
+								<th>Degree</th>
+								<th class="text-right">Gain</th>
+							</tr>
+						</thead>
+						<tbody>
+							{#each data.best as row}
+								<tr>
+									<td class="uni-cell">{long2short[row.university]}</td>
+									<td class="degree-cell">
+										<a href="/degree/{row.slug}">{row.degree}</a>
+										{#if row.school}
+											<span class="school-tag">{row.school}</span>
+										{/if}
+									</td>
+									<td class="change-cell gain">+{row.pctChange.toFixed(1)}%</td>
+								</tr>
+							{/each}
+						</tbody>
+					</table>
+				</div>
+			{:else}
+				<p class="text-xs text-muted py-4">No winners for this period.</p>
+			{/if}
 		</div>
 
-		<!-- year select -->
-		<div class="flex flex-col">
-			<label for="year" class="text-sm font-semibold">Reference Year</label>
-			<select
-				name="year"
-				bind:value={selectedYear}
-				onchange={handleChange}
-				class="text-sm inline-block p-1 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full md:w-auto"
-			>
-				{#each YEARS as _year}
-					{@const selected = _year === selectedYear}
-					<option value={_year} {selected}>{_year}</option>
-				{/each}
-			</select>
-		</div>
-
-		<!-- lag input -->
-		<div class="flex flex-col">
-			<label for="lag" class="text-sm font-semibold">Time Lag (years)</label>
-			<input
-				name="lag"
-				type="number"
-				bind:value={selectedLag}
-				onchange={handleChange}
-				min="1"
-				class="text-sm inline-block p-1 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full md:w-auto"
-			/>
-		</div>
-		<div>
-			<h1 class="font-semibold mb-1 text-sm">Winners and Losers</h1>
-			<UnovisXYChart data={barData} getConfig={getSummaryChartConfig} />
+		<!-- Losers -->
+		<div class="space-y-2">
+			<div class="flex items-center gap-2">
+				<TrendingDown class="h-4 w-4 text-loss" />
+				<h2 class="text-xs font-heading font-semibold text-ink uppercase tracking-wide">Losers</h2>
+			</div>
+			{#if data.worst.length > 0}
+				<div class="movement-table-wrap">
+					<table>
+						<thead>
+							<tr>
+								<th>Uni</th>
+								<th>Degree</th>
+								<th class="text-right">Loss</th>
+							</tr>
+						</thead>
+						<tbody>
+							{#each data.worst as row}
+								<tr>
+									<td class="uni-cell">{long2short[row.university]}</td>
+									<td class="degree-cell">
+										<a href="/degree/{row.slug}">{row.degree}</a>
+										{#if row.school}
+											<span class="school-tag">{row.school}</span>
+										{/if}
+									</td>
+									<td class="change-cell loss">{row.pctChange.toFixed(1)}%</td>
+								</tr>
+							{/each}
+						</tbody>
+					</table>
+				</div>
+			{:else}
+				<p class="text-xs text-muted py-4">No losers for this period.</p>
+			{/if}
 		</div>
 	</div>
 </div>
 
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
-	<div class="space-y-2">
-		<div class="flex items-center">
-			<ArrowUpWideNarrow class="h-6 w-6 mr-2" />
-			<h2 class="font-semibold text-lg">Winners</h2>
-		</div>
-		{#if data.best.length > 0}
-			<table class="text-xs rounded-md overflow-x-auto border border-collapse">
-				<thead>
-					<tr class="text-left">
-						<th class="px-3 py-2">University</th>
-						<th class="px-3 py-2">School</th>
-						<th class="px-3 py-2">Degree</th>
-						<th class="px-3 py-2">Gain (%)</th>
-					</tr>
-				</thead>
-				<tbody>
-					{#each data.best as row}
-						<tr class="hover:bg-gray-100 transition-all duration-200">
-							<td class="px-3 py-1 border-b border-gray-300"
-								>{long2short[row.university]}</td
-							>
-							<td class="px-3 py-1 border-b border-gray-300"
-								>{row.school ?? "-"}</td
-							>
-							<td class="px-3 py-1 border-b border-gray-300">
-								<a href="/degree/{row.slug}" class="text-blue-500 underline"
-									>{row.degree}</a
-								>
-							</td>
-							<td
-								class="px-3 py-1 border-b border-gray-300 text-green-500 font-bold"
-								>{row.pctChange.toFixed(2)}</td
-							>
-						</tr>
-					{/each}
-				</tbody>
-			</table>
-		{:else}
-			<div>😢 no winners 😢</div>
-		{/if}
-	</div>
-	<div class="space-y-2">
-		<div class="flex items-center">
-			<ArrowDownWideNarrow class="h-6 w-6 mr-2" />
-			<h2 class="font-semibold text-lg">Losers</h2>
-		</div>
-		{#if data.worst.length > 0}
-			<table class="text-xs rounded-md overflow-x-auto border border-collapse">
-				<thead>
-					<tr class="text-left">
-						<th class="px-3 py-2">University</th>
-						<th class="px-3 py-2">School</th>
-						<th class="px-3 py-2">Degree</th>
-						<th class="px-3 py-2">Loss (%)</th>
-					</tr>
-				</thead>
-				<tbody>
-					{#each data.worst as row}
-						<tr class="hover:bg-gray-100 transition-all duration-200">
-							<td class="px-3 py-1 border-b border-gray-300"
-								>{long2short[row.university]}</td
-							>
-							<td class="px-3 py-1 border-b border-gray-300"
-								>{row.school ?? "-"}</td
-							>
-							<td class="px-3 py-1 border-b border-gray-300">
-								<a href="/degree/{row.slug}" class="text-blue-500 underline"
-									>{row.degree}</a
-								>
-							</td>
-							<td
-								class="px-3 py-1 border-b border-gray-300 text-red-500 font-bold"
-								>{row.pctChange.toFixed(2)}</td
-							>
-						</tr>
-					{/each}
-				</tbody>
-			</table>
-		{:else}
-			<div>🎉 no losers 🎉</div>
-		{/if}
-	</div>
-</div>
+<style>
+	.control-group {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+	}
+
+	.control-label {
+		font-family: 'DM Sans', system-ui, sans-serif;
+		font-size: 10px;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		color: #71717a;
+	}
+
+	.control-input {
+		font-size: 12px;
+		font-family: inherit;
+		padding: 6px 8px;
+		border: 1px solid #e8e5df;
+		border-radius: 6px;
+		background: #ffffff;
+		color: #1a1a1a;
+	}
+
+	.control-input:focus {
+		outline: none;
+		border-color: #2563eb;
+		box-shadow: 0 0 0 1px #2563eb;
+	}
+
+	.movement-table-wrap {
+		overflow-x: auto;
+		border: 1px solid #e8e5df;
+		border-radius: 8px;
+		background: #ffffff;
+	}
+
+	table {
+		width: 100%;
+		font-size: 11px;
+		border-collapse: collapse;
+	}
+
+	thead tr {
+		border-bottom: 2px solid #e8e5df;
+	}
+
+	th {
+		padding: 6px 10px;
+		font-family: 'DM Sans', system-ui, sans-serif;
+		font-size: 9px;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		color: #71717a;
+		text-align: left;
+		white-space: nowrap;
+		background: #FAFAF7;
+	}
+
+	tbody tr {
+		border-bottom: 1px solid #f0efe9;
+		transition: background 0.1s;
+	}
+
+	tbody tr:last-child {
+		border-bottom: none;
+	}
+
+	tbody tr:hover {
+		background: #f5f4f0;
+	}
+
+	td {
+		padding: 5px 10px;
+	}
+
+	.uni-cell {
+		font-weight: 500;
+		font-size: 10px;
+		white-space: nowrap;
+		color: #71717a;
+	}
+
+	.degree-cell {
+		max-width: 200px;
+	}
+
+	.degree-cell a {
+		color: #1a1a1a;
+		text-decoration: none;
+		border-bottom: 1px solid transparent;
+		transition: border-color 0.15s;
+	}
+
+	.degree-cell a:hover {
+		border-bottom-color: #2563eb;
+		color: #2563eb;
+	}
+
+	.school-tag {
+		display: block;
+		font-size: 9px;
+		color: #a1a19a;
+		margin-top: 1px;
+	}
+
+	.change-cell {
+		font-family: 'JetBrains Mono', monospace;
+		font-size: 11px;
+		font-weight: 600;
+		text-align: right;
+		white-space: nowrap;
+	}
+
+	.change-cell.gain {
+		color: #16a34a;
+	}
+
+	.change-cell.loss {
+		color: #dc2626;
+	}
+
+	.stepper-row {
+		display: flex;
+		align-items: center;
+	}
+
+	.stepper-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 28px;
+		height: 30px;
+		border: 1px solid #e8e5df;
+		background: #ffffff;
+		color: #71717a;
+		cursor: pointer;
+		transition: all 0.15s;
+	}
+
+	.stepper-btn-left {
+		border-radius: 6px 0 0 6px;
+	}
+
+	.stepper-btn-right {
+		border-radius: 0 6px 6px 0;
+		border-left: none;
+	}
+
+	.stepper-btn:hover:not(:disabled) {
+		border-color: #d4d3cd;
+		color: #1a1a1a;
+		background: #f5f4f0;
+	}
+
+	.stepper-btn:disabled {
+		opacity: 0.35;
+		cursor: not-allowed;
+	}
+
+	.stepper-select {
+		font-size: 12px;
+		font-family: 'JetBrains Mono', ui-monospace, monospace;
+		padding: 3px 6px;
+		height: 30px;
+		border-top: 1px solid #e8e5df;
+		border-bottom: 1px solid #e8e5df;
+		border-left: none;
+		border-right: none;
+		background: #ffffff;
+		color: #1a1a1a;
+		appearance: none;
+		text-align: center;
+		min-width: 56px;
+	}
+
+	.stepper-select:focus {
+		outline: none;
+		border-color: #2563eb;
+		box-shadow: 0 0 0 1px #2563eb;
+	}
+
+	.stepper-value {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 12px;
+		font-family: 'JetBrains Mono', ui-monospace, monospace;
+		height: 30px;
+		min-width: 36px;
+		border-top: 1px solid #e8e5df;
+		border-bottom: 1px solid #e8e5df;
+		background: #ffffff;
+		color: #1a1a1a;
+		text-align: center;
+	}
+</style>

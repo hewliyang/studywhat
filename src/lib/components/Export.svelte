@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { downloadAsCSV, downloadAsJSON } from "$lib/download";
-	import { FileJson, Sheet } from "lucide-svelte";
 
 	let {
 		rows,
@@ -8,19 +7,17 @@
 	}: { rows: readonly unknown[]; fileName: string } = $props();
 </script>
 
-<div class="flex gap-2 items-center">
+<div class="flex gap-1.5 items-center">
 	<button
-		class="flex px-2 py-1 rounded-lg border items-center text-sm"
+		class="flex items-center gap-1 px-2 py-0.5 text-[10px] font-mono text-muted border border-border rounded hover:border-border-dark hover:text-ink transition-all"
 		onclick={() => downloadAsJSON(Array.from(rows), fileName)}
 	>
-		<FileJson class="h-4 w-4 mr-2" />
 		JSON
 	</button>
 	<button
-		class="flex px-2 py-1 rounded-lg border items-center text-sm"
+		class="flex items-center gap-1 px-2 py-0.5 text-[10px] font-mono text-muted border border-border rounded hover:border-border-dark hover:text-ink transition-all"
 		onclick={() => downloadAsCSV(Array.from(rows), fileName)}
 	>
-		<Sheet class="h-4 w-4 mr-2" />
 		CSV
 	</button>
 </div>

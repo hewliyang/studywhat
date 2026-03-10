@@ -9,12 +9,14 @@
 		overlay,
 		class: className = "",
 		chartClass = "",
+		height,
 	}: {
 		data?: unknown[];
 		getConfig: () => XYContainerConfigInterface<any>;
 		overlay?: Snippet;
 		class?: string;
 		chartClass?: string;
+		height?: number;
 	} = $props();
 
 	let container: HTMLDivElement | undefined;
@@ -25,7 +27,7 @@
 		if (!container) return;
 		chart?.destroy();
 		container.replaceChildren();
-		chart = new XYContainer(container, getConfig(), data);
+		chart = new XYContainer(container, { ...getConfig(), duration: 0 }, data);
 	}
 
 	function scheduleMount() {
@@ -54,7 +56,7 @@
 </script>
 
 <div class={`unovis-chart ${className}`}>
-	<div bind:this={container} class={`unovis-chart-surface ${chartClass}`}></div>
+	<div bind:this={container} class={`unovis-chart-surface ${chartClass}`} style:min-height={height ? `${height}px` : undefined}></div>
 	{#if overlay}
 		<div class="unovis-chart-overlay">
 			{@render overlay()}

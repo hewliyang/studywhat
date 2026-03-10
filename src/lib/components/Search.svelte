@@ -38,10 +38,7 @@
 
 <svelte:window
 	onkeydown={(e) => {
-		if (e.key === "Escape") {
-			hide();
-		}
-
+		if (e.key === "Escape") hide();
 		if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
 			visible = true;
 			e.preventDefault();
@@ -50,60 +47,52 @@
 />
 
 <form action="/search" method="GET" class="relative">
-	<div
-		class="flex items-center border border-gray-300 p-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 placeholder-transparent"
-	>
-		<div class="px-2">
-			<Search class="h-4 w-4" />
-		</div>
+	<div class="search-trigger">
+		<Search class="h-3.5 w-3.5 text-muted" />
 		<input
 			name="q"
 			type="search"
 			onclick={show}
 			oninput={show}
 			value={query}
+			placeholder="Search degrees..."
+			class="search-input"
 		/>
 		{#if browser && !query && !visible}
-			{#if navigator.userAgent.includes("Macintosh")}
-				<span
-					class="absolute inset-y-0 left-0 right-0 flex items-center justify-center text-gray-500 pointer-events-none"
-					><kbd>Cmd</kbd> + <kbd>K</kbd></span
-				>
-			{:else}
-				<span
-					class="absolute inset-y-0 left-0 right-0 flex items-center justify-center text-gray-500 pointer-events-none"
-					><kbd>Ctrl</kbd> + <kbd>K</kbd></span
-				>
-			{/if}
+			<span class="shortcut-hint">
+				{#if navigator.userAgent.includes("Macintosh")}
+					<kbd>⌘</kbd><kbd>K</kbd>
+				{:else}
+					<kbd>Ctrl</kbd><kbd>K</kbd>
+				{/if}
+			</span>
 		{/if}
 	</div>
 </form>
 
 {#if visible}
-	<div class="modal-background" role="presentation" onclick={hide}>
-		<div class="search">
+	<div class="modal-bg" role="presentation" onclick={hide}>
+		<div class="search-modal">
 			<form action="/search" method="get">
 				<input
-					placeholder="search"
+					placeholder="Search degrees…"
 					type="search"
 					name="q"
 					value={query}
 					oninput={async (e) => {
 						query = e.currentTarget.value.toLowerCase();
-
 						if (query === "") {
 							results = [];
 							return;
 						}
-
 						results = local
 							? search(local, query)
 							: await fetch(`/api/search?q=${query}`).then((r) => r.json());
 					}}
 					use:focus
+					class="modal-input"
 				/>
-
-				<div style="padding: 1rem">
+				<div class="p-3">
 					<SearchResults degrees={results} />
 				</div>
 			</form>
@@ -112,43 +101,79 @@
 {/if}
 
 <style>
-	input {
-		font: inherit;
-		width: 100%;
+	.search-trigger {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		padding: 5px 10px;
+		border: 1px solid #e8e5df;
+		border-radius: 6px;
+		background: #ffffff;
+		transition: border-color 0.15s;
 	}
 
-	.modal-background {
+	.search-trigger:focus-within {
+		border-color: #d4d0c8;
+	}
+
+	.search-input {
+		font-family: inherit;
+		font-size: 12px;
+		border: none;
+		outline: none;
+		background: transparent;
+		width: 120px;
+		color: #1a1a1a;
+	}
+
+	.search-input::placeholder {
+		color: #a1a19a;
+	}
+
+	.shortcut-hint {
+		display: flex;
+		align-items: center;
+		gap: 2px;
+		margin-left: auto;
+	}
+
+	.modal-bg {
 		position: fixed;
 		top: 0;
 		left: 0;
 		width: 100vw;
 		height: 100vh;
-		padding: 0.5rem;
-		background: hsla(0, 100%, 100%, 0.9);
+		background: rgba(250, 250, 247, 0.92);
+		backdrop-filter: blur(4px);
 		z-index: 100;
 		overflow: hidden;
-		box-sizing: border-box;
 	}
 
-	.search {
-		background: white;
+	.search-modal {
+		background: #ffffff;
 		width: 100%;
-		max-width: 600px;
-		max-height: 90vh;
+		max-width: 520px;
+		max-height: 80vh;
 		overflow: auto;
-		margin: 20px auto;
-		border: solid 1px #ccc;
+		margin: 60px auto;
+		border: 1px solid #e8e5df;
 		border-radius: 10px;
-		box-shadow: 0 0 10px #ccc;
+		box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
 	}
 
-	.search input {
-		padding: 0.5rem 1rem;
-		font-size: 1.5em;
-		position: sticky;
-		top: 0;
+	.modal-input {
+		width: 100%;
+		padding: 14px 16px;
+		font-family: inherit;
+		font-size: 15px;
 		border: none;
-		border-bottom: solid 1px #ccc;
+		border-bottom: 1px solid #e8e5df;
 		outline: none;
+		background: transparent;
+		color: #1a1a1a;
+	}
+
+	.modal-input::placeholder {
+		color: #a1a19a;
 	}
 </style>

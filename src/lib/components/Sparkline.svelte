@@ -10,8 +10,8 @@
 		refYear?: number;
 	} = $props();
 
-	const WIDTH = 144;
-	const HEIGHT = 44;
+	const WIDTH = 120;
+	const HEIGHT = 36;
 	const PADDING = 2;
 
 	const salaryData = $derived(
@@ -29,7 +29,8 @@
 	const minYear = $derived(points.length > 0 ? Math.min(...points.map((point) => point.year)) : refYear);
 	const maxYear = $derived(points.length > 0 ? Math.max(...points.map((point) => point.year)) : refYear);
 	const gradientId = $derived(`${record.slug}-sparkline-gradient`);
-	const lineColor = $derived(record.pctChange > 0 ? "#00bf72" : "#ff0000");
+	const isPositive = $derived(record.pctChange > 0);
+	const lineColor = $derived(isPositive ? "#16a34a" : "#dc2626");
 
 	function scaleX(year: number, min: number, max: number): number {
 		if (min === max) return WIDTH / 2;
@@ -49,7 +50,6 @@
 	);
 
 	const baselineY = $derived(scaleY(0, minIncome, maxIncome));
-	const refX = $derived(scaleX(refYear, minYear, maxYear));
 
 	const linePath = $derived(
 		plottedPoints
@@ -61,7 +61,6 @@
 		if (plottedPoints.length === 0) return "";
 		const first = plottedPoints[0];
 		const last = plottedPoints[plottedPoints.length - 1];
-
 		return `M ${first.x} ${baselineY} ${plottedPoints
 			.map((point) => `L ${point.x} ${point.y}`)
 			.join(" ")} L ${last.x} ${baselineY} Z`;
@@ -69,60 +68,102 @@
 </script>
 
 <a
-	class="flex space-x-2 items-center border rounded-lg p-1 shadow-sm hover:scale-[102%] transition-all"
+	class="sparkline-card"
 	href="/degree/{record.slug}"
 >
-	<div class="flex flex-col text-xs p-1">
-		<div class="font-bold">{long2short[record.university]}</div>
-		<div>{record.degree}</div>
-		<div
-			class="font-semibold {record.pctChange > 0
-				? 'text-green-500'
-				: 'text-red-500'}"
-		>
-			{record.pctChange > 0 ? "+" : ""}{record.pctChange.toFixed(2)}%
-		</div>
+	<div class="sparkline-info">
+		<span class="sparkline-uni">{long2short[record.university]}</span>
+		<span class="sparkline-degree">{record.degree}</span>
+		<span class="sparkline-change" class:positive={isPositive} class:negative={!isPositive}>
+			{isPositive ? "+" : ""}{record.pctChange.toFixed(1)}%
+		</span>
 	</div>
 	<svg
-		class="area-container"
 		width={WIDTH}
 		height={HEIGHT}
 		viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
 		role="img"
 		aria-label={`Sparkline for ${record.degree}`}
+		class="sparkline-svg"
 	>
 		<defs>
 			<linearGradient id={gradientId} gradientTransform="rotate(90)">
-				<stop offset="0%" stop-color={lineColor} stop-opacity="1" />
-				<stop offset="25%" stop-color={lineColor} stop-opacity="0.8" />
-				<stop offset="50%" stop-color={lineColor} stop-opacity="0.6" />
-				<stop offset="75%" stop-color={lineColor} stop-opacity="0.4" />
+				<stop offset="0%" stop-color={lineColor} stop-opacity="0.3" />
 				<stop offset="100%" stop-color={lineColor} stop-opacity="0" />
 			</linearGradient>
 		</defs>
-
-		<path d={areaPath} fill={`url(#${gradientId})`} opacity="0.5"></path>
-		<path
-			d={`M ${refX} ${scaleY(minIncome, minIncome, maxIncome)} L ${refX} ${scaleY(maxIncome, minIncome, maxIncome)}`}
-			stroke="gray"
-			stroke-width="1.1"
-			stroke-dasharray="5"
-			fill="none"
-		></path>
-		<path
-			d={`M ${scaleX(minYear, minYear, maxYear)} ${baselineY} L ${scaleX(maxYear, minYear, maxYear)} ${baselineY}`}
-			stroke="gray"
-			stroke-width="1.1"
-			stroke-dasharray="5"
-			fill="none"
-		></path>
+		<path d={areaPath} fill={`url(#${gradientId})`}></path>
 		<path
 			d={linePath}
 			stroke={lineColor}
-			stroke-width="1.1"
+			stroke-width="1.5"
 			fill="none"
 			stroke-linejoin="round"
 			stroke-linecap="round"
 		></path>
 	</svg>
 </a>
+
+<style>
+	.sparkline-card {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		padding: 8px 12px;
+		border: 1px solid #e8e5df;
+		border-radius: 8px;
+		background: #ffffff;
+		text-decoration: none;
+		color: inherit;
+		transition: border-color 0.15s, box-shadow 0.15s;
+		flex-shrink: 0;
+		min-width: 260px;
+	}
+
+	.sparkline-card:hover {
+		border-color: #d4d0c8;
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+	}
+
+	.sparkline-info {
+		display: flex;
+		flex-direction: column;
+		gap: 1px;
+		min-width: 0;
+		flex: 1;
+	}
+
+	.sparkline-uni {
+		font-size: 10px;
+		font-weight: 600;
+		color: #71717a;
+		letter-spacing: 0.02em;
+	}
+
+	.sparkline-degree {
+		font-size: 11px;
+		color: #1a1a1a;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		max-width: 140px;
+	}
+
+	.sparkline-change {
+		font-family: 'JetBrains Mono', monospace;
+		font-size: 11px;
+		font-weight: 600;
+	}
+
+	.sparkline-change.positive {
+		color: #16a34a;
+	}
+
+	.sparkline-change.negative {
+		color: #dc2626;
+	}
+
+	.sparkline-svg {
+		flex-shrink: 0;
+	}
+</style>

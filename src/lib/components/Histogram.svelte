@@ -15,8 +15,8 @@
 	const NUM_BINS = 10;
 	const SVG_DEFS = `
 	<linearGradient id="gradient" gradientTransform="rotate(90)">
-			<stop offset="0%" stop-color="#00AAFF" stop-opacity="1" />
-			<stop offset="100%" stop-color="#00AAFF" stop-opacity="0" />
+			<stop offset="0%" stop-color="#2563eb" stop-opacity="0.4" />
+			<stop offset="100%" stop-color="#2563eb" stop-opacity="0.02" />
 	</linearGradient>
 	`;
 
@@ -47,7 +47,7 @@
 
 		const labels = bins.map(
 			(_, i) =>
-				`${(minValue + i * binWidth).toFixed(0)} to ${(minValue + (i + 1) * binWidth).toFixed(0)}`
+				`$${((minValue + i * binWidth + minValue + (i + 1) * binWidth) / 2).toFixed(0)}`
 		);
 
 		return zip(labels, bins);
@@ -61,17 +61,17 @@
 	const getChartConfig = $derived.by<
 		() => XYContainerConfigInterface<HistDatum>
 	>(() => () => ({
-		height: 400,
+		height: 220,
 		svgDefs: SVG_DEFS,
 		components: [
-			new Area<HistDatum>({ x, y, color: "url(#gradient)", opacity: 0.5 }),
-			new Line<HistDatum>({ x, y, color: "#00A0FF" }),
+			new Area<HistDatum>({ x, y, color: "url(#gradient)", opacity: 0.8 }),
+			new Line<HistDatum>({ x, y, color: "#2563eb" }),
 		],
 		xAxis: new Axis<HistDatum>({
-			label: "Median Gross Income ($)",
-			numTicks: containerWidth > 375 ? histData.length : histData.length / 2,
-			gridLine: true,
-			tickTextWidth: 30,
+			label: "Median Gross Income",
+			numTicks: containerWidth > 500 ? histData.length : Math.floor(histData.length / 2),
+			gridLine: false,
+			tickTextWidth: 40,
 			tickFormat,
 		}),
 		yAxis: new Axis<HistDatum>({
@@ -79,30 +79,27 @@
 			gridLine: true,
 		}),
 	}));
-
 </script>
 
 <div bind:clientWidth={containerWidth}>
 	{#snippet statsOverlay()}
-		<div class="absolute top-4 right-6 p-2 overflow-hidden">
-			<table class="text-sm">
-				<tbody>
-					<tr>
-						<td class="font-xs font-semibold pr-3">Median</td>
-						<td class="font-mono">{statMedian.toFixed(2)}</td>
-					</tr>
-					<tr>
-						<td class="font-xs font-semibold pr-3">Mean</td>
-						<td class="font-mono">{statMean.toFixed(2)}</td>
-					</tr>
-					<tr>
-						<td class="font-xs font-semibold pr-3">Std Dev</td>
-						<td class="font-mono">{statStd.toFixed(2)}</td>
-					</tr>
-				</tbody>
-			</table>
+		<div class="absolute top-3 right-4">
+			<div class="text-[10px] space-y-0.5 bg-surface/80 backdrop-blur-sm rounded px-2 py-1.5 border border-border">
+				<div class="flex justify-between gap-4">
+					<span class="text-muted">Median</span>
+					<span class="font-mono font-medium">${statMedian.toLocaleString()}</span>
+				</div>
+				<div class="flex justify-between gap-4">
+					<span class="text-muted">Mean</span>
+					<span class="font-mono font-medium">${statMean.toLocaleString()}</span>
+				</div>
+				<div class="flex justify-between gap-4">
+					<span class="text-muted">Std Dev</span>
+					<span class="font-mono font-medium">${statStd.toFixed(0)}</span>
+				</div>
+			</div>
 		</div>
 	{/snippet}
 
-	<UnovisXYChart data={histData} getConfig={getChartConfig} overlay={statsOverlay} />
+	<UnovisXYChart data={histData} getConfig={getChartConfig} overlay={statsOverlay} height={220} />
 </div>

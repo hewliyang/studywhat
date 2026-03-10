@@ -1,6 +1,5 @@
 <script lang="ts">
 	import "../app.pcss";
-	import "@fontsource-variable/inter";
 	import type { Snippet } from "svelte";
 	import Analytics from "$lib/components/Umami.svelte";
 	import Search from "$lib/components/Search.svelte";
@@ -18,24 +17,29 @@
 	/>
 </svelte:head>
 
-<header
-	class="my-0 mx-auto p-[0.5rem] flex flex-row items-center gap-[0.5rem] justify-between border-b"
->
-	<h1>
-		<a href="/" class="text-2xl font-semibold tracking-tighter">StudyWhat</a>
-	</h1>
-	<Search />
-</header>
+<div class="max-w-3xl mx-auto px-4 sm:px-6">
+	<header class="pt-3 pb-2 flex items-center gap-3 justify-between">
+		<a href="/" class="group flex items-center gap-1.5">
+			<svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="text-ink" aria-hidden="true">
+				<path d="M12 3L2 9l10 6 8-4.8V17h2V9L12 3z" fill="currentColor" opacity="0.85"/>
+				<path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z" fill="currentColor" opacity="0.55"/>
+			</svg>
+			<span class="text-sm font-semibold tracking-tight text-ink">StudyWhat</span>
+			<span class="text-[9px] font-mono text-muted uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">SG</span>
+		</a>
+		<Search />
+	</header>
 
-<main class="my-0 mx-auto p-[0.5rem] min-h-screen flex flex-col space-y-4">
-	{@render children()}
-</main>
+	<main class="py-6 flex flex-col gap-8">
+		{@render children()}
+	</main>
 
-<footer class="my-0 mx-auto p-[0.5rem] border-t text-sm">
-	<div class="flex justify-between items-center">
-		<a href="https://github.com/hewliyang/studywhat" class="underline"
-			><Github class="h-4 w-4" /></a
-		>
-		<a href="/disclaimers" class="underline">Disclaimers & Dataset</a>
-	</div>
-</footer>
+	<footer class="py-4 border-t border-border">
+		<div class="flex justify-between items-center text-xs text-muted">
+			<a href="https://github.com/hewliyang/studywhat" class="hover:text-ink transition-colors">
+				<Github class="h-3.5 w-3.5" />
+			</a>
+			<a href="/disclaimers" class="hover:text-ink transition-colors">Disclaimers & Dataset</a>
+		</div>
+	</footer>
+</div>

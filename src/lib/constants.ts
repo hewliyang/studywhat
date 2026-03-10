@@ -37,16 +37,16 @@ export const YEARS = Array.from(
 // color palletes
 
 export const palette = [
-	"#04c0c7",
-	"#e7871a",
-	"#da348f",
-	"#9089fa",
-	"#47e26f",
-	"#2780eb",
-	"#6f38b1",
-	"#268d6c",
-	"#d11d55",
-	"#ffcc00",
-	"#a0d6e5",
-	"#f45a6d",
+	"#2563eb",
+	"#e45c3a",
+	"#7c3aed",
+	"#0d9488",
+	"#d946ef",
+	"#ca8a04",
+	"#059669",
+	"#dc2626",
+	"#6366f1",
+	"#ea580c",
+	"#0284c7",
+	"#be185d",
 ];
