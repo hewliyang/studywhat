@@ -98,7 +98,7 @@
 
 						results = local
 							? search(local, query)
-							: await fetch(`/search?q=${query}`).then((r) => r.json());
+							: await fetch(`/api/search?q=${query}`).then((r) => r.json());
 					}}
 					use:focus
 				/>

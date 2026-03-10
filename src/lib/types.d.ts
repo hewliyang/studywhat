@@ -4,10 +4,10 @@ interface BaseSalary {
 }
 
 interface GrossSalary {
-	gross_monthly_mean: number;
-	gross_monthly_median: number;
-	gross_mthly_25_percentile: number;
-	gross_mthly_75_percentile: number;
+	gross_monthly_mean: number | null;
+	gross_monthly_median: number | null;
+	gross_mthly_25_percentile: number | null;
+	gross_mthly_75_percentile: number | null;
 }
 
 interface EmploymentRates {

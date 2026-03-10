@@ -20,7 +20,12 @@
 	</linearGradient>
 	`;
 
-	const medians = $derived(data.map((d) => d.gross_monthly_median));
+	const medians = $derived.by(() => {
+		const values = data
+			.map((d) => d.gross_monthly_median)
+			.filter((value): value is number => value != null);
+		return values.length > 0 ? values : [0];
+	});
 	const minValue = $derived(Math.min(...medians));
 	const maxValue = $derived(Math.max(...medians));
 	const binWidth = $derived(

@@ -22,13 +22,21 @@
 
 	const short = $derived(long2short[data.degree.university]);
 	const img = $derived(short2img[short]);
+	const grossData = $derived(
+		data.degree.data.filter(
+			(d) =>
+				d.gross_monthly_median != null &&
+				d.gross_mthly_25_percentile != null &&
+				d.gross_mthly_75_percentile != null
+		)
+	);
 
 	// median income
 	const x = (d: YearlyRecord) => d.year;
 	const y = [
-		(d: YearlyRecord) => d.gross_monthly_median,
-		(d: YearlyRecord) => d.gross_mthly_25_percentile,
-		(d: YearlyRecord) => d.gross_mthly_75_percentile,
+		(d: YearlyRecord) => d.gross_monthly_median ?? 0,
+		(d: YearlyRecord) => d.gross_mthly_25_percentile ?? 0,
+		(d: YearlyRecord) => d.gross_mthly_75_percentile ?? 0,
 	];
 
 	// employment stats
@@ -39,9 +47,9 @@
 
 	function tooltipTemplate(d: YearlyRecord): string {
 		const title = `<div style="color: #666; text-align: center;">${d.year} - Gross</div>`;
-		const q1 = `25th: <b>${d.gross_mthly_25_percentile}$</b><br />`;
-		const median = `50th: <b>${d.gross_monthly_median}$</b><br />`;
-		const q3 = `75th: <b>${d.gross_mthly_75_percentile}$</b>`;
+		const q1 = `25th: <b>${formatValue(d.gross_mthly_25_percentile, "$")}</b><br />`;
+		const median = `50th: <b>${formatValue(d.gross_monthly_median, "$")}</b><br />`;
+		const q3 = `75th: <b>${formatValue(d.gross_mthly_75_percentile, "$")}</b>`;
 		return `<div style="font-size: 12px;">${title}${q1}${median}${q3}</div>`;
 	}
 
@@ -65,7 +73,7 @@
 	>(() => () => ({
 		height: 250,
 		components: [new Line<YearlyRecord>({ x, y, curveType: CurveType.Linear })],
-		xAxis: new Axis<YearlyRecord>({ numTicks: (data.degree.data.length / 2) >> 0 }),
+		xAxis: new Axis<YearlyRecord>({ numTicks: (grossData.length / 2) >> 0 }),
 		yAxis: new Axis<YearlyRecord>({}),
 		tooltip: new Tooltip(),
 		crosshair: new Crosshair<YearlyRecord>({
@@ -100,6 +108,10 @@
 	$effect(() => {
 		table.setRows(data.degree.data);
 	});
+
+	function formatValue(value: number | null, prefix = "") {
+		return value == null ? "N.A." : `${prefix}${value.toLocaleString()}`;
+	}
 </script>
 
 <svelte:head>
@@ -159,16 +171,18 @@
 
 	{#if data.degree.data.length >= 2}
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-			<div>
-				<div class="flex items-center mb-3">
-					<CircleDollarSign class="h-5 w-5 mr-2" />
-					<h4 class="font-semibold">Gross Income</h4>
-					<div class="ml-auto">
-						<UnovisLegend config={grossLegendConfig} />
+			{#if grossData.length >= 2}
+				<div>
+					<div class="flex items-center mb-3">
+						<CircleDollarSign class="h-5 w-5 mr-2" />
+						<h4 class="font-semibold">Gross Income</h4>
+						<div class="ml-auto">
+							<UnovisLegend config={grossLegendConfig} />
+						</div>
 					</div>
+					<UnovisXYChart data={grossData} getConfig={getGrossChartConfig} />
 				</div>
-				<UnovisXYChart data={data.degree.data} getConfig={getGrossChartConfig} />
-			</div>
+			{/if}
 
 			<div>
 				<div class="flex items-center mb-3">
@@ -208,10 +222,10 @@
 					{#each table.rows as row}
 						<tr>
 							<td>{row.year}</td>
-							<td>{row.gross_monthly_median.toLocaleString()}</td>
-							<td>{row.gross_mthly_25_percentile.toLocaleString()}</td>
-							<td>{row.gross_mthly_75_percentile.toLocaleString()}</td>
-							<td>{row.gross_monthly_mean.toLocaleString()}</td>
+							<td>{formatValue(row.gross_monthly_median)}</td>
+							<td>{formatValue(row.gross_mthly_25_percentile)}</td>
+							<td>{formatValue(row.gross_mthly_75_percentile)}</td>
+							<td>{formatValue(row.gross_monthly_mean)}</td>
 							<td>{row.employment_rate_overall}%</td>
 							<td>{row.employment_rate_ft_perm}%</td>
 						</tr>

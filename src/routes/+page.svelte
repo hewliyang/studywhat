@@ -37,9 +37,17 @@
 	let selectedYr = $state(0);
 	const institutions = $derived([...new Set(data.top.map((d) => d.university))].sort());
 	const colorScale = $derived(Scale.scaleOrdinal(palette).domain(institutions));
+	const salaryRows = $derived(
+		data.top.filter(
+			(d) =>
+				d.gross_monthly_median != null &&
+				d.gross_mthly_25_percentile != null &&
+				d.gross_mthly_75_percentile != null
+		)
+	);
 
 	const y = (d: FlatRecord) => d.employment_rate_overall;
-	const x = (d: FlatRecord) => d.gross_monthly_median;
+	const x = (d: FlatRecord) => d.gross_monthly_median ?? 0;
 	const color = (d: FlatRecord) => colorScale(d.university);
 	const legendItems = $derived(institutions.map((v) => ({
 		name: v,
@@ -57,18 +65,18 @@
 				</div>
 				<div class="flex items-center justify-between w-full mb-2">
 					<div class="flex flex-col items-start">
-						<span class="text-gray-400 text-xs font-mono">${d.gross_mthly_25_percentile}</span>
+						<span class="text-gray-400 text-xs font-mono">${formatCurrency(d.gross_mthly_25_percentile)}</span>
 					</div>
 					<div class="relative h-1 w-full rounded-full overflow-hidden">
 						<div class="absolute inset-y-0 left-0 h-full w-1/2 bg-red-500 rounded-l-full"></div>
 						<div class="absolute inset-y-0 right-0 h-full w-1/2 bg-green-500 rounded-r-full"></div>
 					</div>
 					<div class="flex flex-col items-end">
-						<span class="text-gray-400 text-xs font-mono">${d.gross_mthly_75_percentile}</span>
+						<span class="text-gray-400 text-xs font-mono">${formatCurrency(d.gross_mthly_75_percentile)}</span>
 					</div>
 				</div>
 				<div class="flex justify-center w-full">
-					<span class="text-xs font-mono">${d.gross_monthly_median}</span>
+					<span class="text-xs font-mono">${formatCurrency(d.gross_monthly_median)}</span>
 				</div>
 				<div class="text-gray-400 text-xs italic">Gross Monthly Income</div>
 			</div>
@@ -108,6 +116,10 @@
 
 	function handleYearChange() {
 		goto(`/?year=${selectedYr}`);
+	}
+
+	function formatCurrency(value: number | null) {
+		return value == null ? "N.A." : `$${value.toLocaleString()}`;
 	}
 </script>
 
@@ -175,7 +187,7 @@
 				</div>
 			</div>
 		{/snippet}
-		<UnovisXYChart data={data.top} getConfig={getScatterChartConfig} overlay={betterOverlay} />
+		<UnovisXYChart data={salaryRows} getConfig={getScatterChartConfig} overlay={betterOverlay} />
 	</div>
 	<div class="lg:col-span-2 lg:row-span-1 lg:flex-shrink-0 lg:w-3/10">
 		<div class="mb-2">
@@ -187,7 +199,7 @@
 				Note: Frequency in terms of degrees, <b class="font-bold">not</b> graduates
 			</p>
 		</div>
-		<Histogram data={data.top} />
+		<Histogram data={salaryRows} />
 	</div>
 </div>
 
@@ -224,9 +236,9 @@
 								{row.degree}
 							</a>
 						</td>
-						<td>${row.gross_monthly_median.toLocaleString()}</td>
-						<td>${row.gross_mthly_25_percentile.toLocaleString()}</td>
-						<td>${row.gross_mthly_75_percentile.toLocaleString()}</td>
+						<td>{formatCurrency(row.gross_monthly_median)}</td>
+						<td>{formatCurrency(row.gross_mthly_25_percentile)}</td>
+						<td>{formatCurrency(row.gross_mthly_75_percentile)}</td>
 						<td>{row.employment_rate_overall}%</td>
 					</tr>
 				{/each}

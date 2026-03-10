@@ -55,8 +55,10 @@ export function topK(
 }
 
 /**
- * Simple token / term frequency based search on slugs which
- * in turn is a concatenation of <slugify(degree)>-<nus|smu|ntu|suss|sutd|sit>
+ * Simple token match based search across the visible degree metadata.
+ *
+ * Slugs remain part of the index for backwards compatibility, but renamed
+ * programmes should still be discoverable via their latest degree names.
  */
 export function search(
 	data: GESData[],
@@ -72,6 +74,12 @@ export function search(
 		let score = 0;
 		let match = true;
 		const slug = record.slug.toLowerCase();
+		const haystacks = [
+			record.degree.toLowerCase(),
+			slug,
+			record.school?.toLowerCase() ?? "",
+			record.university.toLowerCase(),
+		];
 
 		for (const term of terms) {
 			if (exactMatch) {
@@ -79,21 +87,36 @@ export function search(
 					match = false;
 					break;
 				}
-			} else if (!slug.includes(term)) {
-				match = false;
-				break;
+			} else {
+				const bestMatch = haystacks
+					.map((candidate, index) => ({
+						index,
+						position: candidate.indexOf(term),
+						length: candidate.length,
+					}))
+					.filter((candidate) => candidate.position !== -1)
+					.sort((a, b) => {
+						if (a.index !== b.index) return a.index - b.index;
+						return a.position - b.position;
+					})[0];
+
+				if (!bestMatch) {
+					match = false;
+					break;
+				}
+
+				score +=
+					1 +
+					(haystacks.length - bestMatch.index) * 0.01 -
+					bestMatch.position / Math.max(bestMatch.length, 1);
 			}
-			score += 1 + slug.indexOf(term) / slug.length;
 		}
 		if (match) {
 			results.push({ record, score });
 		}
 	}
 
-	// sort by score
-	_.orderBy(results, ["score"], ["desc"]);
-
-	return results.map((result) => result.record);
+	return _.orderBy(results, ["score"], ["desc"]).map((result) => result.record);
 }
 
 export function getMovement(
@@ -103,20 +126,31 @@ export function getMovement(
 	lag: number = 1,
 	metric: keyof YearlyRecord = "gross_monthly_median"
 ): Record<string, WinnersRecord[]> {
+	const isComparableMetric = (value: YearlyRecord[keyof YearlyRecord]) =>
+		typeof value === "number" && Number.isFinite(value);
+
 	// filter data for year & year - 1
 	const eligibleRecords = data.filter((record) => {
 		const currentYearData = record.data.find((d) => d.year === year);
 		const previousYearData = record.data.find((d) => d.year === year - lag);
-		return currentYearData && previousYearData;
+		if (!currentYearData || !previousYearData) return false;
+
+		const currentValue = currentYearData[metric];
+		const previousValue = previousYearData[metric];
+		return (
+			isComparableMetric(currentValue) &&
+			isComparableMetric(previousValue) &&
+			previousValue !== 0
+		);
 	});
 
 	// Calculate percentage change and add it to the record
 	const recordsWithPctChange = eligibleRecords.map((record) => {
 		const currentYearData = record.data.find((d) => d.year === year)!;
 		const previousYearData = record.data.find((d) => d.year === year - lag)!;
-		const x1 = previousYearData[metric];
-		const x2 = currentYearData[metric];
-		const pctChange = x1 && x2 ? ((x2 - x1) / x1) * 100 : -Infinity;
+		const x1 = previousYearData[metric] as number;
+		const x2 = currentYearData[metric] as number;
+		const pctChange = ((x2 - x1) / x1) * 100;
 		return { ...record, pctChange };
 	});
 

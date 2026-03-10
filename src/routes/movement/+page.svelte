@@ -55,7 +55,11 @@
 		typeof tick === "number" ? barData[tick]?.x ?? "" : "";
 	const color = (d: BarDatum, i: number) => (d.x === "Gain" ? "green" : "red");
 	const triggers = {
-		[StackedBar.selectors.bar]: (d: BarDatum) => `<div>${d.y}</div>`,
+		[StackedBar.selectors.bar]: (d: { datum?: BarDatum }) => {
+			const bar = d?.datum;
+			if (!bar) return undefined;
+			return `<div>${bar.x}: ${bar.y}</div>`;
+		},
 	};
 
 	const getSummaryChartConfig = $derived.by<

@@ -14,17 +14,20 @@
 	const HEIGHT = 44;
 	const PADDING = 2;
 
-	const firstIncome = $derived(record.data[0].gross_monthly_median);
+	const salaryData = $derived(
+		record.data.filter((entry) => entry.gross_monthly_median != null)
+	);
+	const firstIncome = $derived(salaryData[0]?.gross_monthly_median ?? 0);
 	const points = $derived(
-		record.data.map((entry) => ({
+		salaryData.map((entry) => ({
 			year: entry.year,
-			value: entry.gross_monthly_median - firstIncome,
+			value: (entry.gross_monthly_median ?? firstIncome) - firstIncome,
 		}))
 	);
-	const minIncome = $derived(Math.min(...points.map((point) => point.value)));
-	const maxIncome = $derived(Math.max(...points.map((point) => point.value)));
-	const minYear = $derived(Math.min(...points.map((point) => point.year)));
-	const maxYear = $derived(Math.max(...points.map((point) => point.year)));
+	const minIncome = $derived(points.length > 0 ? Math.min(...points.map((point) => point.value)) : 0);
+	const maxIncome = $derived(points.length > 0 ? Math.max(...points.map((point) => point.value)) : 0);
+	const minYear = $derived(points.length > 0 ? Math.min(...points.map((point) => point.year)) : refYear);
+	const maxYear = $derived(points.length > 0 ? Math.max(...points.map((point) => point.year)) : refYear);
 	const gradientId = $derived(`${record.slug}-sparkline-gradient`);
 	const lineColor = $derived(record.pctChange > 0 ? "#00bf72" : "#ff0000");
 
