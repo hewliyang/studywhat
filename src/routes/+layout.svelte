@@ -1,9 +1,12 @@
 <script lang="ts">
 	import "../app.pcss";
 	import "@fontsource-variable/inter";
+	import type { Snippet } from "svelte";
 	import Analytics from "$lib/components/Umami.svelte";
 	import Search from "$lib/components/Search.svelte";
 	import { Github } from "lucide-svelte";
+
+	let { children }: { children: Snippet } = $props();
 </script>
 
 <Analytics />
@@ -25,7 +28,7 @@
 </header>
 
 <main class="my-0 mx-auto p-[0.5rem] min-h-screen flex flex-col space-y-4">
-	<slot />
+	{@render children()}
 </main>
 
 <footer class="my-0 mx-auto p-[0.5rem] border-t text-sm">

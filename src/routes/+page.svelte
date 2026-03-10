@@ -1,17 +1,24 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
-	import { Scale, Scatter } from "@unovis/ts";
-	import { long2short, palette, YEARS } from "$lib/constants";
-	import { DataHandler, Datatable, Th, ThFilter } from "@vincjo/datatables";
 	import {
-		VisXYContainer,
-		VisScatter,
-		VisAxis,
-		VisTooltip,
-		VisBulletLegend,
-	} from "@unovis/svelte";
+		Axis,
+		Scale,
+		Scatter,
+		Tooltip,
+		type BulletLegendConfigInterface,
+		type XYContainerConfigInterface,
+	} from "@unovis/ts";
+	import { long2short, palette, YEARS } from "$lib/constants";
+	import {
+		TableHandler,
+		Datatable,
+		ThFilter,
+		ThSort,
+	} from "@vincjo/datatables";
 	import Sparkline from "$lib/components/Sparkline.svelte";
 	import Histogram from "$lib/components/Histogram.svelte";
+	import UnovisLegend from "$lib/components/charts/UnovisLegend.svelte";
+	import UnovisXYChart from "$lib/components/charts/UnovisXYChart.svelte";
 	import {
 		Activity,
 		ArrowUpRight,
@@ -22,23 +29,26 @@
 		Table,
 	} from "lucide-svelte";
 	import type { FlatRecord } from "$lib/types";
+	import type { PageData } from "./$types";
 	import Export from "$lib/components/Export.svelte";
 
-	export let data;
+	let { data }: { data: PageData } = $props();
 
-	$: initialYr = data.year;
-	$: selectedYr = initialYr;
-	$: institutions = [...new Set(data.top.map((d) => d.university))].sort();
-	$: colorScale = Scale.scaleOrdinal(palette).domain(institutions);
+	let selectedYr = $state(0);
+	const institutions = $derived([...new Set(data.top.map((d) => d.university))].sort());
+	const colorScale = $derived(Scale.scaleOrdinal(palette).domain(institutions));
 
-	$: y = (d: FlatRecord) => d.employment_rate_overall;
-	$: x = (d: FlatRecord) => d.gross_monthly_median;
-	$: color = (d: FlatRecord) => colorScale(d.university);
-	$: legendItems = institutions.map((v) => ({
+	const y = (d: FlatRecord) => d.employment_rate_overall;
+	const x = (d: FlatRecord) => d.gross_monthly_median;
+	const color = (d: FlatRecord) => colorScale(d.university);
+	const legendItems = $derived(institutions.map((v) => ({
 		name: v,
 		color: colorScale(v),
+	})));
+	const legendConfig = $derived.by<BulletLegendConfigInterface>(() => ({
+		items: legendItems,
 	}));
-	$: triggers = {
+	const triggers = {
 		[Scatter.selectors.point]: (d: FlatRecord) => `
 			<div class="flex flex-col items-center">
 				<div class="flex items-center mb-2">
@@ -64,7 +74,7 @@
 			</div>
 		`,
 	};
-	$: events = {
+	const events = {
 		[Scatter.selectors.point]: {
 			click: (d: FlatRecord) => {
 				goto(`degree/${d.slug}`);
@@ -73,9 +83,28 @@
 	};
 
 	// data table
-	const handler = new DataHandler(data.top, { rowsPerPage: 10 });
-	$: handler.setRows(data.top);
-	$: rows = handler.getRows();
+	const table = new TableHandler<FlatRecord>([], { rowsPerPage: 10 });
+
+	$effect(() => {
+		selectedYr = data.year;
+		table.setRows(data.top);
+	});
+
+	const getScatterChartConfig = $derived.by<
+		() => XYContainerConfigInterface<FlatRecord>
+	>(() => () => ({
+		height: 350,
+		components: [new Scatter<FlatRecord>({ cursor: "pointer", size: 10, x, y, color, events })],
+		xAxis: new Axis<FlatRecord>({
+			label: "Median Gross Income ($)",
+			gridLine: true,
+		}),
+		yAxis: new Axis<FlatRecord>({
+			label: "Full Time Employment Rate (%)",
+			gridLine: true,
+		}),
+		tooltip: new Tooltip({ triggers }),
+	}));
 
 	function handleYearChange() {
 		goto(`/?year=${selectedYr}`);
@@ -116,40 +145,37 @@
 
 <div class="grid grid-cols-1 lg:grid-cols-7 gap-4">
 	<div class="lg:col-span-5 lg:flex-grow">
-		<VisXYContainer data={data.top} height={350}>
-			<div class="flex flex-col mb-6">
-				<div class="flex items-center">
-					<CircleDollarSign class="h-6 w-6 mr-2" />
-					<h3 class="font-semibold text-lg">
-						Graduate Median Incomes by Degree
-					</h3>
-					<form class="md: ml-auto">
-						<select
-							name="year"
-							bind:value={selectedYr}
-							on:change={handleYearChange}
-							class="text-sm px-2 py-1 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-						>
-							{#each YEARS as year}
-								{@const selected = year === selectedYr}
-								<option value={year} {selected}>{year}</option>
-							{/each}
-						</select>
-					</form>
-				</div>
-				<VisBulletLegend items={legendItems} />
+		<div class="flex flex-col mb-6">
+			<div class="flex items-center">
+				<CircleDollarSign class="h-6 w-6 mr-2" />
+				<h3 class="font-semibold text-lg">
+					Graduate Median Incomes by Degree
+				</h3>
+				<form class="md: ml-auto">
+					<select
+						name="year"
+						bind:value={selectedYr}
+						onchange={handleYearChange}
+						class="text-sm px-2 py-1 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+					>
+						{#each YEARS as year}
+							{@const selected = year === selectedYr}
+							<option value={year} {selected}>{year}</option>
+						{/each}
+					</select>
+				</form>
 			</div>
-			<VisScatter cursor="pointer" size={10} {x} {y} {color} {events} />
-			<VisAxis type="x" label="Median Gross Income ($)" gridLine={true} />
-			<VisAxis type="y" label="Full Time Employment Rate (%)" gridLine={true} />
-			<VisTooltip {triggers} />
+			<UnovisLegend config={legendConfig} />
+		</div>
+		{#snippet betterOverlay()}
 			<div class="absolute bottom-12 right-5">
 				<div class="flex space-x-1 items-center text-gray-400 text-sm">
 					<ArrowUpRight class="h-4 w-4" />
 					<span>is better</span>
 				</div>
 			</div>
-		</VisXYContainer>
+		{/snippet}
+		<UnovisXYChart data={data.top} getConfig={getScatterChartConfig} overlay={betterOverlay} />
 	</div>
 	<div class="lg:col-span-2 lg:row-span-1 lg:flex-shrink-0 lg:w-3/10">
 		<div class="mb-2">
@@ -173,26 +199,24 @@
 			<Export rows={data.top} fileName={String(selectedYr)} />
 		</div>
 	</div>
-	<Datatable {handler} search={false} rowsPerPage={false}>
+	<Datatable {table}>
 		<table>
 			<thead>
 				<tr>
-					<Th {handler} orderBy={(row) => long2short[row.university]}
-						>University</Th
-					>
-					<Th {handler} orderBy="degree">Degree</Th>
-					<Th {handler} orderBy="gross_monthly_median">Gross Median</Th>
-					<Th {handler} orderBy="gross_mthly_25_percentile">25th</Th>
-					<Th {handler} orderBy="gross_mthly_75_percentile">75th</Th>
-					<Th {handler} orderBy="employment_rate_overall">Employment Rate</Th>
+					<ThSort {table} field={(row) => long2short[row.university]}>University</ThSort>
+					<ThSort {table} field="degree">Degree</ThSort>
+					<ThSort {table} field="gross_monthly_median">Gross Median</ThSort>
+					<ThSort {table} field="gross_mthly_25_percentile">25th</ThSort>
+					<ThSort {table} field="gross_mthly_75_percentile">75th</ThSort>
+					<ThSort {table} field="employment_rate_overall">Employment Rate</ThSort>
 				</tr>
 				<tr>
-					<ThFilter {handler} filterBy={(row) => long2short[row.university]} />
-					<ThFilter {handler} filterBy="degree" />
+					<ThFilter {table} field={(row) => long2short[row.university]} />
+					<ThFilter {table} field="degree" />
 				</tr>
 			</thead>
 			<tbody>
-				{#each $rows as row}
+				{#each table.rows as row}
 					<tr>
 						<td>{long2short[row.university]}</td>
 						<td

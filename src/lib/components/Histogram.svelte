@@ -1,12 +1,16 @@
 <script lang="ts">
+	import {
+		Area,
+		Axis,
+		Line,
+		type XYContainerConfigInterface,
+	} from "@unovis/ts";
 	import type { FlatRecord } from "$lib/types";
 	import { zip, mean, variance, median, type HistDatum } from "$lib/stats";
-	import { VisXYContainer, VisLine, VisAxis, VisArea } from "@unovis/svelte";
+	import UnovisXYChart from "$lib/components/charts/UnovisXYChart.svelte";
 
-	export let data: FlatRecord[];
-
-	let bins: number[];
-	let containerWidth: number;
+	let { data }: { data: FlatRecord[] } = $props();
+	let containerWidth = $state(0);
 
 	const NUM_BINS = 10;
 	const SVG_DEFS = `
@@ -16,37 +20,65 @@
 	</linearGradient>
 	`;
 
-	$: medians = [...data.map((d) => d.gross_monthly_median)];
-	$: minValue = Math.min(...medians);
-	$: maxValue = Math.max(...medians);
-	$: binWidth = (maxValue - minValue) / NUM_BINS;
-
-	$: statMean = mean(medians);
-	$: statStd = Math.sqrt(variance(medians));
-	$: statMedian = median(medians);
-
-	$: {
-		bins = Array(NUM_BINS).fill(0); // reactivity bug if seperate
-		medians.forEach((value) => {
-			const binIdx = Math.floor((value - minValue) / binWidth);
-			bins[binIdx - 1]++;
-		});
-	}
-
-	$: labels = bins.map(
-		(_, i) =>
-			`${(minValue + i * binWidth).toFixed(0)} to ${(minValue + (i + 1) * binWidth).toFixed(0)}`
+	const medians = $derived(data.map((d) => d.gross_monthly_median));
+	const minValue = $derived(Math.min(...medians));
+	const maxValue = $derived(Math.max(...medians));
+	const binWidth = $derived(
+		maxValue === minValue ? 1 : (maxValue - minValue) / NUM_BINS
 	);
 
-	$: histData = zip(labels, bins);
-	$: x = (_: HistDatum, i: number) => i;
-	$: y = (d: HistDatum) => d.freq;
-	$: tickFormat = (tick: number) => histData[tick].bin;
+	const statMean = $derived(mean(medians));
+	const statStd = $derived(Math.sqrt(variance(medians)));
+	const statMedian = $derived(median(medians));
+
+	const histData = $derived.by(() => {
+		const bins = Array(NUM_BINS).fill(0);
+
+		for (const value of medians) {
+			const rawBin = Math.floor((value - minValue) / binWidth);
+			const binIdx = Math.min(NUM_BINS - 1, Math.max(0, rawBin));
+			bins[binIdx] += 1;
+		}
+
+		const labels = bins.map(
+			(_, i) =>
+				`${(minValue + i * binWidth).toFixed(0)} to ${(minValue + (i + 1) * binWidth).toFixed(0)}`
+		);
+
+		return zip(labels, bins);
+	});
+
+	const x = (_: HistDatum, i: number) => i;
+	const y = (d: HistDatum) => d.freq;
+	const tickFormat = (tick: number | Date) =>
+		typeof tick === "number" ? histData[tick]?.bin ?? "" : "";
+
+	const getChartConfig = $derived.by<
+		() => XYContainerConfigInterface<HistDatum>
+	>(() => () => ({
+		height: 400,
+		svgDefs: SVG_DEFS,
+		components: [
+			new Area<HistDatum>({ x, y, color: "url(#gradient)", opacity: 0.5 }),
+			new Line<HistDatum>({ x, y, color: "#00A0FF" }),
+		],
+		xAxis: new Axis<HistDatum>({
+			label: "Median Gross Income ($)",
+			numTicks: containerWidth > 375 ? histData.length : histData.length / 2,
+			gridLine: true,
+			tickTextWidth: 30,
+			tickFormat,
+		}),
+		yAxis: new Axis<HistDatum>({
+			label: "Frequency",
+			gridLine: true,
+		}),
+	}));
+
 </script>
 
 <div bind:clientWidth={containerWidth}>
-	<VisXYContainer data={histData} height={400} svgDefs={SVG_DEFS}>
-		<!-- <VisStackedBar {x} {y} barMinHeight1Px={true} barPadding={0} /> -->
+	{#snippet statsOverlay()}
 		<div class="absolute top-4 right-6 p-2 overflow-hidden">
 			<table class="text-sm">
 				<tbody>
@@ -65,16 +97,7 @@
 				</tbody>
 			</table>
 		</div>
-		<VisArea {x} {y} color="url(#gradient)" opacity="0.5" />
-		<VisLine {x} {y} color="#00A0FF" />
-		<VisAxis
-			type="x"
-			label="Median Gross Income ($)"
-			numTicks={containerWidth > 375 ? histData.length : histData.length / 2}
-			gridLine={true}
-			tickTextWidth={30}
-			{tickFormat}
-		/>
-		<VisAxis type="y" label="Frequency" gridLine={true} />
-	</VisXYContainer>
+	{/snippet}
+
+	<UnovisXYChart data={histData} getConfig={getChartConfig} overlay={statsOverlay} />
 </div>

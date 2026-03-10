@@ -176,7 +176,7 @@
 		<p>Last updated at: {new Date().toLocaleDateString()}</p>
 		<button
 			class="flex px-2 py-3 border rounded-md border-blue-500 items-center w-full"
-			on:click={() =>
+			onclick={() =>
 				downloadFromURL(
 					"https://raw.githubusercontent.com/hewliyang/studywhat/main/src/lib/data.json"
 				)}
@@ -191,7 +191,7 @@
 		</button>
 		<button
 			class="flex px-2 py-3 border rounded-md border-blue-500 items-center w-full"
-			on:click={() => downloadAsCSV(getFlattened(), "studywhat")}
+			onclick={() => downloadAsCSV(getFlattened(), "studywhat")}
 		>
 			<span>CSV</span>
 			<ArrowRight class="h-4 w-4 ml-auto" />

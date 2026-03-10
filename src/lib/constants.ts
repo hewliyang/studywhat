@@ -1,4 +1,5 @@
 import { ntu, nus, sutd, sit, smu, suss } from "$lib/logos";
+import dataset from "./data.json";
 
 // institution names
 
@@ -24,7 +25,9 @@ export const short2img: Record<string, string> = {
 	NTU: ntu,
 };
 
-export const PREV_YEAR = new Date().getFullYear() - 1;
+export const PREV_YEAR = Math.max(
+	...dataset.flatMap((degree) => degree.data.map((entry) => entry.year))
+);
 
 export const YEARS = Array.from(
 	{ length: PREV_YEAR + 1 - 2009 },

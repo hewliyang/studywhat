@@ -4,21 +4,24 @@
 	import { short2img, long2short } from "$lib/constants";
 	import type { YearlyRecord } from "$lib/types";
 	import {
-		VisXYContainer,
-		VisAxis,
-		VisLine,
-		VisBulletLegend,
-		VisTooltip,
-		VisCrosshair,
-	} from "@unovis/svelte";
+		Axis,
+		Crosshair,
+		CurveType,
+		Line,
+		Tooltip,
+		type BulletLegendConfigInterface,
+		type XYContainerConfigInterface,
+	} from "@unovis/ts";
 	import { Briefcase, CircleDollarSign, Table } from "lucide-svelte";
-	import { CurveType } from "@unovis/ts";
-	import { DataHandler, Datatable, Th } from "@vincjo/datatables";
+	import { Datatable, TableHandler, ThSort } from "@vincjo/datatables";
+	import type { PageData } from "./$types";
+	import UnovisLegend from "$lib/components/charts/UnovisLegend.svelte";
+	import UnovisXYChart from "$lib/components/charts/UnovisXYChart.svelte";
 
-	export let data;
+	let { data }: { data: PageData } = $props();
 
-	$: short = long2short[data.degree.university];
-	$: img = short2img[short];
+	const short = $derived(long2short[data.degree.university]);
+	const img = $derived(short2img[short]);
 
 	// median income
 	const x = (d: YearlyRecord) => d.year;
@@ -49,11 +52,54 @@
 		return `<div style="font-size: 12px;">${title}${ft}${all}</div>`;
 	}
 
+	const grossLegendConfig = $derived.by<BulletLegendConfigInterface>(() => ({
+		items: [{ name: "Median" }, { name: "25th" }, { name: "75th" }],
+	}));
+
+	const employmentLegendConfig = $derived.by<BulletLegendConfigInterface>(() => ({
+		items: [{ name: "Full Time" }, { name: "Overall" }],
+	}));
+
+	const getGrossChartConfig = $derived.by<
+		() => XYContainerConfigInterface<YearlyRecord>
+	>(() => () => ({
+		height: 250,
+		components: [new Line<YearlyRecord>({ x, y, curveType: CurveType.Linear })],
+		xAxis: new Axis<YearlyRecord>({ numTicks: (data.degree.data.length / 2) >> 0 }),
+		yAxis: new Axis<YearlyRecord>({}),
+		tooltip: new Tooltip(),
+		crosshair: new Crosshair<YearlyRecord>({
+			x,
+			y,
+			template: tooltipTemplate,
+			hideWhenFarFromPointer: true,
+		}),
+	}));
+
+	const getEmploymentChartConfig = $derived.by<
+		() => XYContainerConfigInterface<YearlyRecord>
+	>(() => () => ({
+		height: 250,
+		components: [new Line<YearlyRecord>({ x, y: yEmp, curveType: CurveType.Linear })],
+		xAxis: new Axis<YearlyRecord>({ numTicks: (data.degree.data.length / 2) >> 0 }),
+		yAxis: new Axis<YearlyRecord>({}),
+		tooltip: new Tooltip(),
+		crosshair: new Crosshair<YearlyRecord>({
+			x,
+			y: yEmp,
+			template: employmentTooltipTemplate,
+			hideWhenFarFromPointer: true,
+		}),
+	}));
+
 	// datatable stuff
-	$: handler = new DataHandler(data.degree.data, {
+	const table = new TableHandler<YearlyRecord>([], {
 		rowsPerPage: 100,
 	});
-	$: rows = handler.getRows();
+
+	$effect(() => {
+		table.setRows(data.degree.data);
+	});
 </script>
 
 <svelte:head>
@@ -113,49 +159,27 @@
 
 	{#if data.degree.data.length >= 2}
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-			<VisXYContainer height={250} data={data.degree.data}>
+			<div>
 				<div class="flex items-center mb-3">
 					<CircleDollarSign class="h-5 w-5 mr-2" />
 					<h4 class="font-semibold">Gross Income</h4>
 					<div class="ml-auto">
-						<VisBulletLegend
-							items={[{ name: "Median" }, { name: "25th" }, { name: "75th" }]}
-						/>
+						<UnovisLegend config={grossLegendConfig} />
 					</div>
 				</div>
-				<VisLine {x} {y} curveType={CurveType.Linear} />
-				<VisAxis type="x" numTicks={(data.degree.data.length / 2) >> 0} />
-				<VisAxis type="y" />
-				<VisTooltip />
-				<VisCrosshair
-					{x}
-					{y}
-					template={tooltipTemplate}
-					hideWhenFarFromPointer={true}
-				/>
-			</VisXYContainer>
+				<UnovisXYChart data={data.degree.data} getConfig={getGrossChartConfig} />
+			</div>
 
-			<VisXYContainer height={250} data={data.degree.data}>
+			<div>
 				<div class="flex items-center mb-3">
 					<Briefcase class="h-5 w-5 mr-2" />
 					<h4 class="font-semibold">Employment Rate</h4>
 					<div class="ml-auto">
-						<VisBulletLegend
-							items={[{ name: "Full Time" }, { name: "Overall" }]}
-						/>
+						<UnovisLegend config={employmentLegendConfig} />
 					</div>
 				</div>
-				<VisLine {x} y={yEmp} curveType={CurveType.Linear} />
-				<VisAxis type="x" numTicks={(data.degree.data.length / 2) >> 0} />
-				<VisAxis type="y" />
-				<VisTooltip />
-				<VisCrosshair
-					{x}
-					y={yEmp}
-					template={employmentTooltipTemplate}
-					hideWhenFarFromPointer={true}
-				/>
-			</VisXYContainer>
+				<UnovisXYChart data={data.degree.data} getConfig={getEmploymentChartConfig} />
+			</div>
 		</div>
 	{/if}
 
@@ -164,30 +188,24 @@
 			<Table class="h-5 w-5 mr-2" />
 			<h4 class="font-semibold">Data Table</h4>
 			<div class="ml-auto">
-				<Download rows={$rows} fileName={data.degree.slug} />
+				<Download rows={table.rows} fileName={data.degree.slug} />
 			</div>
 		</div>
-		<Datatable
-			{handler}
-			search={false}
-			rowsPerPage={false}
-			pagination={false}
-			rowCount={false}
-		>
+		<Datatable {table}>
 			<table>
 				<thead>
 					<tr>
-						<Th {handler} orderBy="year">Year</Th>
-						<Th {handler} orderBy="gross_monthly_median">Median</Th>
-						<Th {handler} orderBy="gross_mthly_25_percentile">25th</Th>
-						<Th {handler} orderBy="gross_mthly_75_percentile">75th</Th>
-						<Th {handler} orderBy="gross_monthly_mean">Mean</Th>
-						<Th {handler} orderBy="employment_rate_overall">EmploymentAll</Th>
-						<Th {handler} orderBy="employment_rate_ft_perm">EmploymentFT</Th>
+						<ThSort {table} field="year">Year</ThSort>
+						<ThSort {table} field="gross_monthly_median">Median</ThSort>
+						<ThSort {table} field="gross_mthly_25_percentile">25th</ThSort>
+						<ThSort {table} field="gross_mthly_75_percentile">75th</ThSort>
+						<ThSort {table} field="gross_monthly_mean">Mean</ThSort>
+						<ThSort {table} field="employment_rate_overall">EmploymentAll</ThSort>
+						<ThSort {table} field="employment_rate_ft_perm">EmploymentFT</ThSort>
 					</tr>
 				</thead>
 				<tbody>
-					{#each $rows as row}
+					{#each table.rows as row}
 						<tr>
 							<td>{row.year}</td>
 							<td>{row.gross_monthly_median.toLocaleString()}</td>

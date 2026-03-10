@@ -7,14 +7,20 @@
 		ArrowUpWideNarrow,
 	} from "lucide-svelte";
 	import {
-		VisXYContainer,
-		VisStackedBar,
-		VisAxis,
-		VisTooltip,
-	} from "@unovis/svelte";
-	import { Direction, Orientation, StackedBar } from "@unovis/ts";
+		Axis,
+		Direction,
+		Orientation,
+		StackedBar,
+		Tooltip,
+		type XYContainerConfigInterface,
+	} from "@unovis/ts";
+	import type { PageData } from "./$types";
+	import UnovisXYChart from "$lib/components/charts/UnovisXYChart.svelte";
 
-	export let data;
+	let { data }: { data: PageData } = $props();
+	let selectedMetric = $state<PageData["metric"]>("gross_monthly_median");
+	let selectedYear = $state(0);
+	let selectedLag = $state(1);
 
 	const metricOpts = [
 		{ name: "Employment Rate (Overall)", value: "employment_rate_overall" },
@@ -38,21 +44,49 @@
 		y: number;
 	};
 
-	$: barData = [
+	const barData = $derived([
 		{ x: "Loss", y: data.worst.length },
 		{ x: "Gain", y: data.best.length },
-	];
-	$: x = (_: BarDatum, i: number) => i;
-	$: y = (d: BarDatum) => d.y;
+	]);
+	const x = (_: BarDatum, i: number) => i;
+	const y = (d: BarDatum) => d.y;
 
-	const tickFormat = (tick: number) => barData[tick].x;
+	const tickFormat = (tick: number | Date) =>
+		typeof tick === "number" ? barData[tick]?.x ?? "" : "";
 	const color = (d: BarDatum, i: number) => (d.x === "Gain" ? "green" : "red");
 	const triggers = {
 		[StackedBar.selectors.bar]: (d: BarDatum) => `<div>${d.y}</div>`,
 	};
 
+	const getSummaryChartConfig = $derived.by<
+		() => XYContainerConfigInterface<BarDatum>
+	>(() => () => ({
+		height: 60,
+		yDirection: Direction.South,
+		components: [
+			new StackedBar<BarDatum>({
+				orientation: Orientation.Horizontal,
+				barPadding: -0.4,
+				x,
+				y,
+				color,
+			}),
+		],
+		tooltip: new Tooltip({ triggers }),
+		yAxis: new Axis<BarDatum>({
+			gridLine: false,
+			tickFormat,
+		}),
+	}));
+
+	$effect(() => {
+		selectedMetric = data.metric;
+		selectedYear = data.year;
+		selectedLag = data.lag;
+	});
+
 	function handleChange() {
-		goto(`/movement/?year=${data.year}&lag=${data.lag}&metric=${data.metric}`);
+		goto(`/movement/?year=${selectedYear}&lag=${selectedLag}&metric=${selectedMetric}`);
 	}
 </script>
 
@@ -75,12 +109,12 @@
 			<label for="metric" class="text-sm font-semibold">Metric</label>
 			<select
 				name="metric"
-				bind:value={data.metric}
-				on:change={handleChange}
+				bind:value={selectedMetric}
+				onchange={handleChange}
 				class="text-sm inline-block p-1 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full md:w-auto"
 			>
 				{#each metricOpts as { name, value }}
-					{@const selected = value === data.metric}
+					{@const selected = value === selectedMetric}
 					<option {value} {selected}>{name}</option>
 				{/each}
 			</select>
@@ -91,12 +125,12 @@
 			<label for="year" class="text-sm font-semibold">Reference Year</label>
 			<select
 				name="year"
-				bind:value={data.year}
-				on:change={handleChange}
+				bind:value={selectedYear}
+				onchange={handleChange}
 				class="text-sm inline-block p-1 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full md:w-auto"
 			>
 				{#each YEARS as _year}
-					{@const selected = _year === data.year}
+					{@const selected = _year === selectedYear}
 					<option value={_year} {selected}>{_year}</option>
 				{/each}
 			</select>
@@ -108,25 +142,16 @@
 			<input
 				name="lag"
 				type="number"
-				bind:value={data.lag}
-				on:change={handleChange}
+				bind:value={selectedLag}
+				onchange={handleChange}
 				min="1"
 				class="text-sm inline-block p-1 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full md:w-auto"
 			/>
 		</div>
-		<VisXYContainer height={60} yDirection={Direction.South}>
+		<div>
 			<h1 class="font-semibold mb-1 text-sm">Winners and Losers</h1>
-			<VisStackedBar
-				data={barData}
-				orientation={Orientation.Horizontal}
-				barPadding={-0.4}
-				{x}
-				{y}
-				{color}
-			/>
-			<VisTooltip {triggers} />
-			<VisAxis type="y" gridLine={false} {tickFormat} />
-		</VisXYContainer>
+			<UnovisXYChart data={barData} getConfig={getSummaryChartConfig} />
+		</div>
 	</div>
 </div>
 

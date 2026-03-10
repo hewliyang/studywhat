@@ -1,44 +1,68 @@
 <script lang="ts">
-	import { CurveType } from "@unovis/ts";
 	import { long2short } from "$lib/constants";
-	import { VisXYContainer, VisArea, VisLine } from "@unovis/svelte";
+	import type { WinnersRecord } from "$lib/types";
 
-	import type { WinnersRecord, YearlyRecord } from "$lib/types";
+	let {
+		record,
+		refYear = 2023,
+	}: {
+		record: WinnersRecord;
+		refYear?: number;
+	} = $props();
 
-	export let record: WinnersRecord;
-	export let refYear: number = 2023;
+	const WIDTH = 144;
+	const HEIGHT = 44;
+	const PADDING = 2;
 
-	function getSVGDefs(pctChange: number) {
-		const color = pctChange > 0 ? "#00bf72" : "#ff0000";
-		const id = pctChange > 0 ? "red-gradient" : "green-gradient";
-		const gradient = `
-		<linearGradient id="${id}" gradientTransform="rotate(90)">
-			<stop offset="0%" stop-color="${color}" stop-opacity="1" />
-			<stop offset="25%" stop-color="${color}" stop-opacity="0.8" />
-			<stop offset="50%" stop-color="${color}" stop-opacity="0.6" />
-			<stop offset="75%" stop-color="${color}" stop-opacity="0.4" />
-			<stop offset="100%" stop-color="${color}" stop-opacity="0" />
-		</linearGradient>
-		`;
-		return { id, gradient };
+	const firstIncome = $derived(record.data[0].gross_monthly_median);
+	const points = $derived(
+		record.data.map((entry) => ({
+			year: entry.year,
+			value: entry.gross_monthly_median - firstIncome,
+		}))
+	);
+	const minIncome = $derived(Math.min(...points.map((point) => point.value)));
+	const maxIncome = $derived(Math.max(...points.map((point) => point.value)));
+	const minYear = $derived(Math.min(...points.map((point) => point.year)));
+	const maxYear = $derived(Math.max(...points.map((point) => point.year)));
+	const gradientId = $derived(`${record.slug}-sparkline-gradient`);
+	const lineColor = $derived(record.pctChange > 0 ? "#00bf72" : "#ff0000");
+
+	function scaleX(year: number, min: number, max: number): number {
+		if (min === max) return WIDTH / 2;
+		return PADDING + ((year - min) / (max - min)) * (WIDTH - PADDING * 2);
 	}
 
-	const { id, gradient } = getSVGDefs(record.pctChange);
+	function scaleY(value: number, min: number, max: number): number {
+		if (min === max) return HEIGHT / 2;
+		return HEIGHT - PADDING - ((value - min) / (max - min)) * (HEIGHT - PADDING * 2);
+	}
 
-	// reference line
-	// (refYear - 1, 0) -> (refYear - 1, max(gross_monthly_median))
-	$: firstIncome = record.data[0].gross_monthly_median;
-	$: minIncome = Math.min(
-		...record.data.map((obj) => obj.gross_monthly_median - firstIncome)
+	const plottedPoints = $derived(
+		points.map((point) => ({
+			x: scaleX(point.year, minYear, maxYear),
+			y: scaleY(point.value, minIncome, maxIncome),
+		}))
 	);
-	$: adjustedMaxIncomeRef = Math.max(
-		...record.data.map((obj) => obj.gross_monthly_median - firstIncome)
-	);
-	$: minYear = Math.min(...record.data.map((obj) => obj.year));
-	$: maxYear = Math.max(...record.data.map((obj) => obj.year));
 
-	$: x = (d: YearlyRecord) => d.year;
-	$: y = (d: YearlyRecord) => d.gross_monthly_median - firstIncome;
+	const baselineY = $derived(scaleY(0, minIncome, maxIncome));
+	const refX = $derived(scaleX(refYear, minYear, maxYear));
+
+	const linePath = $derived(
+		plottedPoints
+			.map((point, index) => `${index === 0 ? "M" : "L"} ${point.x} ${point.y}`)
+			.join(" ")
+	);
+
+	const areaPath = $derived.by(() => {
+		if (plottedPoints.length === 0) return "";
+		const first = plottedPoints[0];
+		const last = plottedPoints[plottedPoints.length - 1];
+
+		return `M ${first.x} ${baselineY} ${plottedPoints
+			.map((point) => `L ${point.x} ${point.y}`)
+			.join(" ")} L ${last.x} ${baselineY} Z`;
+	});
 </script>
 
 <a
@@ -56,49 +80,46 @@
 			{record.pctChange > 0 ? "+" : ""}{record.pctChange.toFixed(2)}%
 		</div>
 	</div>
-	<VisXYContainer
-		svgDefs={gradient}
+	<svg
 		class="area-container"
-		width={144}
-		height={44}
+		width={WIDTH}
+		height={HEIGHT}
+		viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
+		role="img"
+		aria-label={`Sparkline for ${record.degree}`}
 	>
-		<VisArea
-			data={record.data}
-			{x}
-			{y}
-			color="url(#{id})"
-			opacity="0.5"
-			curveType={CurveType.Linear}
-		/>
-		<VisLine
-			data={record.data}
-			{x}
-			{y}
-			color={record.pctChange > 0 ? "green" : "red"}
-			lineWidth={1.1}
-			curveType={CurveType.Linear}
-		/>
-		<VisLine
-			data={[
-				{ year: refYear, value: minIncome },
-				{ year: refYear, value: adjustedMaxIncomeRef },
-			]}
-			lineDashArray={[5]}
-			lineWidth={1.1}
-			color="gray"
-			x={(d) => d.year - 0.05}
-			y={(d) => d.value}
-		/>
-		<VisLine
-			data={[
-				{ year: minYear, value: 0 },
-				{ year: maxYear, value: 0 },
-			]}
-			lineDashArray={[5]}
-			lineWidth={1.1}
-			color="gray"
-			x={(d) => d.year - 0.05}
-			y={(d) => d.value}
-		/>
-	</VisXYContainer>
+		<defs>
+			<linearGradient id={gradientId} gradientTransform="rotate(90)">
+				<stop offset="0%" stop-color={lineColor} stop-opacity="1" />
+				<stop offset="25%" stop-color={lineColor} stop-opacity="0.8" />
+				<stop offset="50%" stop-color={lineColor} stop-opacity="0.6" />
+				<stop offset="75%" stop-color={lineColor} stop-opacity="0.4" />
+				<stop offset="100%" stop-color={lineColor} stop-opacity="0" />
+			</linearGradient>
+		</defs>
+
+		<path d={areaPath} fill={`url(#${gradientId})`} opacity="0.5"></path>
+		<path
+			d={`M ${refX} ${scaleY(minIncome, minIncome, maxIncome)} L ${refX} ${scaleY(maxIncome, minIncome, maxIncome)}`}
+			stroke="gray"
+			stroke-width="1.1"
+			stroke-dasharray="5"
+			fill="none"
+		></path>
+		<path
+			d={`M ${scaleX(minYear, minYear, maxYear)} ${baselineY} L ${scaleX(maxYear, minYear, maxYear)} ${baselineY}`}
+			stroke="gray"
+			stroke-width="1.1"
+			stroke-dasharray="5"
+			fill="none"
+		></path>
+		<path
+			d={linePath}
+			stroke={lineColor}
+			stroke-width="1.1"
+			fill="none"
+			stroke-linejoin="round"
+			stroke-linecap="round"
+		></path>
+	</svg>
 </a>

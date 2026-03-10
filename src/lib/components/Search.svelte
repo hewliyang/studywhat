@@ -1,15 +1,19 @@
 <script lang="ts">
 	import { browser } from "$app/environment";
 	import { onNavigate } from "$app/navigation";
-	import { page } from "$app/stores";
+	import { page } from "$app/state";
 	import { local, search } from "$lib/data";
 	import { Search } from "lucide-svelte";
 	import type { GESData } from "$lib/types";
 	import SearchResults from "./SearchResults.svelte";
 
-	$: query = $page.url.searchParams.get("q") ?? "";
-	$: visible = false;
-	$: results = [] as GESData[];
+	let visible = $state(false);
+	let query = $state("");
+	let results = $state([] as GESData[]);
+
+	$effect(() => {
+		query = page.url.searchParams.get("q") ?? "";
+	});
 
 	function show(e: Event & { currentTarget: HTMLInputElement }) {
 		visible = true;
@@ -33,7 +37,7 @@
 </script>
 
 <svelte:window
-	on:keydown={(e) => {
+	onkeydown={(e) => {
 		if (e.key === "Escape") {
 			hide();
 		}
@@ -55,8 +59,8 @@
 		<input
 			name="q"
 			type="search"
-			on:click={show}
-			on:input={show}
+			onclick={show}
+			oninput={show}
 			value={query}
 		/>
 		{#if browser && !query && !visible}
@@ -76,7 +80,7 @@
 </form>
 
 {#if visible}
-	<div class="modal-background" role="presentation" on:click={hide}>
+	<div class="modal-background" role="presentation" onclick={hide}>
 		<div class="search">
 			<form action="/search" method="get">
 				<input
@@ -84,7 +88,7 @@
 					type="search"
 					name="q"
 					value={query}
-					on:input={async (e) => {
+					oninput={async (e) => {
 						query = e.currentTarget.value.toLowerCase();
 
 						if (query === "") {

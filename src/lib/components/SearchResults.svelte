@@ -2,7 +2,7 @@
 	import { short2img, long2short } from "$lib/constants";
 	import type { GESData } from "$lib/types";
 
-	export let degrees: GESData[];
+	let { degrees }: { degrees: GESData[] } = $props();
 </script>
 
 {#if degrees.length > 0}

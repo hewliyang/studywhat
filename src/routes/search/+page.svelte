@@ -1,6 +1,8 @@
 <script lang="ts">
 	import SearchResults from "$lib/components/SearchResults.svelte";
-	export let data;
+	import type { PageData } from "./$types";
+
+	let { data }: { data: PageData } = $props();
 </script>
 
 <SearchResults degrees={data.degrees} />
