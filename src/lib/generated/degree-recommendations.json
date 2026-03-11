@@ -1,0 +1,5146 @@
+{
+  "generatedAt": "2026-03-11T14:02:07.405Z",
+  "neighbors": {
+    "accountancy-ntu": [
+      {
+        "slug": "bachelor-of-accountancy-with-honours-sit",
+        "score": 1,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "accountancy-smu",
+        "score": 1,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "accountancy-cum-laude-and-above-smu",
+        "score": 1,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "bachelor-of-accountancy-suss",
+        "score": 1,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "accountancy-and-business-ntu",
+        "score": 0.510481,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "accountancy-3-yr-direct-honours-programme-ntu",
+        "score": 0.44689,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-accountancy-nus",
+        "score": 0.404413,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-accountancy-hons-nus",
+        "score": 0.404413,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      }
+    ],
+    "accountancy-3-yr-direct-honours-programme-ntu": [
+      {
+        "slug": "accountancy-ntu",
+        "score": 0.44689,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "bachelor-of-accountancy-with-honours-sit",
+        "score": 0.44689,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "accountancy-smu",
+        "score": 0.44689,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "accountancy-cum-laude-and-above-smu",
+        "score": 0.44689,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "bachelor-of-accountancy-suss",
+        "score": 0.44689,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "accountancy-and-business-ntu",
+        "score": 0.228129,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-accountancy-nus",
+        "score": 0.180728,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-accountancy-hons-nus",
+        "score": 0.180728,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      }
+    ],
+    "accountancy-and-business-ntu": [
+      {
+        "slug": "accountancy-ntu",
+        "score": 0.510481,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "bachelor-of-accountancy-with-honours-sit",
+        "score": 0.510481,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "accountancy-smu",
+        "score": 0.510481,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "accountancy-cum-laude-and-above-smu",
+        "score": 0.510481,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "bachelor-of-accountancy-suss",
+        "score": 0.510481,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "business-ntu",
+        "score": 0.466138,
+        "sharedTerms": [
+          "business"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-accountancy-nus",
+        "score": 0.378583,
+        "sharedTerms": [
+          "accountancy",
+          "business"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-accountancy-hons-nus",
+        "score": 0.378583,
+        "sharedTerms": [
+          "accountancy",
+          "business"
+        ]
+      }
+    ],
+    "aerospace-engineering-ntu": [
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-aerospace-engineering-sit",
+        "score": 0.808682,
+        "sharedTerms": [
+          "aerospace_engineering",
+          "aerospace"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-aerospace-systems-sit",
+        "score": 0.342993,
+        "sharedTerms": [
+          "aerospace"
+        ]
+      }
+    ],
+    "art-design-and-media-ntu": [
+      {
+        "slug": "information-engineering-and-media-ntu",
+        "score": 0.205885,
+        "sharedTerms": [
+          "media"
+        ]
+      },
+      {
+        "slug": "bachelor-of-computing-communications-and-media-nus",
+        "score": 0.189883,
+        "sharedTerms": [
+          "media"
+        ]
+      },
+      {
+        "slug": "bachelor-of-science-with-honours-in-digital-communications-and-integrated-media-sit",
+        "score": 0.166284,
+        "sharedTerms": [
+          "media"
+        ]
+      }
+    ],
+    "arts-and-education-ntu": [
+      {
+        "slug": "science-with-education-ntu",
+        "score": 0.461662,
+        "sharedTerms": [
+          "academic"
+        ]
+      }
+    ],
+    "bioengineering-ntu": [],
+    "biological-and-biomedical-sciences-ntu": [
+      {
+        "slug": "biomedical-sciences-ntu",
+        "score": 0.680008,
+        "sharedTerms": [
+          "biomedical_science",
+          "biomedical"
+        ]
+      },
+      {
+        "slug": "biomedical-sciences-and-chinese-medicine-ntu",
+        "score": 0.364244,
+        "sharedTerms": [
+          "biomedical_science",
+          "biomedical"
+        ]
+      },
+      {
+        "slug": "biological-sciences-ntu",
+        "score": 0.313787,
+        "sharedTerms": [
+          "biological"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-biomedical-engineering-nus",
+        "score": 0.238124,
+        "sharedTerms": [
+          "biomedical"
+        ]
+      },
+      {
+        "slug": "biological-sciences-and-psychology-ntu",
+        "score": 0.211677,
+        "sharedTerms": [
+          "biological"
+        ]
+      },
+      {
+        "slug": "chemistry-and-biological-chemistry-ntu",
+        "score": 0.151058,
+        "sharedTerms": [
+          "biological"
+        ]
+      }
+    ],
+    "biological-sciences-and-psychology-ntu": [
+      {
+        "slug": "biological-sciences-ntu",
+        "score": 0.67459,
+        "sharedTerms": [
+          "biological_science",
+          "biological"
+        ]
+      },
+      {
+        "slug": "psychology-ntu",
+        "score": 0.50157,
+        "sharedTerms": [
+          "psychology"
+        ]
+      },
+      {
+        "slug": "biological-and-biomedical-sciences-ntu",
+        "score": 0.211677,
+        "sharedTerms": [
+          "biological"
+        ]
+      }
+    ],
+    "biomedical-sciences-and-chinese-medicine-ntu": [
+      {
+        "slug": "biomedical-sciences-ntu",
+        "score": 0.535647,
+        "sharedTerms": [
+          "biomedical_science",
+          "biomedical"
+        ]
+      },
+      {
+        "slug": "chinese-ntu",
+        "score": 0.410967,
+        "sharedTerms": [
+          "chinese"
+        ]
+      },
+      {
+        "slug": "medicine-ntu",
+        "score": 0.387683,
+        "sharedTerms": [
+          "medicine"
+        ]
+      },
+      {
+        "slug": "biological-and-biomedical-sciences-ntu",
+        "score": 0.364244,
+        "sharedTerms": [
+          "biomedical_science",
+          "biomedical"
+        ]
+      },
+      {
+        "slug": "bachelor-of-medicine-and-bachelor-of-surgery-nus",
+        "score": 0.209204,
+        "sharedTerms": [
+          "medicine"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-biomedical-engineering-nus",
+        "score": 0.187572,
+        "sharedTerms": [
+          "biomedical"
+        ]
+      }
+    ],
+    "business-ntu": [
+      {
+        "slug": "business-management-smu",
+        "score": 0.504892,
+        "sharedTerms": [
+          "business"
+        ]
+      },
+      {
+        "slug": "business-management-cum-laude-and-above-smu",
+        "score": 0.504892,
+        "sharedTerms": [
+          "business"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-nus",
+        "score": 0.495502,
+        "sharedTerms": [
+          "business"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-hons-nus",
+        "score": 0.495502,
+        "sharedTerms": [
+          "business"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-in-food-business-management-sit",
+        "score": 0.490357,
+        "sharedTerms": [
+          "business"
+        ]
+      },
+      {
+        "slug": "accountancy-and-business-ntu",
+        "score": 0.466138,
+        "sharedTerms": [
+          "business"
+        ]
+      },
+      {
+        "slug": "bachelor-of-hospitality-business-with-honours-sit",
+        "score": 0.427818,
+        "sharedTerms": [
+          "business"
+        ]
+      },
+      {
+        "slug": "bachelor-of-science-business-analytics-nus",
+        "score": 0.37918,
+        "sharedTerms": [
+          "business"
+        ]
+      }
+    ],
+    "chemical-and-biomolecular-engineering-ntu": [
+      {
+        "slug": "bachelor-of-engineering-chemical-engineering-nus",
+        "score": 0.237257,
+        "sharedTerms": [
+          "chemical"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-chemical-engineering-sit",
+        "score": 0.237257,
+        "sharedTerms": [
+          "chemical"
+        ]
+      },
+      {
+        "slug": "bachelor-of-science-in-chemical-engineering-sit",
+        "score": 0.230277,
+        "sharedTerms": [
+          "chemical"
+        ]
+      }
+    ],
+    "chemistry-and-biological-chemistry-ntu": [
+      {
+        "slug": "biological-sciences-ntu",
+        "score": 0.215275,
+        "sharedTerms": [
+          "biological"
+        ]
+      },
+      {
+        "slug": "biological-and-biomedical-sciences-ntu",
+        "score": 0.151058,
+        "sharedTerms": [
+          "biological"
+        ]
+      }
+    ],
+    "chinese-ntu": [
+      {
+        "slug": "biomedical-sciences-and-chinese-medicine-ntu",
+        "score": 0.410967,
+        "sharedTerms": [
+          "chinese"
+        ]
+      }
+    ],
+    "civil-engineering-ntu": [
+      {
+        "slug": "bachelor-of-engineering-civil-engineering-nus",
+        "score": 0.800163,
+        "sharedTerms": [
+          "civil",
+          "civil_engineering"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-civil-engineering-sit",
+        "score": 0.800163,
+        "sharedTerms": [
+          "civil",
+          "civil_engineering"
+        ]
+      }
+    ],
+    "communication-studies-ntu": [
+      {
+        "slug": "bachelor-of-arts-with-honours-in-communication-design-sit",
+        "score": 0.29914,
+        "sharedTerms": [
+          "communication"
+        ]
+      },
+      {
+        "slug": "bachelor-of-environmental-studies-nus",
+        "score": 0.264915,
+        "sharedTerms": [
+          "study"
+        ]
+      },
+      {
+        "slug": "maritime-studies-ntu",
+        "score": 0.249069,
+        "sharedTerms": [
+          "study"
+        ]
+      },
+      {
+        "slug": "linguistics-and-multilingual-studies-ntu",
+        "score": 0.187863,
+        "sharedTerms": [
+          "study"
+        ]
+      },
+      {
+        "slug": "bachelor-of-professional-studies-in-culinary-arts-management-sit",
+        "score": 0.151939,
+        "sharedTerms": [
+          "study"
+        ]
+      }
+    ],
+    "computer-engineering-ntu": [
+      {
+        "slug": "bachelor-of-engineering-computer-engineering-nus",
+        "score": 0.786824,
+        "sharedTerms": [
+          "computer_engineering",
+          "computer"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-computer-engineering-sit",
+        "score": 0.786824,
+        "sharedTerms": [
+          "computer_engineering",
+          "computer"
+        ]
+      },
+      {
+        "slug": "double-degree-in-business-and-computer-engineeringcomputing-ntu",
+        "score": 0.443336,
+        "sharedTerms": [
+          "computer_engineering",
+          "computer"
+        ]
+      },
+      {
+        "slug": "computer-science-ntu",
+        "score": 0.416858,
+        "sharedTerms": [
+          "computer"
+        ]
+      },
+      {
+        "slug": "computer-science-smu",
+        "score": 0.416858,
+        "sharedTerms": [
+          "computer"
+        ]
+      },
+      {
+        "slug": "computer-science-cum-laude-and-above-smu",
+        "score": 0.416858,
+        "sharedTerms": [
+          "computer"
+        ]
+      },
+      {
+        "slug": "bachelor-of-computing-computer-science-nus",
+        "score": 0.26049,
+        "sharedTerms": [
+          "computer"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-computer-science-and-design-sutd",
+        "score": 0.238033,
+        "sharedTerms": [
+          "computer"
+        ]
+      }
+    ],
+    "computer-science-ntu": [
+      {
+        "slug": "computer-science-smu",
+        "score": 1,
+        "sharedTerms": [
+          "computer_science",
+          "computer"
+        ]
+      },
+      {
+        "slug": "computer-science-cum-laude-and-above-smu",
+        "score": 1,
+        "sharedTerms": [
+          "computer_science",
+          "computer"
+        ]
+      },
+      {
+        "slug": "bachelor-of-computing-computer-science-nus",
+        "score": 0.624888,
+        "sharedTerms": [
+          "computer_science",
+          "computer"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-computer-science-and-design-sutd",
+        "score": 0.571018,
+        "sharedTerms": [
+          "computer_science",
+          "computer"
+        ]
+      },
+      {
+        "slug": "double-degree-in-engineering-and-economics-ntu",
+        "score": 0.43883,
+        "sharedTerms": [
+          "computer_science",
+          "computer"
+        ]
+      },
+      {
+        "slug": "computer-engineering-ntu",
+        "score": 0.416858,
+        "sharedTerms": [
+          "computer"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-computer-engineering-nus",
+        "score": 0.327994,
+        "sharedTerms": [
+          "computer"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-computer-engineering-sit",
+        "score": 0.327994,
+        "sharedTerms": [
+          "computer"
+        ]
+      }
+    ],
+    "data-science-and-artificial-intelligence-ntu": [
+      {
+        "slug": "bachelor-of-science-design-and-artificial-intelligence-sutd",
+        "score": 0.482738,
+        "sharedTerms": [
+          "artificial",
+          "intelligence",
+          "artificial_intelligence"
+        ]
+      },
+      {
+        "slug": "bachelor-of-science-with-honours-in-applied-artificial-intelligence-sit",
+        "score": 0.462839,
+        "sharedTerms": [
+          "artificial",
+          "intelligence",
+          "artificial_intelligence"
+        ]
+      },
+      {
+        "slug": "bachelor-of-science-data-science-and-analytics-nus",
+        "score": 0.349326,
+        "sharedTerms": [
+          "data_science",
+          "data"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-electronics-and-data-engineering-sit",
+        "score": 0.157802,
+        "sharedTerms": [
+          "data"
+        ]
+      }
+    ],
+    "double-degree-in-business-and-computer-engineeringcomputing-ntu": [
+      {
+        "slug": "computer-engineering-ntu",
+        "score": 0.443336,
+        "sharedTerms": [
+          "computer_engineering",
+          "computer"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-computer-engineering-nus",
+        "score": 0.348827,
+        "sharedTerms": [
+          "computer_engineering",
+          "computer"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-computer-engineering-sit",
+        "score": 0.348827,
+        "sharedTerms": [
+          "computer_engineering",
+          "computer"
+        ]
+      },
+      {
+        "slug": "business-ntu",
+        "score": 0.269344,
+        "sharedTerms": [
+          "business"
+        ]
+      },
+      {
+        "slug": "bachelor-of-computing-computer-science-nus",
+        "score": 0.248359,
+        "sharedTerms": [
+          "computing",
+          "computer"
+        ]
+      },
+      {
+        "slug": "double-degree-in-engineering-and-economics-ntu",
+        "score": 0.210794,
+        "sharedTerms": [
+          "double",
+          "computer"
+        ]
+      },
+      {
+        "slug": "interdisciplinary-double-major-ntu",
+        "score": 0.186615,
+        "sharedTerms": [
+          "double"
+        ]
+      },
+      {
+        "slug": "interdisciplinary-double-major-science-ntu",
+        "score": 0.186615,
+        "sharedTerms": [
+          "double"
+        ]
+      }
+    ],
+    "double-degree-in-engineering-and-economics-ntu": [
+      {
+        "slug": "computer-science-ntu",
+        "score": 0.43883,
+        "sharedTerms": [
+          "computer_science",
+          "computer"
+        ]
+      },
+      {
+        "slug": "computer-science-smu",
+        "score": 0.43883,
+        "sharedTerms": [
+          "computer_science",
+          "computer"
+        ]
+      },
+      {
+        "slug": "computer-science-cum-laude-and-above-smu",
+        "score": 0.43883,
+        "sharedTerms": [
+          "computer_science",
+          "computer"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-computer-science-and-design-sutd",
+        "score": 0.431575,
+        "sharedTerms": [
+          "engineering_computer",
+          "computer_science",
+          "computer"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-computer-engineering-nus",
+        "score": 0.374113,
+        "sharedTerms": [
+          "engineering_computer",
+          "computer"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-computer-engineering-sit",
+        "score": 0.374113,
+        "sharedTerms": [
+          "engineering_computer",
+          "computer"
+        ]
+      },
+      {
+        "slug": "economics-ntu",
+        "score": 0.358065,
+        "sharedTerms": [
+          "economics"
+        ]
+      },
+      {
+        "slug": "economics-smu",
+        "score": 0.358065,
+        "sharedTerms": [
+          "economics"
+        ]
+      }
+    ],
+    "economics-ntu": [
+      {
+        "slug": "economics-smu",
+        "score": 1,
+        "sharedTerms": [
+          "economics"
+        ]
+      },
+      {
+        "slug": "economics-cum-laude-and-above-smu",
+        "score": 1,
+        "sharedTerms": [
+          "economics"
+        ]
+      },
+      {
+        "slug": "mathematics-and-economics-ntu",
+        "score": 0.492195,
+        "sharedTerms": [
+          "economics"
+        ]
+      },
+      {
+        "slug": "double-degree-in-engineering-and-economics-ntu",
+        "score": 0.358065,
+        "sharedTerms": [
+          "economics"
+        ]
+      }
+    ],
+    "electrical-and-electronic-engineering-ntu": [
+      {
+        "slug": "bachelor-of-engineering-electrical-engineering-nus",
+        "score": 0.237178,
+        "sharedTerms": [
+          "electrical"
+        ]
+      },
+      {
+        "slug": "bachelor-of-computing-electronic-commerce-nus",
+        "score": 0.218022,
+        "sharedTerms": [
+          "electronic"
+        ]
+      },
+      {
+        "slug": "bachelor-of-science-in-electrical-engineering--information-technology-sit",
+        "score": 0.190242,
+        "sharedTerms": [
+          "electrical"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-electrical-power-engineering-sit",
+        "score": 0.172549,
+        "sharedTerms": [
+          "electrical"
+        ]
+      }
+    ],
+    "english-ntu": [],
+    "environmental-earth-systems-science-ntu": [
+      {
+        "slug": "environmental-engineering-ntu",
+        "score": 0.245966,
+        "sharedTerms": [
+          "environmental"
+        ]
+      },
+      {
+        "slug": "bachelor-of-environmental-studies-nus",
+        "score": 0.200563,
+        "sharedTerms": [
+          "environmental"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-environmental-engineering-nus",
+        "score": 0.191796,
+        "sharedTerms": [
+          "environmental"
+        ]
+      },
+      {
+        "slug": "information-systems-smu",
+        "score": 0.150203,
+        "sharedTerms": [
+          "system"
+        ]
+      },
+      {
+        "slug": "information-systems-cum-laude-and-above-smu",
+        "score": 0.150203,
+        "sharedTerms": [
+          "system"
+        ]
+      }
+    ],
+    "environmental-engineering-ntu": [
+      {
+        "slug": "bachelor-of-engineering-environmental-engineering-nus",
+        "score": 0.779768,
+        "sharedTerms": [
+          "environmental_engineering",
+          "environmental"
+        ]
+      },
+      {
+        "slug": "bachelor-of-environmental-studies-nus",
+        "score": 0.364636,
+        "sharedTerms": [
+          "environmental"
+        ]
+      },
+      {
+        "slug": "environmental-earth-systems-science-ntu",
+        "score": 0.245966,
+        "sharedTerms": [
+          "environmental"
+        ]
+      }
+    ],
+    "history-ntu": [],
+    "information-engineering-and-media-ntu": [
+      {
+        "slug": "information-systems-smu",
+        "score": 0.220895,
+        "sharedTerms": [
+          "information"
+        ]
+      },
+      {
+        "slug": "information-systems-cum-laude-and-above-smu",
+        "score": 0.220895,
+        "sharedTerms": [
+          "information"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-information--communications-technology-information-security-sit",
+        "score": 0.216189,
+        "sharedTerms": [
+          "information"
+        ]
+      },
+      {
+        "slug": "art-design-and-media-ntu",
+        "score": 0.205885,
+        "sharedTerms": [
+          "media"
+        ]
+      },
+      {
+        "slug": "bachelor-of-computing-communications-and-media-nus",
+        "score": 0.187897,
+        "sharedTerms": [
+          "media"
+        ]
+      },
+      {
+        "slug": "bachelor-of-science-with-honours-in-digital-communications-and-integrated-media-sit",
+        "score": 0.164545,
+        "sharedTerms": [
+          "media"
+        ]
+      },
+      {
+        "slug": "bachelor-of-computing-information-systems-nus",
+        "score": 0.163109,
+        "sharedTerms": [
+          "information"
+        ]
+      },
+      {
+        "slug": "bachelor-of-computing-information-security-nus",
+        "score": 0.152628,
+        "sharedTerms": [
+          "information"
+        ]
+      }
+    ],
+    "interdisciplinary-double-major-ntu": [
+      {
+        "slug": "interdisciplinary-double-major-science-ntu",
+        "score": 1,
+        "sharedTerms": [
+          "interdisciplinary",
+          "interdisciplinary_double",
+          "double"
+        ]
+      },
+      {
+        "slug": "double-degree-in-engineering-and-economics-ntu",
+        "score": 0.200142,
+        "sharedTerms": [
+          "double"
+        ]
+      },
+      {
+        "slug": "double-degree-in-business-and-computer-engineeringcomputing-ntu",
+        "score": 0.186615,
+        "sharedTerms": [
+          "double"
+        ]
+      }
+    ],
+    "linguistics-and-multilingual-studies-ntu": [
+      {
+        "slug": "bachelor-of-environmental-studies-nus",
+        "score": 0.194349,
+        "sharedTerms": [
+          "study"
+        ]
+      },
+      {
+        "slug": "communication-studies-ntu",
+        "score": 0.187863,
+        "sharedTerms": [
+          "study"
+        ]
+      },
+      {
+        "slug": "maritime-studies-ntu",
+        "score": 0.182724,
+        "sharedTerms": [
+          "study"
+        ]
+      }
+    ],
+    "maritime-studies-ntu": [
+      {
+        "slug": "bachelor-of-environmental-studies-nus",
+        "score": 0.257668,
+        "sharedTerms": [
+          "study"
+        ]
+      },
+      {
+        "slug": "communication-studies-ntu",
+        "score": 0.249069,
+        "sharedTerms": [
+          "study"
+        ]
+      },
+      {
+        "slug": "linguistics-and-multilingual-studies-ntu",
+        "score": 0.182724,
+        "sharedTerms": [
+          "study"
+        ]
+      }
+    ],
+    "materials-engineering-ntu": [
+      {
+        "slug": "bachelor-of-engineering-materials-science-and-engineering-nus",
+        "score": 0.320361,
+        "sharedTerms": [
+          "materials"
+        ]
+      }
+    ],
+    "mathematics-and-mathematical-sciences-ntu": [
+      {
+        "slug": "physics-and-applied-physics-ntu",
+        "score": 0.352005,
+        "sharedTerms": [
+          "mathematical",
+          "mathematical_science"
+        ]
+      }
+    ],
+    "mathematics-and-economics-ntu": [
+      {
+        "slug": "economics-ntu",
+        "score": 0.492195,
+        "sharedTerms": [
+          "economics"
+        ]
+      },
+      {
+        "slug": "economics-smu",
+        "score": 0.492195,
+        "sharedTerms": [
+          "economics"
+        ]
+      },
+      {
+        "slug": "economics-cum-laude-and-above-smu",
+        "score": 0.492195,
+        "sharedTerms": [
+          "economics"
+        ]
+      },
+      {
+        "slug": "double-degree-in-engineering-and-economics-ntu",
+        "score": 0.176238,
+        "sharedTerms": [
+          "economics"
+        ]
+      }
+    ],
+    "mechanical-engineering-ntu": [
+      {
+        "slug": "bachelor-of-engineering-mechanical-engineering-nus",
+        "score": 0.817972,
+        "sharedTerms": [
+          "mechanical_engineering",
+          "mechanical"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-mechanical-engineering-sit",
+        "score": 0.817972,
+        "sharedTerms": [
+          "mechanical_engineering",
+          "mechanical"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-mechanical-design-engineering-sit",
+        "score": 0.283596,
+        "sharedTerms": [
+          "mechanical"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-mechanical-design-and-manufacturing-engineering-sit",
+        "score": 0.227657,
+        "sharedTerms": [
+          "mechanical"
+        ]
+      }
+    ],
+    "medicine-ntu": [
+      {
+        "slug": "bachelor-of-medicine-and-bachelor-of-surgery-nus",
+        "score": 0.539627,
+        "sharedTerms": [
+          "medicine"
+        ]
+      },
+      {
+        "slug": "biomedical-sciences-and-chinese-medicine-ntu",
+        "score": 0.387683,
+        "sharedTerms": [
+          "medicine"
+        ]
+      }
+    ],
+    "philosophy-ntu": [],
+    "physics-and-applied-physics-ntu": [
+      {
+        "slug": "physics-and-applied-physics-only-ntu",
+        "score": 0.840267,
+        "sharedTerms": [
+          "physics",
+          "physics_applied",
+          "applied_physics"
+        ]
+      },
+      {
+        "slug": "mathematics-and-mathematical-sciences-ntu",
+        "score": 0.352005,
+        "sharedTerms": [
+          "mathematical",
+          "mathematical_science"
+        ]
+      }
+    ],
+    "psychology-ntu": [
+      {
+        "slug": "biological-sciences-and-psychology-ntu",
+        "score": 0.50157,
+        "sharedTerms": [
+          "psychology"
+        ]
+      }
+    ],
+    "public-policy-and-global-affairs-ntu": [
+      {
+        "slug": "bachelor-of-public-safety-and-security-suss",
+        "score": 0.153503,
+        "sharedTerms": [
+          "public"
+        ]
+      }
+    ],
+    "science-with-education-ntu": [
+      {
+        "slug": "arts-and-education-ntu",
+        "score": 0.461662,
+        "sharedTerms": [
+          "academic"
+        ]
+      }
+    ],
+    "sociology-ntu": [],
+    "sports-science-and-management-ntu": [
+      {
+        "slug": "business-management-smu",
+        "score": 0.190883,
+        "sharedTerms": [
+          "management"
+        ]
+      },
+      {
+        "slug": "business-management-cum-laude-and-above-smu",
+        "score": 0.190883,
+        "sharedTerms": [
+          "management"
+        ]
+      }
+    ],
+    "bachelor-of-applied-science-hons-nus": [
+      {
+        "slug": "bachelor-of-science-with-honours-in-applied-artificial-intelligence-sit",
+        "score": 0.238782,
+        "sharedTerms": [
+          "applied"
+        ]
+      },
+      {
+        "slug": "physics-and-applied-physics-only-ntu",
+        "score": 0.220586,
+        "sharedTerms": [
+          "applied"
+        ]
+      }
+    ],
+    "bachelor-of-arts-nus": [],
+    "bachelor-of-arts-architecture-nus": [
+      {
+        "slug": "bachelor-of-landscape-architecture-nus",
+        "score": 0.307386,
+        "sharedTerms": [
+          "architecture"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-naval-architecture-sit",
+        "score": 0.278639,
+        "sharedTerms": [
+          "architecture"
+        ]
+      },
+      {
+        "slug": "bachelor-of-science-architecture-and-sustainable-design-sutd",
+        "score": 0.22708,
+        "sharedTerms": [
+          "architecture"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-naval-architecture-and-marine-engineering-sit",
+        "score": 0.205121,
+        "sharedTerms": [
+          "architecture"
+        ]
+      }
+    ],
+    "bachelor-of-arts-hons-nus": [],
+    "bachelor-of-arts-industrial-design-nus": [
+      {
+        "slug": "bachelor-of-engineering-industrial-and-systems-engineering-nus",
+        "score": 0.234755,
+        "sharedTerms": [
+          "industrial"
+        ]
+      }
+    ],
+    "bachelor-of-arts-with-honours-nus": [],
+    "bachelor-of-business-administration-nus": [
+      {
+        "slug": "bachelor-of-business-administration-hons-nus",
+        "score": 1,
+        "sharedTerms": [
+          "administration",
+          "business_administration",
+          "business"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-accountancy-nus",
+        "score": 0.745273,
+        "sharedTerms": [
+          "administration",
+          "business_administration",
+          "business"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-accountancy-hons-nus",
+        "score": 0.745273,
+        "sharedTerms": [
+          "administration",
+          "business_administration",
+          "business"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-in-food-business-management-sit",
+        "score": 0.616294,
+        "sharedTerms": [
+          "business",
+          "administration",
+          "business_administration"
+        ]
+      },
+      {
+        "slug": "business-ntu",
+        "score": 0.495502,
+        "sharedTerms": [
+          "business"
+        ]
+      },
+      {
+        "slug": "business-management-smu",
+        "score": 0.250175,
+        "sharedTerms": [
+          "business"
+        ]
+      },
+      {
+        "slug": "business-management-cum-laude-and-above-smu",
+        "score": 0.250175,
+        "sharedTerms": [
+          "business"
+        ]
+      },
+      {
+        "slug": "accountancy-and-business-ntu",
+        "score": 0.230973,
+        "sharedTerms": [
+          "business"
+        ]
+      }
+    ],
+    "bachelor-of-business-administration-accountancy-nus": [
+      {
+        "slug": "bachelor-of-business-administration-accountancy-hons-nus",
+        "score": 1,
+        "sharedTerms": [
+          "administration_accountancy",
+          "administration",
+          "business_administration"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-nus",
+        "score": 0.745273,
+        "sharedTerms": [
+          "administration",
+          "business_administration",
+          "business"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-hons-nus",
+        "score": 0.745273,
+        "sharedTerms": [
+          "administration",
+          "business_administration",
+          "business"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-in-food-business-management-sit",
+        "score": 0.459307,
+        "sharedTerms": [
+          "business",
+          "administration",
+          "business_administration"
+        ]
+      },
+      {
+        "slug": "accountancy-ntu",
+        "score": 0.404413,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "bachelor-of-accountancy-with-honours-sit",
+        "score": 0.404413,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "accountancy-smu",
+        "score": 0.404413,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "accountancy-cum-laude-and-above-smu",
+        "score": 0.404413,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      }
+    ],
+    "bachelor-of-business-administration-accountancy-hons-nus": [
+      {
+        "slug": "bachelor-of-business-administration-accountancy-nus",
+        "score": 1,
+        "sharedTerms": [
+          "administration_accountancy",
+          "administration",
+          "business_administration"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-nus",
+        "score": 0.745273,
+        "sharedTerms": [
+          "administration",
+          "business_administration",
+          "business"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-hons-nus",
+        "score": 0.745273,
+        "sharedTerms": [
+          "administration",
+          "business_administration",
+          "business"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-in-food-business-management-sit",
+        "score": 0.459307,
+        "sharedTerms": [
+          "business",
+          "administration",
+          "business_administration"
+        ]
+      },
+      {
+        "slug": "accountancy-ntu",
+        "score": 0.404413,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "bachelor-of-accountancy-with-honours-sit",
+        "score": 0.404413,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "accountancy-smu",
+        "score": 0.404413,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "accountancy-cum-laude-and-above-smu",
+        "score": 0.404413,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      }
+    ],
+    "bachelor-of-business-administration-hons-nus": [
+      {
+        "slug": "bachelor-of-business-administration-nus",
+        "score": 1,
+        "sharedTerms": [
+          "administration",
+          "business_administration",
+          "business"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-accountancy-nus",
+        "score": 0.745273,
+        "sharedTerms": [
+          "administration",
+          "business_administration",
+          "business"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-accountancy-hons-nus",
+        "score": 0.745273,
+        "sharedTerms": [
+          "administration",
+          "business_administration",
+          "business"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-in-food-business-management-sit",
+        "score": 0.616294,
+        "sharedTerms": [
+          "business",
+          "administration",
+          "business_administration"
+        ]
+      },
+      {
+        "slug": "business-ntu",
+        "score": 0.495502,
+        "sharedTerms": [
+          "business"
+        ]
+      },
+      {
+        "slug": "business-management-smu",
+        "score": 0.250175,
+        "sharedTerms": [
+          "business"
+        ]
+      },
+      {
+        "slug": "business-management-cum-laude-and-above-smu",
+        "score": 0.250175,
+        "sharedTerms": [
+          "business"
+        ]
+      },
+      {
+        "slug": "accountancy-and-business-ntu",
+        "score": 0.230973,
+        "sharedTerms": [
+          "business"
+        ]
+      }
+    ],
+    "bachelor-of-computing-communications-and-media-nus": [
+      {
+        "slug": "bachelor-of-science-with-honours-in-digital-communications-and-integrated-media-sit",
+        "score": 0.519928,
+        "sharedTerms": [
+          "communications_media",
+          "communications",
+          "media"
+        ]
+      },
+      {
+        "slug": "art-design-and-media-ntu",
+        "score": 0.189883,
+        "sharedTerms": [
+          "media"
+        ]
+      },
+      {
+        "slug": "information-engineering-and-media-ntu",
+        "score": 0.187897,
+        "sharedTerms": [
+          "media"
+        ]
+      },
+      {
+        "slug": "computing-and-law-smu",
+        "score": 0.183906,
+        "sharedTerms": [
+          "computing"
+        ]
+      },
+      {
+        "slug": "computing-and-law-cum-laude-and-above-smu",
+        "score": 0.183906,
+        "sharedTerms": [
+          "computing"
+        ]
+      },
+      {
+        "slug": "bachelor-of-computing-computer-science-nus",
+        "score": 0.165677,
+        "sharedTerms": [
+          "computing"
+        ]
+      },
+      {
+        "slug": "bachelor-of-science-with-honours-in-computing-science-sit",
+        "score": 0.164359,
+        "sharedTerms": [
+          "computing"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-information--communications-technology-software-engineering-sit",
+        "score": 0.150682,
+        "sharedTerms": [
+          "communications"
+        ]
+      }
+    ],
+    "bachelor-of-computing-computer-science-nus": [
+      {
+        "slug": "computer-science-ntu",
+        "score": 0.624888,
+        "sharedTerms": [
+          "computer_science",
+          "computer"
+        ]
+      },
+      {
+        "slug": "computer-science-smu",
+        "score": 0.624888,
+        "sharedTerms": [
+          "computer_science",
+          "computer"
+        ]
+      },
+      {
+        "slug": "computer-science-cum-laude-and-above-smu",
+        "score": 0.624888,
+        "sharedTerms": [
+          "computer_science",
+          "computer"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-computer-science-and-design-sutd",
+        "score": 0.356822,
+        "sharedTerms": [
+          "computer_science",
+          "computer"
+        ]
+      },
+      {
+        "slug": "double-degree-in-engineering-and-economics-ntu",
+        "score": 0.274219,
+        "sharedTerms": [
+          "computer_science",
+          "computer"
+        ]
+      },
+      {
+        "slug": "computer-engineering-ntu",
+        "score": 0.26049,
+        "sharedTerms": [
+          "computer"
+        ]
+      },
+      {
+        "slug": "double-degree-in-business-and-computer-engineeringcomputing-ntu",
+        "score": 0.248359,
+        "sharedTerms": [
+          "computing",
+          "computer"
+        ]
+      },
+      {
+        "slug": "computing-and-law-smu",
+        "score": 0.225254,
+        "sharedTerms": [
+          "computing"
+        ]
+      }
+    ],
+    "bachelor-of-computing-electronic-commerce-nus": [
+      {
+        "slug": "electrical-and-electronic-engineering-ntu",
+        "score": 0.218022,
+        "sharedTerms": [
+          "electronic"
+        ]
+      },
+      {
+        "slug": "computing-and-law-smu",
+        "score": 0.169246,
+        "sharedTerms": [
+          "computing"
+        ]
+      },
+      {
+        "slug": "computing-and-law-cum-laude-and-above-smu",
+        "score": 0.169246,
+        "sharedTerms": [
+          "computing"
+        ]
+      },
+      {
+        "slug": "bachelor-of-computing-computer-science-nus",
+        "score": 0.15247,
+        "sharedTerms": [
+          "computing"
+        ]
+      },
+      {
+        "slug": "bachelor-of-science-with-honours-in-computing-science-sit",
+        "score": 0.151257,
+        "sharedTerms": [
+          "computing"
+        ]
+      }
+    ],
+    "bachelor-of-computing-information-security-nus": [
+      {
+        "slug": "bachelor-of-computing-information-systems-nus",
+        "score": 0.582091,
+        "sharedTerms": [
+          "computing_information",
+          "computing",
+          "information"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-information--communications-technology-information-security-sit",
+        "score": 0.529958,
+        "sharedTerms": [
+          "information",
+          "information_security",
+          "security"
+        ]
+      },
+      {
+        "slug": "information-systems-smu",
+        "score": 0.212012,
+        "sharedTerms": [
+          "information"
+        ]
+      },
+      {
+        "slug": "information-systems-cum-laude-and-above-smu",
+        "score": 0.212012,
+        "sharedTerms": [
+          "information"
+        ]
+      },
+      {
+        "slug": "bachelor-of-arts-with-honours-in-criminology-and-security-sit",
+        "score": 0.195547,
+        "sharedTerms": [
+          "security"
+        ]
+      },
+      {
+        "slug": "computing-and-law-smu",
+        "score": 0.191385,
+        "sharedTerms": [
+          "computing"
+        ]
+      },
+      {
+        "slug": "computing-and-law-cum-laude-and-above-smu",
+        "score": 0.191385,
+        "sharedTerms": [
+          "computing"
+        ]
+      },
+      {
+        "slug": "bachelor-of-public-safety-and-security-suss",
+        "score": 0.176164,
+        "sharedTerms": [
+          "security"
+        ]
+      }
+    ],
+    "bachelor-of-computing-information-systems-nus": [
+      {
+        "slug": "information-systems-smu",
+        "score": 0.738402,
+        "sharedTerms": [
+          "information_system",
+          "information",
+          "system"
+        ]
+      },
+      {
+        "slug": "information-systems-cum-laude-and-above-smu",
+        "score": 0.738402,
+        "sharedTerms": [
+          "information_system",
+          "information",
+          "system"
+        ]
+      },
+      {
+        "slug": "bachelor-of-computing-information-security-nus",
+        "score": 0.582091,
+        "sharedTerms": [
+          "computing_information",
+          "computing",
+          "information"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-information-systems-technology-and-design-sutd",
+        "score": 0.49554,
+        "sharedTerms": [
+          "information_system",
+          "information",
+          "system"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-information--communications-technology-information-security-sit",
+        "score": 0.221744,
+        "sharedTerms": [
+          "information"
+        ]
+      },
+      {
+        "slug": "computing-and-law-smu",
+        "score": 0.204528,
+        "sharedTerms": [
+          "computing"
+        ]
+      },
+      {
+        "slug": "computing-and-law-cum-laude-and-above-smu",
+        "score": 0.204528,
+        "sharedTerms": [
+          "computing"
+        ]
+      },
+      {
+        "slug": "bachelor-of-computing-computer-science-nus",
+        "score": 0.184255,
+        "sharedTerms": [
+          "computing"
+        ]
+      }
+    ],
+    "bachelor-of-dental-surgery-nus": [
+      {
+        "slug": "bachelor-of-medicine-and-bachelor-of-surgery-nus",
+        "score": 0.313373,
+        "sharedTerms": [
+          "surgery"
+        ]
+      }
+    ],
+    "bachelor-of-engineering-biomedical-engineering-nus": [
+      {
+        "slug": "biomedical-sciences-ntu",
+        "score": 0.350178,
+        "sharedTerms": [
+          "biomedical"
+        ]
+      },
+      {
+        "slug": "biological-and-biomedical-sciences-ntu",
+        "score": 0.238124,
+        "sharedTerms": [
+          "biomedical"
+        ]
+      },
+      {
+        "slug": "biomedical-sciences-and-chinese-medicine-ntu",
+        "score": 0.187572,
+        "sharedTerms": [
+          "biomedical"
+        ]
+      }
+    ],
+    "bachelor-of-engineering-chemical-engineering-nus": [
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-chemical-engineering-sit",
+        "score": 1,
+        "sharedTerms": [
+          "engineering_chemical",
+          "chemical_engineering",
+          "chemical"
+        ]
+      },
+      {
+        "slug": "bachelor-of-science-in-chemical-engineering-sit",
+        "score": 0.610947,
+        "sharedTerms": [
+          "chemical_engineering",
+          "chemical"
+        ]
+      },
+      {
+        "slug": "chemical-and-biomolecular-engineering-ntu",
+        "score": 0.237257,
+        "sharedTerms": [
+          "chemical"
+        ]
+      }
+    ],
+    "bachelor-of-engineering-civil-engineering-nus": [
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-civil-engineering-sit",
+        "score": 1,
+        "sharedTerms": [
+          "engineering_civil",
+          "civil",
+          "civil_engineering"
+        ]
+      },
+      {
+        "slug": "civil-engineering-ntu",
+        "score": 0.800163,
+        "sharedTerms": [
+          "civil",
+          "civil_engineering"
+        ]
+      }
+    ],
+    "bachelor-of-engineering-computer-engineering-nus": [
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-computer-engineering-sit",
+        "score": 1,
+        "sharedTerms": [
+          "engineering_computer",
+          "computer_engineering",
+          "computer"
+        ]
+      },
+      {
+        "slug": "computer-engineering-ntu",
+        "score": 0.786824,
+        "sharedTerms": [
+          "computer_engineering",
+          "computer"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-computer-science-and-design-sutd",
+        "score": 0.486806,
+        "sharedTerms": [
+          "engineering_computer",
+          "computer"
+        ]
+      },
+      {
+        "slug": "double-degree-in-engineering-and-economics-ntu",
+        "score": 0.374113,
+        "sharedTerms": [
+          "engineering_computer",
+          "computer"
+        ]
+      },
+      {
+        "slug": "double-degree-in-business-and-computer-engineeringcomputing-ntu",
+        "score": 0.348827,
+        "sharedTerms": [
+          "computer_engineering",
+          "computer"
+        ]
+      },
+      {
+        "slug": "computer-science-ntu",
+        "score": 0.327994,
+        "sharedTerms": [
+          "computer"
+        ]
+      },
+      {
+        "slug": "computer-science-smu",
+        "score": 0.327994,
+        "sharedTerms": [
+          "computer"
+        ]
+      },
+      {
+        "slug": "computer-science-cum-laude-and-above-smu",
+        "score": 0.327994,
+        "sharedTerms": [
+          "computer"
+        ]
+      }
+    ],
+    "bachelor-of-engineering-electrical-engineering-nus": [
+      {
+        "slug": "bachelor-of-science-in-electrical-engineering--information-technology-sit",
+        "score": 0.516549,
+        "sharedTerms": [
+          "electrical_engineering",
+          "electrical"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-electrical-power-engineering-sit",
+        "score": 0.468508,
+        "sharedTerms": [
+          "engineering_electrical",
+          "electrical"
+        ]
+      },
+      {
+        "slug": "electrical-and-electronic-engineering-ntu",
+        "score": 0.237178,
+        "sharedTerms": [
+          "electrical"
+        ]
+      }
+    ],
+    "bachelor-of-engineering-engineering-science-nus": [
+      {
+        "slug": "bachelor-of-engineering-engineering-systems-and-design-sutd",
+        "score": 0.307722,
+        "sharedTerms": [
+          "engineering_engineering"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-engineering-product-development-sutd",
+        "score": 0.267368,
+        "sharedTerms": [
+          "engineering_engineering"
+        ]
+      }
+    ],
+    "bachelor-of-engineering-environmental-engineering-nus": [
+      {
+        "slug": "environmental-engineering-ntu",
+        "score": 0.779768,
+        "sharedTerms": [
+          "environmental_engineering",
+          "environmental"
+        ]
+      },
+      {
+        "slug": "bachelor-of-environmental-studies-nus",
+        "score": 0.284331,
+        "sharedTerms": [
+          "environmental"
+        ]
+      },
+      {
+        "slug": "environmental-earth-systems-science-ntu",
+        "score": 0.191796,
+        "sharedTerms": [
+          "environmental"
+        ]
+      }
+    ],
+    "bachelor-of-engineering-industrial-and-systems-engineering-nus": [
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-aircraft-systems-engineering-sit",
+        "score": 0.290157,
+        "sharedTerms": [
+          "system_engineering",
+          "system"
+        ]
+      },
+      {
+        "slug": "bachelor-of-arts-industrial-design-nus",
+        "score": 0.234755,
+        "sharedTerms": [
+          "industrial"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-telematics-intelligent-transportation-systems-engineering-sit",
+        "score": 0.207622,
+        "sharedTerms": [
+          "system_engineering",
+          "system"
+        ]
+      },
+      {
+        "slug": "information-systems-smu",
+        "score": 0.168912,
+        "sharedTerms": [
+          "system"
+        ]
+      },
+      {
+        "slug": "information-systems-cum-laude-and-above-smu",
+        "score": 0.168912,
+        "sharedTerms": [
+          "system"
+        ]
+      }
+    ],
+    "bachelor-of-engineering-materials-science-and-engineering-nus": [
+      {
+        "slug": "materials-engineering-ntu",
+        "score": 0.320361,
+        "sharedTerms": [
+          "materials"
+        ]
+      }
+    ],
+    "bachelor-of-engineering-mechanical-engineering-nus": [
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-mechanical-engineering-sit",
+        "score": 1,
+        "sharedTerms": [
+          "mechanical_engineering",
+          "engineering_mechanical",
+          "mechanical"
+        ]
+      },
+      {
+        "slug": "mechanical-engineering-ntu",
+        "score": 0.817972,
+        "sharedTerms": [
+          "mechanical_engineering",
+          "mechanical"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-mechanical-design-engineering-sit",
+        "score": 0.48364,
+        "sharedTerms": [
+          "engineering_mechanical",
+          "mechanical"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-mechanical-design-and-manufacturing-engineering-sit",
+        "score": 0.388243,
+        "sharedTerms": [
+          "engineering_mechanical",
+          "mechanical"
+        ]
+      }
+    ],
+    "bachelor-of-environmental-studies-nus": [
+      {
+        "slug": "environmental-engineering-ntu",
+        "score": 0.364636,
+        "sharedTerms": [
+          "environmental"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-environmental-engineering-nus",
+        "score": 0.284331,
+        "sharedTerms": [
+          "environmental"
+        ]
+      },
+      {
+        "slug": "communication-studies-ntu",
+        "score": 0.264915,
+        "sharedTerms": [
+          "study"
+        ]
+      },
+      {
+        "slug": "maritime-studies-ntu",
+        "score": 0.257668,
+        "sharedTerms": [
+          "study"
+        ]
+      },
+      {
+        "slug": "environmental-earth-systems-science-ntu",
+        "score": 0.200563,
+        "sharedTerms": [
+          "environmental"
+        ]
+      },
+      {
+        "slug": "linguistics-and-multilingual-studies-ntu",
+        "score": 0.194349,
+        "sharedTerms": [
+          "study"
+        ]
+      },
+      {
+        "slug": "bachelor-of-professional-studies-in-culinary-arts-management-sit",
+        "score": 0.157185,
+        "sharedTerms": [
+          "study"
+        ]
+      }
+    ],
+    "bachelor-of-landscape-architecture-nus": [
+      {
+        "slug": "bachelor-of-arts-architecture-nus",
+        "score": 0.307386,
+        "sharedTerms": [
+          "architecture"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-naval-architecture-sit",
+        "score": 0.2196,
+        "sharedTerms": [
+          "architecture"
+        ]
+      },
+      {
+        "slug": "bachelor-of-science-architecture-and-sustainable-design-sutd",
+        "score": 0.178966,
+        "sharedTerms": [
+          "architecture"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-naval-architecture-and-marine-engineering-sit",
+        "score": 0.161659,
+        "sharedTerms": [
+          "architecture"
+        ]
+      }
+    ],
+    "bachelor-of-laws-nus": [
+      {
+        "slug": "law-smu",
+        "score": 1,
+        "sharedTerms": [
+          "law"
+        ]
+      },
+      {
+        "slug": "law-cum-laude-and-above-smu",
+        "score": 1,
+        "sharedTerms": [
+          "law"
+        ]
+      },
+      {
+        "slug": "computing-and-law-smu",
+        "score": 0.565981,
+        "sharedTerms": [
+          "law"
+        ]
+      },
+      {
+        "slug": "computing-and-law-cum-laude-and-above-smu",
+        "score": 0.565981,
+        "sharedTerms": [
+          "law"
+        ]
+      }
+    ],
+    "bachelor-of-medicine-and-bachelor-of-surgery-nus": [
+      {
+        "slug": "medicine-ntu",
+        "score": 0.539627,
+        "sharedTerms": [
+          "medicine"
+        ]
+      },
+      {
+        "slug": "bachelor-of-dental-surgery-nus",
+        "score": 0.313373,
+        "sharedTerms": [
+          "surgery"
+        ]
+      },
+      {
+        "slug": "biomedical-sciences-and-chinese-medicine-ntu",
+        "score": 0.209204,
+        "sharedTerms": [
+          "medicine"
+        ]
+      }
+    ],
+    "bachelor-of-music-nus": [],
+    "bachelor-of-science-nus": [],
+    "bachelor-of-science-business-analytics-nus": [
+      {
+        "slug": "bachelor-of-science-in-business-analytics-suss",
+        "score": 1,
+        "sharedTerms": [
+          "science_business",
+          "business_analytics",
+          "analytics"
+        ]
+      },
+      {
+        "slug": "business-ntu",
+        "score": 0.37918,
+        "sharedTerms": [
+          "business"
+        ]
+      },
+      {
+        "slug": "bachelor-of-science-data-science-and-analytics-nus",
+        "score": 0.214238,
+        "sharedTerms": [
+          "analytics"
+        ]
+      },
+      {
+        "slug": "business-management-smu",
+        "score": 0.191445,
+        "sharedTerms": [
+          "business"
+        ]
+      },
+      {
+        "slug": "business-management-cum-laude-and-above-smu",
+        "score": 0.191445,
+        "sharedTerms": [
+          "business"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-nus",
+        "score": 0.187885,
+        "sharedTerms": [
+          "business"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-hons-nus",
+        "score": 0.187885,
+        "sharedTerms": [
+          "business"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-in-food-business-management-sit",
+        "score": 0.185933,
+        "sharedTerms": [
+          "business"
+        ]
+      }
+    ],
+    "bachelor-of-science-computational-biology-nus": [],
+    "bachelor-of-science-data-science-and-analytics-nus": [
+      {
+        "slug": "data-science-and-artificial-intelligence-ntu",
+        "score": 0.349326,
+        "sharedTerms": [
+          "data_science",
+          "data"
+        ]
+      },
+      {
+        "slug": "bachelor-of-science-business-analytics-nus",
+        "score": 0.214238,
+        "sharedTerms": [
+          "analytics"
+        ]
+      },
+      {
+        "slug": "bachelor-of-science-in-business-analytics-suss",
+        "score": 0.214238,
+        "sharedTerms": [
+          "analytics"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-electronics-and-data-engineering-sit",
+        "score": 0.167006,
+        "sharedTerms": [
+          "data"
+        ]
+      }
+    ],
+    "bachelor-of-science-hons-nus": [],
+    "bachelor-of-science-nursing-nus": [
+      {
+        "slug": "bachelor-of-science-nursing-hons-nus",
+        "score": 1,
+        "sharedTerms": [
+          "nursing",
+          "science_nursing"
+        ]
+      },
+      {
+        "slug": "bachelor-of-science-with-honours-in-nursing-sit",
+        "score": 1,
+        "sharedTerms": [
+          "nursing",
+          "science_nursing"
+        ]
+      }
+    ],
+    "bachelor-of-science-nursing-hons-nus": [
+      {
+        "slug": "bachelor-of-science-nursing-nus",
+        "score": 1,
+        "sharedTerms": [
+          "nursing",
+          "science_nursing"
+        ]
+      },
+      {
+        "slug": "bachelor-of-science-with-honours-in-nursing-sit",
+        "score": 1,
+        "sharedTerms": [
+          "nursing",
+          "science_nursing"
+        ]
+      }
+    ],
+    "bachelor-of-science-pharmaceutical-science-hons-nus": [
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-pharmaceutical-engineering-sit",
+        "score": 0.300105,
+        "sharedTerms": [
+          "pharmaceutical"
+        ]
+      }
+    ],
+    "bachelor-of-science-pharmacy-nus": [],
+    "bachelor-of-science-project-and-facilities-management-nus": [
+      {
+        "slug": "bachelor-of-engineering-infrastructure-and-project-management-nus",
+        "score": 0.252511,
+        "sharedTerms": [
+          "project",
+          "management"
+        ]
+      },
+      {
+        "slug": "business-management-smu",
+        "score": 0.153922,
+        "sharedTerms": [
+          "management"
+        ]
+      },
+      {
+        "slug": "business-management-cum-laude-and-above-smu",
+        "score": 0.153922,
+        "sharedTerms": [
+          "management"
+        ]
+      }
+    ],
+    "bachelor-of-science-real-estate-nus": [
+      {
+        "slug": "bachelor-of-science-in-computer-science-in-real-time-interactive-simulation-sit",
+        "score": 0.290378,
+        "sharedTerms": [
+          "real",
+          "science_real"
+        ]
+      }
+    ],
+    "bachelor-of-science-with-honours-nus": [],
+    "bachelor-of-social-sciences-nus": [
+      {
+        "slug": "social-sciences-smu",
+        "score": 1,
+        "sharedTerms": [
+          "social_science",
+          "social"
+        ]
+      },
+      {
+        "slug": "social-sciences-cum-laude-and-above-smu",
+        "score": 1,
+        "sharedTerms": [
+          "social_science",
+          "social"
+        ]
+      },
+      {
+        "slug": "bachelor-of-social-work-suss",
+        "score": 0.350178,
+        "sharedTerms": [
+          "social"
+        ]
+      }
+    ],
+    "bachelor-of-accountancy-with-honours-sit": [
+      {
+        "slug": "accountancy-ntu",
+        "score": 1,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "accountancy-smu",
+        "score": 1,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "accountancy-cum-laude-and-above-smu",
+        "score": 1,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "bachelor-of-accountancy-suss",
+        "score": 1,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "accountancy-and-business-ntu",
+        "score": 0.510481,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "accountancy-3-yr-direct-honours-programme-ntu",
+        "score": 0.44689,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-accountancy-nus",
+        "score": 0.404413,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-accountancy-hons-nus",
+        "score": 0.404413,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      }
+    ],
+    "bachelor-of-arts-in-game-design-sit": [],
+    "bachelor-of-arts-with-honours-in-communication-design-sit": [
+      {
+        "slug": "communication-studies-ntu",
+        "score": 0.29914,
+        "sharedTerms": [
+          "communication"
+        ]
+      }
+    ],
+    "bachelor-of-arts-with-honours-in-criminology-and-security-sit": [
+      {
+        "slug": "bachelor-of-computing-information-security-nus",
+        "score": 0.195547,
+        "sharedTerms": [
+          "security"
+        ]
+      },
+      {
+        "slug": "bachelor-of-public-safety-and-security-suss",
+        "score": 0.16919,
+        "sharedTerms": [
+          "security"
+        ]
+      }
+    ],
+    "bachelor-of-arts-with-honours-in-interior-design-sit": [],
+    "bachelor-of-business-administration-in-food-business-management-sit": [
+      {
+        "slug": "bachelor-of-business-administration-nus",
+        "score": 0.616294,
+        "sharedTerms": [
+          "business",
+          "administration",
+          "business_administration"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-hons-nus",
+        "score": 0.616294,
+        "sharedTerms": [
+          "business",
+          "administration",
+          "business_administration"
+        ]
+      },
+      {
+        "slug": "business-management-smu",
+        "score": 0.609394,
+        "sharedTerms": [
+          "business",
+          "business_management",
+          "management"
+        ]
+      },
+      {
+        "slug": "business-management-cum-laude-and-above-smu",
+        "score": 0.609394,
+        "sharedTerms": [
+          "business",
+          "business_management",
+          "management"
+        ]
+      },
+      {
+        "slug": "business-ntu",
+        "score": 0.490357,
+        "sharedTerms": [
+          "business"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-accountancy-nus",
+        "score": 0.459307,
+        "sharedTerms": [
+          "business",
+          "administration",
+          "business_administration"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-accountancy-hons-nus",
+        "score": 0.459307,
+        "sharedTerms": [
+          "business",
+          "administration",
+          "business_administration"
+        ]
+      },
+      {
+        "slug": "bachelor-of-food-technology-with-honours-sit",
+        "score": 0.332015,
+        "sharedTerms": [
+          "food"
+        ]
+      }
+    ],
+    "bachelor-of-engineering-with-honours-in-aerospace-engineering-sit": [
+      {
+        "slug": "aerospace-engineering-ntu",
+        "score": 0.808682,
+        "sharedTerms": [
+          "aerospace_engineering",
+          "aerospace"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-aerospace-systems-sit",
+        "score": 0.589063,
+        "sharedTerms": [
+          "engineering_aerospace",
+          "aerospace"
+        ]
+      }
+    ],
+    "bachelor-of-engineering-with-honours-in-aerospace-systems-sit": [
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-aerospace-engineering-sit",
+        "score": 0.589063,
+        "sharedTerms": [
+          "engineering_aerospace",
+          "aerospace"
+        ]
+      },
+      {
+        "slug": "aerospace-engineering-ntu",
+        "score": 0.342993,
+        "sharedTerms": [
+          "aerospace"
+        ]
+      },
+      {
+        "slug": "information-systems-smu",
+        "score": 0.194608,
+        "sharedTerms": [
+          "system"
+        ]
+      },
+      {
+        "slug": "information-systems-cum-laude-and-above-smu",
+        "score": 0.194608,
+        "sharedTerms": [
+          "system"
+        ]
+      }
+    ],
+    "bachelor-of-engineering-with-honours-in-aircraft-systems-engineering-sit": [
+      {
+        "slug": "bachelor-of-engineering-industrial-and-systems-engineering-nus",
+        "score": 0.290157,
+        "sharedTerms": [
+          "system_engineering",
+          "system"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-telematics-intelligent-transportation-systems-engineering-sit",
+        "score": 0.204068,
+        "sharedTerms": [
+          "system_engineering",
+          "system"
+        ]
+      },
+      {
+        "slug": "information-systems-smu",
+        "score": 0.166021,
+        "sharedTerms": [
+          "system"
+        ]
+      },
+      {
+        "slug": "information-systems-cum-laude-and-above-smu",
+        "score": 0.166021,
+        "sharedTerms": [
+          "system"
+        ]
+      }
+    ],
+    "bachelor-of-engineering-with-honours-in-chemical-engineering-sit": [
+      {
+        "slug": "bachelor-of-engineering-chemical-engineering-nus",
+        "score": 1,
+        "sharedTerms": [
+          "engineering_chemical",
+          "chemical_engineering",
+          "chemical"
+        ]
+      },
+      {
+        "slug": "bachelor-of-science-in-chemical-engineering-sit",
+        "score": 0.610947,
+        "sharedTerms": [
+          "chemical_engineering",
+          "chemical"
+        ]
+      },
+      {
+        "slug": "chemical-and-biomolecular-engineering-ntu",
+        "score": 0.237257,
+        "sharedTerms": [
+          "chemical"
+        ]
+      }
+    ],
+    "bachelor-of-engineering-with-honours-in-civil-engineering-sit": [
+      {
+        "slug": "bachelor-of-engineering-civil-engineering-nus",
+        "score": 1,
+        "sharedTerms": [
+          "engineering_civil",
+          "civil",
+          "civil_engineering"
+        ]
+      },
+      {
+        "slug": "civil-engineering-ntu",
+        "score": 0.800163,
+        "sharedTerms": [
+          "civil",
+          "civil_engineering"
+        ]
+      }
+    ],
+    "bachelor-of-engineering-with-honours-in-computer-engineering-sit": [
+      {
+        "slug": "bachelor-of-engineering-computer-engineering-nus",
+        "score": 1,
+        "sharedTerms": [
+          "engineering_computer",
+          "computer_engineering",
+          "computer"
+        ]
+      },
+      {
+        "slug": "computer-engineering-ntu",
+        "score": 0.786824,
+        "sharedTerms": [
+          "computer_engineering",
+          "computer"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-computer-science-and-design-sutd",
+        "score": 0.486806,
+        "sharedTerms": [
+          "engineering_computer",
+          "computer"
+        ]
+      },
+      {
+        "slug": "double-degree-in-engineering-and-economics-ntu",
+        "score": 0.374113,
+        "sharedTerms": [
+          "engineering_computer",
+          "computer"
+        ]
+      },
+      {
+        "slug": "double-degree-in-business-and-computer-engineeringcomputing-ntu",
+        "score": 0.348827,
+        "sharedTerms": [
+          "computer_engineering",
+          "computer"
+        ]
+      },
+      {
+        "slug": "computer-science-ntu",
+        "score": 0.327994,
+        "sharedTerms": [
+          "computer"
+        ]
+      },
+      {
+        "slug": "computer-science-smu",
+        "score": 0.327994,
+        "sharedTerms": [
+          "computer"
+        ]
+      },
+      {
+        "slug": "computer-science-cum-laude-and-above-smu",
+        "score": 0.327994,
+        "sharedTerms": [
+          "computer"
+        ]
+      }
+    ],
+    "bachelor-of-engineering-with-honours-in-electrical-power-engineering-sit": [
+      {
+        "slug": "bachelor-of-engineering-electrical-engineering-nus",
+        "score": 0.468508,
+        "sharedTerms": [
+          "engineering_electrical",
+          "electrical"
+        ]
+      },
+      {
+        "slug": "electrical-and-electronic-engineering-ntu",
+        "score": 0.172549,
+        "sharedTerms": [
+          "electrical"
+        ]
+      },
+      {
+        "slug": "bachelor-of-science-in-electrical-engineering--information-technology-sit",
+        "score": 0.168048,
+        "sharedTerms": [
+          "electrical"
+        ]
+      }
+    ],
+    "bachelor-of-engineering-with-honours-in-electronics-and-data-engineering-sit": [
+      {
+        "slug": "bachelor-of-science-data-science-and-analytics-nus",
+        "score": 0.167006,
+        "sharedTerms": [
+          "data"
+        ]
+      },
+      {
+        "slug": "data-science-and-artificial-intelligence-ntu",
+        "score": 0.157802,
+        "sharedTerms": [
+          "data"
+        ]
+      }
+    ],
+    "bachelor-of-engineering-with-honours-in-information--communications-technology-information-security-sit": [
+      {
+        "slug": "bachelor-of-computing-information-security-nus",
+        "score": 0.529958,
+        "sharedTerms": [
+          "information",
+          "information_security",
+          "security"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-information--communications-technology-software-engineering-sit",
+        "score": 0.519206,
+        "sharedTerms": [
+          "information",
+          "information_communications",
+          "communications"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-information-systems-technology-and-design-sutd",
+        "score": 0.341588,
+        "sharedTerms": [
+          "information",
+          "engineering_information"
+        ]
+      },
+      {
+        "slug": "bachelor-of-science-in-electrical-engineering--information-technology-sit",
+        "score": 0.335492,
+        "sharedTerms": [
+          "information",
+          "engineering_information"
+        ]
+      },
+      {
+        "slug": "information-systems-smu",
+        "score": 0.300303,
+        "sharedTerms": [
+          "information"
+        ]
+      },
+      {
+        "slug": "information-systems-cum-laude-and-above-smu",
+        "score": 0.300303,
+        "sharedTerms": [
+          "information"
+        ]
+      },
+      {
+        "slug": "bachelor-of-computing-information-systems-nus",
+        "score": 0.221744,
+        "sharedTerms": [
+          "information"
+        ]
+      },
+      {
+        "slug": "information-engineering-and-media-ntu",
+        "score": 0.216189,
+        "sharedTerms": [
+          "information"
+        ]
+      }
+    ],
+    "bachelor-of-engineering-with-honours-in-information--communications-technology-software-engineering-sit": [
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-information--communications-technology-information-security-sit",
+        "score": 0.519206,
+        "sharedTerms": [
+          "information",
+          "information_communications",
+          "communications"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-information-systems-technology-and-design-sutd",
+        "score": 0.261882,
+        "sharedTerms": [
+          "engineering_information",
+          "information"
+        ]
+      },
+      {
+        "slug": "bachelor-of-science-in-electrical-engineering--information-technology-sit",
+        "score": 0.257208,
+        "sharedTerms": [
+          "engineering_information",
+          "information"
+        ]
+      },
+      {
+        "slug": "information-systems-smu",
+        "score": 0.163282,
+        "sharedTerms": [
+          "information"
+        ]
+      },
+      {
+        "slug": "information-systems-cum-laude-and-above-smu",
+        "score": 0.163282,
+        "sharedTerms": [
+          "information"
+        ]
+      },
+      {
+        "slug": "bachelor-of-computing-communications-and-media-nus",
+        "score": 0.150682,
+        "sharedTerms": [
+          "communications"
+        ]
+      }
+    ],
+    "bachelor-of-engineering-with-honours-in-marine-engineering-sit": [
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-naval-architecture-and-marine-engineering-sit",
+        "score": 0.42754,
+        "sharedTerms": [
+          "marine",
+          "marine_engineering"
+        ]
+      }
+    ],
+    "bachelor-of-engineering-with-honours-in-mechanical-design-and-manufacturing-engineering-sit": [
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-mechanical-design-engineering-sit",
+        "score": 0.58127,
+        "sharedTerms": [
+          "mechanical_design",
+          "engineering_mechanical",
+          "mechanical"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-mechanical-engineering-nus",
+        "score": 0.388243,
+        "sharedTerms": [
+          "engineering_mechanical",
+          "mechanical"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-mechanical-engineering-sit",
+        "score": 0.388243,
+        "sharedTerms": [
+          "engineering_mechanical",
+          "mechanical"
+        ]
+      },
+      {
+        "slug": "mechanical-engineering-ntu",
+        "score": 0.227657,
+        "sharedTerms": [
+          "mechanical"
+        ]
+      }
+    ],
+    "bachelor-of-engineering-with-honours-in-mechanical-design-engineering-sit": [
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-mechanical-design-and-manufacturing-engineering-sit",
+        "score": 0.58127,
+        "sharedTerms": [
+          "mechanical_design",
+          "engineering_mechanical",
+          "mechanical"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-mechanical-engineering-nus",
+        "score": 0.48364,
+        "sharedTerms": [
+          "engineering_mechanical",
+          "mechanical"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-mechanical-engineering-sit",
+        "score": 0.48364,
+        "sharedTerms": [
+          "engineering_mechanical",
+          "mechanical"
+        ]
+      },
+      {
+        "slug": "mechanical-engineering-ntu",
+        "score": 0.283596,
+        "sharedTerms": [
+          "mechanical"
+        ]
+      }
+    ],
+    "bachelor-of-engineering-with-honours-in-mechanical-engineering-sit": [
+      {
+        "slug": "bachelor-of-engineering-mechanical-engineering-nus",
+        "score": 1,
+        "sharedTerms": [
+          "mechanical_engineering",
+          "engineering_mechanical",
+          "mechanical"
+        ]
+      },
+      {
+        "slug": "mechanical-engineering-ntu",
+        "score": 0.817972,
+        "sharedTerms": [
+          "mechanical_engineering",
+          "mechanical"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-mechanical-design-engineering-sit",
+        "score": 0.48364,
+        "sharedTerms": [
+          "engineering_mechanical",
+          "mechanical"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-mechanical-design-and-manufacturing-engineering-sit",
+        "score": 0.388243,
+        "sharedTerms": [
+          "engineering_mechanical",
+          "mechanical"
+        ]
+      }
+    ],
+    "bachelor-of-engineering-with-honours-in-mechatronics-sit": [
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-systems-engineering-electromechanical-systems-sit",
+        "score": 0.738022,
+        "sharedTerms": [
+          "mechatronics",
+          "engineering_mechatronics"
+        ]
+      }
+    ],
+    "bachelor-of-engineering-with-honours-in-naval-architecture-sit": [
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-naval-architecture-and-marine-engineering-sit",
+        "score": 0.736155,
+        "sharedTerms": [
+          "naval",
+          "engineering_naval",
+          "naval_architecture"
+        ]
+      },
+      {
+        "slug": "bachelor-of-arts-architecture-nus",
+        "score": 0.278639,
+        "sharedTerms": [
+          "architecture"
+        ]
+      },
+      {
+        "slug": "bachelor-of-landscape-architecture-nus",
+        "score": 0.2196,
+        "sharedTerms": [
+          "architecture"
+        ]
+      },
+      {
+        "slug": "bachelor-of-science-architecture-and-sustainable-design-sutd",
+        "score": 0.162229,
+        "sharedTerms": [
+          "architecture"
+        ]
+      }
+    ],
+    "bachelor-of-engineering-with-honours-in-offshore-engineering-sit": [],
+    "bachelor-of-engineering-with-honours-in-pharmaceutical-engineering-sit": [
+      {
+        "slug": "bachelor-of-science-pharmaceutical-science-hons-nus",
+        "score": 0.300105,
+        "sharedTerms": [
+          "pharmaceutical"
+        ]
+      }
+    ],
+    "bachelor-of-engineering-with-honours-in-sustainable-infrastructure-engineering-land-sit": [
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-sustainable-infrastructure-engineering-building-services-sit",
+        "score": 0.583221,
+        "sharedTerms": [
+          "engineering_sustainable",
+          "sustainable_infrastructure",
+          "infrastructure_engineering"
+        ]
+      }
+    ],
+    "bachelor-of-engineering-with-honours-in-sustainable-infrastructure-engineering-building-services-sit": [
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-sustainable-infrastructure-engineering-land-sit",
+        "score": 0.583221,
+        "sharedTerms": [
+          "engineering_sustainable",
+          "sustainable_infrastructure",
+          "infrastructure_engineering"
+        ]
+      }
+    ],
+    "bachelor-of-engineering-with-honours-in-systems-engineering-electromechanical-systems-sit": [
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-mechatronics-sit",
+        "score": 0.738022,
+        "sharedTerms": [
+          "mechatronics",
+          "engineering_mechatronics"
+        ]
+      },
+      {
+        "slug": "information-systems-smu",
+        "score": 0.191668,
+        "sharedTerms": [
+          "system"
+        ]
+      },
+      {
+        "slug": "information-systems-cum-laude-and-above-smu",
+        "score": 0.191668,
+        "sharedTerms": [
+          "system"
+        ]
+      }
+    ],
+    "bachelor-of-engineering-with-honours-in-telematics-intelligent-transportation-systems-engineering-sit": [
+      {
+        "slug": "bachelor-of-engineering-industrial-and-systems-engineering-nus",
+        "score": 0.207622,
+        "sharedTerms": [
+          "system_engineering",
+          "system"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-aircraft-systems-engineering-sit",
+        "score": 0.204068,
+        "sharedTerms": [
+          "system_engineering",
+          "system"
+        ]
+      }
+    ],
+    "bachelor-of-fine-arts-in-digital-art-and-animation-sit": [],
+    "bachelor-of-food-technology-with-honours-sit": [
+      {
+        "slug": "bachelor-of-science-with-honours-in-food-and-human-nutrition-sit",
+        "score": 0.373234,
+        "sharedTerms": [
+          "food"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-in-food-business-management-sit",
+        "score": 0.332015,
+        "sharedTerms": [
+          "food"
+        ]
+      }
+    ],
+    "bachelor-of-hospitality-business-with-honours-sit": [
+      {
+        "slug": "business-ntu",
+        "score": 0.427818,
+        "sharedTerms": [
+          "business"
+        ]
+      },
+      {
+        "slug": "bachelor-of-science-major-in-hospitality-management-sit",
+        "score": 0.312561,
+        "sharedTerms": [
+          "hospitality"
+        ]
+      },
+      {
+        "slug": "business-management-smu",
+        "score": 0.216002,
+        "sharedTerms": [
+          "business"
+        ]
+      },
+      {
+        "slug": "business-management-cum-laude-and-above-smu",
+        "score": 0.216002,
+        "sharedTerms": [
+          "business"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-nus",
+        "score": 0.211985,
+        "sharedTerms": [
+          "business"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-hons-nus",
+        "score": 0.211985,
+        "sharedTerms": [
+          "business"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-in-food-business-management-sit",
+        "score": 0.209783,
+        "sharedTerms": [
+          "business"
+        ]
+      },
+      {
+        "slug": "accountancy-and-business-ntu",
+        "score": 0.199422,
+        "sharedTerms": [
+          "business"
+        ]
+      }
+    ],
+    "bachelor-of-professional-studies-in-culinary-arts-management-sit": [
+      {
+        "slug": "bachelor-of-environmental-studies-nus",
+        "score": 0.157185,
+        "sharedTerms": [
+          "study"
+        ]
+      },
+      {
+        "slug": "communication-studies-ntu",
+        "score": 0.151939,
+        "sharedTerms": [
+          "study"
+        ]
+      }
+    ],
+    "bachelor-of-science-major-in-hospitality-management-sit": [
+      {
+        "slug": "bachelor-of-hospitality-business-with-honours-sit",
+        "score": 0.312561,
+        "sharedTerms": [
+          "hospitality"
+        ]
+      },
+      {
+        "slug": "business-management-smu",
+        "score": 0.194945,
+        "sharedTerms": [
+          "management"
+        ]
+      },
+      {
+        "slug": "business-management-cum-laude-and-above-smu",
+        "score": 0.194945,
+        "sharedTerms": [
+          "management"
+        ]
+      }
+    ],
+    "bachelor-of-science-in-chemical-engineering-sit": [
+      {
+        "slug": "bachelor-of-engineering-chemical-engineering-nus",
+        "score": 0.610947,
+        "sharedTerms": [
+          "chemical_engineering",
+          "chemical"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-chemical-engineering-sit",
+        "score": 0.610947,
+        "sharedTerms": [
+          "chemical_engineering",
+          "chemical"
+        ]
+      },
+      {
+        "slug": "chemical-and-biomolecular-engineering-ntu",
+        "score": 0.230277,
+        "sharedTerms": [
+          "chemical"
+        ]
+      }
+    ],
+    "bachelor-of-science-in-early-childhood-education-sit": [
+      {
+        "slug": "bachelor-of-early-childhood-education-suss",
+        "score": 0.848587,
+        "sharedTerms": [
+          "early",
+          "childhood",
+          "early_childhood"
+        ]
+      }
+    ],
+    "bachelor-of-science-in-electrical-engineering--information-technology-sit": [
+      {
+        "slug": "bachelor-of-engineering-electrical-engineering-nus",
+        "score": 0.516549,
+        "sharedTerms": [
+          "electrical_engineering",
+          "electrical"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-information--communications-technology-information-security-sit",
+        "score": 0.335492,
+        "sharedTerms": [
+          "information",
+          "engineering_information"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-information-systems-technology-and-design-sutd",
+        "score": 0.324372,
+        "sharedTerms": [
+          "engineering_information",
+          "information"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-information--communications-technology-software-engineering-sit",
+        "score": 0.257208,
+        "sharedTerms": [
+          "engineering_information",
+          "information"
+        ]
+      },
+      {
+        "slug": "information-systems-smu",
+        "score": 0.202244,
+        "sharedTerms": [
+          "information"
+        ]
+      },
+      {
+        "slug": "information-systems-cum-laude-and-above-smu",
+        "score": 0.202244,
+        "sharedTerms": [
+          "information"
+        ]
+      },
+      {
+        "slug": "electrical-and-electronic-engineering-ntu",
+        "score": 0.190242,
+        "sharedTerms": [
+          "electrical"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-electrical-power-engineering-sit",
+        "score": 0.168048,
+        "sharedTerms": [
+          "electrical"
+        ]
+      }
+    ],
+    "bachelor-of-science-air-transport-management-sit": [
+      {
+        "slug": "business-management-smu",
+        "score": 0.151898,
+        "sharedTerms": [
+          "management"
+        ]
+      },
+      {
+        "slug": "business-management-cum-laude-and-above-smu",
+        "score": 0.151898,
+        "sharedTerms": [
+          "management"
+        ]
+      }
+    ],
+    "bachelor-of-science-in-computer-science-and-game-design-sit": [
+      {
+        "slug": "computer-science-ntu",
+        "score": 0.326121,
+        "sharedTerms": [
+          "computer_science",
+          "computer"
+        ]
+      },
+      {
+        "slug": "computer-science-smu",
+        "score": 0.326121,
+        "sharedTerms": [
+          "computer_science",
+          "computer"
+        ]
+      },
+      {
+        "slug": "computer-science-cum-laude-and-above-smu",
+        "score": 0.326121,
+        "sharedTerms": [
+          "computer_science",
+          "computer"
+        ]
+      },
+      {
+        "slug": "bachelor-of-science-in-computer-science-in-real-time-interactive-simulation-sit",
+        "score": 0.290547,
+        "sharedTerms": [
+          "interactive",
+          "science_computer",
+          "computer_science"
+        ]
+      },
+      {
+        "slug": "bachelor-of-computing-computer-science-nus",
+        "score": 0.203789,
+        "sharedTerms": [
+          "computer_science",
+          "computer"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-computer-science-and-design-sutd",
+        "score": 0.186221,
+        "sharedTerms": [
+          "computer_science",
+          "computer"
+        ]
+      }
+    ],
+    "bachelor-of-science-in-computer-science-in-real-time-interactive-simulation-sit": [
+      {
+        "slug": "computer-science-ntu",
+        "score": 0.319798,
+        "sharedTerms": [
+          "computer_science",
+          "computer"
+        ]
+      },
+      {
+        "slug": "computer-science-smu",
+        "score": 0.319798,
+        "sharedTerms": [
+          "computer_science",
+          "computer"
+        ]
+      },
+      {
+        "slug": "computer-science-cum-laude-and-above-smu",
+        "score": 0.319798,
+        "sharedTerms": [
+          "computer_science",
+          "computer"
+        ]
+      },
+      {
+        "slug": "bachelor-of-science-in-computer-science-and-game-design-sit",
+        "score": 0.290547,
+        "sharedTerms": [
+          "interactive",
+          "science_computer",
+          "computer_science"
+        ]
+      },
+      {
+        "slug": "bachelor-of-science-real-estate-nus",
+        "score": 0.290378,
+        "sharedTerms": [
+          "real",
+          "science_real"
+        ]
+      },
+      {
+        "slug": "bachelor-of-computing-computer-science-nus",
+        "score": 0.199838,
+        "sharedTerms": [
+          "computer_science",
+          "computer"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-computer-science-and-design-sutd",
+        "score": 0.182611,
+        "sharedTerms": [
+          "computer_science",
+          "computer"
+        ]
+      }
+    ],
+    "bachelor-of-science-with-honours-in-computing-science-sit": [
+      {
+        "slug": "computing-and-law-smu",
+        "score": 0.223462,
+        "sharedTerms": [
+          "computing"
+        ]
+      },
+      {
+        "slug": "computing-and-law-cum-laude-and-above-smu",
+        "score": 0.223462,
+        "sharedTerms": [
+          "computing"
+        ]
+      },
+      {
+        "slug": "bachelor-of-computing-computer-science-nus",
+        "score": 0.201312,
+        "sharedTerms": [
+          "computing"
+        ]
+      },
+      {
+        "slug": "bachelor-of-computing-information-systems-nus",
+        "score": 0.182789,
+        "sharedTerms": [
+          "computing"
+        ]
+      },
+      {
+        "slug": "bachelor-of-computing-information-security-nus",
+        "score": 0.171043,
+        "sharedTerms": [
+          "computing"
+        ]
+      },
+      {
+        "slug": "bachelor-of-computing-communications-and-media-nus",
+        "score": 0.164359,
+        "sharedTerms": [
+          "computing"
+        ]
+      },
+      {
+        "slug": "bachelor-of-computing-electronic-commerce-nus",
+        "score": 0.151257,
+        "sharedTerms": [
+          "computing"
+        ]
+      }
+    ],
+    "bachelor-of-science-diagnostic-radiography-sit": [],
+    "bachelor-of-science-with-honours-in-dietetics-and-nutrition-sit": [
+      {
+        "slug": "bachelor-of-science-with-honours-in-food-and-human-nutrition-sit",
+        "score": 0.186548,
+        "sharedTerms": [
+          "nutrition"
+        ]
+      }
+    ],
+    "bachelor-of-science-with-honours-in-digital-communications-and-integrated-media-sit": [
+      {
+        "slug": "bachelor-of-computing-communications-and-media-nus",
+        "score": 0.519928,
+        "sharedTerms": [
+          "communications_media",
+          "communications",
+          "media"
+        ]
+      },
+      {
+        "slug": "bachelor-of-science-with-honours-in-digital-supply-chain-sit",
+        "score": 0.324223,
+        "sharedTerms": [
+          "science_digital",
+          "digital"
+        ]
+      },
+      {
+        "slug": "art-design-and-media-ntu",
+        "score": 0.166284,
+        "sharedTerms": [
+          "media"
+        ]
+      },
+      {
+        "slug": "information-engineering-and-media-ntu",
+        "score": 0.164545,
+        "sharedTerms": [
+          "media"
+        ]
+      }
+    ],
+    "bachelor-of-science-with-honours-in-food-and-human-nutrition-sit": [
+      {
+        "slug": "bachelor-of-food-technology-with-honours-sit",
+        "score": 0.373234,
+        "sharedTerms": [
+          "food"
+        ]
+      },
+      {
+        "slug": "bachelor-of-science-with-honours-in-dietetics-and-nutrition-sit",
+        "score": 0.186548,
+        "sharedTerms": [
+          "nutrition"
+        ]
+      },
+      {
+        "slug": "bachelor-of-human-resource-management-suss",
+        "score": 0.176469,
+        "sharedTerms": [
+          "human"
+        ]
+      }
+    ],
+    "bachelor-of-science-with-honours-in-nursing-sit": [
+      {
+        "slug": "bachelor-of-science-nursing-nus",
+        "score": 1,
+        "sharedTerms": [
+          "nursing",
+          "science_nursing"
+        ]
+      },
+      {
+        "slug": "bachelor-of-science-nursing-hons-nus",
+        "score": 1,
+        "sharedTerms": [
+          "nursing",
+          "science_nursing"
+        ]
+      }
+    ],
+    "bachelor-of-science-occupational-therapy-sit": [
+      {
+        "slug": "bachelor-of-science-radiation-therapy-sit",
+        "score": 0.202795,
+        "sharedTerms": [
+          "therapy"
+        ]
+      },
+      {
+        "slug": "bachelor-of-science-with-honours-in-speech-and-language-therapy-sit",
+        "score": 0.163871,
+        "sharedTerms": [
+          "therapy"
+        ]
+      }
+    ],
+    "bachelor-of-science-physiotherapy-sit": [],
+    "bachelor-of-science-radiation-therapy-sit": [
+      {
+        "slug": "bachelor-of-science-occupational-therapy-sit",
+        "score": 0.202795,
+        "sharedTerms": [
+          "therapy"
+        ]
+      },
+      {
+        "slug": "bachelor-of-science-with-honours-in-speech-and-language-therapy-sit",
+        "score": 0.163871,
+        "sharedTerms": [
+          "therapy"
+        ]
+      }
+    ],
+    "bachelor-of-science-with-honours-in-speech-and-language-therapy-sit": [
+      {
+        "slug": "bachelor-of-science-occupational-therapy-sit",
+        "score": 0.163871,
+        "sharedTerms": [
+          "therapy"
+        ]
+      },
+      {
+        "slug": "bachelor-of-science-radiation-therapy-sit",
+        "score": 0.163871,
+        "sharedTerms": [
+          "therapy"
+        ]
+      }
+    ],
+    "accountancy-smu": [
+      {
+        "slug": "accountancy-ntu",
+        "score": 1,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "bachelor-of-accountancy-with-honours-sit",
+        "score": 1,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "accountancy-cum-laude-and-above-smu",
+        "score": 1,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "bachelor-of-accountancy-suss",
+        "score": 1,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "accountancy-and-business-ntu",
+        "score": 0.510481,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "accountancy-3-yr-direct-honours-programme-ntu",
+        "score": 0.44689,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-accountancy-nus",
+        "score": 0.404413,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-accountancy-hons-nus",
+        "score": 0.404413,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      }
+    ],
+    "accountancy-cum-laude-and-above-smu": [
+      {
+        "slug": "accountancy-ntu",
+        "score": 1,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "bachelor-of-accountancy-with-honours-sit",
+        "score": 1,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "accountancy-smu",
+        "score": 1,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "bachelor-of-accountancy-suss",
+        "score": 1,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "accountancy-and-business-ntu",
+        "score": 0.510481,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "accountancy-3-yr-direct-honours-programme-ntu",
+        "score": 0.44689,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-accountancy-nus",
+        "score": 0.404413,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-accountancy-hons-nus",
+        "score": 0.404413,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      }
+    ],
+    "business-management-smu": [
+      {
+        "slug": "business-management-cum-laude-and-above-smu",
+        "score": 1,
+        "sharedTerms": [
+          "business_management",
+          "management",
+          "business"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-in-food-business-management-sit",
+        "score": 0.609394,
+        "sharedTerms": [
+          "business",
+          "business_management",
+          "management"
+        ]
+      },
+      {
+        "slug": "business-ntu",
+        "score": 0.504892,
+        "sharedTerms": [
+          "business"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-nus",
+        "score": 0.250175,
+        "sharedTerms": [
+          "business"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-hons-nus",
+        "score": 0.250175,
+        "sharedTerms": [
+          "business"
+        ]
+      },
+      {
+        "slug": "accountancy-and-business-ntu",
+        "score": 0.23535,
+        "sharedTerms": [
+          "business"
+        ]
+      },
+      {
+        "slug": "bachelor-of-hospitality-business-with-honours-sit",
+        "score": 0.216002,
+        "sharedTerms": [
+          "business"
+        ]
+      },
+      {
+        "slug": "bachelor-of-science-major-in-hospitality-management-sit",
+        "score": 0.194945,
+        "sharedTerms": [
+          "management"
+        ]
+      }
+    ],
+    "business-management-cum-laude-and-above-smu": [
+      {
+        "slug": "business-management-smu",
+        "score": 1,
+        "sharedTerms": [
+          "business_management",
+          "management",
+          "business"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-in-food-business-management-sit",
+        "score": 0.609394,
+        "sharedTerms": [
+          "business",
+          "business_management",
+          "management"
+        ]
+      },
+      {
+        "slug": "business-ntu",
+        "score": 0.504892,
+        "sharedTerms": [
+          "business"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-nus",
+        "score": 0.250175,
+        "sharedTerms": [
+          "business"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-hons-nus",
+        "score": 0.250175,
+        "sharedTerms": [
+          "business"
+        ]
+      },
+      {
+        "slug": "accountancy-and-business-ntu",
+        "score": 0.23535,
+        "sharedTerms": [
+          "business"
+        ]
+      },
+      {
+        "slug": "bachelor-of-hospitality-business-with-honours-sit",
+        "score": 0.216002,
+        "sharedTerms": [
+          "business"
+        ]
+      },
+      {
+        "slug": "bachelor-of-science-major-in-hospitality-management-sit",
+        "score": 0.194945,
+        "sharedTerms": [
+          "management"
+        ]
+      }
+    ],
+    "computer-science-smu": [
+      {
+        "slug": "computer-science-ntu",
+        "score": 1,
+        "sharedTerms": [
+          "computer_science",
+          "computer"
+        ]
+      },
+      {
+        "slug": "computer-science-cum-laude-and-above-smu",
+        "score": 1,
+        "sharedTerms": [
+          "computer_science",
+          "computer"
+        ]
+      },
+      {
+        "slug": "bachelor-of-computing-computer-science-nus",
+        "score": 0.624888,
+        "sharedTerms": [
+          "computer_science",
+          "computer"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-computer-science-and-design-sutd",
+        "score": 0.571018,
+        "sharedTerms": [
+          "computer_science",
+          "computer"
+        ]
+      },
+      {
+        "slug": "double-degree-in-engineering-and-economics-ntu",
+        "score": 0.43883,
+        "sharedTerms": [
+          "computer_science",
+          "computer"
+        ]
+      },
+      {
+        "slug": "computer-engineering-ntu",
+        "score": 0.416858,
+        "sharedTerms": [
+          "computer"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-computer-engineering-nus",
+        "score": 0.327994,
+        "sharedTerms": [
+          "computer"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-computer-engineering-sit",
+        "score": 0.327994,
+        "sharedTerms": [
+          "computer"
+        ]
+      }
+    ],
+    "computer-science-cum-laude-and-above-smu": [
+      {
+        "slug": "computer-science-ntu",
+        "score": 1,
+        "sharedTerms": [
+          "computer_science",
+          "computer"
+        ]
+      },
+      {
+        "slug": "computer-science-smu",
+        "score": 1,
+        "sharedTerms": [
+          "computer_science",
+          "computer"
+        ]
+      },
+      {
+        "slug": "bachelor-of-computing-computer-science-nus",
+        "score": 0.624888,
+        "sharedTerms": [
+          "computer_science",
+          "computer"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-computer-science-and-design-sutd",
+        "score": 0.571018,
+        "sharedTerms": [
+          "computer_science",
+          "computer"
+        ]
+      },
+      {
+        "slug": "double-degree-in-engineering-and-economics-ntu",
+        "score": 0.43883,
+        "sharedTerms": [
+          "computer_science",
+          "computer"
+        ]
+      },
+      {
+        "slug": "computer-engineering-ntu",
+        "score": 0.416858,
+        "sharedTerms": [
+          "computer"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-computer-engineering-nus",
+        "score": 0.327994,
+        "sharedTerms": [
+          "computer"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-computer-engineering-sit",
+        "score": 0.327994,
+        "sharedTerms": [
+          "computer"
+        ]
+      }
+    ],
+    "computing-and-law-smu": [
+      {
+        "slug": "computing-and-law-cum-laude-and-above-smu",
+        "score": 1,
+        "sharedTerms": [
+          "computing_law",
+          "law",
+          "computing"
+        ]
+      },
+      {
+        "slug": "bachelor-of-laws-nus",
+        "score": 0.565981,
+        "sharedTerms": [
+          "law"
+        ]
+      },
+      {
+        "slug": "law-smu",
+        "score": 0.565981,
+        "sharedTerms": [
+          "law"
+        ]
+      },
+      {
+        "slug": "law-cum-laude-and-above-smu",
+        "score": 0.565981,
+        "sharedTerms": [
+          "law"
+        ]
+      },
+      {
+        "slug": "bachelor-of-computing-computer-science-nus",
+        "score": 0.225254,
+        "sharedTerms": [
+          "computing"
+        ]
+      },
+      {
+        "slug": "bachelor-of-science-with-honours-in-computing-science-sit",
+        "score": 0.223462,
+        "sharedTerms": [
+          "computing"
+        ]
+      },
+      {
+        "slug": "bachelor-of-computing-information-systems-nus",
+        "score": 0.204528,
+        "sharedTerms": [
+          "computing"
+        ]
+      },
+      {
+        "slug": "bachelor-of-computing-information-security-nus",
+        "score": 0.191385,
+        "sharedTerms": [
+          "computing"
+        ]
+      }
+    ],
+    "computing-and-law-cum-laude-and-above-smu": [
+      {
+        "slug": "computing-and-law-smu",
+        "score": 1,
+        "sharedTerms": [
+          "computing_law",
+          "law",
+          "computing"
+        ]
+      },
+      {
+        "slug": "bachelor-of-laws-nus",
+        "score": 0.565981,
+        "sharedTerms": [
+          "law"
+        ]
+      },
+      {
+        "slug": "law-smu",
+        "score": 0.565981,
+        "sharedTerms": [
+          "law"
+        ]
+      },
+      {
+        "slug": "law-cum-laude-and-above-smu",
+        "score": 0.565981,
+        "sharedTerms": [
+          "law"
+        ]
+      },
+      {
+        "slug": "bachelor-of-computing-computer-science-nus",
+        "score": 0.225254,
+        "sharedTerms": [
+          "computing"
+        ]
+      },
+      {
+        "slug": "bachelor-of-science-with-honours-in-computing-science-sit",
+        "score": 0.223462,
+        "sharedTerms": [
+          "computing"
+        ]
+      },
+      {
+        "slug": "bachelor-of-computing-information-systems-nus",
+        "score": 0.204528,
+        "sharedTerms": [
+          "computing"
+        ]
+      },
+      {
+        "slug": "bachelor-of-computing-information-security-nus",
+        "score": 0.191385,
+        "sharedTerms": [
+          "computing"
+        ]
+      }
+    ],
+    "economics-smu": [
+      {
+        "slug": "economics-ntu",
+        "score": 1,
+        "sharedTerms": [
+          "economics"
+        ]
+      },
+      {
+        "slug": "economics-cum-laude-and-above-smu",
+        "score": 1,
+        "sharedTerms": [
+          "economics"
+        ]
+      },
+      {
+        "slug": "mathematics-and-economics-ntu",
+        "score": 0.492195,
+        "sharedTerms": [
+          "economics"
+        ]
+      },
+      {
+        "slug": "double-degree-in-engineering-and-economics-ntu",
+        "score": 0.358065,
+        "sharedTerms": [
+          "economics"
+        ]
+      }
+    ],
+    "economics-cum-laude-and-above-smu": [
+      {
+        "slug": "economics-ntu",
+        "score": 1,
+        "sharedTerms": [
+          "economics"
+        ]
+      },
+      {
+        "slug": "economics-smu",
+        "score": 1,
+        "sharedTerms": [
+          "economics"
+        ]
+      },
+      {
+        "slug": "mathematics-and-economics-ntu",
+        "score": 0.492195,
+        "sharedTerms": [
+          "economics"
+        ]
+      },
+      {
+        "slug": "double-degree-in-engineering-and-economics-ntu",
+        "score": 0.358065,
+        "sharedTerms": [
+          "economics"
+        ]
+      }
+    ],
+    "information-systems-smu": [
+      {
+        "slug": "information-systems-cum-laude-and-above-smu",
+        "score": 1,
+        "sharedTerms": [
+          "information_system",
+          "information",
+          "system"
+        ]
+      },
+      {
+        "slug": "bachelor-of-computing-information-systems-nus",
+        "score": 0.738402,
+        "sharedTerms": [
+          "information_system",
+          "information",
+          "system"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-information-systems-technology-and-design-sutd",
+        "score": 0.671098,
+        "sharedTerms": [
+          "information_system",
+          "information",
+          "system"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-information--communications-technology-information-security-sit",
+        "score": 0.300303,
+        "sharedTerms": [
+          "information"
+        ]
+      },
+      {
+        "slug": "information-engineering-and-media-ntu",
+        "score": 0.220895,
+        "sharedTerms": [
+          "information"
+        ]
+      },
+      {
+        "slug": "bachelor-of-computing-information-security-nus",
+        "score": 0.212012,
+        "sharedTerms": [
+          "information"
+        ]
+      },
+      {
+        "slug": "bachelor-of-science-in-electrical-engineering--information-technology-sit",
+        "score": 0.202244,
+        "sharedTerms": [
+          "information"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-aerospace-systems-sit",
+        "score": 0.194608,
+        "sharedTerms": [
+          "system"
+        ]
+      }
+    ],
+    "information-systems-cum-laude-and-above-smu": [
+      {
+        "slug": "information-systems-smu",
+        "score": 1,
+        "sharedTerms": [
+          "information_system",
+          "information",
+          "system"
+        ]
+      },
+      {
+        "slug": "bachelor-of-computing-information-systems-nus",
+        "score": 0.738402,
+        "sharedTerms": [
+          "information_system",
+          "information",
+          "system"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-information-systems-technology-and-design-sutd",
+        "score": 0.671098,
+        "sharedTerms": [
+          "information_system",
+          "information",
+          "system"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-information--communications-technology-information-security-sit",
+        "score": 0.300303,
+        "sharedTerms": [
+          "information"
+        ]
+      },
+      {
+        "slug": "information-engineering-and-media-ntu",
+        "score": 0.220895,
+        "sharedTerms": [
+          "information"
+        ]
+      },
+      {
+        "slug": "bachelor-of-computing-information-security-nus",
+        "score": 0.212012,
+        "sharedTerms": [
+          "information"
+        ]
+      },
+      {
+        "slug": "bachelor-of-science-in-electrical-engineering--information-technology-sit",
+        "score": 0.202244,
+        "sharedTerms": [
+          "information"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-aerospace-systems-sit",
+        "score": 0.194608,
+        "sharedTerms": [
+          "system"
+        ]
+      }
+    ],
+    "law-smu": [
+      {
+        "slug": "bachelor-of-laws-nus",
+        "score": 1,
+        "sharedTerms": [
+          "law"
+        ]
+      },
+      {
+        "slug": "law-cum-laude-and-above-smu",
+        "score": 1,
+        "sharedTerms": [
+          "law"
+        ]
+      },
+      {
+        "slug": "computing-and-law-smu",
+        "score": 0.565981,
+        "sharedTerms": [
+          "law"
+        ]
+      },
+      {
+        "slug": "computing-and-law-cum-laude-and-above-smu",
+        "score": 0.565981,
+        "sharedTerms": [
+          "law"
+        ]
+      }
+    ],
+    "law-cum-laude-and-above-smu": [
+      {
+        "slug": "bachelor-of-laws-nus",
+        "score": 1,
+        "sharedTerms": [
+          "law"
+        ]
+      },
+      {
+        "slug": "law-smu",
+        "score": 1,
+        "sharedTerms": [
+          "law"
+        ]
+      },
+      {
+        "slug": "computing-and-law-smu",
+        "score": 0.565981,
+        "sharedTerms": [
+          "law"
+        ]
+      },
+      {
+        "slug": "computing-and-law-cum-laude-and-above-smu",
+        "score": 0.565981,
+        "sharedTerms": [
+          "law"
+        ]
+      }
+    ],
+    "social-sciences-smu": [
+      {
+        "slug": "bachelor-of-social-sciences-nus",
+        "score": 1,
+        "sharedTerms": [
+          "social_science",
+          "social"
+        ]
+      },
+      {
+        "slug": "social-sciences-cum-laude-and-above-smu",
+        "score": 1,
+        "sharedTerms": [
+          "social_science",
+          "social"
+        ]
+      },
+      {
+        "slug": "bachelor-of-social-work-suss",
+        "score": 0.350178,
+        "sharedTerms": [
+          "social"
+        ]
+      }
+    ],
+    "social-sciences-cum-laude-and-above-smu": [
+      {
+        "slug": "bachelor-of-social-sciences-nus",
+        "score": 1,
+        "sharedTerms": [
+          "social_science",
+          "social"
+        ]
+      },
+      {
+        "slug": "social-sciences-smu",
+        "score": 1,
+        "sharedTerms": [
+          "social_science",
+          "social"
+        ]
+      },
+      {
+        "slug": "bachelor-of-social-work-suss",
+        "score": 0.350178,
+        "sharedTerms": [
+          "social"
+        ]
+      }
+    ],
+    "bachelor-of-accountancy-suss": [
+      {
+        "slug": "accountancy-ntu",
+        "score": 1,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "bachelor-of-accountancy-with-honours-sit",
+        "score": 1,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "accountancy-smu",
+        "score": 1,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "accountancy-cum-laude-and-above-smu",
+        "score": 1,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "accountancy-and-business-ntu",
+        "score": 0.510481,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "accountancy-3-yr-direct-honours-programme-ntu",
+        "score": 0.44689,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-accountancy-nus",
+        "score": 0.404413,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-accountancy-hons-nus",
+        "score": 0.404413,
+        "sharedTerms": [
+          "accountancy"
+        ]
+      }
+    ],
+    "bachelor-of-early-childhood-education-suss": [
+      {
+        "slug": "bachelor-of-science-in-early-childhood-education-sit",
+        "score": 0.848587,
+        "sharedTerms": [
+          "early",
+          "childhood",
+          "early_childhood"
+        ]
+      }
+    ],
+    "bachelor-of-human-resource-management-suss": [
+      {
+        "slug": "bachelor-of-science-with-honours-in-food-and-human-nutrition-sit",
+        "score": 0.176469,
+        "sharedTerms": [
+          "human"
+        ]
+      },
+      {
+        "slug": "business-management-smu",
+        "score": 0.170844,
+        "sharedTerms": [
+          "management"
+        ]
+      },
+      {
+        "slug": "business-management-cum-laude-and-above-smu",
+        "score": 0.170844,
+        "sharedTerms": [
+          "management"
+        ]
+      }
+    ],
+    "bachelor-of-science-in-business-analytics-suss": [
+      {
+        "slug": "bachelor-of-science-business-analytics-nus",
+        "score": 1,
+        "sharedTerms": [
+          "science_business",
+          "business_analytics",
+          "analytics"
+        ]
+      },
+      {
+        "slug": "business-ntu",
+        "score": 0.37918,
+        "sharedTerms": [
+          "business"
+        ]
+      },
+      {
+        "slug": "bachelor-of-science-data-science-and-analytics-nus",
+        "score": 0.214238,
+        "sharedTerms": [
+          "analytics"
+        ]
+      },
+      {
+        "slug": "business-management-smu",
+        "score": 0.191445,
+        "sharedTerms": [
+          "business"
+        ]
+      },
+      {
+        "slug": "business-management-cum-laude-and-above-smu",
+        "score": 0.191445,
+        "sharedTerms": [
+          "business"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-nus",
+        "score": 0.187885,
+        "sharedTerms": [
+          "business"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-hons-nus",
+        "score": 0.187885,
+        "sharedTerms": [
+          "business"
+        ]
+      },
+      {
+        "slug": "bachelor-of-business-administration-in-food-business-management-sit",
+        "score": 0.185933,
+        "sharedTerms": [
+          "business"
+        ]
+      }
+    ],
+    "bachelor-of-science-in-finance-suss": [],
+    "bachelor-of-science-in-marketing-suss": [],
+    "bachelor-of-science-in-supply-chain-management-suss": [
+      {
+        "slug": "bachelor-of-science-with-honours-in-digital-supply-chain-sit",
+        "score": 0.503565,
+        "sharedTerms": [
+          "supply",
+          "chain",
+          "supply_chain"
+        ]
+      },
+      {
+        "slug": "business-management-smu",
+        "score": 0.158223,
+        "sharedTerms": [
+          "management"
+        ]
+      },
+      {
+        "slug": "business-management-cum-laude-and-above-smu",
+        "score": 0.158223,
+        "sharedTerms": [
+          "management"
+        ]
+      }
+    ],
+    "bachelor-of-social-work-suss": [
+      {
+        "slug": "bachelor-of-social-sciences-nus",
+        "score": 0.350178,
+        "sharedTerms": [
+          "social"
+        ]
+      },
+      {
+        "slug": "social-sciences-smu",
+        "score": 0.350178,
+        "sharedTerms": [
+          "social"
+        ]
+      },
+      {
+        "slug": "social-sciences-cum-laude-and-above-smu",
+        "score": 0.350178,
+        "sharedTerms": [
+          "social"
+        ]
+      }
+    ],
+    "bachelor-of-public-safety-and-security-suss": [
+      {
+        "slug": "bachelor-of-computing-information-security-nus",
+        "score": 0.176164,
+        "sharedTerms": [
+          "security"
+        ]
+      },
+      {
+        "slug": "bachelor-of-arts-with-honours-in-criminology-and-security-sit",
+        "score": 0.16919,
+        "sharedTerms": [
+          "security"
+        ]
+      },
+      {
+        "slug": "public-policy-and-global-affairs-ntu",
+        "score": 0.153503,
+        "sharedTerms": [
+          "public"
+        ]
+      }
+    ],
+    "bachelor-of-engineering-computer-science-and-design-sutd": [
+      {
+        "slug": "computer-science-ntu",
+        "score": 0.571018,
+        "sharedTerms": [
+          "computer_science",
+          "computer"
+        ]
+      },
+      {
+        "slug": "computer-science-smu",
+        "score": 0.571018,
+        "sharedTerms": [
+          "computer_science",
+          "computer"
+        ]
+      },
+      {
+        "slug": "computer-science-cum-laude-and-above-smu",
+        "score": 0.571018,
+        "sharedTerms": [
+          "computer_science",
+          "computer"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-computer-engineering-nus",
+        "score": 0.486806,
+        "sharedTerms": [
+          "engineering_computer",
+          "computer"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-computer-engineering-sit",
+        "score": 0.486806,
+        "sharedTerms": [
+          "engineering_computer",
+          "computer"
+        ]
+      },
+      {
+        "slug": "double-degree-in-engineering-and-economics-ntu",
+        "score": 0.431575,
+        "sharedTerms": [
+          "engineering_computer",
+          "computer_science",
+          "computer"
+        ]
+      },
+      {
+        "slug": "bachelor-of-computing-computer-science-nus",
+        "score": 0.356822,
+        "sharedTerms": [
+          "computer_science",
+          "computer"
+        ]
+      },
+      {
+        "slug": "bachelor-of-science-design-and-artificial-intelligence-sutd",
+        "score": 0.351559,
+        "sharedTerms": [
+          "science_design",
+          "design"
+        ]
+      }
+    ],
+    "bachelor-of-engineering-engineering-product-development-sutd": [
+      {
+        "slug": "bachelor-of-engineering-engineering-science-nus",
+        "score": 0.267368,
+        "sharedTerms": [
+          "engineering_engineering"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-engineering-systems-and-design-sutd",
+        "score": 0.190085,
+        "sharedTerms": [
+          "engineering_engineering"
+        ]
+      }
+    ],
+    "bachelor-of-engineering-engineering-systems-and-design-sutd": [
+      {
+        "slug": "bachelor-of-engineering-information-systems-technology-and-design-sutd",
+        "score": 0.486031,
+        "sharedTerms": [
+          "system_design",
+          "system",
+          "design"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-engineering-science-nus",
+        "score": 0.307722,
+        "sharedTerms": [
+          "engineering_engineering"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-engineering-product-development-sutd",
+        "score": 0.190085,
+        "sharedTerms": [
+          "engineering_engineering"
+        ]
+      },
+      {
+        "slug": "information-systems-smu",
+        "score": 0.182106,
+        "sharedTerms": [
+          "system"
+        ]
+      },
+      {
+        "slug": "information-systems-cum-laude-and-above-smu",
+        "score": 0.182106,
+        "sharedTerms": [
+          "system"
+        ]
+      }
+    ],
+    "bachelor-of-engineering-information-systems-technology-and-design-sutd": [
+      {
+        "slug": "information-systems-smu",
+        "score": 0.671098,
+        "sharedTerms": [
+          "information_system",
+          "information",
+          "system"
+        ]
+      },
+      {
+        "slug": "information-systems-cum-laude-and-above-smu",
+        "score": 0.671098,
+        "sharedTerms": [
+          "information_system",
+          "information",
+          "system"
+        ]
+      },
+      {
+        "slug": "bachelor-of-computing-information-systems-nus",
+        "score": 0.49554,
+        "sharedTerms": [
+          "information_system",
+          "information",
+          "system"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-engineering-systems-and-design-sutd",
+        "score": 0.486031,
+        "sharedTerms": [
+          "system_design",
+          "system",
+          "design"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-information--communications-technology-information-security-sit",
+        "score": 0.341588,
+        "sharedTerms": [
+          "information",
+          "engineering_information"
+        ]
+      },
+      {
+        "slug": "bachelor-of-science-in-electrical-engineering--information-technology-sit",
+        "score": 0.324372,
+        "sharedTerms": [
+          "engineering_information",
+          "information"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-information--communications-technology-software-engineering-sit",
+        "score": 0.261882,
+        "sharedTerms": [
+          "engineering_information",
+          "information"
+        ]
+      }
+    ],
+    "bachelor-of-science-architecture-and-sustainable-design-sutd": [
+      {
+        "slug": "bachelor-of-arts-architecture-nus",
+        "score": 0.22708,
+        "sharedTerms": [
+          "architecture"
+        ]
+      },
+      {
+        "slug": "bachelor-of-landscape-architecture-nus",
+        "score": 0.178966,
+        "sharedTerms": [
+          "architecture"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-naval-architecture-sit",
+        "score": 0.162229,
+        "sharedTerms": [
+          "architecture"
+        ]
+      }
+    ],
+    "biological-sciences-ntu": [
+      {
+        "slug": "biological-sciences-and-psychology-ntu",
+        "score": 0.67459,
+        "sharedTerms": [
+          "biological_science",
+          "biological"
+        ]
+      },
+      {
+        "slug": "biological-and-biomedical-sciences-ntu",
+        "score": 0.313787,
+        "sharedTerms": [
+          "biological"
+        ]
+      },
+      {
+        "slug": "chemistry-and-biological-chemistry-ntu",
+        "score": 0.215275,
+        "sharedTerms": [
+          "biological"
+        ]
+      }
+    ],
+    "biomedical-sciences-ntu": [
+      {
+        "slug": "biological-and-biomedical-sciences-ntu",
+        "score": 0.680008,
+        "sharedTerms": [
+          "biomedical_science",
+          "biomedical"
+        ]
+      },
+      {
+        "slug": "biomedical-sciences-and-chinese-medicine-ntu",
+        "score": 0.535647,
+        "sharedTerms": [
+          "biomedical_science",
+          "biomedical"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-biomedical-engineering-nus",
+        "score": 0.350178,
+        "sharedTerms": [
+          "biomedical"
+        ]
+      }
+    ],
+    "physics-and-applied-physics-only-ntu": [
+      {
+        "slug": "physics-and-applied-physics-ntu",
+        "score": 0.840267,
+        "sharedTerms": [
+          "physics",
+          "physics_applied",
+          "applied_physics"
+        ]
+      },
+      {
+        "slug": "bachelor-of-applied-science-hons-nus",
+        "score": 0.220586,
+        "sharedTerms": [
+          "applied"
+        ]
+      }
+    ],
+    "interdisciplinary-double-major-science-ntu": [
+      {
+        "slug": "interdisciplinary-double-major-ntu",
+        "score": 1,
+        "sharedTerms": [
+          "interdisciplinary",
+          "interdisciplinary_double",
+          "double"
+        ]
+      },
+      {
+        "slug": "double-degree-in-engineering-and-economics-ntu",
+        "score": 0.200142,
+        "sharedTerms": [
+          "double"
+        ]
+      },
+      {
+        "slug": "double-degree-in-business-and-computer-engineeringcomputing-ntu",
+        "score": 0.186615,
+        "sharedTerms": [
+          "double"
+        ]
+      }
+    ],
+    "bachelor-of-engineering-infrastructure-and-project-management-nus": [
+      {
+        "slug": "bachelor-of-science-project-and-facilities-management-nus",
+        "score": 0.252511,
+        "sharedTerms": [
+          "project",
+          "management"
+        ]
+      },
+      {
+        "slug": "business-management-smu",
+        "score": 0.157473,
+        "sharedTerms": [
+          "management"
+        ]
+      },
+      {
+        "slug": "business-management-cum-laude-and-above-smu",
+        "score": 0.157473,
+        "sharedTerms": [
+          "management"
+        ]
+      }
+    ],
+    "bachelor-of-engineering-with-honours-in-robotics-systems-sit": [
+      {
+        "slug": "information-systems-smu",
+        "score": 0.183545,
+        "sharedTerms": [
+          "system"
+        ]
+      },
+      {
+        "slug": "information-systems-cum-laude-and-above-smu",
+        "score": 0.183545,
+        "sharedTerms": [
+          "system"
+        ]
+      }
+    ],
+    "bachelor-of-science-with-honours-in-applied-artificial-intelligence-sit": [
+      {
+        "slug": "bachelor-of-science-design-and-artificial-intelligence-sutd",
+        "score": 0.47919,
+        "sharedTerms": [
+          "artificial",
+          "intelligence",
+          "artificial_intelligence"
+        ]
+      },
+      {
+        "slug": "data-science-and-artificial-intelligence-ntu",
+        "score": 0.462839,
+        "sharedTerms": [
+          "artificial",
+          "intelligence",
+          "artificial_intelligence"
+        ]
+      },
+      {
+        "slug": "bachelor-of-applied-science-hons-nus",
+        "score": 0.238782,
+        "sharedTerms": [
+          "applied"
+        ]
+      }
+    ],
+    "bachelor-of-science-with-honours-in-digital-supply-chain-sit": [
+      {
+        "slug": "bachelor-of-science-in-supply-chain-management-suss",
+        "score": 0.503565,
+        "sharedTerms": [
+          "supply",
+          "chain",
+          "supply_chain"
+        ]
+      },
+      {
+        "slug": "bachelor-of-science-with-honours-in-digital-communications-and-integrated-media-sit",
+        "score": 0.324223,
+        "sharedTerms": [
+          "science_digital",
+          "digital"
+        ]
+      }
+    ],
+    "bachelor-of-engineering-with-honours-in-naval-architecture-and-marine-engineering-sit": [
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-naval-architecture-sit",
+        "score": 0.736155,
+        "sharedTerms": [
+          "naval",
+          "engineering_naval",
+          "naval_architecture"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-with-honours-in-marine-engineering-sit",
+        "score": 0.42754,
+        "sharedTerms": [
+          "marine",
+          "marine_engineering"
+        ]
+      },
+      {
+        "slug": "bachelor-of-arts-architecture-nus",
+        "score": 0.205121,
+        "sharedTerms": [
+          "architecture"
+        ]
+      },
+      {
+        "slug": "bachelor-of-landscape-architecture-nus",
+        "score": 0.161659,
+        "sharedTerms": [
+          "architecture"
+        ]
+      }
+    ],
+    "bachelor-of-science-design-and-artificial-intelligence-sutd": [
+      {
+        "slug": "data-science-and-artificial-intelligence-ntu",
+        "score": 0.482738,
+        "sharedTerms": [
+          "artificial",
+          "intelligence",
+          "artificial_intelligence"
+        ]
+      },
+      {
+        "slug": "bachelor-of-science-with-honours-in-applied-artificial-intelligence-sit",
+        "score": 0.47919,
+        "sharedTerms": [
+          "artificial",
+          "intelligence",
+          "artificial_intelligence"
+        ]
+      },
+      {
+        "slug": "bachelor-of-engineering-computer-science-and-design-sutd",
+        "score": 0.351559,
+        "sharedTerms": [
+          "science_design",
+          "design"
+        ]
+      }
+    ]
+  }
+}

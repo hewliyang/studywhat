@@ -159,19 +159,24 @@
 
 	const getScatterChartConfig = $derived.by<
 		() => XYContainerConfigInterface<FlatRecord>
-	>(() => () => ({
-		height: 380,
-		components: [new Scatter<FlatRecord>({ cursor: "pointer", size: 8, x, y, color, events })],
-		xAxis: new Axis<FlatRecord>({
-			label: "Median Gross Income ($)",
-			gridLine: true,
-		}),
-		yAxis: new Axis<FlatRecord>({
-			label: "Employment Rate (%)",
-			gridLine: true,
-		}),
-		tooltip: new Tooltip({ triggers }),
-	}));
+	>(() => () => {
+		const scatter = new Scatter<FlatRecord>({ cursor: "pointer", size: 8, x, y, color, events });
+		scatter.clippable = false;
+
+		return {
+			height: 380,
+			components: [scatter],
+			xAxis: new Axis<FlatRecord>({
+				label: "Median Gross Income ($)",
+				gridLine: true,
+			}),
+			yAxis: new Axis<FlatRecord>({
+				label: "Employment Rate (%)",
+				gridLine: true,
+			}),
+			tooltip: new Tooltip({ triggers }),
+		};
+	});
 
 	function handleYearChange() {
 		goto(buildUrl(selectedYr, hiddenUniversities));

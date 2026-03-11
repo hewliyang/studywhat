@@ -2,7 +2,7 @@
 	import Metric from "$lib/components/Metric.svelte";
 	import Download from "$lib/components/Export.svelte";
 	import { short2img, long2short } from "$lib/constants";
-	import type { YearlyRecord } from "$lib/types";
+	import type { DegreeRecommendation, YearlyRecord } from "$lib/types";
 	import {
 		Axis,
 		Crosshair,
@@ -78,59 +78,69 @@
 
 	const getGrossChartConfig = $derived.by<
 		() => XYContainerConfigInterface<YearlyRecord>
-	>(() => () => ({
-		height: 220,
-		components: [
-			new Line<YearlyRecord>({
-				x,
-				y: yMedian,
-				color: "#2563eb",
-				lineWidth: 2,
-				curveType: CurveType.Linear,
-			}),
-			new Line<YearlyRecord>({
-				x,
-				y: yBandBottom,
-				color: "#93b4f4",
-				lineWidth: 1,
-				lineDashArray: [4, 3],
-				curveType: CurveType.Linear,
-			}),
-			new Line<YearlyRecord>({
-				x,
-				y: yBandTop,
-				color: "#93b4f4",
-				lineWidth: 1,
-				lineDashArray: [4, 3],
-				curveType: CurveType.Linear,
-			}),
-		],
-		xAxis: new Axis<YearlyRecord>({ numTicks: (grossData.length / 2) >> 0 }),
-		yAxis: new Axis<YearlyRecord>({}),
-		tooltip: new Tooltip(),
-		crosshair: new Crosshair<YearlyRecord>({
+	>(() => () => {
+		const medianLine = new Line<YearlyRecord>({
 			x,
-			y: yGross,
-			template: tooltipTemplate,
-			hideWhenFarFromPointer: true,
-		}),
-	}));
+			y: yMedian,
+			color: "#2563eb",
+			lineWidth: 2,
+			curveType: CurveType.Linear,
+		});
+		const bottomLine = new Line<YearlyRecord>({
+			x,
+			y: yBandBottom,
+			color: "#93b4f4",
+			lineWidth: 1,
+			lineDashArray: [4, 3],
+			curveType: CurveType.Linear,
+		});
+		const topLine = new Line<YearlyRecord>({
+			x,
+			y: yBandTop,
+			color: "#93b4f4",
+			lineWidth: 1,
+			lineDashArray: [4, 3],
+			curveType: CurveType.Linear,
+		});
+		medianLine.clippable = false;
+		bottomLine.clippable = false;
+		topLine.clippable = false;
+
+		return {
+			height: 220,
+			components: [medianLine, bottomLine, topLine],
+			xAxis: new Axis<YearlyRecord>({ numTicks: (grossData.length / 2) >> 0 }),
+			yAxis: new Axis<YearlyRecord>({}),
+			tooltip: new Tooltip(),
+			crosshair: new Crosshair<YearlyRecord>({
+				x,
+				y: yGross,
+				template: tooltipTemplate,
+				hideWhenFarFromPointer: true,
+			}),
+		};
+	});
 
 	const getEmploymentChartConfig = $derived.by<
 		() => XYContainerConfigInterface<YearlyRecord>
-	>(() => () => ({
-		height: 220,
-		components: [new Line<YearlyRecord>({ x, y: yEmp, curveType: CurveType.Linear })],
-		xAxis: new Axis<YearlyRecord>({ numTicks: (data.degree.data.length / 2) >> 0 }),
-		yAxis: new Axis<YearlyRecord>({}),
-		tooltip: new Tooltip(),
-		crosshair: new Crosshair<YearlyRecord>({
-			x,
-			y: yEmp,
-			template: employmentTooltipTemplate,
-			hideWhenFarFromPointer: true,
-		}),
-	}));
+	>(() => () => {
+		const employmentLine = new Line<YearlyRecord>({ x, y: yEmp, curveType: CurveType.Linear });
+		employmentLine.clippable = false;
+
+		return {
+			height: 220,
+			components: [employmentLine],
+			xAxis: new Axis<YearlyRecord>({ numTicks: (data.degree.data.length / 2) >> 0 }),
+			yAxis: new Axis<YearlyRecord>({}),
+			tooltip: new Tooltip(),
+			crosshair: new Crosshair<YearlyRecord>({
+				x,
+				y: yEmp,
+				template: employmentTooltipTemplate,
+				hideWhenFarFromPointer: true,
+			}),
+		};
+	});
 
 	// datatable
 	const table = new TableHandler<YearlyRecord>([], { rowsPerPage: 100 });
@@ -233,6 +243,35 @@
 			</Datatable>
 		</div>
 	</div>
+
+	{#if data.recommendations.length > 0}
+		<div class="space-y-3">
+			<h3 class="text-xs font-heading font-semibold text-ink uppercase tracking-wide">
+				Explore Similar Degrees
+			</h3>
+			<div class="recommendations-list">
+				{#each data.recommendations.slice(0, 4) as recommendation (recommendation.slug)}
+					{@const recommendedShort = long2short[recommendation.university]}
+					{@const recommendedImg = short2img[recommendedShort]}
+					<a class="recommendation-card" href="/degree/{recommendation.slug}">
+						<div class="recommendation-top">
+							<div class="recommendation-logo-wrap">
+								<img
+									class="recommendation-logo"
+									src={recommendedImg}
+									alt="{recommendedShort} logo"
+								/>
+							</div>
+							<div class="min-w-0">
+								<div class="recommendation-meta">{recommendation.university}</div>
+								<div class="recommendation-title">{recommendation.degree}</div>
+							</div>
+						</div>
+					</a>
+				{/each}
+			</div>
+		</div>
+	{/if}
 </div>
 
 <style>
@@ -314,5 +353,70 @@
 	.num-cell.highlight {
 		color: #1a1a1a;
 		font-weight: 600;
+	}
+
+	.recommendations-list {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 10px;
+	}
+
+	.recommendation-card {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		padding: 14px;
+		border: 1px solid #e8e5df;
+		border-radius: 10px;
+		background: #ffffff;
+		text-decoration: none;
+		transition:
+			border-color 0.15s ease,
+			transform 0.15s ease,
+			box-shadow 0.15s ease;
+	}
+
+	.recommendation-card:hover {
+		border-color: #d9d3c8;
+		transform: translateY(-1px);
+		box-shadow: 0 8px 20px rgba(26, 26, 26, 0.06);
+	}
+
+	.recommendation-top {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+	}
+
+	.recommendation-logo-wrap {
+		width: 96px;
+		min-width: 96px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.recommendation-logo {
+		max-width: 100%;
+		max-height: 28px;
+		width: auto;
+		height: auto;
+		opacity: 0.8;
+	}
+
+	.recommendation-meta {
+		font-size: 10px;
+		font-weight: 600;
+		color: #71717a;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+
+	.recommendation-title {
+		margin-top: 3px;
+		font-size: 13px;
+		font-weight: 600;
+		line-height: 1.35;
+		color: #1a1a1a;
 	}
 </style>

@@ -27,6 +27,11 @@ export interface GESData {
 	data: YearlyRecord[];
 }
 
+export interface DegreeRecommendation extends GESData {
+	score: number;
+	sharedTerms: string[];
+}
+
 export type FlatRecord = Omit<GESData & YearlyRecord, "data">;
 
 export interface WinnersRecord extends GESData {

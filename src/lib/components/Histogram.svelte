@@ -60,25 +60,29 @@
 
 	const getChartConfig = $derived.by<
 		() => XYContainerConfigInterface<HistDatum>
-	>(() => () => ({
-		height: 220,
-		svgDefs: SVG_DEFS,
-		components: [
-			new Area<HistDatum>({ x, y, color: "url(#gradient)", opacity: 0.8 }),
-			new Line<HistDatum>({ x, y, color: "#2563eb" }),
-		],
-		xAxis: new Axis<HistDatum>({
-			label: "Median Gross Income",
-			numTicks: containerWidth > 500 ? histData.length : Math.floor(histData.length / 2),
-			gridLine: false,
-			tickTextWidth: 40,
-			tickFormat,
-		}),
-		yAxis: new Axis<HistDatum>({
-			label: "Frequency",
-			gridLine: true,
-		}),
-	}));
+	>(() => () => {
+		const area = new Area<HistDatum>({ x, y, color: "url(#gradient)", opacity: 0.8 });
+		const line = new Line<HistDatum>({ x, y, color: "#2563eb" });
+		area.clippable = false;
+		line.clippable = false;
+
+		return {
+			height: 220,
+			svgDefs: SVG_DEFS,
+			components: [area, line],
+			xAxis: new Axis<HistDatum>({
+				label: "Median Gross Income",
+				numTicks: containerWidth > 500 ? histData.length : Math.floor(histData.length / 2),
+				gridLine: false,
+				tickTextWidth: 40,
+				tickFormat,
+			}),
+			yAxis: new Axis<HistDatum>({
+				label: "Frequency",
+				gridLine: true,
+			}),
+		};
+	});
 </script>
 
 <div bind:clientWidth={containerWidth}>

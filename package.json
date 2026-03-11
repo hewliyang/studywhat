@@ -6,6 +6,8 @@
     "dev": "vite dev",
     "build": "vite build",
     "preview": "vite preview",
+    "tfidf:build": "node scripts/build-degree-tfidf.mjs",
+    "tfidf:inspect": "node scripts/inspect-degree-neighbors.mjs",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
   },
