@@ -74,11 +74,7 @@
 	const employmentLegendConfig = $derived.by<BulletLegendConfigInterface>(() => ({
 		items: [{ name: "Full Time" }, { name: "Overall" }],
 	}));
-
 	const yGross = [yMedian, yBandBottom, yBandTop];
-	const grossColors = ["#2563eb", "#93b4f4", "#93b4f4"];
-	const grossLineWidths = [2, 1, 1];
-	const grossDashArrays: (number[] | undefined)[] = [undefined, [4, 3], [4, 3]];
 
 	const getGrossChartConfig = $derived.by<
 		() => XYContainerConfigInterface<YearlyRecord>
@@ -87,10 +83,25 @@
 		components: [
 			new Line<YearlyRecord>({
 				x,
-				y: yGross,
-				color: grossColors,
-				lineWidth: (_, i) => grossLineWidths[i],
-				lineDashArray: (_, i) => grossDashArrays[i],
+				y: yMedian,
+				color: "#2563eb",
+				lineWidth: 2,
+				curveType: CurveType.Linear,
+			}),
+			new Line<YearlyRecord>({
+				x,
+				y: yBandBottom,
+				color: "#93b4f4",
+				lineWidth: 1,
+				lineDashArray: [4, 3],
+				curveType: CurveType.Linear,
+			}),
+			new Line<YearlyRecord>({
+				x,
+				y: yBandTop,
+				color: "#93b4f4",
+				lineWidth: 1,
+				lineDashArray: [4, 3],
 				curveType: CurveType.Linear,
 			}),
 		],
