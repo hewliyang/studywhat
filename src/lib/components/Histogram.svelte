@@ -57,22 +57,41 @@
 	const y = (d: HistDatum) => d.freq;
 	const tickFormat = (tick: number | Date) =>
 		typeof tick === "number" ? histData[tick]?.bin ?? "" : "";
+	const tickCount = $derived(
+		containerWidth > 500 ? histData.length : Math.max(1, Math.floor(histData.length / 2))
+	);
+
+	let areaComponent: Area<HistDatum> | undefined;
+	let lineComponent: Line<HistDatum> | undefined;
+
+	function getAreaComponent() {
+		if (!areaComponent) {
+			areaComponent = new Area<HistDatum>({ x, y, color: "url(#gradient)", opacity: 0.8 });
+			areaComponent.clippable = false;
+		}
+
+		return areaComponent;
+	}
+
+	function getLineComponent() {
+		if (!lineComponent) {
+			lineComponent = new Line<HistDatum>({ x, y, color: "#2563eb" });
+			lineComponent.clippable = false;
+		}
+
+		return lineComponent;
+	}
 
 	const getChartConfig = $derived.by<
 		() => XYContainerConfigInterface<HistDatum>
 	>(() => () => {
-		const area = new Area<HistDatum>({ x, y, color: "url(#gradient)", opacity: 0.8 });
-		const line = new Line<HistDatum>({ x, y, color: "#2563eb" });
-		area.clippable = false;
-		line.clippable = false;
-
 		return {
 			height: 220,
 			svgDefs: SVG_DEFS,
-			components: [area, line],
+			components: [getAreaComponent(), getLineComponent()],
 			xAxis: new Axis<HistDatum>({
 				label: "Median Gross Income",
-				numTicks: containerWidth > 500 ? histData.length : Math.floor(histData.length / 2),
+				numTicks: tickCount,
 				gridLine: false,
 				tickTextWidth: 40,
 				tickFormat,
@@ -105,5 +124,11 @@
 		</div>
 	{/snippet}
 
-	<UnovisXYChart data={histData} getConfig={getChartConfig} overlay={statsOverlay} height={220} />
+	<UnovisXYChart
+		data={histData}
+		getConfig={getChartConfig}
+		overlay={statsOverlay}
+		height={220}
+		duration={400}
+	/>
 </div>

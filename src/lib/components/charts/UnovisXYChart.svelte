@@ -10,6 +10,7 @@
 		class: className = "",
 		chartClass = "",
 		height,
+		duration = 0,
 	}: {
 		data?: unknown[];
 		getConfig: () => XYContainerConfigInterface<any>;
@@ -17,31 +18,46 @@
 		class?: string;
 		chartClass?: string;
 		height?: number;
+		duration?: number;
 	} = $props();
 
 	let container: HTMLDivElement | undefined;
 	let chart: XYContainer<any> | undefined;
 	let frame = 0;
+	let lastGetConfig: (() => XYContainerConfigInterface<any>) | undefined;
 
 	function mountChart() {
 		if (!container) return;
 		chart?.destroy();
 		container.replaceChildren();
 		chart = new XYContainer(container, { ...getConfig(), duration: 0 }, data);
+		lastGetConfig = getConfig;
 	}
 
-	function scheduleMount() {
+	function updateChart() {
+		if (!chart) {
+			mountChart();
+			return;
+		}
+
+		if (getConfig !== lastGetConfig) {
+			chart.updateContainer({ ...getConfig(), duration }, true);
+			lastGetConfig = getConfig;
+		}
+		chart.setData(data, true);
+		chart.render(duration);
+	}
+
+	function scheduleUpdate() {
 		if (!container || typeof requestAnimationFrame === "undefined") return;
 		if (frame) cancelAnimationFrame(frame);
 		frame = requestAnimationFrame(() => {
-			mountChart();
+			updateChart();
 			frame = 0;
 		});
 	}
 
 	onMount(() => {
-		mountChart();
-
 		return () => {
 			if (frame) cancelAnimationFrame(frame);
 			chart?.destroy();
@@ -51,7 +67,8 @@
 	$effect(() => {
 		data;
 		getConfig;
-		scheduleMount();
+		duration;
+		scheduleUpdate();
 	});
 </script>
 

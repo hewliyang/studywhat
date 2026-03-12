@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { browser } from "$app/environment";
 	import { goto } from "$app/navigation";
 	import {
 		Axis,
@@ -7,7 +8,8 @@
 		type BulletLegendConfigInterface,
 		type XYContainerConfigInterface,
 	} from "@unovis/ts";
-	import { long2short, palette, short2img, YEARS } from "$lib/constants";
+	import { long2short, palette, short2img, short2long, YEARS } from "$lib/constants";
+	import { getMovement, topK } from "$lib/data";
 	import {
 		TableHandler,
 		Datatable,
@@ -28,31 +30,40 @@
 		TrendingUp,
 		TrendingDown,
 	} from "lucide-svelte";
+	import { onMount } from "svelte";
 	import type { FlatRecord } from "$lib/types";
 	import type { PageData } from "./$types";
 	import Export from "$lib/components/Export.svelte";
 
 	let { data }: { data: PageData } = $props();
+	const initialState = (() => ({
+		year: data.year,
+		lag: data.lag,
+		hiddenUniversities: new Set(data.hiddenUniversities),
+	}))();
 
-	let selectedYr = $state(0);
-	let selectedLag = $state(1);
+	let selectedYr = $state(initialState.year);
+	let selectedLag = $state(initialState.lag);
 	const DEGREE_LABEL_THRESHOLD = 12;
 	const DEGREE_LABEL_MAX_LENGTH = 24;
 	const HOVER_DISTANCE_THRESHOLD_PX = 28;
 	const HOVER_NEIGHBOR_COUNT = 3;
-	const maxLag = $derived(Math.max(1, selectedYr - Math.min(...YEARS)));
+	const MIN_YEAR = Math.min(...YEARS);
+	const maxLag = $derived(Math.max(1, selectedYr - MIN_YEAR));
 	const canDecreaseLag = $derived(selectedLag > 1);
 	const canIncreaseLag = $derived(selectedLag < maxLag);
-	let hiddenUniversities: Set<string> = $state(new Set());
+	let hiddenUniversities: Set<string> = $state(initialState.hiddenUniversities);
 	let scatterComponent: Scatter<FlatRecord> | undefined;
 	let chartFrame: { left: number; top: number; width: number; height: number } | null = $state(null);
 	let hoveredDatum: FlatRecord | null = $state(null);
 	let hoveredPoint: { x: number; y: number } | null = $state(null);
 	let hoveredNeighbors: FlatRecord[] = $state([]);
-	const institutions = $derived([...new Set(data.top.map((d) => d.university))].sort());
+	const topRows = $derived(topK(selectedYr));
+	const movement = $derived(getMovement(selectedYr, 5, 5, selectedLag));
+	const institutions = $derived([...new Set(topRows.map((d) => d.university))].sort());
 	const colorScale = $derived(Scale.scaleOrdinal(palette).domain(institutions));
 	const salaryRows = $derived(
-		data.top.filter(
+		topRows.filter(
 			(d) =>
 				d.gross_monthly_median != null &&
 				d.gross_mthly_25_percentile != null &&
@@ -66,6 +77,15 @@
 	);
 	const defaultLabeledRows = $derived.by(() => getDefaultLabeledRows(filteredSalaryRows));
 
+	function clampYear(year: number) {
+		return Math.min(Math.max(year, YEARS[0]), YEARS[YEARS.length - 1]);
+	}
+
+	function clampLag(year: number, lag: number) {
+		const maxAllowedLag = Math.max(1, year - MIN_YEAR);
+		return Math.min(Math.max(lag, 1), maxAllowedLag);
+	}
+
 	function buildUrl(year: number, hidden: Set<string>, lag: number = selectedLag) {
 		const params = new URLSearchParams();
 		params.set("year", String(year));
@@ -77,6 +97,71 @@
 		return `/?${params.toString()}`;
 	}
 
+	function syncUrl(
+		year: number,
+		hidden: Set<string>,
+		lag: number,
+		mode: "push" | "replace" = "push"
+	) {
+		if (!browser) return;
+
+		const url = buildUrl(year, hidden, lag);
+		if (mode === "replace") {
+			window.history.replaceState(window.history.state, "", url);
+			return;
+		}
+
+		window.history.pushState(window.history.state, "", url);
+	}
+
+	function applyState(
+		nextYear: number,
+		nextLag: number = selectedLag,
+		nextHidden: Set<string> = hiddenUniversities
+	) {
+		selectedYr = clampYear(nextYear);
+		selectedLag = clampLag(selectedYr, nextLag);
+		hiddenUniversities = new Set(nextHidden);
+	}
+
+	function readStateFromLocation() {
+		if (!browser) {
+			return {
+				year: data.year,
+				lag: data.lag,
+				hidden: new Set(data.hiddenUniversities),
+			};
+		}
+
+		const params = new URLSearchParams(window.location.search);
+		const year = clampYear(Number(params.get("year")) || data.year);
+		const hiddenParam = params.get("hide") ?? "";
+		const hidden = hiddenParam
+			? new Set(
+				hiddenParam
+					.split(",")
+					.map((s) => short2long[s.trim()])
+					.filter(Boolean)
+				)
+			: new Set<string>();
+
+		return {
+			year,
+			lag: clampLag(year, Number(params.get("lag")) || 1),
+			hidden,
+		};
+	}
+
+	function setYear(nextYear: number) {
+		applyState(nextYear, selectedLag);
+		syncUrl(selectedYr, hiddenUniversities, selectedLag);
+	}
+
+	function setLag(nextLag: number) {
+		applyState(selectedYr, nextLag);
+		syncUrl(selectedYr, hiddenUniversities, selectedLag);
+	}
+
 	function toggleUniversity(university: string) {
 		const next = new Set(hiddenUniversities);
 		if (next.has(university)) {
@@ -84,8 +169,9 @@
 		} else {
 			next.add(university);
 		}
-		hiddenUniversities = next;
-		goto(buildUrl(selectedYr, next), { replaceState: true, noScroll: true });
+
+		applyState(selectedYr, selectedLag, next);
+		syncUrl(selectedYr, next, selectedLag, "replace");
 	}
 
 	const y = (d: FlatRecord) => d.employment_rate_overall;
@@ -99,36 +185,29 @@
 	})));
 	const legendConfig = $derived.by<BulletLegendConfigInterface>(() => ({
 		items: legendItems,
-		onLegendItemClick: (d, i) => {
+		onLegendItemClick: (_d, i) => {
 			const uni = institutions[i];
 			if (uni) toggleUniversity(uni);
 		},
 	}));
 
-	// data table
 	const table = new TableHandler<FlatRecord>([], { rowsPerPage: 15 });
 
 	const filteredTop = $derived(
 		hiddenUniversities.size === 0
-			? data.top
-			: data.top.filter((d) => !hiddenUniversities.has(d.university))
+			? topRows
+			: topRows.filter((d) => !hiddenUniversities.has(d.university))
 	);
 	const filteredBest = $derived(
 		hiddenUniversities.size === 0
-			? data.gainAndLoss.best
-			: data.gainAndLoss.best.filter((d) => !hiddenUniversities.has(d.university))
+			? movement.best
+			: movement.best.filter((d) => !hiddenUniversities.has(d.university))
 	);
 	const filteredWorst = $derived(
 		hiddenUniversities.size === 0
-			? data.gainAndLoss.worst
-			: data.gainAndLoss.worst.filter((d) => !hiddenUniversities.has(d.university))
+			? movement.worst
+			: movement.worst.filter((d) => !hiddenUniversities.has(d.university))
 	);
-
-	$effect(() => {
-		selectedYr = data.year;
-		selectedLag = data.lag;
-		hiddenUniversities = new Set(data.hiddenUniversities);
-	});
 
 	$effect(() => {
 		table.setRows(filteredTop);
@@ -142,7 +221,7 @@
 	function handleLagChange(delta: number) {
 		const next = Math.min(Math.max(selectedLag + delta, 1), maxLag);
 		if (next !== selectedLag) {
-			goto(buildUrl(selectedYr, hiddenUniversities, next), { keepFocus: true });
+			setLag(next);
 		}
 	}
 
@@ -177,7 +256,10 @@
 		const incomeMax = x(byIncome[byIncome.length - 1]);
 		const employmentMin = y(byEmployment[0]);
 		const employmentMax = y(byEmployment[byEmployment.length - 1]);
-		const bestOverall = [...rows].sort((a, b) => getEdgeScore(b, incomeMin, incomeMax, employmentMin, employmentMax) - getEdgeScore(a, incomeMin, incomeMax, employmentMin, employmentMax))[0];
+		const bestOverall = [...rows].sort((a, b) =>
+			getEdgeScore(b, incomeMin, incomeMax, employmentMin, employmentMax) -
+			getEdgeScore(a, incomeMin, incomeMax, employmentMin, employmentMax)
+		)[0];
 
 		return dedupeRows([
 			byIncome[0],
@@ -329,12 +411,26 @@
 		return `left:${left}px; top:${chartFrame.top + 12}px;`;
 	}
 
+	function getScatterComponent() {
+		if (!scatterComponent) {
+			scatterComponent = new Scatter<FlatRecord>({
+				cursor: "pointer",
+				size: 8,
+				x,
+				y,
+				color,
+				id: (d) => d.slug,
+			});
+			scatterComponent.clippable = false;
+		}
+
+		return scatterComponent;
+	}
+
 	const getScatterChartConfig = $derived.by<
 		() => XYContainerConfigInterface<FlatRecord>
 	>(() => () => {
-		const scatter = new Scatter<FlatRecord>({ cursor: "pointer", size: 8, x, y, color });
-		scatterComponent = scatter;
-		scatter.clippable = false;
+		const scatter = getScatterComponent();
 
 		return {
 			height: 380,
@@ -361,12 +457,28 @@
 	});
 
 	function handleYearChange() {
-		goto(buildUrl(selectedYr, hiddenUniversities));
+		setYear(selectedYr);
 	}
 
 	function formatCurrency(value: number | null) {
 		return value == null ? "—" : `$${value.toLocaleString()}`;
 	}
+
+	onMount(() => {
+		const state = readStateFromLocation();
+		applyState(state.year, state.lag, state.hidden);
+
+		function handlePopState() {
+			const nextState = readStateFromLocation();
+			applyState(nextState.year, nextState.lag, nextState.hidden);
+		}
+
+		window.addEventListener("popstate", handlePopState);
+
+		return () => {
+			window.removeEventListener("popstate", handlePopState);
+		};
+	});
 </script>
 
 <!-- Global Controls -->
@@ -416,7 +528,13 @@
 				</div>
 			</div>
 		{/snippet}
-		<UnovisXYChart data={filteredSalaryRows} getConfig={getScatterChartConfig} overlay={betterOverlay} height={380} />
+		<UnovisXYChart
+			data={filteredSalaryRows}
+			getConfig={getScatterChartConfig}
+			overlay={betterOverlay}
+			height={380}
+			duration={550}
+		/>
 		{#if chartFrame}
 			<div class="scatter-overlay">
 				{#if !hoveredDatum}
@@ -540,10 +658,22 @@
 				<Activity class="h-3 w-3" />
 			</a>
 		</div>
-		<div class="flex overflow-x-auto gap-2 pb-1 -mx-1 px-1">
-			{#each filteredBest as record}
-				<Sparkline {record} refYear={selectedYr} />
-			{/each}
+		<div
+			class="carousel-shell"
+			aria-label={`Winners over ${selectedLag} years`}
+		>
+			<div class="carousel-track" data-carousel-track>
+				<div class="carousel-set" data-carousel-set="primary">
+					{#each filteredBest as record (record.slug)}
+						<Sparkline {record} refYear={selectedYr} />
+					{/each}
+				</div>
+				<div class="carousel-set carousel-clone" aria-hidden="true">
+					{#each filteredBest as record (record.slug)}
+						<Sparkline {record} refYear={selectedYr} />
+					{/each}
+				</div>
+			</div>
 		</div>
 	{/if}
 	{#if filteredWorst.length > 2}
@@ -551,10 +681,22 @@
 			<TrendingDown class="h-4 w-4 text-loss" />
 			<h2 class="text-sm font-semibold text-ink tracking-tight">Losers {selectedLag}Y</h2>
 		</div>
-		<div class="flex overflow-x-auto gap-2 pb-1 -mx-1 px-1">
-			{#each filteredWorst as record}
-				<Sparkline {record} refYear={selectedYr} />
-			{/each}
+			<div
+				class="carousel-shell carousel-shell-slower carousel-shell-reverse"
+				aria-label={`Losers over ${selectedLag} years`}
+			>
+			<div class="carousel-track" data-carousel-track>
+				<div class="carousel-set" data-carousel-set="primary">
+					{#each filteredWorst as record (record.slug)}
+						<Sparkline {record} refYear={selectedYr} />
+					{/each}
+				</div>
+				<div class="carousel-set carousel-clone" aria-hidden="true">
+					{#each filteredWorst as record (record.slug)}
+						<Sparkline {record} refYear={selectedYr} />
+					{/each}
+				</div>
+			</div>
 		</div>
 	{/if}
 </section>
@@ -573,7 +715,7 @@
 <section class="space-y-3">
 	<div class="flex items-center justify-between">
 		<h2 class="text-sm font-semibold text-ink tracking-tight">All Degrees</h2>
-		<Export rows={data.top} fileName={String(selectedYr)} />
+		<Export rows={topRows} fileName={String(selectedYr)} />
 	</div>
 	<div class="data-table-wrap">
 		<Datatable {table}>
@@ -844,6 +986,71 @@
 
 	.scatter-hover-hint {
 		margin-top: 10px;
+	}
+
+	.carousel-shell {
+		overflow: hidden;
+		padding: 0 4px 4px;
+		margin: 0 -4px;
+		-webkit-mask-image: linear-gradient(
+			90deg,
+			transparent 0,
+			#000 20px,
+			#000 calc(100% - 20px),
+			transparent 100%
+		);
+		mask-image: linear-gradient(
+			90deg,
+			transparent 0,
+			#000 20px,
+			#000 calc(100% - 20px),
+			transparent 100%
+		);
+	}
+
+	.carousel-shell::-webkit-scrollbar {
+		display: none;
+	}
+
+	.carousel-track {
+		display: flex;
+		width: max-content;
+		animation: carousel-marquee 32s linear infinite;
+		will-change: transform;
+	}
+
+	.carousel-shell-slower .carousel-track {
+		animation-duration: 36s;
+	}
+
+	.carousel-shell-reverse .carousel-track {
+		animation-direction: reverse;
+	}
+
+	.carousel-set {
+		display: flex;
+		flex: none;
+		gap: 8px;
+		padding-right: 8px;
+	}
+
+	.carousel-clone {
+		display: flex;
+	}
+
+	.carousel-shell:hover .carousel-track,
+	.carousel-shell:focus-within .carousel-track {
+		animation-play-state: paused;
+	}
+
+	@keyframes carousel-marquee {
+		from {
+			transform: translate3d(0, 0, 0);
+		}
+
+		to {
+			transform: translate3d(-50%, 0, 0);
+		}
 	}
 
 	.data-table-wrap {
