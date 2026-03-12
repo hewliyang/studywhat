@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StudyWhat OG</title>
+    <style>
+      @font-face {
+        font-family: "Outfit";
+        src: url("../node_modules/@fontsource-variable/outfit/files/outfit-latin-wght-normal.woff2") format("woff2");
+        font-weight: 100 900;
+        font-style: normal;
+        font-display: block;
+      }
+
+      :root {
+        color-scheme: light;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+        background: #fafaf7;
+      }
+
+      body {
+        display: grid;
+        place-items: center;
+        font-family: "Outfit", system-ui, sans-serif;
+        color: #1a1a1a;
+      }
+
+      .wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        transform: translateY(-6px);
+      }
+
+      .icon {
+        width: 120px;
+        height: 120px;
+        color: #1a1a1a;
+      }
+
+      .wordmark {
+        font-size: 74px;
+        line-height: 1;
+        font-weight: 700;
+        letter-spacing: -0.05em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 3L2 9l10 6 8-4.8V17h2V9L12 3z" fill="currentColor" fill-opacity="0.85"></path>
+        <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z" fill="currentColor" fill-opacity="0.55"></path>
+      </svg>
+      <div class="wordmark">StudyWhat</div>
+    </div>
+  </body>
+</html>

@@ -97,7 +97,7 @@ Takes a time series, gets the latest 2 records and computes the delta.
 	}
 
 	.metric-value {
-		font-family: 'JetBrains Mono', monospace;
+		font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
 		font-size: 18px;
 		font-weight: 600;
 		color: #1a1a1a;
@@ -105,7 +105,7 @@ Takes a time series, gets the latest 2 records and computes the delta.
 	}
 
 	.metric-delta {
-		font-family: 'JetBrains Mono', monospace;
+		font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
 		font-size: 10px;
 		font-weight: 500;
 	}
@@ -123,7 +123,7 @@ Takes a time series, gets the latest 2 records and computes the delta.
 	}
 
 	.metric-na {
-		font-family: 'JetBrains Mono', monospace;
+		font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
 		font-size: 14px;
 		color: #a1a19a;
 	}

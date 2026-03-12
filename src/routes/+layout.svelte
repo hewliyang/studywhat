@@ -9,16 +9,9 @@
 </script>
 
 <Analytics />
-<svelte:head>
-	<title>StudyWhat</title>
-	<meta
-		name="description"
-		content="Singapore Graduate Employment Survey (GES) data. Analyse employment trends and decide what to study."
-	/>
-</svelte:head>
 
 <div class="max-w-3xl mx-auto px-4 sm:px-6">
-	<header class="pt-3 pb-2 flex items-center gap-3 justify-between">
+	<header class="pt-3 pb-2 flex items-center gap-3 justify-between" data-nosnippet>
 		<a href="/" class="group flex items-center gap-1.5">
 			<svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="text-ink" aria-hidden="true">
 				<path d="M12 3L2 9l10 6 8-4.8V17h2V9L12 3z" fill="currentColor" opacity="0.85"/>
@@ -34,7 +27,7 @@
 		{@render children()}
 	</main>
 
-	<footer class="py-4 border-t border-border">
+	<footer class="py-4 border-t border-border" data-nosnippet>
 		<div class="flex justify-between items-center text-xs text-muted">
 			<a href="https://github.com/hewliyang/studywhat" class="hover:text-ink transition-colors">
 				<Github class="h-3.5 w-3.5" />

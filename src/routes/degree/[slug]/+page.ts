@@ -7,20 +7,13 @@ const recommendationMap = new Map(
 	Object.entries(recommendations.neighbors)
 );
 
-export async function load({ fetch, params }) {
+export async function load({ params }) {
 	const slug = params.slug;
-	let degree: GESData | undefined;
-
-	if (local) {
-		degree = local.find((d) => d.slug === slug);
-		if (!degree) error(404);
-	} else {
-		const response = await fetch(`/api/degree/${slug}`);
-		if (!response.ok) error(response.status);
-		degree = (await response.json()) as GESData;
-	}
-
 	const catalog = local ?? degrees;
+	const degree = catalog.find((entry) => entry.slug === slug);
+
+	if (!degree) error(404);
+
 	const recommendationsForDegree =
 		recommendationMap
 			.get(slug)

@@ -7,7 +7,7 @@ const config = {
 			fontFamily: {
 				sans: ['Outfit', 'system-ui', 'sans-serif'],
 				heading: ['"DM Sans"', 'system-ui', 'sans-serif'],
-				mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+				mono: ['"JetBrains Mono Variable"', '"JetBrains Mono"', 'ui-monospace', 'monospace'],
 			},
 			colors: {
 				cream: '#FAFAF7',

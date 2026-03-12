@@ -34,6 +34,7 @@
 	import type { FlatRecord } from "$lib/types";
 	import type { PageData } from "./$types";
 	import Export from "$lib/components/Export.svelte";
+	import Seo from "$lib/components/Seo.svelte";
 
 	let { data }: { data: PageData } = $props();
 	const initialState = (() => ({
@@ -695,8 +696,23 @@
 	});
 </script>
 
+<Seo
+	title="StudyWhat"
+	description="Singapore Graduate Employment Survey (GES) data. Compare salaries, employment rates, and trends to decide what to study."
+	pathname="/"
+/>
+
+<section class="space-y-2">
+	<h1 class="text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
+		Compare Singapore graduate outcomes by degree
+	</h1>
+	<p class="max-w-2xl text-sm leading-relaxed text-muted sm:text-[15px]">
+		StudyWhat helps you compare salary, employment, and historical Graduate Employment Survey data across degree programmes from NTU, NUS, SIT, SMU, SUSS, and SUTD.
+	</p>
+</section>
+
 <!-- Global Controls -->
-<section class="space-y-3">
+<section class="space-y-3" data-nosnippet>
 	<div class="flex items-center justify-between flex-wrap gap-2">
 		<h2 class="text-sm font-semibold text-ink tracking-tight">Income × Employment</h2>
 		<div class="flex items-center gap-3">
@@ -1147,7 +1163,7 @@
 	}
 
 	.scatter-hover-band-value {
-		font-family: 'JetBrains Mono', ui-monospace, monospace;
+		font-family: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, monospace;
 		font-size: 10px;
 		color: #71717a;
 	}
@@ -1192,7 +1208,7 @@
 		display: inline-flex;
 		align-items: center;
 		gap: 6px;
-		font-family: 'JetBrains Mono', ui-monospace, monospace;
+		font-family: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, monospace;
 		font-size: 10px;
 		white-space: nowrap;
 		color: #71717a;
@@ -1360,7 +1376,7 @@
 	}
 
 	.num-cell {
-		font-family: 'JetBrains Mono', ui-monospace, monospace;
+		font-family: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, monospace;
 		font-size: 11px;
 		text-align: right;
 		white-space: nowrap;
@@ -1449,7 +1465,7 @@
 
 	.year-select {
 		font-size: 12px;
-		font-family: 'JetBrains Mono', ui-monospace, monospace;
+		font-family: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, monospace;
 		padding: 3px 6px;
 		height: 26px;
 		border-top: 1px solid #e8e5df;

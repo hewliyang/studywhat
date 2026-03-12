@@ -2,15 +2,14 @@
 	import { downloadAsCSV, downloadFromURL } from "$lib/download";
 	import { ArrowRight } from "lucide-svelte";
 	import { getFlattened } from "$lib/data";
+	import Seo from "$lib/components/Seo.svelte";
 </script>
 
-<svelte:head>
-	<title>Disclaimers & Dataset | StudyWhat</title>
-	<meta
-		name="description"
-		content="Complete Graduate Employment Survey 2009 to 2023 download as CSV or JSON"
-	/>
-</svelte:head>
+<Seo
+	title="Disclaimers & Dataset | StudyWhat"
+	description="Dataset details, attribution, schema, and downloads for Singapore Graduate Employment Survey data from 2009 to 2023."
+	pathname="/disclaimers"
+/>
 
 <div class="space-y-8 text-sm leading-relaxed">
 	<section>

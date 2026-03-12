@@ -151,7 +151,7 @@
 	}
 
 	.sparkline-change {
-		font-family: 'JetBrains Mono', monospace;
+		font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
 		font-size: 11px;
 		font-weight: 600;
 	}

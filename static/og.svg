@@ -1,0 +1,21 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#FAFAF7"/>
+
+  <g transform="translate(600 315)">
+    <g transform="translate(-48 -94) scale(4)">
+      <path d="M12 3L2 9l10 6 8-4.8V17h2V9L12 3z" fill="#1A1A1A" fill-opacity="0.85"/>
+      <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z" fill="#1A1A1A" fill-opacity="0.55"/>
+    </g>
+
+    <text
+      x="0"
+      y="82"
+      text-anchor="middle"
+      fill="#1A1A1A"
+      font-family="Outfit, DM Sans, Inter, Arial, sans-serif"
+      font-size="72"
+      font-weight="700"
+      letter-spacing="-0.04em"
+    >StudyWhat</text>
+  </g>
+</svg>

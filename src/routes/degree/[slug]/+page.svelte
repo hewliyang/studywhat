@@ -13,7 +13,9 @@
 		type XYContainerConfigInterface,
 	} from "@unovis/ts";
 	import { Datatable, TableHandler, ThSort } from "@vincjo/datatables";
+	import { page } from "$app/state";
 	import type { PageData } from "./$types";
+	import Seo from "$lib/components/Seo.svelte";
 	import UnovisLegend from "$lib/components/charts/UnovisLegend.svelte";
 	import UnovisXYChart from "$lib/components/charts/UnovisXYChart.svelte";
 
@@ -46,9 +48,9 @@
 		return `<div style="font-family: 'Outfit', sans-serif; font-size: 11px; padding: 2px;">
 			<div style="color: #71717a; margin-bottom: 4px;">${d.year}</div>
 			<div style="display: grid; grid-template-columns: auto auto; gap: 2px 12px;">
-				<span style="color: #71717a;">P25</span><span style="font-family: 'JetBrains Mono', monospace; font-weight: 500;">${formatValue(d.gross_mthly_25_percentile, "$")}</span>
-				<span style="color: #71717a;">Median</span><span style="font-family: 'JetBrains Mono', monospace; font-weight: 600;">${formatValue(d.gross_monthly_median, "$")}</span>
-				<span style="color: #71717a;">P75</span><span style="font-family: 'JetBrains Mono', monospace; font-weight: 500;">${formatValue(d.gross_mthly_75_percentile, "$")}</span>
+				<span style="color: #71717a;">P25</span><span style="font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace; font-weight: 500;">${formatValue(d.gross_mthly_25_percentile, "$")}</span>
+				<span style="color: #71717a;">Median</span><span style="font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace; font-weight: 600;">${formatValue(d.gross_monthly_median, "$")}</span>
+				<span style="color: #71717a;">P75</span><span style="font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace; font-weight: 500;">${formatValue(d.gross_mthly_75_percentile, "$")}</span>
 			</div>
 		</div>`;
 	}
@@ -57,8 +59,8 @@
 		return `<div style="font-family: 'Outfit', sans-serif; font-size: 11px; padding: 2px;">
 			<div style="color: #71717a; margin-bottom: 4px;">${d.year}</div>
 			<div style="display: grid; grid-template-columns: auto auto; gap: 2px 12px;">
-				<span style="color: #71717a;">Full Time</span><span style="font-family: 'JetBrains Mono', monospace; font-weight: 500;">${d.employment_rate_ft_perm}%</span>
-				<span style="color: #71717a;">Overall</span><span style="font-family: 'JetBrains Mono', monospace; font-weight: 500;">${d.employment_rate_overall}%</span>
+				<span style="color: #71717a;">Full Time</span><span style="font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace; font-weight: 500;">${d.employment_rate_ft_perm}%</span>
+				<span style="color: #71717a;">Overall</span><span style="font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace; font-weight: 500;">${d.employment_rate_overall}%</span>
 			</div>
 		</div>`;
 	}
@@ -154,26 +156,28 @@
 	}
 </script>
 
-<svelte:head>
-	<title>{data.degree.degree} | {data.degree.university}</title>
-	<meta
-		name="description"
-		content={`Yearly salary and employment data for ${data.degree.degree}, ${data.degree.university}`}
-	/>
-</svelte:head>
+<Seo
+	title={`${data.degree.degree} | ${data.degree.university} | StudyWhat`}
+	description={`Yearly salary and employment data for ${data.degree.degree} at ${data.degree.university}, based on Singapore Graduate Employment Survey data.`}
+	pathname={page.url.pathname}
+/>
 
 <div class="space-y-6">
 	<!-- Degree Header -->
 	<div class="degree-header">
-		<img class="h-12 w-auto opacity-80" src={img} alt="{short} logo" />
+		<img class="h-12 w-auto opacity-80" src={img} alt="" aria-hidden="true" />
 		<div class="flex-1 min-w-0">
 			<div class="text-xs font-medium text-muted">{data.degree.university}</div>
 			{#if data.degree.school}
 				<div class="text-[11px] text-muted">{data.degree.school}</div>
 			{/if}
-			<div class="text-sm font-semibold text-ink mt-0.5">{data.degree.degree}</div>
+			<h1 class="text-sm font-semibold text-ink mt-0.5">{data.degree.degree}</h1>
 		</div>
 	</div>
+
+	<p class="max-w-2xl text-sm leading-relaxed text-muted">
+		Historical salary and employment outcomes for {data.degree.degree} at {data.degree.university}, based on Singapore Graduate Employment Survey data.
+	</p>
 
 	<!-- Key Metrics -->
 	<div class="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -337,14 +341,14 @@
 	}
 
 	.year-cell {
-		font-family: 'JetBrains Mono', monospace;
+		font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
 		font-size: 11px;
 		font-weight: 500;
 		color: #71717a;
 	}
 
 	.num-cell {
-		font-family: 'JetBrains Mono', monospace;
+		font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
 		font-size: 11px;
 		text-align: right;
 		color: #71717a;

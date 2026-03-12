@@ -7,6 +7,7 @@
 		TrendingUp,
 		TrendingDown,
 	} from "lucide-svelte";
+	import Seo from "$lib/components/Seo.svelte";
 	import type { PageData } from "./$types";
 
 	let { data }: { data: PageData } = $props();
@@ -38,7 +39,7 @@
 		params.set("year", String(year));
 		if (lag > 1) params.set("lag", String(lag));
 		if (selectedMetric !== "gross_monthly_median") params.set("metric", selectedMetric);
-		return `/movement/?${params.toString()}`;
+		return `/movement?${params.toString()}`;
 	}
 
 	function handleChange() {
@@ -65,10 +66,11 @@
 	}
 </script>
 
-<svelte:head>
-	<title>Movement | StudyWhat</title>
-	<meta name="description" content="Analyse changes in employment trends over time" />
-</svelte:head>
+<Seo
+	title="Movement | StudyWhat"
+	description="Compare year-over-year changes in graduate salaries and employment across Singapore degree programmes."
+	pathname="/movement"
+/>
 
 <div class="space-y-6">
 	<!-- Controls -->
@@ -346,7 +348,7 @@
 	}
 
 	.change-cell {
-		font-family: 'JetBrains Mono', monospace;
+		font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
 		font-size: 11px;
 		font-weight: 600;
 		text-align: right;
@@ -401,7 +403,7 @@
 
 	.stepper-select {
 		font-size: 12px;
-		font-family: 'JetBrains Mono', ui-monospace, monospace;
+		font-family: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, monospace;
 		padding: 3px 6px;
 		height: 30px;
 		border-top: 1px solid #e8e5df;
@@ -426,7 +428,7 @@
 		align-items: center;
 		justify-content: center;
 		font-size: 12px;
-		font-family: 'JetBrains Mono', ui-monospace, monospace;
+		font-family: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, monospace;
 		height: 30px;
 		min-width: 36px;
 		border-top: 1px solid #e8e5df;

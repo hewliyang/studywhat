@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /search
+
+Sitemap: https://studywhat.hewliyang.com/sitemap.xml
