@@ -118,6 +118,7 @@
 		transition: border-color 0.15s, box-shadow 0.15s;
 		flex-shrink: 0;
 		min-width: 260px;
+		width: min(260px, calc(100vw - 64px));
 	}
 
 	.sparkline-card:hover {
@@ -165,5 +166,17 @@
 
 	.sparkline-svg {
 		flex-shrink: 0;
+	}
+
+	@media (max-width: 640px) {
+		.sparkline-card {
+			gap: 8px;
+			padding: 8px 10px;
+			width: min(240px, calc(100vw - 56px));
+		}
+
+		.sparkline-degree {
+			max-width: 118px;
+		}
 	}
 </style>

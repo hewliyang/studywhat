@@ -59,7 +59,7 @@
 	let hoveredPoint: { x: number; y: number } | null = $state(null);
 	let hoveredNeighbors: FlatRecord[] = $state([]);
 	const topRows = $derived(topK(selectedYr));
-	const movement = $derived(getMovement(selectedYr, 5, 5, selectedLag));
+	const movement = $derived(getMovement(selectedYr, topRows.length, topRows.length, selectedLag));
 	const institutions = $derived([...new Set(topRows.map((d) => d.university))].sort());
 	const colorScale = $derived(Scale.scaleOrdinal(palette).domain(institutions));
 	const salaryRows = $derived(
@@ -203,11 +203,13 @@
 			? movement.best
 			: movement.best.filter((d) => !hiddenUniversities.has(d.university))
 	);
+	const filteredBestSignature = $derived(filteredBest.map((record) => record.slug).join("|"));
 	const filteredWorst = $derived(
 		hiddenUniversities.size === 0
 			? movement.worst
 			: movement.worst.filter((d) => !hiddenUniversities.has(d.university))
 	);
+	const filteredWorstSignature = $derived(filteredWorst.map((record) => record.slug).join("|"));
 
 	$effect(() => {
 		table.setRows(filteredTop);
@@ -464,6 +466,218 @@
 		return value == null ? "—" : `$${value.toLocaleString()}`;
 	}
 
+	type AutoCarouselOptions = {
+		direction?: 1 | -1;
+		signature?: string;
+		speed?: number;
+	};
+
+	function autoCarousel(node: HTMLElement, options: AutoCarouselOptions = {}) {
+		let direction = options.direction ?? 1;
+		let speed = options.speed ?? 26;
+		let signature = options.signature ?? "";
+		let cycleWidth = 0;
+		let position = 0;
+		let shouldAnimate = false;
+		let frameId = 0;
+		let lastTimestamp = 0;
+		let hoverPaused = false;
+		let focusPaused = false;
+		let isDragging = false;
+		let didDrag = false;
+		let dragStartX = 0;
+		let dragStartScrollLeft = 0;
+		const resizeObserver = new ResizeObserver(() => queueMeasure({ preserveProgress: true }));
+
+		function resetAnimationClock() {
+			lastTimestamp = 0;
+		}
+
+		function normalizeScroll(value: number) {
+			if (cycleWidth <= 0) return 0;
+
+			let normalized = value;
+			while (normalized < 0) normalized += cycleWidth;
+			while (normalized >= cycleWidth) normalized -= cycleWidth;
+			return normalized;
+		}
+
+		function syncActiveState(active: boolean) {
+			shouldAnimate = active;
+			node.classList.toggle("carousel-active", active);
+		}
+
+		function measure({
+			resetPosition = false,
+			preserveProgress = false,
+		}: { resetPosition?: boolean; preserveProgress?: boolean } = {}) {
+			const primarySet = node.querySelector<HTMLElement>('[data-carousel-set="primary"]');
+			if (!primarySet) return;
+
+			const previousCycleWidth = cycleWidth;
+			cycleWidth = primarySet.getBoundingClientRect().width;
+			const active = cycleWidth > node.clientWidth + 8;
+			syncActiveState(active);
+
+			if (!active) {
+				position = 0;
+				node.scrollLeft = 0;
+				return;
+			}
+
+			if (resetPosition) {
+				position = direction < 0 ? Math.max(cycleWidth - 1, 0) : 0;
+				node.scrollLeft = position;
+				resetAnimationClock();
+				return;
+			}
+
+			if (preserveProgress && previousCycleWidth > 0) {
+				const progress = normalizeScroll(position) / previousCycleWidth;
+				position = normalizeScroll(progress * cycleWidth);
+				node.scrollLeft = position;
+				return;
+			}
+
+			position = normalizeScroll(node.scrollLeft);
+			node.scrollLeft = position;
+		}
+
+		function queueMeasure({
+			resetPosition = false,
+			preserveProgress = false,
+		}: { resetPosition?: boolean; preserveProgress?: boolean } = {}) {
+			window.requestAnimationFrame(() => measure({ resetPosition, preserveProgress }));
+		}
+
+		function isPaused() {
+			return hoverPaused || focusPaused || isDragging;
+		}
+
+		function tick(timestamp: number) {
+			if (lastTimestamp === 0) lastTimestamp = timestamp;
+			const elapsedSeconds = (timestamp - lastTimestamp) / 1000;
+			lastTimestamp = timestamp;
+
+			if (shouldAnimate && !isPaused() && cycleWidth > 0) {
+				position = normalizeScroll(position + direction * speed * elapsedSeconds);
+				node.scrollLeft = position;
+			}
+
+			frameId = window.requestAnimationFrame(tick);
+		}
+
+		function handleFocusIn() {
+			focusPaused = true;
+		}
+
+		function handleMouseEnter() {
+			hoverPaused = true;
+		}
+
+		function handleMouseLeave() {
+			hoverPaused = false;
+			resetAnimationClock();
+		}
+
+		function handleFocusOut(event: FocusEvent) {
+			const nextTarget = event.relatedTarget;
+			if (!(nextTarget instanceof Node) || !node.contains(nextTarget)) {
+				focusPaused = false;
+				resetAnimationClock();
+			}
+		}
+
+		function handleScroll() {
+			if (!shouldAnimate || isDragging) return;
+			position = normalizeScroll(node.scrollLeft);
+			if (Math.abs(position - node.scrollLeft) > 0.5) {
+				node.scrollLeft = position;
+			}
+		}
+
+		function handlePointerDown(event: PointerEvent) {
+			if (event.pointerType !== "mouse" || event.button !== 0 || !shouldAnimate) return;
+
+			isDragging = true;
+			didDrag = false;
+			dragStartX = event.clientX;
+			dragStartScrollLeft = node.scrollLeft;
+			node.classList.add("carousel-dragging");
+			node.setPointerCapture(event.pointerId);
+		}
+
+		function handlePointerMove(event: PointerEvent) {
+			if (!isDragging) return;
+
+			const delta = event.clientX - dragStartX;
+			if (Math.abs(delta) > 4) didDrag = true;
+			position = normalizeScroll(dragStartScrollLeft - delta);
+			node.scrollLeft = position;
+			event.preventDefault();
+		}
+
+		function handlePointerUp(event: PointerEvent) {
+			if (!isDragging) return;
+
+			isDragging = false;
+			node.classList.remove("carousel-dragging");
+			if (node.hasPointerCapture(event.pointerId)) {
+				node.releasePointerCapture(event.pointerId);
+			}
+			resetAnimationClock();
+		}
+
+		function handleClickCapture(event: MouseEvent) {
+			if (!didDrag) return;
+
+			didDrag = false;
+			event.preventDefault();
+			event.stopPropagation();
+		}
+
+		node.addEventListener("mouseenter", handleMouseEnter);
+		node.addEventListener("mouseleave", handleMouseLeave);
+		node.addEventListener("focusin", handleFocusIn);
+		node.addEventListener("focusout", handleFocusOut);
+		node.addEventListener("scroll", handleScroll, { passive: true });
+		node.addEventListener("pointerdown", handlePointerDown);
+		node.addEventListener("pointermove", handlePointerMove);
+		node.addEventListener("pointerup", handlePointerUp);
+		node.addEventListener("pointercancel", handlePointerUp);
+		node.addEventListener("click", handleClickCapture, true);
+		resizeObserver.observe(node);
+
+		queueMeasure({ resetPosition: true });
+		frameId = window.requestAnimationFrame(tick);
+
+		return {
+			update(nextOptions: AutoCarouselOptions = {}) {
+				const nextSignature = nextOptions.signature ?? "";
+				direction = nextOptions.direction ?? 1;
+				speed = nextOptions.speed ?? 26;
+
+				const shouldPreserveProgress = signature !== nextSignature;
+				signature = nextSignature;
+				queueMeasure({ preserveProgress: shouldPreserveProgress });
+			},
+			destroy() {
+				window.cancelAnimationFrame(frameId);
+				resizeObserver.disconnect();
+				node.removeEventListener("mouseenter", handleMouseEnter);
+				node.removeEventListener("mouseleave", handleMouseLeave);
+				node.removeEventListener("focusin", handleFocusIn);
+				node.removeEventListener("focusout", handleFocusOut);
+				node.removeEventListener("scroll", handleScroll);
+				node.removeEventListener("pointerdown", handlePointerDown);
+				node.removeEventListener("pointermove", handlePointerMove);
+				node.removeEventListener("pointerup", handlePointerUp);
+				node.removeEventListener("pointercancel", handlePointerUp);
+				node.removeEventListener("click", handleClickCapture, true);
+			},
+		};
+	}
+
 	onMount(() => {
 		const state = readStateFromLocation();
 		applyState(state.year, state.lag, state.hidden);
@@ -627,7 +841,7 @@
 {#if filteredBest.length > 0 || filteredWorst.length > 0}
 <section class="space-y-4">
 	{#if filteredBest.length > 2}
-		<div class="flex items-center justify-between">
+		<div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
 			<div class="flex items-center gap-2">
 				<TrendingUp class="h-4 w-4 text-gain" />
 				<h2 class="text-sm font-semibold text-ink tracking-tight">Winners {selectedLag}Y</h2>
@@ -650,16 +864,22 @@
 					</button>
 				</div>
 			</div>
-			<a
-				class="flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium text-muted border border-border rounded-md hover:border-border-dark hover:text-ink transition-all"
-				href={`/movement/?year=${selectedYr}&lag=${selectedLag}`}
-			>
-				Movement
-				<Activity class="h-3 w-3" />
-			</a>
+			<div class="flex w-full items-center justify-between gap-3 pl-6 sm:w-auto sm:justify-end sm:pl-0">
+				<span class="text-[10px] text-muted sm:text-[11px]">
+					Median gross income change
+				</span>
+				<a
+					class="flex shrink-0 items-center gap-1.5 px-2.5 py-1 text-xs font-medium text-muted border border-border rounded-md hover:border-border-dark hover:text-ink transition-all"
+					href={`/movement/?year=${selectedYr}&lag=${selectedLag}`}
+				>
+					Movement
+					<Activity class="h-3 w-3" />
+				</a>
+			</div>
 		</div>
 		<div
 			class="carousel-shell"
+			use:autoCarousel={{ direction: 1, speed: 28, signature: filteredBestSignature }}
 			aria-label={`Winners over ${selectedLag} years`}
 		>
 			<div class="carousel-track" data-carousel-track>
@@ -681,10 +901,11 @@
 			<TrendingDown class="h-4 w-4 text-loss" />
 			<h2 class="text-sm font-semibold text-ink tracking-tight">Losers {selectedLag}Y</h2>
 		</div>
-			<div
-				class="carousel-shell carousel-shell-slower carousel-shell-reverse"
-				aria-label={`Losers over ${selectedLag} years`}
-			>
+		<div
+			class="carousel-shell"
+			use:autoCarousel={{ direction: -1, speed: 24, signature: filteredWorstSignature }}
+			aria-label={`Losers over ${selectedLag} years`}
+		>
 			<div class="carousel-track" data-carousel-track>
 				<div class="carousel-set" data-carousel-set="primary">
 					{#each filteredWorst as record (record.slug)}
@@ -989,9 +1210,15 @@
 	}
 
 	.carousel-shell {
-		overflow: hidden;
+		overflow-x: auto;
+		overflow-y: hidden;
 		padding: 0 4px 4px;
 		margin: 0 -4px;
+		scrollbar-width: none;
+		-ms-overflow-style: none;
+		overscroll-behavior-x: contain;
+		touch-action: pan-x;
+		cursor: grab;
 		-webkit-mask-image: linear-gradient(
 			90deg,
 			transparent 0,
@@ -1015,16 +1242,6 @@
 	.carousel-track {
 		display: flex;
 		width: max-content;
-		animation: carousel-marquee 32s linear infinite;
-		will-change: transform;
-	}
-
-	.carousel-shell-slower .carousel-track {
-		animation-duration: 36s;
-	}
-
-	.carousel-shell-reverse .carousel-track {
-		animation-direction: reverse;
 	}
 
 	.carousel-set {
@@ -1035,22 +1252,15 @@
 	}
 
 	.carousel-clone {
+		display: none;
+	}
+
+	:global(.carousel-active) .carousel-clone {
 		display: flex;
 	}
 
-	.carousel-shell:hover .carousel-track,
-	.carousel-shell:focus-within .carousel-track {
-		animation-play-state: paused;
-	}
-
-	@keyframes carousel-marquee {
-		from {
-			transform: translate3d(0, 0, 0);
-		}
-
-		to {
-			transform: translate3d(-50%, 0, 0);
-		}
+	:global(.carousel-dragging) {
+		cursor: grabbing;
 	}
 
 	.data-table-wrap {
