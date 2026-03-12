@@ -175,8 +175,8 @@
 		</div>
 	</div>
 
-	<p class="max-w-2xl text-sm leading-relaxed text-muted">
-		Historical salary and employment outcomes for {data.degree.degree} at {data.degree.university}, based on Singapore Graduate Employment Survey data.
+	<p class="max-w-2xl text-[11px] leading-relaxed text-muted/80 -mt-3">
+		Historical salary and employment data for {data.degree.degree} at {data.degree.university}.
 	</p>
 
 	<!-- Key Metrics -->

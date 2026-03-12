@@ -712,12 +712,12 @@
 	pathname="/"
 />
 
-<section class="space-y-2">
-	<h1 class="text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
-		Compare Singapore graduate outcomes by degree
+<section class="space-y-0.5 -mt-1">
+	<h1 class="text-[12px] font-medium tracking-tight text-muted">
+		StudyWhat
 	</h1>
-	<p class="max-w-2xl text-sm leading-relaxed text-muted sm:text-[15px]">
-		StudyWhat helps you compare salary, employment, and historical Graduate Employment Survey data across degree programmes from NTU, NUS, SIT, SMU, SUSS, and SUTD.
+	<p class="max-w-2xl text-[11px] leading-relaxed text-muted/80">
+		Compare salary, employment, and historical Graduate Employment Survey data across Singapore degree programmes.
 	</p>
 </section>
 
