@@ -319,6 +319,26 @@
 		background: #FAFAF7;
 	}
 
+	thead :global(th strong) {
+		font-size: inherit !important;
+		font-weight: inherit !important;
+		line-height: 1.15 !important;
+		letter-spacing: inherit;
+	}
+
+	thead :global(th > div) {
+		gap: 6px;
+	}
+
+	thead :global(th span) {
+		padding-left: 0;
+	}
+
+	thead :global(th span:before),
+	thead :global(th span:after) {
+		border-width: 3px;
+	}
+
 	thead :global(th:first-child) {
 		text-align: left;
 	}

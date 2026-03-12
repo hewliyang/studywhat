@@ -1319,6 +1319,26 @@
 		background: #FAFAF7;
 	}
 
+	thead :global(th strong) {
+		font-size: inherit !important;
+		font-weight: inherit !important;
+		line-height: 1.15 !important;
+		letter-spacing: inherit;
+	}
+
+	thead :global(th > div) {
+		gap: 6px;
+	}
+
+	thead :global(th span) {
+		padding-left: 0;
+	}
+
+	thead :global(th span:before),
+	thead :global(th span:after) {
+		border-width: 3px;
+	}
+
 	.filter-row {
 		border-bottom: 1px solid #e8e5df;
 	}
@@ -1331,12 +1351,17 @@
 
 	.filter-row :global(input) {
 		width: 100%;
-		font-size: 11px;
-		padding: 3px 6px;
+		height: 28px;
+		font-size: 11px !important;
+		padding: 0 10px !important;
 		border: 1px solid #e8e5df;
 		border-radius: 4px;
 		background: #ffffff;
 		font-family: inherit;
+	}
+
+	.filter-row :global(input::placeholder) {
+		font-size: 11px !important;
 	}
 
 	.filter-row :global(input:focus) {
@@ -1400,27 +1425,49 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		gap: 10px;
 		padding: 6px 12px;
 		border-top: 1px solid #e8e5df;
 		font-size: 10px;
 		color: #71717a;
 	}
 
+	.table-footer :global(aside) {
+		margin: 0;
+		font-size: inherit !important;
+		line-height: 22px !important;
+		color: inherit;
+	}
+
+	.table-footer :global(section) {
+		display: flex;
+		align-items: center;
+		gap: 0;
+		margin: 0;
+	}
+
 	.table-footer :global(button) {
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		padding: 0 7px;
-		height: 22px;
-		line-height: 1;
+		min-width: 22px;
+		width: auto !important;
+		padding: 0 7px !important;
+		height: 22px !important;
+		line-height: 1 !important;
 		border: 1px solid #e8e5df;
 		border-radius: 4px;
 		background: #ffffff;
 		color: #71717a;
-		font-size: 10px;
+		font-size: 10px !important;
 		font-family: inherit;
 		cursor: pointer;
 		transition: all 0.15s;
+	}
+
+	.table-footer :global(button:first-child:not(.small)),
+	.table-footer :global(button:last-child:not(.small)) {
+		min-width: 52px !important;
 	}
 
 	.table-footer :global(button:hover:not(:disabled)) {
