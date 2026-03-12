@@ -597,8 +597,18 @@
 			}
 		}
 
+		function isInteractiveTarget(target: EventTarget | null) {
+			return target instanceof Element
+				&& !!target.closest('a, button, input, select, textarea, summary, [role="button"], [role="link"]');
+		}
+
 		function handlePointerDown(event: PointerEvent) {
-			if (event.pointerType !== "mouse" || event.button !== 0 || !shouldAnimate) return;
+			if (
+				event.pointerType !== "mouse"
+				|| event.button !== 0
+				|| !shouldAnimate
+				|| isInteractiveTarget(event.target)
+			) return;
 
 			isDragging = true;
 			didDrag = false;
